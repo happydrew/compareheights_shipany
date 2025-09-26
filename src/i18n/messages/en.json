@@ -1,0 +1,707 @@
+{
+  "metadata": {
+    "title": "AI Photo Editor Powered by nano banana & Gemini | NanoEdit",
+    "description": "Edit photos in seconds with NanoEdit. AI-powered by nano banana ai and Gemini Flash 2.5. Achieve professional, polished results instantly—no design skills needed.",
+    "keywords": "NanoEdit, AI photo editor, nano banana ai"
+  },
+  "user": {
+    "sign_in": "Sign In",
+    "sign_out": "Sign Out",
+    "credits": "Credits",
+    "api_keys": "API Keys",
+    "my_orders": "My Orders",
+    "user_center": "User Center",
+    "admin_system": "Admin System"
+  },
+  "sign_modal": {
+    "sign_in_title": "Sign In",
+    "sign_in_description": "Sign in to your account",
+    "sign_up_title": "Sign Up",
+    "sign_up_description": "Create an account",
+    "email_title": "Email",
+    "email_placeholder": "Input your email here",
+    "password_title": "Password",
+    "password_placeholder": "Input your password here",
+    "forgot_password": "Forgot password?",
+    "or": "Or",
+    "continue": "Continue",
+    "no_account": "Don't have an account?",
+    "email_sign_in": "Sign in with Email",
+    "google_sign_in": "Sign in with Google",
+    "github_sign_in": "Sign in with GitHub",
+    "close_title": "Close",
+    "cancel_title": "Cancel",
+    "login_bonus_tip": "You've got 10 free credits—log in to claim 🙂",
+    "free_try_prompt": ""
+  },
+  "my_orders": {
+    "title": "My Orders",
+    "description": "orders paid with ShipAny.",
+    "no_orders": "No orders found",
+    "tip": "",
+    "activate_order": "Activate Order",
+    "actived": "Activated",
+    "join_discord": "Join Discord",
+    "read_docs": "Read Docs",
+    "table": {
+      "order_no": "Order No",
+      "email": "Email",
+      "product_name": "Product Name",
+      "status": "Status",
+      "status_created": "Created",
+      "status_paid": "Paid",
+      "status_deleted": "Deleted",
+      "amount": "Amount",
+      "paid_at": "Paid At",
+      "github_username": "GitHub Username",
+      "manage_billing": "Manage Billing",
+      "interval": "Interval",
+      "interval_month": "Monthly",
+      "interval_year": "Annually",
+      "interval_one_time": "One-Time"
+    }
+  },
+  "my_credits": {
+    "title": "My Credits",
+    "left_tip": "left credits: {left_credits}",
+    "no_credits": "No credits records",
+    "recharge": "Recharge",
+    "table": {
+      "trans_no": "Trans No",
+      "trans_type": "Trans Type",
+      "credits": "Credits",
+      "updated_at": "Updated At",
+      "status": "Status",
+      "expired_at": "Expired At",
+      "created_at": "Created At"
+    }
+  },
+  "api_keys": {
+    "title": "API Keys",
+    "tip": "Please keep your apikey safe to avoid leaks",
+    "no_api_keys": "No API Keys",
+    "create_api_key": "Create API Key",
+    "table": {
+      "name": "Name",
+      "key": "Key",
+      "created_at": "Created At"
+    },
+    "form": {
+      "name": "Name",
+      "name_placeholder": "API Key Name",
+      "submit": "Submit"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "News, resources, and updates about ShipAny",
+    "read_more_text": "Read More"
+  },
+  "my_invites": {
+    "title": "My Invites",
+    "description": "View your invite records",
+    "no_invites": "No invite records found",
+    "my_invite_link": "My Invite Link",
+    "edit_invite_link": "Edit Invite Link",
+    "copy_invite_link": "Copy Invite Link",
+    "invite_code": "Invite Code",
+    "invite_tip": "Invite 1 friend to buy ShipAny, reward $50.",
+    "invite_balance": "Invite Reward Balance",
+    "total_invite_count": "Total Invite Count",
+    "total_paid_count": "Total Paid Count",
+    "total_award_amount": "Total Award Amount",
+    "update_invite_code": "Set Invite Code",
+    "update_invite_code_tip": "Input your custom invite code",
+    "update_invite_button": "Save",
+    "no_orders": "You can't invite others before you bought ShipAny",
+    "no_affiliates": "You're not allowed to invite others, please contact us to apply for permission.",
+    "table": {
+      "invite_time": "Invite Time",
+      "invite_user": "Invite User",
+      "status": "Status",
+      "reward_percent": "Reward Percent",
+      "reward_amount": "Reward Amount",
+      "pending": "Pending",
+      "completed": "Completed"
+    }
+  },
+  "feedback": {
+    "title": "Feedback",
+    "description": "We'd love to hear what went well or how we can improve the product experience.",
+    "submit": "Submit",
+    "loading": "Submitting...",
+    "contact_tip": "Other ways to contact us",
+    "rating_tip": "How do you feel about ShipAny?",
+    "placeholder": "Leave your words here..."
+  },
+  "common": {
+    "video_not_supported": "Your browser does not support the video tag.",
+    "pause_video": "Pause",
+    "play_video": "Play",
+    "unmute_video": "Unmute",
+    "mute_video": "Mute",
+    "no_media_available": "No media available",
+    "auth_required": "Please sign in to continue",
+    "coming_soon_title": "Coming soon",
+    "coming_soon_message": "Coming soon, please stay tuned!",
+    "coming_soon_close": "Got it"
+  },
+  "promptEngine": {
+    "header": {
+      "title": "Prompt Engine",
+      "subtitle": "Transform your image with AI-powered editing"
+    },
+    "tabs": {
+      "imageToImage": "Image to Image",
+      "textToImage": "Text to Image"
+    },
+    "refImage": {
+      "title": "Reference Image",
+      "count": "{count}/{max}",
+      "upload": {
+        "ctaEmpty": "Add Image",
+        "ctaMore": "Add More Images",
+        "hint": "Drag & drop or click to browse"
+      }
+    },
+    "mainPrompt": {
+      "title": "Prompt",
+      "placeholder": "Describe how you want to edit your image... (e.g., 'make it more vibrant', 'add a sunset background', 'convert to cartoon style')"
+    },
+    "buttons": {
+      "copy": "Copy",
+      "generate": "Generate Now",
+      "generating": "Generating..."
+    },
+    "status": {
+      "editing": "Editing your image...",
+      "hint": "Our AI is working its magic. This usually takes 30-60 seconds..."
+    },
+    "gallery": {
+      "title": "Output Gallery",
+      "subtitle": "Your ultra-fast AI creations appear here instantly",
+      "download": "Download"
+    },
+    "empty": {
+      "title": "Ready for instant generation",
+      "hintImageToImage": "Upload an image and enter your editing prompt to get started",
+      "hintTextToImage": "Enter your prompt and unleash the power of Nano Banana AI image editor"
+    }
+  },
+  "styleGallery": {
+    "section": {
+      "badge": "🔥 Trending Templates",
+      "title": "Most Popular AI Photo Editor Templates",
+      "description": "Discover trending social media styles powered by Nano Banana AI. Create viral-worthy content with our Gemini AI photo generator templates."
+    },
+    "slider": {
+      "before": "Before",
+      "after": "After"
+    },
+    "card": {
+      "trending": "🔥 Trending"
+    },
+    "loadMore": "Load More Templates",
+    "examples": {
+      "retroClassicBlackSaree": {
+        "title": "Classic Black Saree Retro Style",
+        "description": "Transform your photos into Classic Black Saree retro images with warm vintage tones.",
+        "category": "Vintage"
+      },
+      "retroWhitePolkaDotSaree": {
+        "title": "White Polka-dot Saree Retro Style",
+        "description": "Transform your photos into White Polka-dot Saree retro images with warm vintage tones.",
+        "category": "Vintage"
+      },
+      "retroRedSareeDrama": {
+        "title": "Red Saree Drama Retro Style",
+        "description": "Transform your photos into Red Saree Drama retro images with warm vintage tones.",
+        "category": "Vintage"
+      }
+    }
+  },
+  "tasks": {
+    "my_tasks": "My Tasks",
+    "no_tasks": "No tasks available",
+    "loading": "Loading...",
+    "refresh": "Refresh",
+    "filters": {
+      "label": "Filters:",
+      "task_type": "Task Type",
+      "status": "Status",
+      "all_types": "All Types",
+      "all_status": "All Status"
+    },
+    "table": {
+      "task_id": "Task ID",
+      "task_type": "Task Type",
+      "credits_consumed": "Credits Consumed",
+      "credits_remaining": "Credits Remaining",
+      "status": "Status",
+      "created_at": "Created At",
+      "updated_at": "Updated At"
+    },
+    "task_types": {
+      "ai_image_edit": "AI Image Editing",
+      "ai_text_generation": "AI Text Generation",
+      "ai_video_generation": "AI Video Generation"
+    },
+    "task_status": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "success": "Success",
+      "failed": "Failed",
+      "cancelled": "Cancelled"
+    },
+    "pagination": {
+      "total_tasks": "Total {total} tasks, page {page} / {pages}",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "errors": {
+      "fetchFailed": "Failed to fetch task list",
+      "fetchError": "Task list fetch error"
+    }
+  },
+  "imageEditor": {
+    "header": {
+      "title": "AI Photo Editor for Viral Social Media Trends",
+      "label": "Try Now",
+      "subtitle": "Turn any upload into scroll-stopping content with our {aiImageEditor} powered by {nanoBananaAi}. Apply trending styles, sharpen details, and remix scenes using {geminiAiPhotoGenerator} and {newGeminiTrendPrompt} templates.",
+      "aiImageEditor": "ai image editor",
+      "nanoBananaAi": "nano banana ai",
+      "geminiAiPhotoGenerator": "gemini ai photo generator",
+      "newGeminiTrendPrompt": "new gemini trend prompt"
+    },
+    "promptEngine": {
+      "title": "AI Image Editor",
+      "subtitle": "Professional editing powered by advanced {nanoBananaAi}",
+      "tabs": {
+        "imageToImage": "Image to Image",
+        "textToImage": "Text to Image"
+      },
+      "refImage": {
+        "title": "Reference Image",
+        "count": "{count}/{max}",
+        "upload": {
+          "ctaEmpty": "Add Image",
+          "ctaMore": "Add More Images",
+          "hint": "Drag & drop or click to browse",
+          "limitNote": "Up to {maxFiles} images, each under {maxSize}"
+        }
+      },
+      "mainPrompt": {
+        "title": "Main Prompt",
+        "placeholder": "Describe your vision... (e.g., 'vintage film style', 'trending TikTok aesthetic', 'apply new gemini trend prompt effects')"
+      },
+      "buttons": {
+        "generate": "Generate Now",
+        "generating": "Generating..."
+      },
+      "defaultPrompt": "Make the image more vibrant and add dramatic lighting effects"
+    },
+    "gallery": {
+      "title": "Your Creations",
+      "subtitle": "Viral-ready content generated with {geminiAiPhotoGenerator}",
+      "downloadAlt": "Download",
+      "generatedImages": "Generated Images ({count})",
+      "creatingContent": "Creating viral content...",
+      "progress": "{progress}%",
+      "aiCrafting": "Our {aiFotoEditor} is crafting your perfect social media content...",
+      "aiFotoEditor": "ai foto editor"
+    },
+    "empty": {
+      "title": "Ready to Go Viral?",
+      "hintImageToImage": "Upload your photos (up to 5 images) and describe your dream style. Our ai photo editor powered by nano banana ai will transform them into trending content.",
+      "hintTextToImage": "Describe your vision and watch our ai image editor create viral-ready content with cutting-edge technology."
+    },
+    "aspectRatios": {
+      "auto": "Auto",
+      "square": "Square (1:1)",
+      "portraitSmall": "Portrait (3:4)",
+      "portraitLarge": "Portrait (9:16)",
+      "landscapeSmall": "Landscape (4:3)",
+      "landscapeLarge": "Landscape (16:9)"
+    },
+    "progress": {
+      "message1": "Our advanced AI model is working hard to generate images according to your requirements...",
+      "message2": "Please be patient, usually completed within 1 minute",
+      "message3": "Processing your request using the latest Nano Banana technology",
+      "message4": "Your creativity is being carefully crafted by AI, almost ready",
+      "message5": "High-quality image generation takes some time, please wait",
+      "message6": "AI is understanding your needs and creating unique visual effects",
+      "completed": "Image generation completed!",
+      "failed": "Image generation failed, please try again"
+    },
+    "errors": {
+      "loginRequired": "Please sign in to use AI image editing",
+      "insufficientCredits": "Insufficient credits. You need at least 2 credits for AI image editing.",
+      "uploadFailed": "Upload failed",
+      "generateFailed": "Generation failed",
+      "taskTimeout": "Task timeout",
+      "pollError": "Failed to check status",
+      "serverTimeout": "The server took too long to respond. Please try again.",
+      "unknownError": "An unknown error occurred.",
+      "maxFileCount": "You can upload up to {count} images.",
+      "fileTooLarge": "The image \"{name}\" exceeds the {size} size limit and was skipped.",
+      "invalidFileType": "The file \"{name}\" is not a valid image format and was skipped.",
+      "generationFailedTitle": "Generation Failed",
+      "creditsRefundTitle": "Credits will be refunded automatically",
+      "creditsRefundMessage": "Your credits for this failed generation have been returned to your account and will be available immediately.",
+      "tryAgain": "Try Again",
+      "dismiss": "Dismiss",
+      "aiProcessingError": {
+        "title": "AI Processing Error",
+        "message": "The AI encountered an unexpected error while processing your image.",
+        "suggestion": "Try using a different image or simplifying your prompt."
+      },
+      "serviceUnavailable": {
+        "title": "Service Temporarily Unavailable",
+        "message": "The AI image generation service is currently experiencing issues.",
+        "suggestion": "Please wait a few moments and try again."
+      },
+      "invalidRequest": {
+        "title": "Invalid Request",
+        "message": "There was an issue with your request format.",
+        "suggestion": "Please check your image format and prompt, then try again."
+      },
+      "timeout": {
+        "title": "Processing Timeout",
+        "message": "The generation took longer than expected and was cancelled.",
+        "suggestion": "Try with a simpler prompt or smaller image size."
+      },
+      "networkError": {
+        "title": "Connection Error",
+        "message": "Unable to connect to the generation service.",
+        "suggestion": "Please check your internet connection and try again."
+      },
+      "general": {
+        "title": "Generation Error",
+        "message": "An unexpected error occurred during generation.",
+        "suggestion": "Please try again or contact support if the issue persists."
+      },
+      "missingImageUrl": "Generation succeeded but no image URL was returned."
+    },
+    "status": {
+      "uploading": "Uploading images...",
+      "submitting": "Submitting your request...",
+      "processing": "Processing task...",
+      "success": "Generation successful!",
+      "error": "An error occurred",
+      "failed": "Generation failed",
+      "networkError": "Temporary network issue, retrying..."
+    }
+  },
+  "about": {
+    "title": "About NanoEdit",
+    "whatIs": {
+      "title": "What is NanoEdit?",
+      "description": "NanoEdit is a cutting-edge AI-powered image editing platform that transforms the way you create and edit images. Built with the latest artificial intelligence technology, NanoEdit makes professional-quality image editing accessible to everyone, regardless of their technical expertise."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "We believe that powerful image editing tools should be simple, fast, and accessible to creators worldwide. Our mission is to democratize AI-powered image editing by providing:",
+      "features": {
+        "fast": {
+          "title": "Lightning-fast processing",
+          "description": "Get professional results in seconds, not hours"
+        },
+        "intuitive": {
+          "title": "Intuitive interface",
+          "description": "No complex learning curves or technical barriers"
+        },
+        "advanced": {
+          "title": "Advanced AI models",
+          "description": "Powered by state-of-the-art Nano Banana and Gemini AI technology"
+        },
+        "flexible": {
+          "title": "Flexible workflows",
+          "description": "Support for both text-to-image and image-to-image editing"
+        }
+      }
+    },
+    "keyFeatures": {
+      "title": "Key Features",
+      "aiGeneration": {
+        "title": "AI Image Generation & Editing",
+        "feature1": "Transform images with natural language prompts",
+        "feature2": "Support for multiple aspect ratios and output formats",
+        "feature3": "High-quality results powered by advanced AI models"
+      },
+      "userFriendly": {
+        "title": "User-Friendly Experience",
+        "feature1": "Clean, modern interface designed for creators",
+        "feature2": "Real-time progress tracking with helpful status messages",
+        "feature3": "Seamless upload and download workflow"
+      },
+      "pricing": {
+        "title": "Flexible Pricing",
+        "feature1": "Credit-based system for cost-effective usage",
+        "feature2": "No subscription lock-in - pay only for what you use",
+        "feature3": "Transparent pricing with no hidden fees"
+      }
+    },
+    "technology": {
+      "title": "Technology Stack",
+      "description": "NanoEdit is built on modern, reliable technology:",
+      "aiModels": {
+        "title": "AI Models",
+        "description": "Nano Banana Edit and Google Gemini for superior image processing"
+      },
+      "frontend": {
+        "title": "Frontend",
+        "description": "Next.js 15 with React and TypeScript for a responsive user experience"
+      },
+      "auth": {
+        "title": "Authentication",
+        "description": "Secure sign-in with Google and GitHub integration"
+      },
+      "infrastructure": {
+        "title": "Infrastructure",
+        "description": "Scalable cloud architecture for reliable performance"
+      }
+    },
+    "values": {
+      "title": "Our Values",
+      "innovation": {
+        "title": "Innovation",
+        "description": "We continuously integrate the latest AI breakthroughs to provide cutting-edge editing capabilities."
+      },
+      "simplicity": {
+        "title": "Simplicity",
+        "description": "Complex technology should feel simple. We focus on intuitive design and seamless user experiences."
+      },
+      "quality": {
+        "title": "Quality",
+        "description": "Every feature is crafted with attention to detail to ensure professional-grade results."
+      },
+      "accessibility": {
+        "title": "Accessibility",
+        "description": "We believe powerful tools should be available to creators of all skill levels and backgrounds."
+      }
+    },
+    "team": {
+      "title": "Team",
+      "description": "NanoEdit is developed by a passionate team of engineers and designers who believe in the transformative power of AI technology. We're committed to building tools that empower creativity and make advanced image editing accessible to everyone."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Have questions, feedback, or need support? We'd love to hear from you!",
+      "email": {
+        "label": "Email"
+      }
+    },
+    "footer": {
+      "message": "Join thousands of creators who are already using NanoEdit to bring their creative visions to life. Start editing today and experience the future of AI-powered image creation."
+    }
+  },
+  "contact": {
+    "title": "Contact NanoEdit",
+    "getInTouch": {
+      "title": "Get in Touch",
+      "description": "We'd love to hear from you! Whether you have questions about our AI image editing platform, need technical support, or want to share feedback, we're here to help."
+    },
+    "primaryContact": {
+      "title": "Primary Contact",
+      "email": {
+        "label": "Email"
+      },
+      "responseTime": "Our team typically responds to inquiries within 24 hours during business days."
+    },
+    "helpWith": {
+      "title": "What We Can Help With",
+      "technical": {
+        "title": "Technical Support",
+        "issue1": "Issues with image uploads or processing",
+        "issue2": "Account access and authentication problems",
+        "issue3": "Credit system and billing questions",
+        "issue4": "Feature usage and troubleshooting"
+      },
+      "business": {
+        "title": "Business Inquiries",
+        "inquiry1": "Partnership opportunities",
+        "inquiry2": "Custom integration requests",
+        "inquiry3": "Enterprise solutions",
+        "inquiry4": "API access and documentation"
+      },
+      "feedback": {
+        "title": "Feedback & Suggestions",
+        "type1": "Feature requests and improvements",
+        "type2": "User experience feedback",
+        "type3": "Bug reports and issues",
+        "type4": "General platform suggestions"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Before reaching out, you might find answers to common questions:",
+      "account": {
+        "title": "Account & Authentication",
+        "q1": {
+          "question": "Q: I can't sign in to my account",
+          "answer": "A: Try clearing your browser cache and cookies, or use an incognito/private window. If the issue persists, contact us with details about your browser and the error message."
+        }
+      },
+      "credits": {
+        "title": "Credits & Billing",
+        "q1": {
+          "question": "Q: How do credits work?",
+          "answer": "A: Credits are consumed based on the AI processing required. Text-to-image generation costs 10 credits, and additional features like custom aspect ratios cost extra credits."
+        },
+        "q2": {
+          "question": "Q: Can I get a refund for unused credits?",
+          "answer": "A: Please contact us at drewgrant616@gmail.com to discuss refund requests on a case-by-case basis."
+        }
+      },
+      "processing": {
+        "title": "Image Processing",
+        "q1": {
+          "question": "Q: Why is my image taking so long to process?",
+          "answer": "A: AI image generation typically takes 30-60 seconds. High server demand may occasionally cause longer processing times."
+        },
+        "q2": {
+          "question": "Q: What image formats are supported?",
+          "answer": "A: We support common formats including JPG, PNG, and WebP for uploads. Generated images are provided in PNG format."
+        }
+      }
+    },
+    "responseTimes": {
+      "title": "Response Times",
+      "general": {
+        "label": "General inquiries",
+        "time": "Within 24 hours"
+      },
+      "technical": {
+        "label": "Technical support",
+        "time": "Within 12 hours during business days"
+      },
+      "urgent": {
+        "label": "Urgent issues",
+        "time": "We aim to respond as quickly as possible"
+      }
+    },
+    "businessHours": {
+      "title": "Business Hours",
+      "description": "Our team is available to respond to emails:",
+      "weekdays": {
+        "label": "Monday - Friday",
+        "time": "9:00 AM - 6:00 PM (UTC)"
+      },
+      "weekends": {
+        "label": "Weekends",
+        "time": "Limited availability for urgent matters"
+      }
+    },
+    "socialMedia": {
+      "title": "Social Media",
+      "description": "Stay updated with the latest features and announcements:",
+      "follow": "Follow us for product updates and tips",
+      "share": "Share your creations using #NanoEdit"
+    },
+    "feedbackForm": {
+      "title": "Feedback Form",
+      "comingSoon": "Coming Soon",
+      "description": "We're working on an integrated feedback form to make it even easier to share your thoughts and suggestions."
+    },
+    "office": {
+      "title": "Office Information",
+      "description": "NanoEdit operates as a remote-first company, allowing us to focus on building the best AI image editing experience for our users worldwide."
+    },
+    "footer": {
+      "thanks": "Thank you for choosing NanoEdit!",
+      "message": "Your feedback and questions help us improve our platform and better serve the creative community."
+    }
+  },
+  "hero": {
+    "happyUsers": {
+      "caption": "from {count}+ happy users"
+    }
+  },
+  "heightCompareTool": {
+    "toolbar": {
+      "openFullScreenLeftPanel": "Open full screen left panel",
+      "switchToCm": "Switch to centimeters",
+      "switchToFt": "Switch to feet",
+      "resetZoom": "Reset zoom",
+      "clearAll": "Clear all characters",
+      "gridLines": "Grid lines",
+      "backgroundSettings": "Background settings",
+      "darkTheme": "Switch to dark theme",
+      "lightTheme": "Switch to light theme",
+      "enterFullscreen": "Enter fullscreen",
+      "exitFullscreen": "Exit fullscreen",
+      "exportImage": "Export image",
+      "shareComparison": "Share comparison"
+    },
+    "backgroundSettings": {
+      "solidColors": "Solid Colors",
+      "backgroundImage": "Background Image",
+      "uploadImage": "Upload Image",
+      "removeBackground": "Remove Background",
+      "setBackgroundTo": "Set background to {color}"
+    },
+    "exportFormats": {
+      "png": "PNG",
+      "pngDescription": "High quality, transparent background",
+      "jpg": "JPG",
+      "jpgDescription": "Smaller file size, easy to share",
+      "webp": "WebP",
+      "webpDescription": "Modern format, high compression"
+    },
+    "shareOptions": {
+      "socialMedia": "Social Media",
+      "otherOptions": "Other Options",
+      "nativeShare": "Share...",
+      "copyShareLink": "Copy Share Link",
+      "linkCopied": "✅ Link Copied!",
+      "shareOn": "Share on {platform}"
+    },
+    "chartArea": {
+      "title": "Height Comparison",
+      "clickToEditTitle": "Click to edit title",
+      "enterChartTitle": "Enter chart title",
+      "zoomIn": "Zoom in (hold Ctrl + scroll for quick zoom)",
+      "zoomOut": "Zoom out (hold Ctrl + scroll for quick zoom)",
+      "metric": "Metric ({unit})",
+      "imperial": "Imperial ({unit})",
+      "loadingData": "Loading data...",
+      "emptyState": "Click characters in the left library to add",
+      "addCharactersFirst": "Please add characters first"
+    },
+    "characterPanel": {
+      "characterDetails": "Character Details",
+      "name": "Name",
+      "nameplaceholder": "Enter character name",
+      "color": "Color",
+      "selectColor": "Select color: {color}",
+      "applyChanges": "Press Enter or click outside to apply changes"
+    },
+    "sharing": {
+      "generateShareLinkFailed": "Generate share link failed",
+      "copyFailed": "Copy failed, please manually copy link",
+      "loadingShareDataFailed": "Loading shared data failed, please check the link is correct",
+      "loadingData": "Loading data...",
+      "shareText": {
+        "template1": "🏗️ Amazing height comparison: {characters}! 📷 Image included! Check it out at compareheights.org",
+        "template2": "📏 Mind-blowing size comparison featuring {characters}! 🖼️ See the visual scale at compareheights.org",
+        "template3": "🎯 Visual height showdown: {characters}! 📈 Compare sizes with image at compareheights.org",
+        "template4": "⚡ Epic scale comparison with {characters}! 🎆 Explore with visual at compareheights.org",
+        "template5": "🔥 Height battle: {characters}! 🎭 Discover the differences (image attached) at compareheights.org"
+      }
+    },
+    "export": {
+      "watermarkText": "compareheights.org",
+      "exportFailed": "Image export failed. Possible reasons:\n• Image resource loading issues\n• Browser security restrictions\n\nSuggested solutions:\n1. Refresh the page and try again\n2. Use browser screenshot function:\n   - Chrome: F12 → Ctrl+Shift+P → Type \"screenshot\"\n   - Or use system screenshot tool (Win+Shift+S)",
+      "downloadFailed": "File download failed, please check browser download settings",
+      "imageExported": "Image exported as {format} format",
+      "generateShareImageFailed": "Failed to generate share image",
+      "downloadImageFailed": "Failed to download image"
+    },
+    "socialPlatforms": {
+      "imageAndTextCopied": "📋 Image and text copied to clipboard!\n\nIn the {platform} sharing page:\n1. Paste text content (Ctrl+V)\n2. Paste image (Ctrl+V)\n\nYou can now publish your post with the image!",
+      "imageDownloaded": "📥 Image downloaded to your device!\n\nIn the {platform} sharing page:\n1. Type or paste the sharing text\n2. Click the image upload button and select the downloaded image\n\nYou can now publish your post with the image!",
+      "shareLinkCopied": "📎 Share link copied to clipboard!",
+      "shareFailed": "Share failed. Please manually copy the link: {url}"
+    }
+  }
+}

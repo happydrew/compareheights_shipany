@@ -1,0 +1,631 @@
+﻿{
+  "template": "nanoedit-template",
+  "theme": "light",
+  "header": {
+    "brand": {
+      "title": "NanoEdit",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "NanoEdit"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "功能亮点",
+          "url": "/#feature",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "🔥 热门模板",
+          "url": "/#examples"
+        },
+        {
+          "title": "价格方案",
+          "url": "/pricing",
+          "icon": "RiMoneyDollarCircleLine"
+        }
+      ]
+    },
+    "buttons": [
+      {
+        "title": "免费试用",
+        "icon": "RiPlayFill",
+        "url": "/#image-editor",
+        "target": "_self",
+        "variant": "default"
+      }
+    ],
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "title": "用 NanoEdit 改造每一张照片",
+    "highlight_text": "NanoEdit",
+    "description": "NanoEdit 将 nano banana ai 与 Gemini Flash 2.5 相结合，仅需数秒即可完成精确的图像编辑。描述你想要的风格，就能看到每张照片焕发专业级光彩。",
+    "announcement": {
+      "label": "全新",
+      "title": "🎨 由 nano banana ai 与 Gemini Flash 2.5 驱动",
+      "url": "/#features"
+    },
+    "tip": [
+      {
+        "text": "轻松上手",
+        "icon": "RiSparkling2Fill"
+      },
+      {
+        "text": "功能强大",
+        "icon": "RiCpuFill"
+      },
+      {
+        "text": "热门模板",
+        "icon": "RiFireFill"
+      },
+      {
+        "text": "极速响应",
+        "icon": "RiFlashlightFill"
+      }
+    ],
+    "buttons": [
+      {
+        "title": "开始编辑",
+        "icon": "RiMagicFill",
+        "url": "#image-editor",
+        "target": "_self",
+        "variant": "default"
+      },
+      {
+        "title": "🔥 查看热门模板",
+        "icon": "RiFire2Fill",
+        "url": "#examples",
+        "target": "_self",
+        "variant": "default"
+      }
+    ],
+    "show_happy_users": false,
+    "show_badge": false
+  },
+  "branding": {
+    "title": "NanoEdit 基于值得信赖的 AI 引擎运行",
+    "items": [
+      {
+        "title": "nano banana ai 引擎",
+        "image": {
+          "src": "/imgs/icons/banana-icon.webp",
+          "alt": "nano banana ai 技术"
+        }
+      },
+      {
+        "title": "Google Gemini Flash 2.5",
+        "image": {
+          "src": "/imgs/icons/gemini-icon.svg",
+          "alt": "Google Gemini Flash 2.5 为 NanoEdit 提供动力"
+        }
+      }
+    ]
+  },
+  "introduce": {
+    "name": "introduce",
+    "title": "什么是 NanoEdit",
+    "label": "关于",
+    "description": "NanoEdit 是一款直观的 AI 图像编辑器，你可以用自然语言掌控每一个像素。nano banana ai 基础模型与 Gemini Flash 2.5 会理解你的提示，在数秒内呈现电影级效果。",
+    "image": {
+      "src": "/imgs/features/ai-editing.png"
+    },
+    "items": [
+      {
+        "title": "自然语言编辑",
+        "description": "描述你的构想，我们的 nano banana ai 技术栈会像 gemini ai 图像生成器一样响应，呈现近乎手工制作的效果。",
+        "icon": "RiChatSmile3Line"
+      },
+      {
+        "title": "即时出图",
+        "description": "通过 AI 图像编辑工作流实时迭代，既跟上你的创意节奏，又保持文件品质不受损。",
+        "icon": "RiFlashFill"
+      },
+      {
+        "title": "多模型协作",
+        "description": "NanoEdit 将 nano banana ai、Gemini Flash 2.5 与自研调优协同工作，确保每次 AI 编辑在各类活动中都保持一致表现。",
+        "icon": "RiRobot2Line"
+      }
+    ]
+  },
+  "benefit": {
+    "name": "benefit",
+    "title": "创作者为何选择 NanoEdit",
+    "label": "优势亮点",
+    "description": "借助这款由 nano banana ai 驱动的 AI 图像编辑器，让每个灵感都能更快落地。",
+    "items": [
+      {
+        "title": "零门槛上手",
+        "description": "输入你的需求，NanoEdit 与 nano banana ai 就能把简单指令转化为代理级视觉作品，省去繁琐排期。",
+        "icon": "RiUserSmileLine",
+        "image": {
+          "src": "/imgs/features/easy-editing.png"
+        }
+      },
+      {
+        "title": "极速响应",
+        "description": "AI 编辑流水线利用 nano banana ai 加速，批量润饰、对象抠图与背景替换都能在数秒内完成。",
+        "icon": "RiFlashLine",
+        "image": {
+          "src": "/imgs/features/fast-editing.png"
+        }
+      },
+      {
+        "title": "专业品质",
+        "description": "无论是宫崎骏动画风、真实光影，还是 gemini nano banana ai 3D 模型，都能随心调校，让每份交付都像量身定制。",
+        "icon": "RiStarFill",
+        "image": {
+          "src": "/imgs/features/professional-quality.png"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "name": "usage",
+    "label": "如何使用",
+    "title": "如何使用 NanoEdit",
+    "description": "NanoEdit 搭配 nano banana ai 在幕后协助，只需四步即可完成任何素材的编辑。",
+    "image": {
+      "src": "/imgs/features/how-to-use.png"
+    },
+    "image_position": "left",
+    "text_align": "center",
+    "items": [
+      {
+        "title": "上传你的图片",
+        "description": "拖拽、上传或粘贴素材，AI 图像编辑器即可即时分析上下文。"
+      },
+      {
+        "title": "描述想要的效果",
+        "description": "写下最新的 gemini 趋势提示词或自然语言描述，nano banana ai 核心就能准确理解意图。"
+      },
+      {
+        "title": "立即查看结果",
+        "description": "NanoEdit 结合 gemini ai 图像生成器的精度与智能安全校验，在数秒内输出干净可靠的结果。"
+      },
+      {
+        "title": "下载并分享",
+        "description": "导出不同版本，分享给客户，或保存复古风备份，轻松用于后续活动。"
+      }
+    ]
+  },
+  "feature": {
+    "name": "feature",
+    "label": "功能亮点",
+    "title": "NanoEdit 功能套件",
+    "description": "探索 NanoEdit 工具箱：由 nano banana ai、gemini ai 图像生成智能与自研 AI 编辑调优共同驱动的图像编辑器。",
+    "items": [
+      {
+        "title": "nano banana ai 驱动的对象移除",
+        "description": "轻松清除干扰元素，NanoEdit 会借助 nano banana ai 的精准推理重建画面。",
+        "icon": "RiEraserLine"
+      },
+      {
+        "title": "智能对象添加",
+        "description": "添加产品、人物或道具，由 nano banana ai 引导的 gemini ai 光影模型可将其无缝融入原场景。",
+        "icon": "RiAddCircleLine"
+      },
+      {
+        "title": "提示词风格迁移",
+        "description": "借助 AI 编辑控制面板，快速生成最新 gemini 趋势风格或宫崎骏动画质感。",
+        "icon": "RiPaletteLine"
+      },
+      {
+        "title": "一键背景替换",
+        "description": "一键切换场景，nano banana ai 会保持阴影、反射与构图自然协调。",
+        "icon": "RiImageEditLine"
+      },
+      {
+        "title": "进阶色彩与光线控制",
+        "description": "利用 NanoEdit 的 AI 调色滑杆（基于 gemini ai 研究调校），即可精准匹配品牌色调。",
+        "icon": "RiDropLine"
+      },
+      {
+        "title": "分辨率增强",
+        "description": "为旧素材提高清晰度与分辨率，让你的内容在印刷、网页与社媒上都保持锐利质感。",
+        "reverse": true,
+        "features": [
+          {
+            "icon": "RiHdLine",
+            "title": "四倍超分",
+            "description": "在分辨率提升至 4 倍的同时保留细腻纹理"
+          },
+          {
+            "icon": "RiMagicLine",
+            "title": "细节还原",
+            "description": "AI 可重建边缘、发丝与布料细节，不留光晕"
+          },
+          {
+            "icon": "RiSparkling2Line",
+            "title": "噪点清理",
+            "description": "去除压缩模糊，呈现影棚级清晰度"
+          }
+        ],
+        "buttons": [
+          {
+            "title": "提升分辨率",
+            "url": "/#image-editor",
+            "variant": "default",
+            "icon": "RiHdLine"
+          }
+        ],
+        "imageComparison": {
+          "originalImage": "/imgs/examples/retro-vintage/retro-classic-black-saree-before.png",
+          "editedImage": "/imgs/examples/retro-vintage/retro-classic-black-saree-after.png",
+          "aspectRatio": "horizontal",
+          "defaultSliderPosition": 40,
+          "originalLabel": "原图",
+          "editedLabel": "增强后",
+          "imageFit": "cover"
+        }
+      }
+    ]
+  },
+  "toolShowcase": {
+    "title": "亲眼见证 NanoEdit 的实力",
+    "description": "看看 NanoEdit 如何与 Gemini Flash 2.5 搭配，从产品抠图到电影级叙事全面改造你的创意。",
+    "label": "实时示例",
+    "items": [
+      {
+        "title": "移除多余对象",
+        "description": "轻松移除路人、杂物或任何干扰元素。我们的 AI 图像编辑器借助 nano banana ai 的场景理解，填充效果天衣无缝。",
+        "badge": "最受欢迎",
+        "features": [
+          {
+            "icon": "RiEyeLine",
+            "title": "智能识别",
+            "description": "AI 会自动识别并圈选需要移除的对象"
+          },
+          {
+            "icon": "RiFillDrip",
+            "title": "智能填充",
+            "description": "为空白区域匹配背景，实现无痕衔接"
+          },
+          {
+            "icon": "RiTimeLine",
+            "title": "即时出图",
+            "description": "10 秒内即可获得专业级成品"
+          }
+        ],
+        "buttons": [
+          {
+            "title": "体验对象移除",
+            "url": "/#image-editor",
+            "variant": "default",
+            "icon": "RiMagicLine"
+          }
+        ],
+        "imageComparison": {
+          "originalImage": "/imgs/examples/remove-objects/remove-object-before.webp",
+          "originalAlt": "移除前的照片",
+          "editedImage": "/imgs/examples/remove-objects/remove-object-after.webp",
+          "afterAlt": "移除后的照片",
+          "aspectRatio": "horizontal",
+          "defaultSliderPosition": 35,
+          "originalLabel": "处理前",
+          "editedLabel": "处理后",
+          "imageFit": "cover"
+        }
+      },
+      {
+        "title": "分辨率增强",
+        "description": "为旧素材提高清晰度与分辨率，让你的内容在印刷、网页与社媒上都保持锐利质感。",
+        "reverse": true,
+        "features": [
+          {
+            "icon": "RiHdLine",
+            "title": "四倍超分",
+            "description": "在分辨率提升至 4 倍的同时保留细腻纹理"
+          },
+          {
+            "icon": "RiMagicLine",
+            "title": "细节还原",
+            "description": "AI 可重建边缘、发丝与布料细节，不留光晕"
+          },
+          {
+            "icon": "RiSparkling2Line",
+            "title": "噪点清理",
+            "description": "去除压缩模糊，呈现影棚级清晰度"
+          }
+        ],
+        "buttons": [
+          {
+            "title": "提升分辨率",
+            "url": "/#image-editor",
+            "variant": "default",
+            "icon": "RiHdLine"
+          }
+        ],
+        "imageComparison": {
+          "originalImage": "/imgs/examples/image-enhancer/image-enhancer-before.jpg",
+          "editedImage": "/imgs/examples/image-enhancer/image-enhancer-after.jpg",
+          "aspectRatio": "horizontal",
+          "defaultSliderPosition": 40,
+          "originalLabel": "原图",
+          "editedLabel": "增强后",
+          "imageFit": "cover"
+        }
+      },
+      {
+        "title": "背景焕新",
+        "description": "让主体穿梭于任意地点或时代，打造复古叙事或未来场景，AI 图像编辑器会让每个细节依旧锐利。",
+        "features": [
+          {
+            "icon": "RiEarthLine",
+            "title": "任意场景",
+            "description": "可将背景替换为任何真实或想象的地点"
+          },
+          {
+            "icon": "RiContrastLine",
+            "title": "完美匹配",
+            "description": "AI 自动调整光线与色彩，确保自然融合"
+          },
+          {
+            "icon": "RiCrop2Line",
+            "title": "精准边缘",
+            "description": "专业级边缘检测与抠图"
+          }
+        ],
+        "buttons": [
+          {
+            "title": "更换背景",
+            "url": "/#image-editor",
+            "variant": "default",
+            "icon": "RiImageLine"
+          }
+        ],
+        "imageComparison": {
+          "originalImage": "/imgs/examples/remove-background/remove-background-before.webp",
+          "editedImage": "/imgs/examples/remove-background/remove-background-after.webp",
+          "aspectRatio": "horizontal",
+          "defaultSliderPosition": 35,
+          "originalLabel": "原图",
+          "editedLabel": "AI 背景",
+          "imageFit": "cover"
+        }
+      }
+    ]
+  },
+  "stats": {
+    "name": "stats",
+    "label": "数据速览",
+    "title": "创作者都爱 NanoEdit",
+    "description": "加入成千上万依靠 NanoEdit 与 nano banana ai 扩展视觉产能的创作者。",
+    "icon": "RiHeartFill",
+    "items": [
+      {
+        "title": "已编辑图像",
+        "label": "2.5M+",
+        "description": "成功处理"
+      },
+      {
+        "title": "活跃用户",
+        "label": "50K+",
+        "description": "创意从业者"
+      },
+      {
+        "title": "平均耗时",
+        "label": "8s",
+        "description": "每次 AI 编辑"
+      }
+    ]
+  },
+  "testimonial": {
+    "name": "testimonial",
+    "label": "用户口碑",
+    "title": "创作者如何评价 NanoEdit",
+    "description": "聆听摄影师、设计师与营销人如何在日常工作中使用 NanoEdit 的 AI 编辑流程。",
+    "icon": "RiThumbUpFill",
+    "items": [
+      {
+        "title": "Sarah Mitchell",
+        "label": "专业摄影师",
+        "description": "NanoEdit 彻底改变了我的流程。过去在 Photoshop 里要花上数小时的工作，现在几秒就能完成，对象移除的准确度令人惊叹！",
+        "image": {
+          "src": "/imgs/users/photographer.png"
+        }
+      },
+      {
+        "title": "Alex Rodriguez",
+        "label": "社交媒体经理",
+        "description": "同时为多个品牌制作内容变得轻松多了。我可以迅速移除干扰，并为任何照片添加创意元素。",
+        "image": {
+          "src": "/imgs/users/social-media.png"
+        }
+      },
+      {
+        "title": "Emily Chen",
+        "label": "电商创业者",
+        "description": "背景替换功能对产品图太重要了。无需昂贵拍摄，就能得到专业质感的图片！",
+        "image": {
+          "src": "/imgs/users/entrepreneur.png"
+        }
+      },
+      {
+        "title": "Marco Silva",
+        "label": "平面设计师",
+        "description": "作为设计师，我惊讶于 AI 编辑的自然程度。它对光影、阴影和透视的理解远超我的预期。",
+        "image": {
+          "src": "/imgs/users/designer.png"
+        }
+      },
+      {
+        "title": "Lisa Wang",
+        "label": "旅行博主",
+        "description": "即便拍摄条件不佳，我现在也能打造惊艳旅拍。添加日落或移除人群从未如此简单！",
+        "image": {
+          "src": "/imgs/users/blogger.png"
+        }
+      },
+      {
+        "title": "David Kim",
+        "label": "房产经纪人",
+        "description": "AI 增强后房源照片焕然一新。我可以布置空房并改善光线，让房子更快售出。",
+        "image": {
+          "src": "/imgs/users/realtor.png"
+        }
+      }
+    ]
+  },
+  "faq": {
+    "name": "faq",
+    "label": "常见问题",
+    "title": "常见问题解答",
+    "description": "有关由 nano banana ai 驱动的 NanoEdit AI 图像编辑器，你想知道的都在这里。",
+    "items": [
+      {
+        "title": "NanoEdit 的工作原理是什么？",
+        "description": "NanoEdit 结合 nano banana ai 与 Google Gemini 2.5 Flash 等先进模型，理解你的文字描述并应用复杂的图像编辑技术。上传图片、描述想要的修改，剩下的交给 AI 即可。"
+      },
+      {
+        "title": "使用 NanoEdit 需要设计经验吗？",
+        "description": "完全不需要！NanoEdit 为所有人而设计。无论是普通语言还是最新的 gemini 趋势提示词，nano banana ai 都能将你的描述转化为专业的图像编辑。"
+      },
+      {
+        "title": "我可以进行哪些类型的编辑？",
+        "description": "你可以移除对象、添加元素、替换背景、调整色彩、增强分辨率、应用艺术风格等。只要你能描述，AI 几乎都能做到。"
+      },
+      {
+        "title": "处理一张图片需要多长时间？",
+        "description": "大部分编辑在 5-15 秒内完成，具体取决于需求复杂度与图像大小。nano banana ai 模型在保证品质的同时进行了速度优化。"
+      },
+      {
+        "title": "支持哪些图像格式？",
+        "description": "我们支持 JPG、PNG、WebP、HEIC 等常见格式。上传不超过 5MB 的图片，AI 编辑器会保留原始质量。"
+      },
+      {
+        "title": "NanoEdit 是否免费？",
+        "description": "当然！🎉 新用户将获得免费额度，可优先体验 NanoEdit 各项功能。升级到高级版可解锁更多生成次数、进阶控制与优先的 nano banana ai 处理通道。"
+      }
+    ]
+  },
+  "cta": {
+    "name": "cta",
+    "label": "开始编辑",
+    "title": "立即焕新你的图像",
+    "description": "加入数千位创作者，与 NanoEdit、nano banana ai 及 gemini ai 图像生成流程一起即刻完成编辑。",
+    "buttons": [
+      {
+        "title": "免费开始编辑",
+        "url": "/#image-editor",
+        "target": "_self",
+        "icon": "RiMagicFill"
+      },
+      {
+        "title": "查看示例",
+        "url": "/#examples",
+        "target": "_self",
+        "variant": "outline",
+        "icon": "RiGalleryLine"
+      }
+    ]
+  },
+  "footer": {
+    "name": "footer",
+    "brand": {
+      "title": "NanoEdit",
+      "description": "NanoEdit 借助 nano banana ai 与 Gemini Flash 2.5 技术，为你的每段视觉故事赋能。",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "NanoEdit ai photo editor"
+      },
+      "url": "/"
+    },
+    "copyright": "© 2025 NanoEdit 保留所有权利。",
+    "nav": {
+      "items": [
+        {
+          "title": "产品",
+          "children": [
+            {
+              "title": "功能亮点",
+              "url": "/#feature"
+            },
+            {
+              "title": "价格方案",
+              "url": "/pricing"
+            },
+            {
+              "title": "示例展示",
+              "url": "/#examples"
+            }
+          ]
+        },
+        // {
+        //   "title": "资源",
+        //   "children": [
+        //     {
+        //       "title": "使用教程",
+        //       "url": "/tutorial"
+        //     },
+        //     {
+        //       "title": "API 文档",
+        //       "url": "/docs"
+        //     },
+        //     {
+        //       "title": "博客",
+        //       "url": "/blog"
+        //     }
+        //   ]
+        // },
+        {
+          "title": "公司",
+          "children": [
+            {
+              "title": "关于",
+              "url": "/about"
+            },
+            {
+              "title": "联系",
+              "url": "/contact"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "X",
+          "icon": "RiTwitterXFill",
+          "url": "https://x.com/nanobanana_ai",
+          "target": "_blank"
+        },
+        {
+          "title": "Instagram",
+          "icon": "RiInstagramFill",
+          "url": "https://instagram.com/nanobanana.ai",
+          "target": "_blank"
+        },
+        {
+          "title": "Discord",
+          "icon": "RiDiscordFill",
+          "url": "https://discord.gg/nanobanana",
+          "target": "_blank"
+        },
+        {
+          "title": "邮箱",
+          "icon": "RiMailLine",
+          "url": "mailto:hello@nanobanana.ai",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "隐私政策",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "服务条款",
+          "url": "/terms-of-service"
+        }
+      ]
+    }
+  }
+}

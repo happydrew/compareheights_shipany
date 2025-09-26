@@ -1,0 +1,227 @@
+{
+  "pricing": {
+    "name": "pricing",
+    "label": "定价",
+    "title": "定价",
+    "description": "选择您的NanoEdit计划。获取免费积分开始，然后升级以享受专业级AI照片编辑。",
+    "groups": [
+      {
+        "name": "monthly",
+        "title": "月付",
+        "label": "灵活"
+      },
+      {
+        "name": "yearly",
+        "title": "年付",
+        "label": "节省 40%",
+        "is_featured": true
+      }
+    ],
+    "items": [
+      {
+        "title": "入门版",
+        "description": "最适合想要探索NanoEdit的初学者。",
+        "features_title": "包含功能",
+        "features": [
+          "每月500积分",
+          "约50张图片生成",
+          "核心编辑工具",
+          "访问热门模板",
+          "一键病毒式风格",
+          "无广告编辑",
+          "无水印",
+          "标准客服支持（48小时响应）",
+          "常规处理队列"
+        ],
+        "interval": "month",
+        "amount": 500,
+        "currency": "USD",
+        "price": "$5",
+        "original_price": "$10",
+        "unit": "/ 月",
+        "is_featured": false,
+        "tip": "非常适合首次用户",
+        "button": {
+          "title": "获取入门版",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "starter-monthly",
+        "product_name": "NanoEdit入门版月付",
+        "credits": 500,
+        "valid_months": 1,
+        "group": "monthly"
+      },
+      {
+        "title": "标准版",
+        "description": "更多积分和更高质量的输出。",
+        "label": "热门",
+        "features_title": "包含入门版所有功能，另加",
+        "features": [
+          "每月1100积分",
+          "约110张图片生成",
+          "所有热门模板",
+          "高分辨率导出",
+          "优先处理队列",
+          "抢先体验新功能",
+          "优先客服支持（24小时响应）",
+          "增强处理速度"
+        ],
+        "interval": "month",
+        "amount": 1000,
+        "currency": "USD",
+        "price": "$10",
+        "original_price": "$20",
+        "unit": "/ 月",
+        "is_featured": true,
+        "tip": "最受创作者欢迎",
+        "button": {
+          "title": "获取标准版",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "standard-monthly",
+        "product_name": "NanoEdit标准版月付",
+        "credits": 1100,
+        "valid_months": 1,
+        "group": "monthly"
+      },
+      {
+        "title": "高级版",
+        "description": "为专业人士和高级用户提供完整功能。",
+        "features_title": "包含标准版所有功能，另加",
+        "features": [
+          "每月2500积分",
+          "约250张图片生成",
+          "独家高级模板",
+          "批量处理功能",
+          "最高优先级处理队列",
+          "VIP专属支持（12小时响应）",
+          "极速处理速度",
+          "抢先体验Beta功能",
+          "专属客户经理"
+        ],
+        "interval": "month",
+        "amount": 2000,
+        "currency": "USD",
+        "price": "$20",
+        "original_price": "$40",
+        "unit": "/ 月",
+        "is_featured": false,
+        "tip": "解锁NanoEdit的全部力量",
+        "button": {
+          "title": "获取高级版",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "premium-monthly",
+        "product_name": "NanoEdit高级版月付",
+        "credits": 2500,
+        "valid_months": 1,
+        "group": "monthly"
+      },
+      {
+        "title": "入门版",
+        "description": "与入门版月付相同功能 — 年付节省40%。",
+        "features_title": "包含功能",
+        "features": [
+          "每月500积分",
+          "约50张图片生成",
+          "核心编辑工具",
+          "访问热门模板",
+          "一键病毒式风格",
+          "无广告编辑",
+          "无水印",
+          "标准客服支持（48小时响应）",
+          "常规处理队列"
+        ],
+        "interval": "year",
+        "amount": 3600,
+        "currency": "USD",
+        "price": "$3",
+        "original_price": "$10",
+        "unit": "/ 月 (年付)",
+        "is_featured": false,
+        "tip": "年付节省40%",
+        "button": {
+          "title": "获取入门版年付",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "starter-yearly",
+        "product_name": "NanoEdit入门版年付",
+        "credits": 6000,
+        "valid_months": 12,
+        "group": "yearly"
+      },
+      {
+        "title": "标准版",
+        "description": "与标准版月付相同功能 — 年付节省40%。",
+        "label": "热门",
+        "features_title": "包含入门版所有功能，另加",
+        "features": [
+          "每月1100积分",
+          "约110张图片生成",
+          "所有热门模板",
+          "高分辨率导出",
+          "优先处理队列",
+          "抢先体验新功能",
+          "优先客服支持（24小时响应）",
+          "增强处理速度"
+        ],
+        "interval": "year",
+        "amount": 7200,
+        "currency": "USD",
+        "price": "$6",
+        "original_price": "$20",
+        "unit": "/ 月 (年付)",
+        "is_featured": true,
+        "tip": "最超值 — 年付节省40%",
+        "button": {
+          "title": "获取标准版年付",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "standard-yearly",
+        "product_name": "NanoEdit标准版年付",
+        "credits": 13200,
+        "valid_months": 12,
+        "group": "yearly"
+      },
+      {
+        "title": "高级版",
+        "description": "与高级版月付相同功能 — 年付节省40%。",
+        "features_title": "包含标准版所有功能，另加",
+        "features": [
+          "每月2500积分",
+          "约250张图片生成",
+          "独家高级模板",
+          "批量处理功能",
+          "最高优先级处理队列",
+          "VIP专属支持（12小时响应）",
+          "极速处理速度",
+          "抢先体验Beta功能",
+          "专属客户经理"
+        ],
+        "interval": "year",
+        "amount": 14400,
+        "currency": "USD",
+        "price": "$12",
+        "original_price": "$40",
+        "unit": "/ 月 (年付)",
+        "is_featured": false,
+        "tip": "高级版年付享受40%折扣",
+        "button": {
+          "title": "获取高级版年付",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "premium-yearly",
+        "product_name": "NanoEdit高级版年付",
+        "credits": 30000,
+        "valid_months": 12,
+        "group": "yearly"
+      }
+    ]
+  }
+}

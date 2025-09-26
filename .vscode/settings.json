@@ -1,0 +1,29 @@
+{
+  // VS Code workspace settings for better JSONC support
+  "files.associations": {
+    "*.jsonc": "jsonc"
+  },
+
+  // Enable JSON schema validation for i18n files
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "src/i18n/pages/**/*.jsonc"
+      ],
+      "schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "description": "i18n page configuration with comment support"
+      }
+    }
+  ],
+
+  // Formatting settings
+  "editor.defaultFormatter": "vscode.json-language-features",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  }
+}

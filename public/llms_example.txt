@@ -1,0 +1,16 @@
+你的网站名称
+> 简短描述你的网站是做什么的，包括核心服务或产品。尽量在1-2句话内说清楚。
+
+这里可以添加额外的背景信息，不使用标题。保持简短明了。
+## 核心内容
+- [产品](https://example.com/products)：产品列表简要描述
+- [服务](https://example.com/services)：服务内容简要描述
+- [博客](https://example.com/blog)：博客内容类型简要描述
+
+## 常用资源
+- [常见问题](https://example.com/faq)：解答客户常见问题
+- [联系方式](https://example.com/contact)：联系我们的渠道
+
+## 可选
+- [关于我们](https://example.com/about)：公司简介
+- [使用案例](https://example.com/cases)：客户成功案例

@@ -1,0 +1,631 @@
+﻿{
+  "template": "compareheights-template",
+  "theme": "light",
+  "header": {
+    "brand": {
+      "title": "CompareHeights",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "CompareHeights"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Features",
+          "url": "/#feature",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "How It Works",
+          "url": "/#usage"
+        },
+        {
+          "title": "Pricing",
+          "url": "/pricing",
+          "icon": "RiMoneyDollarCircleLine"
+        }
+      ]
+    },
+    "buttons": [
+      {
+        "title": "Try Height Comparison Tool",
+        "icon": "RiPlayFill",
+        "url": "/#height-compare-tool",
+        "target": "_self",
+        "variant": "default"
+      }
+    ],
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "title": "Height Comparison Tool: Compare Heights Visually Online",
+    "highlight_text": "Visually Online",
+    "description": "The ultimate height comparison chart and height comparison tool for comparing heights of celebrities, anime characters, and more. Our height comparison platform lets you easily compare heights and create a height chart comparison for any group or individual.",
+    "announcement": {
+      "label": "NEW",
+      "title": "🏗️ The Ultimate Height Comparison Tool",
+      "url": "/#height-compare-tool"
+    },
+    "tip": [
+      {
+        "text": "Easy to Use",
+        "icon": "RiSparkling2Fill"
+      },
+      {
+        "text": "Visual Comparisons",
+        "icon": "RiCpuFill"
+      },
+      {
+        "text": "Celebrity Heights",
+        "icon": "RiFireFill"
+      },
+      {
+        "text": "Instant Results",
+        "icon": "RiFlashlightFill"
+      }
+    ],
+    "buttons": [
+      {
+        "title": "Try Height Comparison Tool",
+        "icon": "RiMagicFill",
+        "url": "#height-compare-tool",
+        "target": "_self",
+        "variant": "default"
+      },
+      {
+        "title": "Learn More",
+        "icon": "RiFire2Fill",
+        "url": "#usage",
+        "target": "_self",
+        "variant": "default"
+      }
+    ],
+    "show_happy_users": false,
+    "show_badge": false
+  },
+  "branding": {
+    "title": "NanoEdit Runs on Trusted AI Engines",
+    "items": [
+      {
+        "title": "nano banana ai Engine",
+        "image": {
+          "src": "/imgs/icons/banana-icon.webp",
+          "alt": "nano banana ai technology"
+        }
+      },
+      {
+        "title": "Google Gemini Flash 2.5",
+        "image": {
+          "src": "/imgs/icons/gemini-icon.svg",
+          "alt": "Google Gemini Flash 2.5 powering NanoEdit"
+        }
+      }
+    ]
+  },
+  "introduce": {
+    "name": "introduce",
+    "title": "What is Height Comparison?",
+    "label": "About",
+    "description": "Height Comparison is the process of visually and numerically comparing heights and height differences between people, characters, or objects using a height comparison tool or height comparison chart. With our advanced online height comparison tool, height compare and understanding height difference is now easier than ever.",
+    "image": {
+      "src": "/imgs/features/height-comparison.png"
+    },
+    "items": [
+      {
+        "title": "Visual Comparisons",
+        "description": "Create stunning visual height comparisons and height chart comparisons with our advanced height comparison tool, designed for anyone who wants to compare heights quickly and accurately.",
+        "icon": "RiChatSmile3Line"
+      },
+      {
+        "title": "Instant Results",
+        "description": "Instantly see the height difference between any two or more people or objects with our intuitive height comparison tool.",
+        "icon": "RiFlashFill"
+      },
+      {
+        "title": "Multiple Characters",
+        "description": "Whether you're curious about celebrities, anime characters, or custom comparisons, our platform handles any height comparison scenario.",
+        "icon": "RiRobot2Line"
+      }
+    ]
+  },
+  "benefit": {
+    "name": "benefit",
+    "title": "Why Creators Choose NanoEdit",
+    "label": "Benefits",
+    "description": "Work faster with the ai photo editor that puts nano banana ai power behind every idea.",
+    "items": [
+      {
+        "title": "No Skills Required",
+        "description": "Type what you need and NanoEdit plus nano banana ai translate simple instructions into agency-grade visuals without complex timelines.",
+        "icon": "RiUserSmileLine",
+        "image": {
+          "src": "/imgs/features/easy-editing.png"
+        }
+      },
+      {
+        "title": "Lightning Fast",
+        "description": "Our ai foto editor pipeline taps nano banana ai acceleration so batch edits, retouching, and background swaps land in seconds.",
+        "icon": "RiFlashLine",
+        "image": {
+          "src": "/imgs/features/fast-editing.png"
+        }
+      },
+      {
+        "title": "Professional Quality",
+        "description": "Dial in ghibili studio style generator moods, photoreal lighting, or gemini nano banana ai 3d figurines to make every deliverable feel custom.",
+        "icon": "RiStarFill",
+        "image": {
+          "src": "/imgs/features/professional-quality.png"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "name": "usage",
+    "label": "How to Use",
+    "title": "How to Use Our Height Comparison Tool",
+    "description": "Using our height comparison tool is straightforward and user-friendly. Simply select the individuals or objects you want to compare heights for, and our height comparison chart will instantly visualize the differences.",
+    "image": {
+      "src": "/imgs/features/how-to-use-height.png"
+    },
+    "image_position": "left",
+    "text_align": "center",
+    "items": [
+      {
+        "title": "Select Your Characters",
+        "description": "Browse our extensive database of celebrities, anime characters, historical figures, and objects. You can also upload custom images for personalized height comparisons."
+      },
+      {
+        "title": "Set Heights and Measurements",
+        "description": "Input accurate height measurements using either metric or imperial units. Our height comparison tool automatically converts between centimeters, feet, and inches."
+      },
+      {
+        "title": "Customize Your Chart",
+        "description": "Adjust colors, backgrounds, and visual settings to create the perfect height chart comparison for your needs."
+      },
+      {
+        "title": "Generate and Export",
+        "description": "Create your height comparison chart instantly and export it in high-quality formats for sharing or printing."
+      }
+    ]
+  },
+  "feature": {
+    "name": "feature",
+    "label": "Features",
+    "title": "Key Features of Our Height Comparison Tool",
+    "description": "Discover the powerful features that make our height comparison platform the best choice for anyone looking to compare heights or analyze height difference.",
+    "items": [
+      {
+        "title": "Multi-Character Comparisons",
+        "description": "Compare unlimited characters simultaneously in a single height comparison chart. Whether you're analyzing an entire anime cast or comparing multiple celebrities, our height comparison tool handles complex multi-person height comparisons effortlessly.",
+        "icon": "RiEraserLine"
+      },
+      {
+        "title": "Universal Scale Support",
+        "description": "From microscopic objects to astronomical sizes, our height comparison tool supports an incredible range of measurements. The system intelligently switches between nanometers, centimeters, meters, and kilometers.",
+        "icon": "RiAddCircleLine"
+      },
+      {
+        "title": "Custom Image Upload",
+        "description": "Upload your own images to create personalized height comparisons. This feature is particularly valuable for artists, writers, and content creators who need to visualize their original characters.",
+        "icon": "RiPaletteLine"
+      },
+      {
+        "title": "Interactive Design Tools",
+        "description": "Drag and drop characters to reorder your height comparison chart. Zoom, pan, and customize visual elements to create the perfect layout for your comparing heights project.",
+        "icon": "RiImageEditLine"
+      },
+      {
+        "title": "High-Quality Export Options",
+        "description": "Generate professional-quality height comparison charts in PNG, JPG, or WebP formats. Perfect for social media sharing, educational presentations, or professional creative projects.",
+        "icon": "RiDropLine"
+      },
+      {
+        "title": "Responsive Cross-Platform Design",
+        "description": "Access our height comparison tool from any device. Whether you're on desktop, tablet, or mobile, the interface adapts seamlessly for optimal comparing heights experiences.",
+        "reverse": true,
+        "features": [
+          {
+            "icon": "RiHdLine",
+            "title": "Mobile Responsive",
+            "description": "Fully functional height comparison tool on all screen sizes"
+          },
+          {
+            "icon": "RiMagicLine",
+            "title": "Touch Controls",
+            "description": "Intuitive touch gestures for mobile and tablet users"
+          },
+          {
+            "icon": "RiSparkling2Line",
+            "title": "Fast Loading",
+            "description": "Optimized performance for quick height comparisons anywhere"
+          }
+        ],
+        "buttons": [
+          {
+            "title": "Try on Mobile",
+            "url": "/#height-compare-tool",
+            "variant": "default",
+            "icon": "RiHdLine"
+          }
+        ],
+        "imageComparison": {
+          "originalImage": "/imgs/examples/height-comparison/height-comparison-desktop.png",
+          "editedImage": "/imgs/examples/height-comparison/height-comparison-mobile.png",
+          "aspectRatio": "horizontal",
+          "defaultSliderPosition": 40,
+          "originalLabel": "Desktop",
+          "editedLabel": "Mobile",
+          "imageFit": "cover"
+        }
+      }
+    ]
+  },
+  "toolShowcase": {
+    "title": "See NanoEdit in Action",
+    "description": "Watch how NanoEdit pairs nano banana ai with Gemini Flash 2.5 to reshape campaigns, from product cutouts to cinematic storytelling.",
+    "label": "Live Examples",
+    "items": [
+      {
+        "title": "Remove Unwanted Objects",
+        "description": "Effortlessly remove photobombers, unwanted objects, or distractions from your photos. Our ai photo editor uses nano banana ai context awareness for seamless fills.",
+        "badge": "Most Popular",
+        "features": [
+          {
+            "icon": "RiEyeLine",
+            "title": "Smart Detection",
+            "description": "AI automatically identifies and isolates objects for removal"
+          },
+          {
+            "icon": "RiFillDrip",
+            "title": "Intelligent Fill",
+            "description": "Seamlessly fills removed areas with matching background"
+          },
+          {
+            "icon": "RiTimeLine",
+            "title": "Instant Results",
+            "description": "Get professional results in under 10 seconds"
+          }
+        ],
+        "buttons": [
+          {
+            "title": "Try Object Removal",
+            "url": "/#image-editor",
+            "variant": "default",
+            "icon": "RiMagicLine"
+          }
+        ],
+        "imageComparison": {
+          "originalImage": "/imgs/examples/remove-objects/remove-object-before.webp",
+          "originalAlt": "Before Object Removal",
+          "editedImage": "/imgs/examples/remove-objects/remove-object-after.webp",
+          "afterAlt": "After Object Removal",
+          "aspectRatio": "horizontal",
+          "defaultSliderPosition": 35,
+          "originalLabel": "Before",
+          "editedLabel": "After",
+          "imageFit": "cover"
+        }
+      },
+      {
+        "title": "Resolution Enhancement",
+        "description": "Sharpen and upscale legacy assets so every campaign deliverable stays crisp across print, web, and social.",
+        "reverse": true,
+        "features": [
+          {
+            "icon": "RiHdLine",
+            "title": "4x Upscaling",
+            "description": "Preserve fine textures while boosting resolution up to 4x"
+          },
+          {
+            "icon": "RiMagicLine",
+            "title": "Detail Recovery",
+            "description": "AI reconstructs edges, hair, and fabric without halos"
+          },
+          {
+            "icon": "RiSparkling2Line",
+            "title": "Noise Cleanup",
+            "description": "Removes compression blur for studio-ready clarity"
+          }
+        ],
+        "buttons": [
+          {
+            "title": "Enhance Resolution",
+            "url": "/#image-editor",
+            "variant": "default",
+            "icon": "RiHdLine"
+          }
+        ],
+        "imageComparison": {
+          "originalImage": "/imgs/examples/image-enhancer/image-enhancer-before.jpg",
+          "editedImage": "/imgs/examples/image-enhancer/image-enhancer-after.jpg",
+          "aspectRatio": "horizontal",
+          "defaultSliderPosition": 40,
+          "originalLabel": "Original",
+          "editedLabel": "Enhanced",
+          "imageFit": "cover"
+        }
+      },
+      {
+        "title": "Transform Backgrounds",
+        "description": "Transport your subjects to any location or era, crafting retro image narratives or futuristic sets with the ai image editor keeping every detail sharp.",
+        "features": [
+          {
+            "icon": "RiEarthLine",
+            "title": "Any Location",
+            "description": "Replace backgrounds with any real or imaginary location"
+          },
+          {
+            "icon": "RiContrastLine",
+            "title": "Perfect Matching",
+            "description": "AI adjusts lighting and colors for realistic integration"
+          },
+          {
+            "icon": "RiCrop2Line",
+            "title": "Precise Edges",
+            "description": "Clean, professional edge detection and masking"
+          }
+        ],
+        "buttons": [
+          {
+            "title": "Change Backgrounds",
+            "url": "/#image-editor",
+            "variant": "default",
+            "icon": "RiImageLine"
+          }
+        ],
+        "imageComparison": {
+          "originalImage": "/imgs/examples/remove-background/remove-background-before.webp",
+          "editedImage": "/imgs/examples/remove-background/remove-background-after.webp",
+          "aspectRatio": "horizontal",
+          "defaultSliderPosition": 35,
+          "originalLabel": "Original",
+          "editedLabel": "AI Background",
+          "imageFit": "cover"
+        }
+      }
+    ]
+  },
+  "stats": {
+    "name": "stats",
+    "label": "Numbers",
+    "title": "Creators Love NanoEdit",
+    "description": "Join thousands of content creators scaling visuals with NanoEdit and nano banana ai support.",
+    "icon": "RiHeartFill",
+    "items": [
+      {
+        "title": "Images Edited",
+        "label": "2.5M+",
+        "description": "Successfully processed"
+      },
+      {
+        "title": "Active Users",
+        "label": "50K+",
+        "description": "Creative professionals"
+      },
+      {
+        "title": "Average Time",
+        "label": "8s",
+        "description": "Per AI edit"
+      }
+    ]
+  },
+  "testimonial": {
+    "name": "testimonial",
+    "label": "Testimonials",
+    "title": "What Creators Say About NanoEdit",
+    "description": "Hear from photographers, designers, and marketers using NanoEdit's ai photo editor workflows in production every day.",
+    "icon": "RiThumbUpFill",
+    "items": [
+      {
+        "title": "Sarah Mitchell",
+        "label": "Professional Photographer",
+        "description": "NanoEdit has revolutionized my workflow. What used to take hours in Photoshop now takes seconds. The object removal is incredibly accurate!",
+        "image": {
+          "src": "/imgs/users/photographer.png"
+        }
+      },
+      {
+        "title": "Alex Rodriguez",
+        "label": "Social Media Manager",
+        "description": "Creating engaging content for multiple brands is so much easier now. I can quickly remove distractions and add creative elements to any photo.",
+        "image": {
+          "src": "/imgs/users/social-media.png"
+        }
+      },
+      {
+        "title": "Emily Chen",
+        "label": "E-commerce Entrepreneur",
+        "description": "The background replacement feature is a game-changer for product photos. Professional-looking images without expensive photo shoots!",
+        "image": {
+          "src": "/imgs/users/entrepreneur.png"
+        }
+      },
+      {
+        "title": "Marco Silva",
+        "label": "Graphic Designer",
+        "description": "As a designer, I'm amazed by how natural the AI edits look. It understands lighting, shadows, and perspective better than I expected.",
+        "image": {
+          "src": "/imgs/users/designer.png"
+        }
+      },
+      {
+        "title": "Lisa Wang",
+        "label": "Travel Blogger",
+        "description": "I can now create stunning travel photos even when conditions weren't perfect. Adding sunsets or removing crowds has never been easier!",
+        "image": {
+          "src": "/imgs/users/blogger.png"
+        }
+      },
+      {
+        "title": "David Kim",
+        "label": "Real Estate Agent",
+        "description": "Property photos look amazing after AI enhancement. I can stage empty rooms and improve lighting to help sell homes faster.",
+        "image": {
+          "src": "/imgs/users/realtor.png"
+        }
+      }
+    ]
+  },
+  "faq": {
+    "name": "faq",
+    "label": "FAQ",
+    "title": "Frequently Asked Questions",
+    "description": "Get answers to common questions about our height comparison tool, height comparison chart, and how to compare heights and analyze height difference effectively.",
+    "items": [
+      {
+        "title": "How accurate are the height measurements in your height comparison tool?",
+        "description": "Our height comparison database maintains high accuracy standards, with measurements sourced from official records, verified databases, and reliable sources. Custom measurements can be input with precision down to decimal places."
+      },
+      {
+        "title": "Can I compare more than two heights at once?",
+        "description": "Absolutely! Our height comparison chart supports unlimited character comparisons, making it perfect for group analyses and complex comparing heights projects."
+      },
+      {
+        "title": "Is the height comparison tool free to use?",
+        "description": "Yes, our basic height comparison features are completely free. Users can create, customize, and export height chart comparisons without any cost."
+      },
+      {
+        "title": "What file formats can I export my height comparison charts in?",
+        "description": "You can export your height comparisons in PNG, JPG, and WebP formats. All exports are high-resolution and perfect for social media sharing, presentations, or printing."
+      },
+      {
+        "title": "Can I upload my own images for height comparison?",
+        "description": "Yes! You can upload custom images and set their heights to create personalized height comparisons. This feature is perfect for comparing yourself, friends, or original characters with existing figures."
+      },
+      {
+        "title": "Does the tool work on mobile devices?",
+        "description": "Absolutely! Our height comparison tool is fully responsive and works seamlessly on smartphones, tablets, and desktop computers. The interface automatically adapts to your device screen size."
+      }
+    ]
+  },
+  "cta": {
+    "name": "cta",
+    "label": "Get Started",
+    "title": "Start Creating Height Comparison Charts Today",
+    "description": "Our height comparison tool represents the most comprehensive solution for all your comparing heights and height difference needs. Whether you're creating educational content, satisfying personal curiosity, or working on professional projects.",
+    "buttons": [
+      {
+        "title": "Try the Height Comparison Tool Now",
+        "url": "/#height-compare-tool",
+        "target": "_self",
+        "icon": "RiMagicFill"
+      },
+      {
+        "title": "Learn More About Features",
+        "url": "/#feature",
+        "target": "_self",
+        "variant": "outline",
+        "icon": "RiGalleryLine"
+      }
+    ]
+  },
+  "footer": {
+    "name": "footer",
+    "brand": {
+      "title": "CompareHeights",
+      "description": "CompareHeights is the ultimate height comparison tool for creating visual height comparisons and height chart comparisons, helping you compare heights accurately and instantly.",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "CompareHeights height comparison tool"
+      },
+      "url": "/"
+    },
+    "copyright": "© 2025 CompareHeights. All rights reserved.",
+    "nav": {
+      "items": [
+        {
+          "title": "Product",
+          "children": [
+            {
+              "title": "Features",
+              "url": "/#feature"
+            },
+            {
+              "title": "Pricing",
+              "url": "/pricing"
+            },
+            {
+              "title": "Tool",
+              "url": "/#height-compare-tool"
+            }
+          ]
+        },
+        // {
+        //   "title": "Resources",
+        //   "children": [
+        //     {
+        //       "title": "Tutorial",
+        //       "url": "/tutorial"
+        //     },
+        //     {
+        //       "title": "API Docs",
+        //       "url": "/docs"
+        //     },
+        //     {
+        //       "title": "Blog",
+        //       "url": "/blog"
+        //     }
+        //   ]
+        // },
+        {
+          "title": "Company",
+          "children": [
+            {
+              "title": "About",
+              "url": "/about"
+            },
+            {
+              "title": "Contact",
+              "url": "/contact"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        // {
+        //   "title": "X",
+        //   "icon": "RiTwitterXFill",
+        //   "url": "https://x.com/nanoedit",
+        //   "target": "_blank"
+        // },
+        // {
+        //   "title": "Instagram",
+        //   "icon": "RiInstagramFill",
+        //   "url": "https://instagram.com/nanoedit",
+        //   "target": "_blank"
+        // },
+        // {
+        //   "title": "Discord",
+        //   "icon": "RiDiscordFill",
+        //   "url": "https://discord.gg/nanoedit",
+        //   "target": "_blank"
+        // },
+        {
+          "title": "Email",
+          "icon": "RiMailLine",
+          "url": "mailto:drewgrant616@gmail.com",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "Privacy Policy",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Terms of Service",
+          "url": "/terms-of-service"
+        }
+      ]
+    }
+  }
+}

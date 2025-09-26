@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@import "./theme.css";
+
+@theme {
+  --default-transition-duration: 150ms;
+}
+
+@variant dark (.dark &);
+
+@plugin "tailwindcss-animate";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Apply border and outline styles to specific elements, not globally */
+  button, input, textarea, select, [role="button"] {
+    @apply border-border outline-ring/50;
+  }
+}
+
+.container {
+  @apply mx-auto max-w-7xl px-4 md:px-8;
+}
+
+@layer components {
+  .hero-grid line {
+    stroke: rgba(255, 100, 255, 0.4);
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 6px rgba(255, 100, 255, 0.3));
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-grid line {
+      stroke-dasharray: 180 520;
+      animation: hero-grid-glow 8s linear infinite;
+    }
+
+    .hero-grid line:nth-of-type(even) {
+      animation-direction: reverse;
+    }
+  }
+}
+
+@keyframes hero-grid-glow {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 0.45;
+  }
+
+  40% {
+    stroke-dashoffset: -260;
+    opacity: 0.75;
+  }
+
+  100% {
+    stroke-dashoffset: -520;
+    opacity: 0.45;
+  }
+}

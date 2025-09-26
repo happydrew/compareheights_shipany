@@ -1,0 +1,155 @@
+import { ReactNode } from "react";
+
+export type ButtonType = "button" | "link";
+
+export type ButtonVariant =
+  | "secondary"
+  | "link"
+  | "default"
+  | "destructive"
+  | "outline"
+  | "ghost"
+  | null
+  | undefined;
+
+export type ButtonSize = "sm" | "md" | "lg";
+
+export interface Button {
+  title?: string;
+  text?: string;
+  icon?: string;
+  url?: string;
+  target?: string;
+  type?: ButtonType;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  className?: string;
+  modalMessage?: string;
+}
+
+export interface Image {
+  src?: string;
+  alt?: string;
+  className?: string;
+}
+
+export interface Video {
+  src?: string;
+  poster?: string;
+  alt?: string;
+  className?: string;
+  autoplay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+}
+
+export interface Brand {
+  title?: string;
+  text?: string;
+  description?: string;
+  logo?: Image;
+  url?: string;
+  target?: string;
+}
+
+export interface NavItem {
+  name?: string;
+  title?: string;
+  text?: string;
+  description?: string;
+  icon?: string;
+  image?: Image;
+  url?: string;
+  target?: string;
+  is_active?: boolean;
+  is_expand?: boolean;
+  className?: string;
+  children?: NavItem[];
+  onClick?: () => void;
+}
+
+export interface Nav {
+  name?: string;
+  title?: string;
+  text?: string;
+  icon?: string;
+  image?: Image;
+  className?: string;
+  items?: NavItem[];
+}
+
+export interface Crumb {
+  items?: NavItem[];
+}
+
+export interface Toolbar {
+  items?: Button[];
+}
+
+export interface Tip {
+  title?: string;
+  text?: string;
+  description?: string;
+  icon?: string;
+  type?: "info" | "warning" | "error";
+}
+
+export interface SocialItem {
+  title: string;
+  icon?: string;
+  url?: string;
+  target?: string;
+}
+
+export interface Social {
+  items?: SocialItem[];
+}
+
+export interface AgreementItem {
+  title?: string;
+  text?: string;
+  url?: string;
+  target?: string;
+}
+
+export interface Agreement {
+  items?: AgreementItem[];
+}
+
+export interface Account {
+  items?: NavItem[];
+}
+
+export interface Library {
+  title?: string;
+  text?: string;
+  items?: LibraryItem[];
+  more?: NavItem;
+}
+
+export interface LibraryItem extends NavItem {
+  actions?: NavItem[];
+}
+
+export interface DataCard {
+  title?: string;
+  text?: string;
+  label?: string;
+  value?: string;
+  description?: string;
+  tip?: string;
+  icon?: string;
+}
+
+export interface ImageComparison {
+  originalImage: string;
+  originalAlt?: string;
+  editedImage: string;
+  afterAlt?: string;
+  originalLabel?: string;
+  editedLabel?: string;
+  aspectRatio?: "horizontal" | "vertical";
+  defaultSliderPosition: number;
+  className?: string;
+  imageFit?: "contain" | "cover";
+}
