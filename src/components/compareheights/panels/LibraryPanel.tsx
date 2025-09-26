@@ -3,7 +3,7 @@ import { Upload, ChevronRight, ChevronDown, Folder, FolderOpen } from 'lucide-re
 import { SearchInput } from '../ui/SearchInput';
 import { convertHeightSmart, convertHeightSmartImperial } from '../HeightCalculates';
 import { type Category, DEFAULT_CATEGORIES } from './categories';
-import { Character, PRESET_CAT1_CHARACTERS } from '@lib/types/characters';
+import { Character, PRESET_CAT1_CHARACTERS } from '@/lib/types/characters';
 
 // 缓存管理器
 interface CacheEntry {

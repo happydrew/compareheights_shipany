@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { type Character } from "@lib/types/characters";
+import { type Character } from "@/lib/types/characters";
 import {
     Trash2, Edit3
 } from 'lucide-react';

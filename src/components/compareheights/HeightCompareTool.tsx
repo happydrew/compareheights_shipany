@@ -1,4 +1,7 @@
+'use client';
+
 import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 import {
   Trash2, Users, Share2, Download,
   Grid, ArrowLeftRight, RotateCcw, ZoomIn, ZoomOut, GripVertical,
@@ -104,6 +107,7 @@ interface HeightCompareToolProps {
 
 // 主组件
 const HeightCompareTool: React.FC<HeightCompareToolProps> = ({ presetData }) => {
+  const t = useTranslations('heightCompareTool');
   const [unit, setUnit] = useState<Unit>(Unit.CM);
   /**
    * 当前在比较列表中的角色
@@ -159,7 +163,7 @@ const HeightCompareTool: React.FC<HeightCompareToolProps> = ({ presetData }) => 
   }, []); // 移除comparisonItems依赖，因为URL已经实时更新
 
   // 图表标题状态
-  const [chartTitle, setChartTitle] = useState('Height Comparison')
+  const [chartTitle, setChartTitle] = useState(t('defaults.chartTitle'))
   const [isEditingTitle, setIsEditingTitle] = useState(false)
   const titleInputRef = useRef<HTMLInputElement>(null)
 
@@ -188,7 +192,7 @@ const HeightCompareTool: React.FC<HeightCompareToolProps> = ({ presetData }) => 
       console.log('Loading shared data success:', rebuiltItems.length, 'characters, title:', sharedData.chartTitle, 'unit:', sharedData.unit);
     } catch (error) {
       console.error('Loading shared data failed:', error);
-      alert('Loading shared data failed, please check the link is correct');
+      alert(t('alerts.loadingShareDataFailed'));
     } finally {
       setIsLoadingShareData(false);
       // 延迟恢复URL更新，确保数据加载完成
@@ -733,7 +737,7 @@ Suggested solutions:
    - Chrome: F12 → Ctrl+Shift+P → Type "screenshot"
    - Or use system screenshot tool (Win+Shift+S)`;
 
-        alert(errorMessage);
+        alert(t('export.exportFailed'));
       } finally {
         setIsExporting(false);
         setShowExportDropdown(false);
@@ -769,7 +773,7 @@ Suggested solutions:
 
     } catch (error) {
       console.error('Download failed:', error);
-      alert('File download failed, please check browser download settings');
+      alert(t('export.downloadFailed'));
     }
   };
 
@@ -826,42 +830,42 @@ Suggested solutions:
   // 社交媒体分享配置
   const socialPlatforms = [
     {
-      name: 'Twitter',
+      name: t('socialPlatformNames.twitter'),
       icon: '🐦',
       color: '#1DA1F2',
       shareUrl: (text: string, url: string) =>
         `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`
     },
     {
-      name: 'Facebook',
+      name: t('socialPlatformNames.facebook'),
       icon: '📘',
       color: '#1877F2',
       shareUrl: (text: string, url: string) =>
         `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`
     },
     {
-      name: 'LinkedIn',
+      name: t('socialPlatformNames.linkedin'),
       icon: '💼',
       color: '#0A66C2',
       shareUrl: (text: string, url: string) =>
         `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}&summary=${encodeURIComponent(text)}`
     },
     {
-      name: 'Reddit',
+      name: t('socialPlatformNames.reddit'),
       icon: '🔶',
       color: '#FF4500',
       shareUrl: (text: string, url: string) =>
         `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(text)}`
     },
     {
-      name: 'Telegram',
+      name: t('socialPlatformNames.telegram'),
       icon: '✈️',
       color: '#0088CC',
       shareUrl: (text: string, url: string) =>
         `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`
     },
     {
-      name: 'WhatsApp',
+      name: t('socialPlatformNames.whatsapp'),
       icon: '💬',
       color: '#25D366',
       shareUrl: (text: string, url: string) =>
@@ -917,7 +921,7 @@ Suggested solutions:
       if (navigator.share && platform.name === 'Native') {
         const imageBlob = await generateShareImage();
         const shareData: ShareData = {
-          title: 'Height Comparison Tool',
+          title: t('nativeShare.title'),
           text: shareText,
           url: shareUrl
         };
@@ -976,9 +980,9 @@ Suggested solutions:
         // 根据分享方法显示不同的提示
         setTimeout(() => {
           if (shareMethod === 'clipboard') {
-            alert(`📋 Image and text copied to clipboard!\n\nIn the ${platform.name} sharing page:\n1. Paste text content (Ctrl+V)\n2. Paste image (Ctrl+V)\n\nYou can now publish your post with the image!`);
+            alert(t('socialPlatforms.imageAndTextCopied', { platform: platform.name }));
           } else if (shareMethod === 'download') {
-            alert(`📥 Image downloaded to your device!\n\nIn the ${platform.name} sharing page:\n1. Type or paste the sharing text\n2. Click the image upload button and select the downloaded image\n\nYou can now publish your post with the image!`);
+            alert(t('socialPlatforms.imageDownloaded', { platform: platform.name }));
           }
         }, 500);
       }
@@ -989,10 +993,10 @@ Suggested solutions:
       // 如果分享失败，至少复制链接到剪贴板
       try {
         await navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
-        alert('📎 Share link copied to clipboard!');
+        alert(t('socialPlatforms.shareLinkCopied'));
       } catch (clipboardError) {
         console.error('Failed to copy to clipboard:', clipboardError);
-        alert('Share failed. Please manually copy the link: ' + shareUrl);
+        alert(t('socialPlatforms.shareFailed', { url: shareUrl }));
       }
     }
   }, [generateShareText, generateShareImage, copyImageToClipboard]);
@@ -1022,7 +1026,7 @@ Suggested solutions:
         setTimeout(() => setShowShareSuccess(false), 2000);
       } catch (fallbackError) {
         console.error('Fallback copy failed:', fallbackError);
-        alert('复制失败，请手动复制链接');
+        alert(t('alerts.copyFailed'));
         setShowShareDropdown(false);
       }
     }
@@ -1034,7 +1038,7 @@ Suggested solutions:
   const handleDownloadShareImage = useCallback(async () => {
     const imageBlob = await generateShareImage();
     if (!imageBlob) {
-      alert('Failed to generate share image');
+      alert(t('alerts.generateShareImageFailed'));
       return;
     }
 
@@ -1050,7 +1054,7 @@ Suggested solutions:
       setShowShareDropdown(false);
     } catch (error) {
       console.error('Failed to download share image:', error);
-      alert('Failed to download image');
+      alert(t('alerts.downloadImageFailed'));
     }
   }, [generateShareImage]);
 
@@ -1681,7 +1685,7 @@ Suggested solutions:
     // 创建新角色
     const newCharacter: Character = {
       id: `upload-${Date.now()}-${Math.random()}`,
-      name: 'Uploaded Character',
+      name: t('defaults.uploadedCharacterName'),
       height: heightInM,
       // width: calculatedWidthInM,
       cat_ids: [0],
@@ -2037,7 +2041,7 @@ Suggested solutions:
             {/* 工具栏 */}
             <div ref={toolBarRef} className={`flex justify-between items-center px-1 md:px-2 py-2 md:py-4 toolbar-enhanced w-full ${themeClasses.bg.primary}`}>
               <button
-                title='Open full screen left panel'
+                title={t('toolbar.openFullScreenLeftPanel')}
                 className={`flex justify-start items-center ${isFullscreen && !openFullScreenLeftPanel ? '' : 'invisible'}`}
                 onClick={(e) => setOpenFullScreenLeftPanel(true)}
               >
@@ -2055,7 +2059,7 @@ Suggested solutions:
                     <button
                       onClick={() => setUnit(unit === Unit.CM ? Unit.FT_IN : Unit.CM)}
                       className={`flex items-center gap-1.5 p-1 md:p-2 ${themeClasses.button.base} ${themeClasses.button.hover} rounded-lg text-label-md transition-all duration-300`}
-                      title={`Switch to ${unit === Unit.CM ? 'feet' : 'centimeters'}`}
+                      title={unit === Unit.CM ? t('toolbar.switchToFt') : t('toolbar.switchToCm')}
                     >
                       <span className={unit === Unit.CM ? 'text-green-theme-600 font-bold' : themeClasses.text.secondary}>cm</span>
                       <ArrowLeftRight className={`w-3.5 h-3.5 ${themeClasses.text.muted}`} />
@@ -2068,7 +2072,7 @@ Suggested solutions:
                       ? `${themeClasses.bg.secondary} ${themeClasses.text.muted} cursor-not-allowed`
                       : `${themeClasses.button.base} ${themeClasses.button.hover}`
                       }`}
-                    title="Reset zoom"
+                    title={t('toolbar.resetZoom')}
                     disabled={pixelsPerMState === 1}
                   >
                     <RotateCcw className="w-4 h-4" />
@@ -2082,7 +2086,7 @@ Suggested solutions:
                       ? `${themeClasses.bg.secondary} ${themeClasses.text.muted} cursor-not-allowed`
                       : `${themeClasses.button.base} ${themeClasses.button.hover}`
                       }`}
-                    title="Clear all characters"
+                    title={t('toolbar.clearAll')}
                     disabled={comparisonItems.length === 0}
                   >
                     <Trash2 className="w-4 h-4" />
@@ -2091,7 +2095,7 @@ Suggested solutions:
                   <button
                     onClick={() => setStyleSettings({ ...styleSettings, gridLines: !styleSettings.gridLines })}
                     className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover ${styleSettings.gridLines ? themeClasses.button.active : `${themeClasses.button.base} ${themeClasses.button.hover}`}`}
-                    title="Grid lines"
+                    title={t('toolbar.gridLines')}
                   >
                     <Grid className="w-4 h-4" />
                   </button>
@@ -2101,7 +2105,7 @@ Suggested solutions:
                     <button
                       onClick={handleBackgroundClick}
                       className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover ${showBackgroundDropdown ? themeClasses.button.active : `${themeClasses.button.base} ${themeClasses.button.hover}`}`}
-                      title="Background settings"
+                      title={t('toolbar.backgroundSettings')}
                     >
                       <Palette className="w-4 h-4" />
                     </button>
@@ -2111,7 +2115,7 @@ Suggested solutions:
                       <div className={`absolute top-full right-0 mt-1 ${themeClasses.bg.primary} ${themeClasses.border.primary} border rounded-lg shadow-lg z-[99999] min-w-[180px]`}>
                         <div className="py-2">
                           {/* 纯色背景选项 */}
-                          <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>Solid Colors</div>
+                          <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>{t('backgroundSettings.solidColors')}</div>
                           <div className="px-3 py-2 grid grid-cols-5 gap-2">
                             {[
                               '#ffffff', '#f8f9fa', '#e9ecef', '#dee2e6', '#adb5bd',
@@ -2125,7 +2129,7 @@ Suggested solutions:
                                 onClick={() => handleBackgroundColorChange(color)}
                                 className="w-6 h-6 rounded border border-gray-300 hover:border-gray-400 transition-colors"
                                 style={{ backgroundColor: color }}
-                                title={`Set background to ${color}`}
+                                title={t('backgroundSettings.setBackgroundTo', { color })}
                               />
                             ))}
                           </div>
@@ -2133,17 +2137,17 @@ Suggested solutions:
                           <div className={`border-t ${themeClasses.border.primary} my-2`}></div>
 
                           {/* 图片上传选项 */}
-                          <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>Background Image</div>
+                          <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>{t('backgroundSettings.backgroundImage')}</div>
                           <button
                             onClick={() => {
                               setShowBackgroundImageUploadModal(true);
                               setShowBackgroundDropdown(false);
                             }}
                             className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-green-theme-50 hover:text-green-theme-600 flex items-center`}
-                            title="Upload background image"
+                            title={t('backgroundSettings.uploadImage')}
                           >
                             <span className="mr-3">🖼️</span>
-                            <div className="font-medium">Upload Image</div>
+                            <div className="font-medium">{t('backgroundSettings.uploadImage')}</div>
                           </button>
 
                           {/* 移除背景选项 */}
@@ -2166,7 +2170,7 @@ Suggested solutions:
                   <button
                     onClick={handleThemeToggle}
                     className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover ${themeClasses.button.base} ${themeClasses.button.hover}`}
-                    title={`Switch to ${styleSettings.theme === 'light' ? 'dark' : 'light'} theme`}
+                    title={styleSettings.theme === 'light' ? t('toolbar.darkTheme') : t('toolbar.lightTheme')}
                   >
                     {styleSettings.theme === 'light' ? (
                       <Moon className="w-4 h-4" />
@@ -2179,7 +2183,7 @@ Suggested solutions:
                   <button
                     onClick={toggleFullscreen}
                     className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover ${themeClasses.button.base} ${themeClasses.button.hover}`}
-                    title={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+                    title={isFullscreen ? t('toolbar.exitFullscreen') : t('toolbar.enterFullscreen')}
                   >
                     {isFullscreen ? (
                       <Minimize className="w-4 h-4" />
@@ -2341,13 +2345,13 @@ Suggested solutions:
                       onBlur={() => setIsEditingTitle(false)}
                       onKeyDown={handleTitleKeyDown}
                       className={`text-base md:text-lg font-medium ${themeClasses.text.primary} bg-transparent border ${themeClasses.border.secondary} rounded px-3 py-1 text-center min-w-[300px] max-w-[50vw] focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-transparent shadow-sm`}
-                      placeholder="Enter chart title"
+                      placeholder={t('chartArea.enterChartTitle')}
                     />
                   ) : (
                     <h2
                       onClick={() => setIsEditingTitle(true)}
                       className={`text-base md:text-lg font-medium ${themeClasses.text.primary} bg-transparent rounded px-3 py-1 transition-colors shadow-sm border border-transparent ${themeClasses.border.primary} hover:border-opacity-50 max-w-[50vw] break-words text-center`}
-                      title="Click to edit title"
+                      title={t('chartArea.clickToEditTitle')}
                     >
                       {chartTitle}
                     </h2>
@@ -2360,7 +2364,7 @@ Suggested solutions:
                     <button
                       onClick={() => handleZoom(0.2)}
                       className={`p-1 md:p-2 rounded ${themeClasses.bg.secondary} ${themeClasses.text.secondary} hover:text-green-theme-600 zoom-control-enhanced`}
-                      title='Zoom in (hold Ctrl + scroll for quick zoom)'
+                      title={t('chartArea.zoomIn')}
                     >
                       <ZoomIn className={`w-4 h-4`} />
                     </button>
@@ -2375,7 +2379,7 @@ Suggested solutions:
                     <button
                       onClick={() => handleZoom(-0.2)}
                       className={`p-1 md:p-2 rounded ${themeClasses.bg.secondary} ${themeClasses.text.secondary} hover:text-green-theme-600 zoom-control-enhanced`}
-                      title='Zoom out (hold Ctrl + scroll for quick zoom)'
+                      title={t('chartArea.zoomOut')}
                     >
                       <ZoomOut className="w-4 h-4" />
                     </button>
@@ -2470,12 +2474,12 @@ Suggested solutions:
                     {isLoadingShareData ? (
                       <div className="w-full h-full flex flex-col items-center justify-center text-gray-500">
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-theme-600 mb-4"></div>
-                        <p className="text-lg text-center px-2">Loading data...</p>
+                        <p className="text-lg text-center px-2">{t('chartArea.loadingData')}</p>
                       </div>
                     ) : comparisonItems.length === 0 ? (
                       <div className="w-full h-full flex flex-col items-center justify-end text-gray-500">
                         <Users className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-                        <p className="text-lg text-center px-2">Click characters in the left library to add</p>
+                        <p className="text-lg text-center px-2">{t('chartArea.emptyState')}</p>
                       </div>
                     ) : (
                       <div

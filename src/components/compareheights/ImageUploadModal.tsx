@@ -4,16 +4,6 @@ import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
 import { UnitSystem, UNIT_CONVERSIONS } from './HeightCalculates';
 
-interface CropData {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  rotate?: number;
-  scaleX?: number;
-  scaleY?: number;
-}
-
 interface ImageUploadModalProps {
   isOpen: boolean;
   onClose: () => void;

@@ -618,6 +618,10 @@
     }
   },
   "heightCompareTool": {
+    "defaults": {
+      "chartTitle": "Height Comparison",
+      "uploadedCharacterName": "Uploaded Character"
+    },
     "toolbar": {
       "openFullScreenLeftPanel": "Open full screen left panel",
       "switchToCm": "Switch to centimeters",
@@ -632,6 +636,52 @@
       "exitFullscreen": "Exit fullscreen",
       "exportImage": "Export image",
       "shareComparison": "Share comparison"
+    },
+    "zoom": {
+      "ctrlKeyPressed": "Ctrl key pressed, starting zoom"
+    },
+    "console": {
+      "loadingSharedData": "Loading shared data:",
+      "loadingSharedDataSuccess": "Loading shared data success:",
+      "loadingSharedDataFailed": "Loading shared data failed:",
+      "loadingPresetDataSuccess": "Loading preset data success:",
+      "loadingPresetDataFailed": "Loading preset data failed:",
+      "addingWatermark": "Adding watermark to canvas:",
+      "watermarkAddedSuccess": "Watermark added successfully to new canvas",
+      "canvasContextFailed": "Failed to get canvas context",
+      "chartAreaNotFound": "Chart area not found or no character data",
+      "exportFailed": "Export failed:",
+      "downloadFailed": "Download failed:",
+      "generateShareImageFailed": "Failed to generate share image:",
+      "clipboardNotSupported": "Clipboard image copy not supported:",
+      "textCopyFailed": "Text copy failed:",
+      "shareFailed": "Share failed:",
+      "copyToClipboardFailed": "Failed to copy to clipboard:",
+      "fallbackCopyFailed": "Fallback copy failed:",
+      "downloadShareImageFailed": "Failed to download share image:",
+      "clearButtonClicked": "Clear button clicked, current character count:"
+    },
+    "alerts": {
+      "loadingShareDataFailed": "Loading shared data failed, please check the link is correct",
+      "generateShareImageFailed": "Failed to generate share image",
+      "downloadImageFailed": "Failed to download image",
+      "copyFailed": "Copy failed, please manually copy link"
+    },
+    "socialPlatformNames": {
+      "twitter": "Twitter",
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn",
+      "reddit": "Reddit",
+      "telegram": "Telegram",
+      "whatsapp": "WhatsApp",
+      "native": "Native"
+    },
+    "nativeShare": {
+      "title": "Height Comparison Tool"
+    },
+    "keyboardEvents": {
+      "enterKey": "Enter",
+      "escapeKey": "Escape"
     },
     "backgroundSettings": {
       "solidColors": "Solid Colors",
