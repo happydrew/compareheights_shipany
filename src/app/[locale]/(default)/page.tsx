@@ -1,34 +1,23 @@
-import Branding from "@/components/blocks/branding";
-import CTA from "@/components/blocks/cta";
-import FAQ from "@/components/blocks/faq";
-import Feature from "@/components/blocks/feature";
-import Feature3 from "@/components/blocks/feature3";
-import Hero from "@/components/blocks/hero";
-import Pricing from "@/components/blocks/pricing";
-import Showcase from "@/components/blocks/showcase";
-import ToolShowcase from "@/components/blocks/tool-showcase";
-import ImageEditor from "@/components/blocks/image-editor";
-import StyleGallery from "@/components/blocks/style-gallery";
-import HeightCompareToolBlock from "@/components/blocks/height-compare-tool";
-import HeightComparisonIntro from "@/components/blocks/height-comparison-intro";
-import HeightComparisonUseCases from "@/components/blocks/height-comparison-use-cases";
-import { getLandingPage } from "@/services/page";
+import type { Metadata } from "next";
+import { HeightCompareTool } from "@/components/compareheights";
+import { HeightComparisonArticle } from "@/components/compareheights/HeightComparisonArticle";
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
-  let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}`;
-
-  if (locale !== "en") {
-    canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}`;
-  }
+  const baseUrl =
+    process.env.NEXT_PUBLIC_WEB_URL?.replace(/\/$/, "") ?? "https://compareheights.org";
+  const canonical =
+    locale && locale !== "en" ? `${baseUrl}/${locale}` : baseUrl;
 
   return {
+    title: "Height Comparison - Comparing Heights of Unlimited Objects Easily",
+    description: "Create stunning height comparison chart of Unlimited Objects effortlessly, comparing heights of people, celebrities, anime characters, animals, buildings & anything, export & share beautiful visualizations.",
     alternates: {
-      canonical: canonicalUrl,
+      canonical,
     },
   };
 }
@@ -38,27 +27,12 @@ export default async function LandingPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-  const page = await getLandingPage(locale);
+  await params;
 
   return (
     <>
-      {page.hero && <Hero hero={page.hero} />}
-      {/* {page.branding && <Branding section={page.branding} />} */}
-      <HeightCompareToolBlock id="height-compare-tool" />
-      {page.introduce && <Feature3 section={page.introduce} />}
-      {/* {page.benefit && <Feature2 section={page.benefit} />} */}
-      {page.usage && <Feature3 section={page.usage} />}
-      {page.feature && <Feature section={page.feature} />}
-      {page.toolShowcase && <ToolShowcase toolShowcase={page.toolShowcase} />}
-      {page.showcase && <Showcase section={page.showcase} />}
-      {/* {page.stats && <Stats section={page.stats} />} */}
-      {page.pricing && <Pricing pricing={page.pricing} />}
-      {/* {page.testimonial && <Testimonial section={page.testimonial} />} */}
-      <HeightComparisonIntro />
-      <HeightComparisonUseCases />
-      {page.faq && <FAQ section={page.faq} />}
-      {page.cta && <CTA section={page.cta} />}
+      <HeightCompareTool />
+      <HeightComparisonArticle />
     </>
   );
 }

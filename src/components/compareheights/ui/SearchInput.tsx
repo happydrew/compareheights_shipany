@@ -1,3 +1,4 @@
+'use client';
 // 搜索输入框组件
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';

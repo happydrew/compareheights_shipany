@@ -24,7 +24,7 @@ export default async function AdminLayout({
     brand: {
       title: "ShipAny",
       logo: {
-        src: "/logo.png",
+        src: "/favicon.png",
         alt: "ShipAny",
       },
       url: "/admin",

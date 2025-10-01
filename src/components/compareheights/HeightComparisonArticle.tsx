@@ -6,6 +6,33 @@ import {
 } from 'lucide-react';
 import './styles.css';
 
+const FEATURE_COLOR_CLASSES: Record<
+  "green" | "blue" | "purple" | "orange" | "rose",
+  { background: string; text: string }
+> = {
+  green: {
+    background: "bg-green-theme-100",
+    text: "text-green-theme-600",
+  },
+  blue: {
+    background: "bg-accent-blue-100",
+    text: "text-accent-blue-600",
+  },
+  purple: {
+    background: "bg-accent-purple-100",
+    text: "text-accent-purple-600",
+  },
+  orange: {
+    background: "bg-accent-orange-100",
+    text: "text-accent-orange-600",
+  },
+  rose: {
+    background: "bg-accent-rose-100",
+    text: "text-accent-rose-600",
+  },
+};
+
+type FeatureColor = keyof typeof FEATURE_COLOR_CLASSES;
 const HeightComparisonArticle: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-theme-50 via-white to-green-theme-50">
@@ -161,15 +188,20 @@ const HeightComparisonArticle: React.FC = () => {
                 icon: <Smartphone className="w-8 h-8" />,
                 color: "green"
               }
-            ].map((feature, index) => (
-              <div key={index} className="card-modern p-8 group hover:shadow-xl transition-all duration-300">
-                <div className={`w-16 h-16 bg-${feature.color === 'green' ? 'green-theme' : 'accent-' + feature.color}-100 rounded-2xl flex items-center justify-center text-${feature.color === 'green' ? 'green-theme' : 'accent-' + feature.color}-600 mb-6 group-hover:scale-110 transition-transform`}>
-                  {feature.icon}
+            ].map((feature, index) => {
+              const colorKey = feature.color as FeatureColor;
+              const colorClasses = FEATURE_COLOR_CLASSES[colorKey];
+
+              return (
+                <div key={index} className="card-modern p-8 group hover:shadow-xl transition-all duration-300">
+                  <div className={`w-16 h-16 ${colorClasses.background} ${colorClasses.text} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-display-sm font-semibold text-gray-900 mb-4">{feature.title}</h3>
+                  <p className="text-body-md text-gray-600 leading-relaxed">{feature.description}</p>
                 </div>
-                <h3 className="text-display-sm font-semibold text-gray-900 mb-4">{feature.title}</h3>
-                <p className="text-body-md text-gray-600 leading-relaxed">{feature.description}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

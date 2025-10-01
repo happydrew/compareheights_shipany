@@ -5,7 +5,7 @@
     "brand": {
       "title": "CompareHeights",
       "logo": {
-        "src": "/logo.png",
+        "src": "/favicon.png",
         "alt": "CompareHeights"
       },
       "url": "/"
@@ -530,7 +530,7 @@
       "title": "CompareHeights",
       "description": "CompareHeights is the ultimate height comparison tool for creating visual height comparisons and height chart comparisons, helping you compare heights accurately and instantly.",
       "logo": {
-        "src": "/logo.png",
+        "src": "/favicon.png",
         "alt": "CompareHeights height comparison tool"
       },
       "url": "/"

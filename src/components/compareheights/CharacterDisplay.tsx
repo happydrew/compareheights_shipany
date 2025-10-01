@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect, useMemo } from "react";
 import { type Character } from "@/lib/types/characters";
 import {

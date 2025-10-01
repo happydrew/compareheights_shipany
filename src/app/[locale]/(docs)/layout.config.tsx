@@ -9,7 +9,7 @@ export function baseOptions(locale: string): BaseLayoutProps {
       title: (
         <>
           <Image
-            src="/logo.png"
+            src="/favicon.png"
             alt="Logo"
             width={28}
             height={28}
