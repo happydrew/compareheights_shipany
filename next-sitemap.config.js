@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://nanoedit.art',
+  siteUrl: process.env.SITE_URL || 'https://compareheights.org',
   generateRobotsTxt: true,
   exclude: ['/api/*', '/console/*', '/auth/*', '/admin/*', '/*/*/console/*', '/*/*/auth/*', '/*/*/api/*', '/*/*/admin/*'],
   generateIndexSitemap: false,
@@ -85,7 +85,7 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      `${process.env.SITE_URL || 'https://nanoedit.art'}/sitemap.xml`,
+      `${process.env.SITE_URL || 'https://compareheights.org'}/sitemap.xml`,
     ],
   },
 }

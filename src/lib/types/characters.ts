@@ -17,10 +17,10 @@ interface Character {
   svg_content?: string | null;
 
   // 外观相关字段（统一使用数据库字段名）
-  color?: string | null;
+  color: string | null;
   color_customizable: boolean;
   // 用于改变颜色的svg属性
-  color_property?: string | null;
+  color_property : string | null;
 
   // 排序字段
   order_num?: number;

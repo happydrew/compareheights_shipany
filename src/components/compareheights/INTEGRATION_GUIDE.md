@@ -8,7 +8,7 @@
 */
 
 import { LeftPanel } from './panels/LeftPanel';
-import { LibraryProvider } from '@lib/stores/LibraryContext';
+import { LibraryProvider } from '@/lib/stores/LibraryContext';
 
 /*
 2. 在主组件中替换原有的左侧面板结构：

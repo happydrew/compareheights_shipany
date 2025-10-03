@@ -1501,7 +1501,7 @@ Suggested solutions:
   useEffect(() => {
     if (dragState.isDragging) {
       const handleMouseMove = (e: MouseEvent) => handleDragMove(e);
-      const handleMouseUp = (e:MouseEvent) => handleDragEnd(e);
+      const handleMouseUp = (e: MouseEvent) => handleDragEnd(e);
       const handleTouchMove = (e: TouchEvent) => handleDragMove(e);
       const handleTouchEnd = (e: TouchEvent) => handleDragEnd(e);
 
@@ -1523,7 +1523,7 @@ Suggested solutions:
   useEffect(() => {
     if (leftPanelDragState.isDragging) {
       const handleMouseMove = (e: MouseEvent) => handleLeftPanelDragMove(e);
-      const handleMouseUp = (e:MouseEvent) => handleLeftPanelDragEnd(e);
+      const handleMouseUp = (e: MouseEvent) => handleLeftPanelDragEnd(e);
       const handleTouchMove = (e: TouchEvent) => handleLeftPanelDragMove(e);
       const handleTouchEnd = (e: TouchEvent) => handleLeftPanelDragEnd(e);
 
@@ -1695,10 +1695,11 @@ Suggested solutions:
       thumbnail_url: imageUrl,
       // 外观相关字段 - 扁平化
       color: '#10B981',
-      color_customizable: false
+      color_customizable: false,
+      color_property: null
     };
 
-    // 添加到比較列表
+    // 添加到比较列表
     addToComparison(newCharacter);
 
     // 关闭上传模态框
@@ -2287,16 +2288,14 @@ Suggested solutions:
                           <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>Other Options</div>
 
                           {/* 原生分享 API (如果支持) */}
-                          {navigator.share && (
-                            <button
-                              onClick={() => handleSocialShare({ name: 'Native', icon: '📱', color: '#666', shareUrl: () => '' })}
-                              className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-blue-50 hover:text-blue-600 flex items-center`}
-                              title="Use native sharing"
-                            >
-                              <span className="mr-3">📱</span>
-                              <div className="font-medium">Share...</div>
-                            </button>
-                          )}
+                          <button
+                            onClick={() => handleSocialShare({ name: 'Native', icon: '📱', color: '#666', shareUrl: () => '' })}
+                            className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-blue-50 hover:text-blue-600 flex items-center`}
+                            title="Use native sharing"
+                          >
+                            <span className="mr-3">📱</span>
+                            <div className="font-medium">Share...</div>
+                          </button>
 
                           <button
                             onClick={handleCopyLink}

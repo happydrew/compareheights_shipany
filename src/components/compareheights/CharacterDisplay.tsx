@@ -56,7 +56,7 @@ class SVGCacheManager {
 const svgCache = new SVGCacheManager();
 
 // SVG 颜色处理函数 - 支持多个颜色属性和智能替换
-const processSVGColor = (svgContent: string, color?: string, colorProperty: string = 'fill'): string => {
+const processSVGColor = (svgContent: string, color: string | null, colorProperty: string = 'fill'): string => {
     if (!color) return svgContent;
 
     let processedContent = svgContent;
@@ -114,13 +114,13 @@ const processSVGColor = (svgContent: string, color?: string, colorProperty: stri
 // SVG 内联渲染组件
 const InlineSVGRenderer: React.FC<{
     svgContent: string;
-    color?: string;
-    colorProperty?: string;
+    color: string | null;
+    colorProperty: string | null;
     className?: string;
     style?: React.CSSProperties;
 }> = ({ svgContent, color, colorProperty = 'fill', className = '', style }) => {
     const processedSVG = useMemo(() => {
-        let processedContent = processSVGColor(svgContent, color, colorProperty);
+        let processedContent = processSVGColor(svgContent, color ?? null, colorProperty ?? 'fill');
 
         // 确保 SVG 能填充父容器
         // 移除固定的宽高属性，添加响应式属性
@@ -252,7 +252,7 @@ const CharacterImageRenderer: React.FC<{
                             // 使用内联 SVG 内容 - 更好的性能
                             <InlineSVGRenderer
                                 svgContent={svgContentToUse}
-                                color={character.color_customizable ? character.color : undefined}
+                                color={character.color_customizable ? character.color : null}
                                 colorProperty={character.color_property}
                                 className="w-full h-full"
                             />

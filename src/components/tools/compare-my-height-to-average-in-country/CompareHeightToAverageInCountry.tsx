@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeightCompareTool } from '@components/compareheights/HeightCompareTool';
+import { HeightCompareTool } from '@/components/compareheights/HeightCompareTool';
 import { presetData } from './presetData';
 
 const countryHeightData = [
