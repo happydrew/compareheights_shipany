@@ -5,7 +5,7 @@
     "brand": {
       "title": "NanoEdit",
       "logo": {
-        "src": "/favicon.png",
+        "src": "/favicon.ico",
         "alt": "NanoEdit"
       },
       "url": "/"
@@ -530,7 +530,7 @@
       "title": "NanoEdit",
       "description": "NanoEdit 借助 nano banana ai 与 Gemini Flash 2.5 技术，为你的每段视觉故事赋能。",
       "logo": {
-        "src": "/favicon.png",
+        "src": "/favicon.ico",
         "alt": "NanoEdit ai photo editor"
       },
       "url": "/"

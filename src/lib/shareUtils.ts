@@ -4,14 +4,32 @@ import { type Character, queryCharactersByIds } from './types/characters';
 export interface SharedCharacterData {
   id: string;        // Character.id - 数据库主键，必须字段
   name?: string;     // 用户自定义名称，可选覆盖
-  height?: number;   // 用户自定义身高，可选覆盖  
+  height?: number;   // 用户自定义身高，可选覆盖
   color?: string;    // 用户自定义颜色，可选覆盖
 }
 
-export interface SharedData {
+// 样式设置接口
+export interface SharedSettings {
+  unit: 'cm' | 'ft-in';
   chartTitle: string;
-  unit: string;
+  backgroundColor?: string;
+  backgroundImage?: string;
+  gridLines?: boolean;
+  labels?: boolean;
+  shadows?: boolean;
+  theme?: 'light' | 'dark';
+  chartHeight?: number;
+  spacing?: number;
+}
+
+// 分享数据接口（支持两种格式）
+export interface SharedData {
   characters: SharedCharacterData[];
+  // 扁平格式（用于URL分享，向后兼容）
+  chartTitle?: string;
+  unit?: string;
+  // 嵌套格式（用于项目数据）
+  settings?: SharedSettings;
 }
 
 // 比较项目接口（从HeightCompareTool.tsx复制）

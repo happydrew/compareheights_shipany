@@ -44,7 +44,7 @@
     "src/app/[locale]/(default)/(console)/api-keys/create/page.tsx.bak",
     "src/app/[locale]/(default)/(console)/my-invites/page.tsx.bak",
     "src/app/[locale]/(default)/showcase/page.tsx.bak"
-  ],
+, "src/app/[locale]/dashboard/custom-characters/[id]/page.tsx.bak"  ],
   "exclude": [
     "node_modules"
   ]

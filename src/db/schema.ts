@@ -8,6 +8,8 @@ import {
   timestamp,
   unique,
   uniqueIndex,
+  jsonb,
+  index,
 } from "drizzle-orm/pg-core";
 
 // Users table
@@ -143,3 +145,27 @@ export const tasks = pgTable("tasks", {
   created_at: timestamp({ withTimezone: true }), // 记录创建时间
   updated_at: timestamp({ withTimezone: true }), // 记录更新时间
 });
+
+// Projects table - 身高比对项目表
+export const projects = pgTable(
+  "projects",
+  {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    uuid: varchar({ length: 255 }).notNull().unique(),
+    user_uuid: varchar({ length: 255 }).notNull(),
+    title: varchar({ length: 255 }).notNull().default("Untitled Project"),
+    thumbnail_url: varchar({ length: 500 }),
+    project_data: jsonb().notNull(), // 存储角色和设置的JSON数据
+    is_public: boolean().notNull().default(false),
+    view_count: integer().notNull().default(0),
+    created_at: timestamp({ withTimezone: true }).defaultNow(),
+    updated_at: timestamp({ withTimezone: true }).defaultNow(),
+    status: varchar({ length: 50 }).notNull().default("active"),
+  },
+  (table) => [
+    index("idx_projects_user_uuid").on(table.user_uuid),
+    index("idx_projects_uuid").on(table.uuid),
+    index("idx_projects_is_public").on(table.is_public),
+    index("idx_projects_status").on(table.status),
+  ]
+);

@@ -11,7 +11,9 @@
     "api_keys": "API Keys",
     "my_orders": "My Orders",
     "user_center": "User Center",
-    "admin_system": "Admin System"
+    "admin_system": "Admin System",
+    "dashboard": "Dashboard",
+    "subscription": "Subscription"
   },
   "sign_modal": {
     "sign_in_title": "Sign In",
@@ -752,6 +754,26 @@
       "imageDownloaded": "📥 Image downloaded to your device!\n\nIn the {platform} sharing page:\n1. Type or paste the sharing text\n2. Click the image upload button and select the downloaded image\n\nYou can now publish your post with the image!",
       "shareLinkCopied": "📎 Share link copied to clipboard!",
       "shareFailed": "Share failed. Please manually copy the link: {url}"
+    }
+  },
+  "subscription": {
+    "title": "Subscription",
+    "description": "Manage your subscription plan",
+    "current_plan": "Current Plan",
+    "upgrade_plan": "Upgrade Plan",
+    "view_all_plans": "View All Plans",
+    "usage_this_month": "Usage This Month",
+    "available_plans": "Available Plans",
+    "available_plans_description": "View all available plans and features on our pricing page",
+    "free_plan": "Free",
+    "projects": "Projects",
+    "custom_characters": "Custom Characters",
+    "storage": "Storage",
+    "credits": "Credits",
+    "quota_exceeded": {
+      "projects": "You have reached the maximum number of projects ({limit}) for your {plan} plan. Please upgrade to create more projects.",
+      "custom_characters": "You have reached the maximum number of custom characters ({limit}) for your {plan} plan. Please upgrade to create more characters.",
+      "storage": "You have reached the storage limit ({limit}MB) for your {plan} plan. Please upgrade for more storage."
     }
   }
 }

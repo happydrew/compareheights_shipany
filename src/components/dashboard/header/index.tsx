@@ -6,7 +6,6 @@ import {
 } from "@/components/ui/breadcrumb";
 
 import { BreadcrumbItem } from "@/components/ui/breadcrumb";
-import { BreadcrumbLink } from "@/components/ui/breadcrumb";
 import { Crumb } from "@/types/blocks/base";
 import { Fragment } from "react";
 import Link from "next/link";

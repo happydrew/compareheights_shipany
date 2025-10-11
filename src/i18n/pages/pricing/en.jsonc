@@ -1,10 +1,9 @@
 {
-  // Pricing page configuration for NanoEdit
   "pricing": {
     "name": "pricing",
     "label": "Pricing", // Navigation label
     "title": "Pricing", // Page title
-    "description": "Choose your NanoEdit plan. Get free credits to start, then upgrade for pro-level AI photo editing.",
+    "description": "Choose the perfect plan for your height comparison needs. Start free or upgrade for advanced features and unlimited creativity.",
     // Pricing plan groups (monthly vs yearly)
     "groups": [
       {
@@ -15,214 +14,207 @@
       {
         "name": "yearly",
         "title": "Annually",
-        "label": "Save 40%",
+        "label": "Save 20%",
         "is_featured": true
       }
     ],
     "items": [
+      // {
+      //   "title": "Free",
+      //   "description": "Perfect for trying out height comparisons and personal projects.",
+      //   "features_title": "Includes",
+      //   "features": [
+      //     "5 saved projects",
+      //     "10 custom characters",
+      //     "5MB max upload size",
+      //     "5 public gallery submissions/month",
+      //     "All core comparison features",
+      //     "Export as PNG/JPG/WebP",
+      //     "Light & dark themes",
+      //     "Community support",
+      //     "Watermark on shared links"
+      //   ],
+      //   "interval": "month",
+      //   "amount": 0,
+      //   "currency": "USD",
+      //   "price": "$0",
+      //   "unit": "/ forever",
+      //   "is_featured": false,
+      //   "tip": "Try before you buy",
+      //   "button": {
+      //     "title": "Get Started Free",
+      //     "url": "/auth/signin",
+      //     "icon": "RiFlashlightFill"
+      //   },
+      //   "product_id": "free",
+      //   "product_name": "CompareHeights Free",
+      //   "credits": 0,
+      //   "valid_months": 0,
+      //   "group": "monthly",
+      //   "quota": {
+      //     "max_projects": 5,
+      //     "max_custom_characters": 10,
+      //     "max_upload_size_mb": 5,
+      //     "max_public_submissions_per_month": 5
+      //   }
+      // },
       {
         "title": "Starter",
-        "description": "Best for beginners who want to explore NanoEdit.",
-        "features_title": "Includes",
+        "description": "For hobbyists and content creators who need more flexibility.",
+        "features_title": "Everything in Free, plus",
         "features": [
-          "500 credits per month",
-          "~ 50 images generation",
-          "Core editing tools",
-          "Access to trending templates",
-          "One-click viral styles",
-          "Ad-free editing",
-          "No watermark",
-          "Standard support (48h response)",
-          "Regular processing queue"
+          "25 saved projects",
+          "50 custom characters",
+          "10MB max upload size",
+          "10 public gallery submissions/month",
+          "Remove watermark",
+          "Unlimited custom backgrounds",
+          "Advanced styling options",
+          "Priority email support",
+          "Save time with more storage"
         ],
         "interval": "month",
         "amount": 500,
         "currency": "USD",
         "price": "$5",
-        "original_price": "$10",
         "unit": "/ month",
         "is_featured": false,
-        "tip": "Great for first-time users",
+        "tip": "Great for regular creators",
         "button": {
           "title": "Get Starter",
           "url": "/#pricing",
           "icon": "RiFlashlightFill"
         },
         "product_id": "starter-monthly",
-        "product_name": "NanoEdit Starter Monthly",
-        "credits": 500,
+        "product_name": "CompareHeights Starter Monthly",
+        "credits": 0,
         "valid_months": 1,
-        "group": "monthly"
+        "group": "monthly",
+        "quota": {
+          "max_projects": 25,
+          "max_custom_characters": 50,
+          "max_upload_size_mb": 10,
+          "max_public_submissions_per_month": 10
+        }
       },
       {
-        "title": "Standard",
-        "description": "More credits and higher quality outputs.",
+        "title": "Premium",
+        "description": "For professionals, educators, and power users who demand the best.",
         "label": "Popular",
         "features_title": "Everything in Starter, plus",
         "features": [
-          "1100 credits per month",
-          "~ 110 images generation",
-          "All trending templates",
-          "High-resolution exports",
-          "Priority processing queue",
-          "Early access to new features",
-          "Priority support (24h response)",
-          "Enhanced processing speed"
+          "100 saved projects",
+          "200 custom characters",
+          "10MB max upload size",
+          "20 public gallery submissions/month",
+          "Premium support (24h response)",
+          "Dedicated account manager",
+          "Request custom features",
+          "Early access to new tools",
+          "Perfect for teams & educators"
         ],
         "interval": "month",
         "amount": 1000,
         "currency": "USD",
         "price": "$10",
-        "original_price": "$20",
         "unit": "/ month",
         "is_featured": true,
-        "tip": "Most popular for creators",
-        "button": {
-          "title": "Get Standard",
-          "url": "/#pricing",
-          "icon": "RiFlashlightFill"
-        },
-        "product_id": "standard-monthly",
-        "product_name": "NanoEdit Standard Monthly",
-        "credits": 1100,
-        "valid_months": 1,
-        "group": "monthly"
-      },
-      {
-        "title": "Premium",
-        "description": "Full features for professionals & power users.",
-        "features_title": "Everything in Standard, plus",
-        "features": [
-          "2500 credits per month",
-          "~ 250 images generation",
-          "Exclusive premium templates",
-          "Batch processing capabilities",
-          "Top-priority processing queue",
-          "VIP support (12h response)",
-          "Maximum processing speed",
-          "Beta feature access",
-          "Dedicated account manager"
-        ],
-        "interval": "month",
-        "amount": 2000,
-        "currency": "USD",
-        "price": "$20",
-        "original_price": "$40",
-        "unit": "/ month",
-        "is_featured": false,
-        "tip": "Unlock full NanoEdit power",
+        "tip": "Most popular for professionals",
         "button": {
           "title": "Get Premium",
           "url": "/#pricing",
           "icon": "RiFlashlightFill"
         },
         "product_id": "premium-monthly",
-        "product_name": "NanoEdit Premium Monthly",
-        "credits": 2500,
+        "product_name": "CompareHeights Premium Monthly",
+        "credits": 0,
         "valid_months": 1,
-        "group": "monthly"
+        "group": "monthly",
+        "quota": {
+          "max_projects": 100,
+          "max_custom_characters": 200,
+          "max_upload_size_mb": 10,
+          "max_public_submissions_per_month": 20
+        }
       },
       {
         "title": "Starter",
-        "description": "Same features as Starter Monthly — save 40% with annual billing.",
-        "features_title": "Includes",
+        "description": "Same features as Starter Monthly — save 20% with annual billing.",
+        "features_title": "Everything in Free, plus",
         "features": [
-          "500 credits per month",
-          "~ 50 images generation",
-          "Core editing tools",
-          "Access to trending templates",
-          "One-click viral styles",
-          "Ad-free editing",
-          "No watermark",
-          "Standard support (48h response)",
-          "Regular processing queue"
+          "25 saved projects",
+          "50 custom characters",
+          "10MB max upload size",
+          "10 public gallery submissions/month",
+          "Remove watermark",
+          "Unlimited custom backgrounds",
+          "Advanced styling options",
+          "Priority email support",
+          "Save time with more storage"
         ],
         "interval": "year",
-        "amount": 3600,
+        "amount": 4800,
         "currency": "USD",
-        "price": "$3",
-        "original_price": "$10",
+        "price": "$4",
         "unit": "/ month (billed annually)",
         "is_featured": false,
-        "tip": "Save 40% with annual billing",
+        "tip": "Save 20% with annual billing",
         "button": {
           "title": "Get Starter Yearly",
           "url": "/#pricing",
           "icon": "RiFlashlightFill"
         },
         "product_id": "starter-yearly",
-        "product_name": "NanoEdit Starter Annually",
-        "credits": 6000,
+        "product_name": "CompareHeights Starter Annually",
+        "credits": 0,
         "valid_months": 12,
-        "group": "yearly"
-      },
-      {
-        "title": "Standard",
-        "description": "Same features as Standard Monthly — save 40% with annual billing.",
-        "label": "Popular",
-        "features_title": "Everything in Starter, plus",
-        "features": [
-          "1100 credits per month",
-          "~ 110 images generation",
-          "All trending templates",
-          "High-resolution exports",
-          "Priority processing queue",
-          "Early access to new features",
-          "Priority support (24h response)",
-          "Enhanced processing speed"
-        ],
-        "interval": "year",
-        "amount": 7200,
-        "currency": "USD",
-        "price": "$6",
-        "original_price": "$20",
-        "unit": "/ month (billed annually)",
-        "is_featured": true,
-        "tip": "Best value — save 40% annually",
-        "button": {
-          "title": "Get Standard Yearly",
-          "url": "/#pricing",
-          "icon": "RiFlashlightFill"
-        },
-        "product_id": "standard-yearly",
-        "product_name": "NanoEdit Standard Annually",
-        "credits": 13200,
-        "valid_months": 12,
-        "group": "yearly"
+        "group": "yearly",
+        "quota": {
+          "max_projects": 25,
+          "max_custom_characters": 50,
+          "max_upload_size_mb": 10,
+          "max_public_submissions_per_month": 10
+        }
       },
       {
         "title": "Premium",
-        "description": "Same features as Premium Monthly — save 40% with annual billing.",
-        "features_title": "Everything in Standard, plus",
+        "description": "Same features as Premium Monthly — save 20% with annual billing.",
+        "label": "Popular",
+        "features_title": "Everything in Starter, plus",
         "features": [
-          "2500 credits per month",
-          "~ 250 images generation",
-          "Exclusive premium templates",
-          "Batch processing capabilities",
-          "Top-priority processing queue",
-          "VIP support (12h response)",
-          "Maximum processing speed",
-          "Beta feature access",
-          "Dedicated account manager"
+          "100 saved projects",
+          "200 custom characters",
+          "10MB max upload size",
+          "20 public gallery submissions/month",
+          "Premium support (24h response)",
+          "Dedicated account manager",
+          "Request custom features",
+          "Early access to new tools",
+          "Perfect for teams & educators"
         ],
         "interval": "year",
-        "amount": 14400,
+        "amount": 9600,
         "currency": "USD",
-        "price": "$12",
-        "original_price": "$40",
+        "price": "$8",
         "unit": "/ month (billed annually)",
-        "is_featured": false,
-        "tip": "Premium power at 40% off annually",
+        "is_featured": true,
+        "tip": "Best value — save 20% annually",
         "button": {
           "title": "Get Premium Yearly",
           "url": "/#pricing",
           "icon": "RiFlashlightFill"
         },
         "product_id": "premium-yearly",
-        "product_name": "NanoEdit Premium Annually",
-        "credits": 30000,
+        "product_name": "CompareHeights Premium Annually",
+        "credits": 0,
         "valid_months": 12,
-        "group": "yearly"
+        "group": "yearly",
+        "quota": {
+          "max_projects": 100,
+          "max_custom_characters": 200,
+          "max_upload_size_mb": 10,
+          "max_public_submissions_per_month": 20
+        }
       }
     ]
   }

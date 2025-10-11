@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm add:*)",
+      "Bash(ls -la \"src/app/[locale]/(default)/dashboard/\")",
+      "Bash(find \"src/app/[locale]/(default)/dashboard\" -name \"*.tsx\" -o -name \"*.ts\")",
+      "Bash(pnpm run:*)",
+      "Bash(pnpm exec tsc:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

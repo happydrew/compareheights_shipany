@@ -14,6 +14,7 @@ interface Character {
   media_type: 'svg' | 'image';
   media_url: string;
   thumbnail_url: string;
+  media_hash?: string | null;
   svg_content?: string | null;
 
   // 外观相关字段（统一使用数据库字段名）

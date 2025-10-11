@@ -30,7 +30,7 @@ export default function LegalLayout({
         href="/"
       >
         <MdOutlineHome className="text-2xl mx-8 my-8" />
-        {/* <img className="w-10 h-10 mx-4 my-4" src="/favicon.png" /> */}
+        {/* <img className="w-10 h-10 mx-4 my-4" src="/favicon.ico" /> */}
       </a>
       <div className="text-md max-w-3xl mx-auto leading-loose pt-4 pb-8 px-8 prose prose-slate dark:prose-invert prose-headings:font-semibold prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-base-content prose-code:text-base-content prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md">
         {children}

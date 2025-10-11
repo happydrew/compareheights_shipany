@@ -65,6 +65,7 @@ export interface NavItem {
   is_expand?: boolean;
   className?: string;
   children?: NavItem[];
+  isHeader?: boolean;
   onClick?: () => void;
 }
 

@@ -41,14 +41,14 @@ export default function SignModal() {
   if (isDesktop) {
     return (
       <Dialog open={showSignModal} onOpenChange={setShowSignModal}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[425px] bg-white dark:bg-white text-gray-900 dark:text-gray-900">
           <DialogHeader>
-            <DialogTitle>{t("sign_modal.sign_in_title")}</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-gray-900">{t("sign_modal.sign_in_title")}</DialogTitle>
+            <DialogDescription className="text-gray-600">
               {t("sign_modal.sign_in_description")}
             </DialogDescription>
             {loginBonusTip && (
-              <p className="text-sm text-muted-foreground mt-2">
+              <p className="text-sm text-gray-600 mt-2">
                 {loginBonusTip}
               </p>
             )}
@@ -61,14 +61,14 @@ export default function SignModal() {
 
   return (
     <Drawer open={showSignModal} onOpenChange={setShowSignModal}>
-      <DrawerContent>
+      <DrawerContent className="bg-white dark:bg-white text-gray-900 dark:text-gray-900">
         <DrawerHeader className="text-left">
-          <DrawerTitle>{t("sign_modal.sign_in_title")}</DrawerTitle>
-          <DrawerDescription>
+          <DrawerTitle className="text-gray-900">{t("sign_modal.sign_in_title")}</DrawerTitle>
+          <DrawerDescription className="text-gray-600">
             {t("sign_modal.sign_in_description")}
           </DrawerDescription>
           {loginBonusTip && (
-            <p className="text-sm text-muted-foreground mt-2">
+            <p className="text-sm text-gray-600 mt-2">
               {loginBonusTip}
             </p>
           )}

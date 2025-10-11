@@ -1,3 +1,5 @@
+﻿import { CUSTOM_CHARACTER_CATEGORY_ID, CUSTOM_CHARACTER_CATEGORY_NAME, CUSTOM_CHARACTER_CATEGORY_PATH } from "@/lib/constants/customCharacters";
+
 export { type Category, DEFAULT_CATEGORIES };
 
 interface Category {
@@ -8,6 +10,12 @@ interface Category {
 }
 
 const DEFAULT_CATEGORIES = [
+    {
+        id: CUSTOM_CHARACTER_CATEGORY_ID,
+        path: CUSTOM_CHARACTER_CATEGORY_PATH,
+        name: CUSTOM_CHARACTER_CATEGORY_NAME,
+        pid: null
+    },
     {
         id: 1,
         path: 'generic',
@@ -234,3 +242,5 @@ const DEFAULT_CATEGORIES = [
         ]
     }
 ];
+
+

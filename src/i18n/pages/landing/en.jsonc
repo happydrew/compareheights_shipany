@@ -5,7 +5,7 @@
     "brand": {
       "title": "CompareHeights",
       "logo": {
-        "src": "/favicon.png",
+        "src": "/favicon.ico",
         "alt": "CompareHeights"
       },
       "url": "/"
@@ -14,12 +14,12 @@
       "items": [
         {
           "title": "Features",
-          "url": "/#feature",
+          "url": "/#features",
           "icon": "RiSparkling2Line"
         },
         {
           "title": "How It Works",
-          "url": "/#usage"
+          "url": "/#how-it-works"
         },
         {
           "title": "Pricing",
@@ -29,16 +29,16 @@
       ]
     },
     "buttons": [
-      {
-        "title": "Try Height Comparison Tool",
-        "icon": "RiPlayFill",
-        "url": "/#height-compare-tool",
-        "target": "_self",
-        "variant": "default"
-      }
+      // {
+      //   "title": "Try For Free",
+      //   "icon": "RiPlayFill",
+      //   "url": "/#height-compare-tool",
+      //   "target": "_self",
+      //   "variant": "default"
+      // }
     ],
     "show_sign": true,
-    "show_theme": true,
+    "show_theme": false,
     "show_locale": true
   },
   "hero": {
@@ -530,7 +530,7 @@
       "title": "CompareHeights",
       "description": "CompareHeights is the ultimate height comparison tool for creating visual height comparisons and height chart comparisons, helping you compare heights accurately and instantly.",
       "logo": {
-        "src": "/favicon.png",
+        "src": "/favicon.ico",
         "alt": "CompareHeights height comparison tool"
       },
       "url": "/"

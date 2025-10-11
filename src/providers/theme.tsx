@@ -18,10 +18,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     }
   }, [locale]);
 
+  const defaultTheme = process.env.NEXT_PUBLIC_DEFAULT_THEME ?? "light";
+
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="dark"
+      defaultTheme={defaultTheme}
       enableSystem
       disableTransitionOnChange
     >

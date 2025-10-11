@@ -81,6 +81,38 @@ export async function getUsers(
   return data;
 }
 
+export async function updateUserProfile(
+  user_uuid: string,
+  data: Partial<Pick<typeof users.$inferInsert, "nickname" | "avatar_url" | "locale">>
+): Promise<typeof users.$inferSelect | undefined> {
+  const updates: Partial<typeof users.$inferInsert> = {};
+
+  if (typeof data.nickname === "string") {
+    updates.nickname = data.nickname;
+  }
+
+  if (typeof data.avatar_url === "string") {
+    updates.avatar_url = data.avatar_url;
+  }
+
+  if (typeof data.locale === "string") {
+    updates.locale = data.locale;
+  }
+
+  if (Object.keys(updates).length === 0) {
+    return undefined;
+  }
+
+  updates.updated_at = new Date();
+
+  const [user] = await db()
+    .update(users)
+    .set(updates)
+    .where(eq(users.uuid, user_uuid))
+    .returning();
+
+  return user;
+}
 export async function updateUserInviteCode(
   user_uuid: string,
   invite_code: string
@@ -165,3 +197,4 @@ export async function getUserCountByDate(
 
   return dateCountMap;
 }
+

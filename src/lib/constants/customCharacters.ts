@@ -1,0 +1,4 @@
+﻿export const CUSTOM_CHARACTER_CATEGORY_ID = 980000;
+export const CUSTOM_CHARACTER_CATEGORY_PATH = 'custom_characters';
+export const CUSTOM_CHARACTER_CATEGORY_NAME = 'My Characters';
+export const CUSTOM_CHARACTER_DEFAULT_ORDER = 100000;

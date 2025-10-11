@@ -11,7 +11,9 @@
     "api_keys": "API 密钥",
     "my_orders": "我的订单",
     "user_center": "用户中心",
-    "admin_system": "管理后台"
+    "admin_system": "管理后台",
+    "dashboard": "项目管理",
+    "subscription": "订阅管理"
   },
   "sign_modal": {
     "sign_in_title": "登录",
@@ -615,6 +617,26 @@
   "hero": {
     "happyUsers": {
       "caption": "来自 {count}+ 位满意用户"
+    }
+  },
+  "subscription": {
+    "title": "订阅管理",
+    "description": "管理您的订阅套餐",
+    "current_plan": "当前套餐",
+    "upgrade_plan": "升级套餐",
+    "view_all_plans": "查看所有套餐",
+    "usage_this_month": "本月使用量",
+    "available_plans": "可用套餐",
+    "available_plans_description": "在我们的价格页面查看所有可用套餐和功能",
+    "free_plan": "免费版",
+    "projects": "项目",
+    "custom_characters": "自定义角色",
+    "storage": "存储空间",
+    "credits": "积分",
+    "quota_exceeded": {
+      "projects": "您已达到 {plan} 套餐的项目数量上限（{limit}个）。请升级以创建更多项目。",
+      "custom_characters": "您已达到 {plan} 套餐的自定义角色数量上限（{limit}个）。请升级以创建更多角色。",
+      "storage": "您已达到 {plan} 套餐的存储空间上限（{limit}MB）。请升级以获得更多存储空间。"
     }
   }
 }

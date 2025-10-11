@@ -457,6 +457,7 @@ const CharacterDisplay: React.FC<{
             style={{
                 height: `${displayHeight}px`,
                 width: `${displayWidth}px`,
+                touchAction: 'none', // 阻止触摸时的默认滚动行为
             }}
             title="Drag to move character position"
             onMouseDown={(e) => {
@@ -464,8 +465,9 @@ const CharacterDisplay: React.FC<{
                 onMove?.(e);
             }}
             onTouchStart={(e) => {
-                e.stopPropagation();
+                // 立即阻止默认行为和事件冒泡
                 e.preventDefault();
+                e.stopPropagation();
                 onMove?.(e);
             }}
         >

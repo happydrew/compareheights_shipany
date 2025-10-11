@@ -87,7 +87,7 @@ const HeightComparisonArticle: React.FC = () => {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-green-theme-50 to-transparent">
+      <section id='how-it-works' className="py-16 px-4 bg-gradient-to-r from-green-theme-50 to-transparent">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-display-md md:text-3xl font-bold text-gray-900 mb-4">
@@ -139,7 +139,7 @@ const HeightComparisonArticle: React.FC = () => {
       </section>
 
       {/* Key Features Section */}
-      <section className="py-16 px-4">
+      <section id='features' className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-display-md md:text-3xl font-bold text-gray-900 mb-4">
