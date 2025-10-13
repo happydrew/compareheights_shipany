@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import {
   Trash2, Users, Share2, Download,
   Grid, ArrowLeftRight, RotateCcw, ZoomIn, ZoomOut, GripVertical,
-  Maximize, Minimize, Palette, Moon, Sun
+  Maximize, Minimize, Palette, Moon, Sun, Save, MoreHorizontal
 } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { CharacterDisplay } from './CharacterDisplay';
@@ -20,8 +20,24 @@ import {
 import { getContentRect } from '@/lib/utils';
 import { generateRandomName, shouldGenerateRandomName } from '@/lib/nameGenerator';
 import { shareUrlManager, type SharedData } from '@/lib/shareUtils';
+import { heightCompareCache } from '@/lib/cache/heightCompareCache';
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { useAppContext } from "@/contexts/app";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-// Import new modular left panel components  
+// Import new modular left panel components
 import { LeftPanel } from '@/components/compareheights/panels/LeftPanel';
 import HeightInput from './HeightInput';
 import { Menu } from 'lucide-react';
@@ -105,17 +121,22 @@ interface HeightCompareToolProps {
   presetData?: SharedData | any; // 预设数据，用于内页展示特定角色比较
   readOnly?: boolean; // 只读模式，用于分享页面
   onChange?: (data: any) => void; // 数据变化回调，用于项目编辑页自动保存
+  onSave?: () => Promise<void>; // 父组件保存函数（项目编辑页）
+  isProjectEdit?: boolean; // 是否在项目编辑页
 }
 
 // Ref 接口 - 暴露给父组件的方法
-export interface HeightCompareToolRef {
-  generateThumbnail: () => Promise<string | null>;
+interface HeightCompareToolRef {
+  generateThumbnail: (options?: { format?: 'base64' | 'blob' }) => Promise<string | Blob | null>;
 }
 
 // 主组件
 const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareToolProps>(
-  ({ presetData, readOnly = false, onChange }, ref) => {
+  ({ presetData, readOnly = false, onChange, onSave, isProjectEdit = false }, ref) => {
     const t = useTranslations('heightCompareTool');
+    const { data: session, status } = useSession();
+    const router = useRouter();
+    const { setShowSignModal } = useAppContext();
     const [unit, setUnit] = useState<Unit>(Unit.CM);
     /**
      * 当前在比较列表中的角色
@@ -124,16 +145,14 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
     const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
     const [selectedComparisonItemId, setSelectedComparisonItemId] = useState<string | null>(null);
     const [showRightPanel, setShowRightPanel] = useState(false);
-    // 临时的高度输入值状态，用于非实时编辑
-    const [tempHeightValue, setTempHeightValue] = useState<string>('');
     const [styleSettings, setStyleSettings] = useState<StyleSettings>({
       backgroundColor: '#ffffff',
       gridLines: true,
       labels: true,
-      shadows: false,
+      shadows: true,
       theme: 'light',
-      chartHeight: 400,
-      spacing: 60
+      chartHeight: 600,
+      spacing: 50,
     });
 
     const [chartAreaHeightPix, setChartAreaHeightPix] = useState<number>(0);
@@ -150,7 +169,6 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
 
     // 分享功能相关状态
     const [isLoadingShareData, setIsLoadingShareData] = useState(false);
-    const [shareUrl, setShareUrl] = useState<string>('');
     const [showShareSuccess, setShowShareSuccess] = useState(false);
     const [skipUrlUpdate, setSkipUrlUpdate] = useState(true); // 初始时跳过URL更新，等初始化完成
     const [isInitialized, setIsInitialized] = useState(false); // 标记是否已初始化
@@ -163,7 +181,6 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
       try {
         // 直接使用当前URL，因为它已经实时同步了
         const currentUrl = window.location.href;
-        setShareUrl(currentUrl);
         return currentUrl;
       } catch (error) {
         console.error('生成分享链接失败:', error);
@@ -191,8 +208,8 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
         setComparisonItems(rebuiltItems);
 
         // 统一读取逻辑：优先从settings读取，其次从扁平结构读取（向后兼容）
-        const titleToLoad = sharedData.settings?.chartTitle || sharedData.chartTitle;
-        const unitToLoad = sharedData.settings?.unit || sharedData.unit;
+        const titleToLoad = sharedData.settings?.chartTitle;
+        const unitToLoad = sharedData.settings?.unit;
 
         if (titleToLoad) {
           setChartTitle(titleToLoad);
@@ -211,8 +228,8 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
             labels: sharedData.settings!.labels ?? prev.labels,
             shadows: sharedData.settings!.shadows ?? prev.shadows,
             theme: sharedData.settings!.theme || prev.theme,
-            chartHeight: sharedData.settings!.chartHeight || prev.chartHeight,
-            spacing: sharedData.settings!.spacing || prev.spacing,
+            chartHeight: sharedData.settings!.chartHeight ?? prev.chartHeight,
+            spacing: sharedData.settings!.spacing ?? prev.spacing,
           }));
         }
 
@@ -262,8 +279,8 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
             labels: settings.labels ?? prev.labels,
             shadows: settings.shadows ?? prev.shadows,
             theme: settings.theme || prev.theme,
-            chartHeight: settings.chartHeight || prev.chartHeight,
-            spacing: settings.spacing || prev.spacing,
+            chartHeight: settings.chartHeight ?? prev.chartHeight,
+            spacing: settings.spacing ?? prev.spacing,
           }));
 
           console.log('Loading preset data success:', rebuiltItems.length, 'characters, title:', settings.chartTitle, 'unit:', settings.unit);
@@ -289,29 +306,43 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
 
       const handleDataInitialization = async () => {
         try {
-          // Priority 1: load from shared URL if present
+          // Priority 1: load preset data (项目编辑页传入的数据)
+          if (presetData && presetData.characters && presetData.characters.length > 0) {
+            console.log('Priority 1: Loading preset data (project edit):', presetData);
+            await loadPresetData(presetData);
+            setIsInitialized(true);
+            // 项目编辑页不需要缓存
+            return;
+          }
+
+          // Priority 2: load from shared URL if present
           if (shareUrlManager.hasSharedData()) {
             const sharedData = shareUrlManager.decodeFromUrl(window.location.search);
             if (sharedData.characters.length > 0) {
-              console.log('Detected shared link, loading shared data', sharedData);
+              console.log('Priority 2: Detected shared link, loading shared data', sharedData);
               await loadSharedComparison(sharedData);
               setIsInitialized(true);
+              // URL分享数据不需要缓存
               return;
             }
           }
 
-          // Priority 2: load preset data passed via props
-          if (presetData && presetData.characters.length > 0) {
-            console.log('Loading preset data:', presetData);
-            await loadPresetData(presetData);
+          // Priority 3: load from cache (缓存数据)
+          const cachedData = heightCompareCache.load();
+          if (cachedData && cachedData.characters.length > 0) {
+            console.log('Priority 3: Loading cached data:', cachedData);
+            await loadSharedComparison(cachedData); // 复用加载逻辑
             setIsInitialized(true);
+            // 清除缓存（已经恢复了）
+            heightCompareCache.clear();
+            toast.success('Restored your previous work');
             return;
           }
 
-          // Priority 3: nothing to load, show empty state
+          // Priority 4: nothing to load, show empty state
           setSkipUrlUpdate(false);
           setIsInitialized(true);
-          console.log('No shared data or preset data, rendering empty state');
+          console.log('No data to load, rendering empty state');
         } catch (error) {
           console.error('Data initialization failed:', error);
           setSkipUrlUpdate(false);
@@ -342,9 +373,6 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
         // 使用replaceState而不是pushState，避免影响浏览器历史记录
         window.history.replaceState(null, '', newUrl);
 
-        // 同时更新shareUrl状态，这样Copy Share Link按钮会得到最新的URL
-        setShareUrl(window.location.origin + newUrl);
-
       } catch (error) {
         console.error('更新URL失败:', error);
       }
@@ -357,21 +385,13 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
         return;
       }
 
-      // 构建项目数据格式
-      const projectData = {
+      // 构建项目数据格式（只存储必要的覆盖信息）
+      const projectData: SharedData = {
         characters: comparisonItems.map(item => ({
           id: item.character.id,
           name: item.character.name,
           height: item.character.height,
-          cat_ids: item.character.cat_ids,
-          media_type: item.character.media_type,
-          media_url: item.character.media_url,
-          thumbnail_url: item.character.thumbnail_url,
-          color: item.character.color,
-          color_customizable: item.character.color_customizable,
-          color_property: item.character.color_property,
-          order: item.order,
-          visible: item.visible,
+          color: item.character.color || undefined,
         })),
         settings: {
           unit: unit === Unit.CM ? 'cm' : 'ft-in',
@@ -385,14 +405,61 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
           chartHeight: styleSettings.chartHeight,
           spacing: styleSettings.spacing,
         },
-        metadata: {
-          version: '1.0',
-          characterCount: comparisonItems.length,
-        },
       };
 
       onChange(projectData);
     }, [comparisonItems, styleSettings, unit, chartTitle, onChange, readOnly, isInitialized, isLoadingShareData]);
+
+    // 自动缓存数据（非项目编辑页且非只读模式）
+    useEffect(() => {
+      // 项目编辑页不需要缓存
+      if (isProjectEdit || readOnly || !isInitialized || isLoadingShareData) {
+        return;
+      }
+
+      // 清除之前的定时器
+      if (cacheTimerRef.current) {
+        clearTimeout(cacheTimerRef.current);
+      }
+
+      // 500ms debounce
+      cacheTimerRef.current = setTimeout(() => {
+        if (comparisonItems.length > 0) {
+          const dataToCache: SharedData = {
+            characters: comparisonItems.map(item => ({
+              id: item.character.id,
+              name: item.character.name,
+              height: item.character.height,
+              color: item.character.color || undefined,
+            })),
+            settings: {
+              unit: unit === Unit.CM ? 'cm' : 'ft-in',
+              chartTitle: chartTitle,
+              backgroundColor: styleSettings.backgroundColor,
+              backgroundImage: styleSettings.backgroundImage,
+              gridLines: styleSettings.gridLines,
+              labels: styleSettings.labels,
+              shadows: styleSettings.shadows,
+              theme: styleSettings.theme,
+              chartHeight: styleSettings.chartHeight,
+              spacing: styleSettings.spacing,
+            },
+          };
+
+          heightCompareCache.save(dataToCache);
+        } else {
+          // 当角色列表为空时，清除缓存
+          heightCompareCache.clear();
+          console.log('Cleared cache because comparisonItems is empty');
+        }
+      }, 500);
+
+      return () => {
+        if (cacheTimerRef.current) {
+          clearTimeout(cacheTimerRef.current);
+        }
+      };
+    }, [comparisonItems, styleSettings, unit, chartTitle, isProjectEdit, readOnly, isInitialized, isLoadingShareData]);
 
     // 添加重置缩放函数
     const resetZoom = () => {
@@ -438,15 +505,6 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
       }
     }, [comparisonItems.length])
 
-    // 同步临时高度值与选中角色的高度值
-    useEffect(() => {
-      if (selectedCharacter) {
-        setTempHeightValue(selectedCharacter.height.toString());
-      } else {
-        setTempHeightValue('');
-      }
-    }, [selectedCharacter?.height, selectedCharacter?.id]);
-
     /**Current conversion ratio between m and px (screen pixels), i.e., how many px equals 1m */
     const pixelsPerM = useMemo(() => {
       // 如果有手动调整的值，使用手动调整的值
@@ -474,10 +532,6 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
       if (Date.now() - zoomStateRef.current.zoomStart < 66) {
         return;
       }
-
-      // if (zoomStateRef.current.isZooming && Date.now() - zoomStateRef.current.zoomStart < 100) {
-      //   return;
-      // }
 
       const container = scrollContainerRef.current;
       if (!container) return;
@@ -545,9 +599,6 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
         chartArea.removeEventListener('wheel', handleWheel);
       };
     }, [handleZoom]); // 移除pixelsPerM依赖以避免重复的事件绑定
-
-    const [leftPanelSplit, setLeftPanelSplit] = useState(50); // 百分比，控制上下区域的高度分配
-    const [isDragging, setIsDragging] = useState(false);
 
     // 添加refs引用
     const rightPanelRef = useRef<HTMLDivElement>(null);
@@ -646,6 +697,18 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
     const [showBackgroundDropdown, setShowBackgroundDropdown] = useState(false)
     const [showBackgroundImageUploadModal, setShowBackgroundImageUploadModal] = useState(false)
     const backgroundButtonRef = useRef<HTMLDivElement>(null)
+
+    // 保存项目相关状态
+    const [showSaveProjectDialog, setShowSaveProjectDialog] = useState(false)
+    const [saveProjectTitle, setSaveProjectTitle] = useState("")
+    const [isSavingProject, setIsSavingProject] = useState(false)
+
+    // 更多选项按钮状态
+    const [showMoreOptionsDropdown, setShowMoreOptionsDropdown] = useState(false)
+    const moreOptionsButtonRef = useRef<HTMLDivElement>(null)
+
+    // 缓存相关
+    const cacheTimerRef = useRef<NodeJS.Timeout | null>(null)
 
     const [isDeskTop, setIsDeskTop] = useState(false)
 
@@ -940,8 +1003,12 @@ Suggested solutions:
       }
     }, [comparisonItems, styleSettings.backgroundColor, chartTitle]);
 
-    // 生成缩略图 (webp base64) - 用于项目编辑页保存封面
-    const generateThumbnail = useCallback(async (): Promise<string | null> => {
+    // 生成缩略图 - 支持返回 base64 或 Blob 格式
+    const generateThumbnail = useCallback(async (
+      options?: { format?: 'base64' | 'blob' }
+    ): Promise<string | Blob | null> => {
+      const format = options?.format || 'base64'; // 默认 base64 保持向后兼容
+
       if (comparisonItems.length === 0) {
         console.warn('No characters to generate thumbnail');
         return null;
@@ -954,7 +1021,7 @@ Suggested solutions:
       }
 
       try {
-        console.log('Generating thumbnail...');
+        console.log('Generating thumbnail, format:', format);
 
         // 使用与导出相同的配置生成图片
         const canvas = await html2canvas(element, {
@@ -973,11 +1040,29 @@ Suggested solutions:
         // 添加水印
         const canvasWithWatermark = addWatermark(canvas);
 
-        // 转换为 webp base64（质量 0.85）
-        const dataUrl = canvasWithWatermark.toDataURL('image/webp', 0.85);
-
-        console.log('Thumbnail generated successfully');
-        return dataUrl;
+        // 根据格式返回不同类型
+        if (format === 'blob') {
+          return new Promise<Blob | null>((resolve) => {
+            canvasWithWatermark.toBlob(
+              (blob) => {
+                if (blob) {
+                  console.log('Thumbnail blob generated successfully, size:', blob.size);
+                  resolve(blob);
+                } else {
+                  console.error('Failed to convert canvas to blob');
+                  resolve(null);
+                }
+              },
+              'image/webp',
+              0.85
+            );
+          });
+        } else {
+          // 默认返回 base64
+          const dataUrl = canvasWithWatermark.toDataURL('image/webp', 0.85);
+          console.log('Thumbnail base64 generated successfully');
+          return dataUrl;
+        }
       } catch (error) {
         console.error('Failed to generate thumbnail:', error);
         return null;
@@ -1193,6 +1278,216 @@ Suggested solutions:
         }
       }
     }, [generateShareLink]);
+
+    // 保存按钮点击处理
+    const handleSaveClick = useCallback(async () => {
+      // 检查是否有角色
+      if (comparisonItems.length === 0) {
+        toast.error("Please add at least one character before saving");
+        return;
+      }
+
+      // 1. 未登录 - 弹出登录弹窗
+      if (status === "unauthenticated") {
+        toast.info("Please sign in to save your project");
+
+        // 确保数据已缓存
+        const dataToCache: SharedData = {
+          characters: comparisonItems.map(item => ({
+            id: item.character.id,
+            name: item.character.name,
+            height: item.character.height,
+            color: item.character.color || undefined,
+          })),
+          settings: {
+            unit: unit === Unit.CM ? 'cm' : 'ft-in',
+            chartTitle: chartTitle,
+            backgroundColor: styleSettings.backgroundColor,
+            backgroundImage: styleSettings.backgroundImage,
+            gridLines: styleSettings.gridLines,
+            labels: styleSettings.labels,
+            shadows: styleSettings.shadows,
+            theme: styleSettings.theme,
+            chartHeight: styleSettings.chartHeight,
+            spacing: styleSettings.spacing,
+          },
+        };
+        heightCompareCache.save(dataToCache);
+
+        // 弹出登录弹窗
+        setShowSignModal(true);
+        return;
+      }
+
+      // 2. 项目编辑页 - 调用父组件保存函数
+      if (isProjectEdit && onSave) {
+        await onSave();
+        return;
+      }
+
+      // 3. 已登录 + 非编辑页 - 显示创建项目弹窗
+      setSaveProjectTitle(chartTitle || "My Height Comparison");
+      setShowSaveProjectDialog(true);
+    }, [
+      status,
+      isProjectEdit,
+      onSave,
+      comparisonItems,
+      unit,
+      chartTitle,
+      styleSettings,
+      router
+    ]);
+
+    // 创建项目（包含封面生成和上传）
+    const handleCreateProject = useCallback(async () => {
+      const trimmedTitle = saveProjectTitle.trim();
+
+      if (!trimmedTitle) {
+        toast.error("Please enter a project name");
+        return;
+      }
+
+      try {
+        setIsSavingProject(true);
+
+        console.log("Creating project with title:", trimmedTitle);
+
+        // 1. 生成封面图（Blob 格式）
+        let thumbnailUrl: string | null = null;
+        if (ref && 'current' in ref && ref.current) {
+          console.log("Generating project thumbnail...");
+          const thumbnailBlob = await ref.current.generateThumbnail({ format: 'blob' });
+
+          if (thumbnailBlob && thumbnailBlob instanceof Blob) {
+            try {
+              // 2. 上传封面到 R2
+              const { uploadThumbnailToR2 } = await import('@/lib/thumbnail-upload');
+              const uploadResult = await uploadThumbnailToR2(thumbnailBlob);
+              thumbnailUrl = uploadResult.publicUrl;
+              console.log("Thumbnail uploaded successfully:", thumbnailUrl);
+            } catch (uploadError) {
+              console.error("Failed to upload thumbnail:", uploadError);
+              toast.error("Failed to upload thumbnail, but project will be created");
+              // 继续创建项目，封面URL为null
+            }
+          } else {
+            console.warn("Failed to generate thumbnail, continuing without it");
+          }
+        }
+
+        // 3. 构建项目数据（只存储必要的覆盖信息）
+        const projectData = {
+          characters: comparisonItems.map(item => ({
+            id: item.character.id,
+            name: item.character.name,      // 用户自定义名称
+            height: item.character.height,  // 用户自定义身高
+            color: item.character.color || undefined     // 用户自定义颜色
+          })),
+          settings: {
+            unit: unit === Unit.CM ? 'cm' : 'ft-in',
+            chartTitle: chartTitle,
+            backgroundColor: styleSettings.backgroundColor,
+            backgroundImage: styleSettings.backgroundImage,
+            gridLines: styleSettings.gridLines,
+            labels: styleSettings.labels,
+            shadows: styleSettings.shadows,
+            theme: styleSettings.theme,
+            chartHeight: styleSettings.chartHeight,
+            spacing: styleSettings.spacing,
+          },
+        };
+
+        // 4. 调用创建项目API
+        const response = await fetch("/api/projects", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            title: trimmedTitle,
+            project_data: projectData,
+            thumbnail_url: thumbnailUrl, // 传入已上传的封面URL
+          }),
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          toast.success("Project created successfully!");
+
+          // 清除缓存
+          heightCompareCache.clear();
+
+          // 关闭弹窗
+          setShowSaveProjectDialog(false);
+          setSaveProjectTitle("");
+
+          // 跳转到项目管理页面
+          router.push("/dashboard/projects");
+        } else {
+          toast.error(result.message || "Failed to create project");
+        }
+      } catch (error) {
+        console.error("Create project error:", error);
+        toast.error("Failed to create project");
+      } finally {
+        setIsSavingProject(false);
+      }
+    }, [
+      saveProjectTitle,
+      comparisonItems,
+      unit,
+      chartTitle,
+      styleSettings,
+      router,
+      ref
+    ]);
+
+    // 导出格式配置
+    const exportFormats = [
+      {
+        type: 'png' as const,
+        label: 'PNG',
+        description: 'High quality, lossless'
+      },
+      {
+        type: 'jpg' as const,
+        label: 'JPG',
+        description: 'Smaller file size'
+      },
+      {
+        type: 'webp' as const,
+        label: 'WebP',
+        description: 'Modern format, best quality'
+      }
+    ];
+
+    // 处理格式选择
+    const handleFormatSelect = useCallback(async (format: 'png' | 'jpg' | 'webp') => {
+      setShowExportDropdown(false);
+      await exportChart(format);
+    }, [exportChart]);
+
+    // 处理更多选项按钮点击
+    const handleMoreOptionsClick = useCallback(() => {
+      setShowMoreOptionsDropdown(!showMoreOptionsDropdown);
+    }, [showMoreOptionsDropdown]);
+
+    // 处理更多选项外部点击
+    useEffect(() => {
+      if (!showMoreOptionsDropdown) return;
+
+      const handleClickOutside = (event: MouseEvent) => {
+        const target = event.target as HTMLElement;
+        if (moreOptionsButtonRef.current && !moreOptionsButtonRef.current.contains(target)) {
+          setShowMoreOptionsDropdown(false);
+        }
+      };
+
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [showMoreOptionsDropdown]);
 
     const [openFullScreenLeftPanel, setOpenFullScreenLeftPanel] = useState(false);
 
@@ -1817,30 +2112,6 @@ Suggested solutions:
       setSelectedCharacter({ ...selectedCharacter, [key]: value });
     };
 
-    // 处理高度输入的提交（回车或失去焦点时）
-    const handleHeightSubmit = () => {
-      const heightValue = parseFloat(tempHeightValue);
-
-      // 只验证是否为有效的正数
-      if (!isNaN(heightValue) && heightValue > 0) {
-        updateCharacter('height', heightValue);
-      } else {
-        // 如果输入无效，恢复到原始值
-        if (selectedCharacter) {
-          setTempHeightValue(selectedCharacter.height.toString());
-        }
-      }
-    };
-
-    // 处理高度输入框的键盘事件
-    const handleHeightKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        handleHeightSubmit();
-        (e.target as HTMLInputElement).blur(); // 失去焦点
-      }
-    };
-
     // 处理图片上传并创建角色
     const handleImageUpload = (imageData: {
       imageUrl: string;
@@ -1874,39 +2145,6 @@ Suggested solutions:
       setShowImageUploadModal(false);
     };
 
-    // 处理拖拽分隔线
-    const handleMouseDown = (e: React.MouseEvent) => {
-      setIsDragging(true);
-      e.preventDefault();
-    };
-
-    const handleMouseMove = useCallback((e: MouseEvent) => {
-      if (!isDragging) return;
-
-      const leftPanel = document.querySelector('.left-panel') as HTMLElement;
-      if (!leftPanel) return;
-
-      const rect = leftPanel.getBoundingClientRect();
-      const y = e.clientY - rect.top;
-      // 确保分隔线始终可见，限制在25%-75%之间
-      const percentage = Math.max(25, Math.min(75, (y / rect.height) * 100));
-      setLeftPanelSplit(percentage);
-    }, [isDragging]);
-
-    const handleMouseUp = useCallback(() => {
-      setIsDragging(false);
-    }, []);
-
-    useEffect(() => {
-      if (isDragging) {
-        document.addEventListener('mousemove', handleMouseMove);
-        document.addEventListener('mouseup', handleMouseUp);
-        return () => {
-          document.removeEventListener('mousemove', handleMouseMove);
-          document.removeEventListener('mouseup', handleMouseUp);
-        };
-      }
-    }, [isDragging, handleMouseMove, handleMouseUp]);
 
     // 处理横向滚动拖拽开始 - 支持鼠标和触摸
     const handleHorizontalScrollStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
@@ -1994,7 +2232,6 @@ Suggested solutions:
           container.scrollWidth * zoomStateRef.current.scrollLeftRatio - container.clientWidth / 2,
           container.scrollWidth - container.clientWidth
         ));
-        //console.log(`updateScrollbarState方法中，正在放大: scrollLeftRatio： ${zoomStateRef.current.scrollLeftRatio}, scrollWidth: ${container.scrollWidth},clientWidth: ${container.clientWidth}, 计算后的scrollLeft: ${scrollLeft}`);
 
         container.scrollLeft = scrollLeft;
 
@@ -2026,7 +2263,6 @@ Suggested solutions:
     // 监听容器滚动和大小变化
     useEffect(() => {
       const container = scrollContainerRef.current;
-      console.log(`useEffect中，container: ${container}`);
       if (!container) return;
 
       // 初始更新
@@ -2034,34 +2270,17 @@ Suggested solutions:
 
       // 监听滚动事件
       const handleScroll = () => {
-        console.log(`handleScroll方法中，container.scrollLeft: ${container.scrollLeft}`);
         updateScrollbarState();
       };
 
       container.addEventListener('scroll', handleScroll);
 
-      // // 创建 ResizeObserver 实例
-      // const resizeObserver = new ResizeObserver((entries) => {
-      //   // isZooming.current = true;
-      //   console.log(`resizeObserver监测到scrollContainerRef大小发生变化，iszooming:${zoomStateRef.current.isZooming}, 更新滚动条状态`);
-      //   updateScrollbarState();
-      // });
-
-      // // 监听容器本身的大小变化
-      // resizeObserver.observe(container);
-
       let charactersContainerResizeObserver: ResizeObserver | null = null;
 
       if (charactersContainerRef.current) {
-        console.log(`useEffect中，添加charactersContainerResizeObserver监听charactersContainerRef: ${charactersContainerRef.current}`);
         charactersContainerResizeObserver = new ResizeObserver((entries) => {
           if (entries.length > 0) {
-            // isZooming.current = true;
-            const entry = entries[0];
-            // if (entry.contentRect.width >= scrollbarState.clientWidth) {
-            console.log(`charactersContainerResizeObserver监测到charactersContainer大小发生变化，iszooming:${zoomStateRef.current.isZooming}, contentRect.width：${entry.contentRect.width}, 更新滚动条状态`);
             updateScrollbarState();
-            // }
           }
         });
 
@@ -2070,20 +2289,11 @@ Suggested solutions:
 
       return () => {
         container.removeEventListener('scroll', handleScroll);
-        // resizeObserver.disconnect();
         if (charactersContainerResizeObserver) {
           charactersContainerResizeObserver.disconnect();
         }
       };
     }, [comparisonItems.length]);
-
-    // 特殊处理：当角色清空时强制更新滚动条状态
-    // useEffect(() => {
-    //   // if (comparisonItems.length === 0) {
-    //   //   updateScrollbarState();
-    //   // }
-    //   updateScrollbarState();
-    // }, [comparisonItems.length]);
 
     // 处理自定义滚动条拖拽 - 支持鼠标和触摸
     const handleScrollbarDragStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
@@ -2177,6 +2387,9 @@ Suggested solutions:
         if (zoomIndicatorTimerRef.current) {
           clearTimeout(zoomIndicatorTimerRef.current);
         }
+        if (cacheTimerRef.current) {
+          clearTimeout(cacheTimerRef.current);
+        }
       };
     }, []);
 
@@ -2235,17 +2448,27 @@ Suggested solutions:
                   <Menu size={20} {...(styleSettings.theme === 'dark' && { color: '#ffffff' })} />
                 </button>
                 <div className="flex items-center justify-end">
-                  {/* <div className="flex items-center space-xl">
-                      <h1 className="text-display-lg text-gray-900">Height Comparison</h1>
-                      <div className="text-body-md text-gray-500">
-                        {comparisonItems.length} {comparisonItems.length === 1 ? 'object' : 'objects'}
-                      </div>
-                    </div> */}
                   <div className="flex items-center gap-2">
+                    {/* 保存按钮 - 只读模式下隐藏 */}
+                    {!readOnly && (
+                      <button
+                        onClick={handleSaveClick}
+                        className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover cursor-pointer ${comparisonItems.length === 0
+                          ? `${themeClasses.bg.secondary} ${themeClasses.text.muted} cursor-not-allowed`
+                          : `${themeClasses.button.base} ${themeClasses.button.hover}`
+                          }`}
+                        title={t('toolbar.saveProject')}
+                        disabled={comparisonItems.length === 0}
+                      >
+                        <Save className="w-4 h-4" />
+                      </button>
+                    )}
+
+                    {/* 单位切换按钮 */}
                     <div className="flex gap-1">
                       <button
                         onClick={() => setUnit(unit === Unit.CM ? Unit.FT_IN : Unit.CM)}
-                        className={`flex items-center gap-1.5 p-1 md:p-2 ${themeClasses.button.base} ${themeClasses.button.hover} rounded-lg text-label-md transition-all duration-300`}
+                        className={`flex items-center gap-1.5 p-1 md:p-2 ${themeClasses.button.base} ${themeClasses.button.hover} rounded-lg text-label-md transition-all duration-300 cursor-pointer`}
                         title={unit === Unit.CM ? t('toolbar.switchToFt') : t('toolbar.switchToCm')}
                       >
                         <span className={unit === Unit.CM ? 'text-green-theme-600 font-bold' : themeClasses.text.secondary}>cm</span>
@@ -2257,7 +2480,7 @@ Suggested solutions:
                       onClick={resetZoom}
                       className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover ${pixelsPerMState === 1
                         ? `${themeClasses.bg.secondary} ${themeClasses.text.muted} cursor-not-allowed`
-                        : `${themeClasses.button.base} ${themeClasses.button.hover}`
+                        : `${themeClasses.button.base} ${themeClasses.button.hover} cursor-pointer`
                         }`}
                       title={t('toolbar.resetZoom')}
                       disabled={pixelsPerMState === 1}
@@ -2273,7 +2496,7 @@ Suggested solutions:
                         }}
                         className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover ${comparisonItems.length === 0
                           ? `${themeClasses.bg.secondary} ${themeClasses.text.muted} cursor-not-allowed`
-                          : `${themeClasses.button.base} ${themeClasses.button.hover}`
+                          : `${themeClasses.button.base} ${themeClasses.button.hover} cursor-pointer`
                           }`}
                         title={t('toolbar.clearAll')}
                         disabled={comparisonItems.length === 0}
@@ -2281,87 +2504,11 @@ Suggested solutions:
                         <Trash2 className="w-4 h-4" />
                       </button>
                     )}
-                    <div className={`w-px h-6 ${themeClasses.divider}`}></div>
-                    <button
-                      onClick={() => setStyleSettings({ ...styleSettings, gridLines: !styleSettings.gridLines })}
-                      className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover ${styleSettings.gridLines ? themeClasses.button.active : `${themeClasses.button.base} ${themeClasses.button.hover}`}`}
-                      title={t('toolbar.gridLines')}
-                    >
-                      <Grid className="w-4 h-4" />
-                    </button>
-
-                    {/* 背景设置按钮 - 只读模式下隐藏 */}
-                    {!readOnly && (
-                      <div className="relative" ref={backgroundButtonRef}>
-                        <button
-                          onClick={handleBackgroundClick}
-                          className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover ${showBackgroundDropdown ? themeClasses.button.active : `${themeClasses.button.base} ${themeClasses.button.hover}`}`}
-                          title={t('toolbar.backgroundSettings')}
-                        >
-                          <Palette className="w-4 h-4" />
-                        </button>
-
-                        {/* 背景设置下拉菜单 */}
-                        {showBackgroundDropdown && (
-                          <div className={`absolute top-full right-0 mt-1 ${themeClasses.bg.primary} ${themeClasses.border.primary} border rounded-lg shadow-lg z-[99999] min-w-[180px]`}>
-                            <div className="py-2">
-                              {/* 纯色背景选项 */}
-                              <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>{t('backgroundSettings.solidColors')}</div>
-                              <div className="px-3 py-2 grid grid-cols-5 gap-2">
-                                {[
-                                  '#ffffff', '#f8f9fa', '#e9ecef', '#dee2e6', '#adb5bd',
-                                  '#6c757d', '#495057', '#343a40', '#212529', '#000000',
-                                  '#fff3cd', '#ffeaa7', '#fdcb6e', '#e17055', '#d63031',
-                                  '#fd79a8', '#fdcb6e', '#00b894', '#00cec9', '#0984e3',
-                                  '#6c5ce7', '#a29bfe', '#fd79a8', '#fdcb6e', '#55a3ff'
-                                ].map((color) => (
-                                  <button
-                                    key={color}
-                                    onClick={() => handleBackgroundColorChange(color)}
-                                    className="w-6 h-6 rounded border border-gray-300 hover:border-gray-400 transition-colors"
-                                    style={{ backgroundColor: color }}
-                                    title={t('backgroundSettings.setBackgroundTo', { color })}
-                                  />
-                                ))}
-                              </div>
-
-                              <div className={`border-t ${themeClasses.border.primary} my-2`}></div>
-
-                              {/* 图片上传选项 */}
-                              <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>{t('backgroundSettings.backgroundImage')}</div>
-                              <button
-                                onClick={() => {
-                                  setShowBackgroundImageUploadModal(true);
-                                  setShowBackgroundDropdown(false);
-                                }}
-                                className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-green-theme-50 hover:text-green-theme-600 flex items-center`}
-                                title={t('backgroundSettings.uploadImage')}
-                              >
-                                <span className="mr-3">🖼️</span>
-                                <div className="font-medium">{t('backgroundSettings.uploadImage')}</div>
-                              </button>
-
-                              {/* 移除背景选项 */}
-                              {styleSettings.backgroundImage && (
-                                <button
-                                  onClick={() => handleBackgroundColorChange('#ffffff')}
-                                  className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-red-50 hover:text-red-600 flex items-center`}
-                                  title="Remove background image"
-                                >
-                                  <span className="mr-3">🗑️</span>
-                                  <div className="font-medium">Remove Background</div>
-                                </button>
-                              )}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    )}
 
                     {/* 主题切换按钮 */}
                     <button
                       onClick={handleThemeToggle}
-                      className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover ${themeClasses.button.base} ${themeClasses.button.hover}`}
+                      className={`p-1 md:p-2 rounded cursor-pointer transition-all duration-300 pulse-on-hover ${themeClasses.button.base} ${themeClasses.button.hover}`}
                       title={styleSettings.theme === 'light' ? t('toolbar.darkTheme') : t('toolbar.lightTheme')}
                     >
                       {styleSettings.theme === 'light' ? (
@@ -2374,7 +2521,7 @@ Suggested solutions:
                     {/* 全屏按钮 */}
                     <button
                       onClick={toggleFullscreen}
-                      className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover ${themeClasses.button.base} ${themeClasses.button.hover}`}
+                      className={`p-1 md:p-2 rounded cursor-pointer transition-all duration-300 pulse-on-hover ${themeClasses.button.base} ${themeClasses.button.hover}`}
                       title={isFullscreen ? t('toolbar.exitFullscreen') : t('toolbar.enterFullscreen')}
                     >
                       {isFullscreen ? (
@@ -2388,7 +2535,7 @@ Suggested solutions:
                     <div className="relative" ref={exportButtonRef}>
                       <button
                         onClick={handleExportClick}
-                        className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover ${comparisonItems.length === 0
+                        className={`p-1 md:p-2 rounded transition-all duration-300 cursor-pointer pulse-on-hover disabled:opacity-50 ${comparisonItems.length === 0
                           ? `${themeClasses.bg.secondary} ${themeClasses.text.muted} cursor-not-allowed`
                           : showExportDropdown
                             ? themeClasses.button.active
@@ -2411,7 +2558,7 @@ Suggested solutions:
                             <button
                               onClick={() => exportChart('png')}
                               disabled={isExporting}
-                              className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-green-theme-50 hover:text-green-theme-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center transition-all duration-300`}
+                              className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-green-theme-50 hover:text-green-theme-600 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center transition-all duration-300`}
                               title='High quality, transparent background'
                             >
                               <span className="mr-3">🖼️</span>
@@ -2420,7 +2567,7 @@ Suggested solutions:
                             <button
                               onClick={() => exportChart('jpg')}
                               disabled={isExporting}
-                              className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-green-theme-50 hover:text-green-theme-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center transition-all duration-300`}
+                              className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-green-theme-50 hover:text-green-theme-600 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center transition-all duration-300`}
                               title='Smaller file size, easy to share'
                             >
                               <span className="mr-3">📷</span>
@@ -2429,7 +2576,7 @@ Suggested solutions:
                             <button
                               onClick={() => exportChart('webp')}
                               disabled={isExporting}
-                              className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-green-theme-50 hover:text-green-theme-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center transition-all duration-300`}
+                              className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-green-theme-50 hover:text-green-theme-600 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center transition-all duration-300`}
                               title='Modern format, high compression'
                             >
                               <span className="mr-3">🌐</span>
@@ -2439,12 +2586,13 @@ Suggested solutions:
                         </div>
                       )}
                     </div>
+
                     {/* 分享按钮和下拉菜单 */}
                     <div className="relative" ref={shareButtonRef}>
                       <button
                         onClick={handleShareClick}
                         disabled={comparisonItems.length === 0 || isSharing}
-                        className={`p-1 md:p-2 rounded ${themeClasses.button.base} ${themeClasses.button.hover} disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300`}
+                        className={`p-1 md:p-2 rounded ${themeClasses.button.base} ${themeClasses.button.hover} cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300`}
                         title="Share comparison"
                       //onMouseEnter={() => setShowShareDropdown(true)}
                       >
@@ -2459,8 +2607,29 @@ Suggested solutions:
                       {showShareDropdown && (
                         <div className={`absolute top-full right-0 mt-1 ${themeClasses.bg.primary} ${themeClasses.border.primary} border rounded-lg shadow-lg z-[99999] min-w-[200px]`}>
                           <div className="py-2">
+                            {/* 新增: Share Project 选项 */}
+                            {!readOnly && (
+                              <>
+                                <button
+                                  onClick={() => {
+                                    toast.info("Share Project feature coming soon!");
+                                    setShowShareDropdown(false);
+                                  }}
+                                  className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-blue-50 hover:text-blue-600 flex items-center transition-colors`}
+                                  title="Save and share this project"
+                                >
+                                  <span className="mr-3">💾</span>
+                                  <div>
+                                    <div className="font-medium">Share Project</div>
+                                    <div className={`text-xs ${themeClasses.text.muted}`}>Save and get shareable link</div>
+                                  </div>
+                                </button>
+                                <div className={`border-t ${themeClasses.border.primary} my-2`}></div>
+                              </>
+                            )}
+
                             {/* 社交媒体平台 */}
-                            <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>Social Media</div>
+                            <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>Share Snapshot</div>
                             {socialPlatforms.map((platform) => (
                               <button
                                 key={platform.name}
@@ -2502,6 +2671,117 @@ Suggested solutions:
                         </div>
                       )}
                     </div>
+
+                    {/* 更多选项按钮 (网格和背景移到这里) - 移到最右侧 */}
+                    <div className="relative" ref={moreOptionsButtonRef}>
+                      <button
+                        onClick={handleMoreOptionsClick}
+                        className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover cursor-pointer ${showMoreOptionsDropdown
+                          ? themeClasses.button.active
+                          : `${themeClasses.button.base} ${themeClasses.button.hover}`
+                          }`}
+                        title={t('toolbar.moreOptions')}
+                      >
+                        <MoreHorizontal className="w-4 h-4" />
+                      </button>
+
+                      {/* 更多选项下拉菜单 */}
+                      {showMoreOptionsDropdown && (
+                        <div className={`absolute top-full right-0 mt-1 ${themeClasses.bg.primary} ${themeClasses.border.primary} border rounded-lg shadow-lg z-[99999] min-w-[200px]`}>
+                          <div className="py-2">
+                            {/* 网格显隐 */}
+                            <button
+                              onClick={() => {
+                                setStyleSettings({ ...styleSettings, gridLines: !styleSettings.gridLines });
+                                setShowMoreOptionsDropdown(false);
+                              }}
+                              className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-green-theme-50 hover:text-green-theme-600 flex items-center justify-between transition-colors cursor-pointer`}
+                            >
+                              <div className="flex items-center">
+                                <Grid className="w-4 h-4 mr-3" />
+                                <span className="font-medium">{t('toolbar.gridLines')}</span>
+                              </div>
+                              {styleSettings.gridLines && <span className="text-green-theme-600">✓</span>}
+                            </button>
+
+                            {/* 背景设置 - 只读模式下隐藏 */}
+                            {!readOnly && (
+                              <button
+                                onClick={() => {
+                                  setShowBackgroundDropdown(true);
+                                  setShowMoreOptionsDropdown(false);
+                                }}
+                                className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-green-theme-50 hover:text-green-theme-600 flex items-center transition-colors cursor-pointer`}
+                              >
+                                <Palette className="w-4 h-4 mr-3" />
+                                <span className="font-medium">{t('toolbar.backgroundSettings')}</span>
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* 背景设置下拉菜单（保持原有功能） - 只读模式下隐藏 */}
+                      {!readOnly && showBackgroundDropdown && (
+                        <div ref={backgroundButtonRef}
+                          className="absolute top-full right-0 z-[99999]">
+                          {/* 背景设置下拉菜单 */}
+                          {showBackgroundDropdown && (
+                            <div className={`absolute top-full right-0 mt-1 ${themeClasses.bg.primary} ${themeClasses.border.primary} border rounded-lg shadow-lg z-[99999] min-w-[180px]`}>
+                              <div className="py-2">
+                                {/* 纯色背景选项 */}
+                                <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>{t('backgroundSettings.solidColors')}</div>
+                                <div className="px-3 py-2 grid grid-cols-5 gap-2">
+                                  {[
+                                    '#ffffff', '#f8f9fa', '#e9ecef', '#dee2e6', '#adb5bd',
+                                    '#6c757d', '#495057', '#343a40', '#212529', '#000000',
+                                    '#fff3cd', '#ffeaa7', '#fdcb6e', '#e17055', '#d63031',
+                                    '#fd79a8', '#fdcb6e', '#00b894', '#00cec9', '#0984e3',
+                                    '#6c5ce7', '#a29bfe', '#fd79a8', '#fdcb6e', '#55a3ff'
+                                  ].map((color) => (
+                                    <button
+                                      key={color}
+                                      onClick={() => handleBackgroundColorChange(color)}
+                                      className="w-6 h-6 rounded border border-gray-300 hover:border-gray-400 transition-colors"
+                                      style={{ backgroundColor: color }}
+                                      title={t('backgroundSettings.setBackgroundTo', { color })}
+                                    />
+                                  ))}
+                                </div>
+
+                                <div className={`border-t ${themeClasses.border.primary} my-2`}></div>
+
+                                {/* 图片上传选项 */}
+                                <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>{t('backgroundSettings.backgroundImage')}</div>
+                                <button
+                                  onClick={() => {
+                                    setShowBackgroundImageUploadModal(true);
+                                    setShowBackgroundDropdown(false);
+                                  }}
+                                  className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-green-theme-50 hover:text-green-theme-600 flex items-center`}
+                                  title={t('backgroundSettings.uploadImage')}
+                                >
+                                  <span className="mr-3">🖼️</span>
+                                  <div className="font-medium">{t('backgroundSettings.uploadImage')}</div>
+                                </button>
+
+                                {/* 移除背景选项 */}
+                                {styleSettings.backgroundImage && (
+                                  <button
+                                    onClick={() => handleBackgroundColorChange('#ffffff')}
+                                    className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-red-50 hover:text-red-600 flex items-center`}
+                                    title="Remove background image"
+                                  >
+                                    <span className="mr-3">🗑️</span>
+                                    <div className="font-medium">Remove Background</div>
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -2534,13 +2814,13 @@ Suggested solutions:
                         onChange={(e) => setChartTitle(e.target.value)}
                         onBlur={() => setIsEditingTitle(false)}
                         onKeyDown={handleTitleKeyDown}
-                        className={`text-base md:text-lg font-medium ${themeClasses.text.primary} bg-transparent border ${themeClasses.border.secondary} rounded px-3 py-1 text-center min-w-[300px] max-w-[50vw] focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-transparent shadow-sm`}
+                        className={`text-base md:text-lg font-medium ${themeClasses.text.primary} bg-transparent border ${themeClasses.border.secondary} rounded px-3 py-1 text-center min-w-[300px] max-w-[50vw] focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-transparent`}
                         placeholder={t('chartArea.enterChartTitle')}
                       />
                     ) : (
                       <h2
                         onClick={() => setIsEditingTitle(true)}
-                        className={`text-base md:text-lg font-medium ${themeClasses.text.primary} bg-transparent rounded px-3 py-1 transition-colors shadow-sm border border-transparent ${themeClasses.border.primary} hover:border-opacity-50 max-w-[50vw] break-words text-center`}
+                        className={`text-base md:text-lg font-medium ${themeClasses.text.primary} bg-transparent rounded px-3 py-1 transition-colors border border-transparent ${themeClasses.border.primary} hover:border-opacity-50 max-w-[50vw] break-words text-center`}
                         title={t('chartArea.clickToEditTitle')}
                       >
                         {chartTitle}
@@ -2864,7 +3144,6 @@ Suggested solutions:
         </div >
 
 
-
         {/* 左侧角色列表Fixed拖拽元素 - 跟随鼠标移动用于直观交互 */}
         {leftPanelDragState.isDragging && leftPanelDragState.draggedItemId && (() => {
           const draggedItem = comparisonItems.find(item => item.id === leftPanelDragState.draggedItemId);
@@ -2905,8 +3184,6 @@ Suggested solutions:
           );
         })()}
 
-        {/* 导出格式选择弹窗已移除，改为下拉菜单 */}
-
         {/* 图片上传弹窗 */}
         <ImageUploadModal
           isOpen={showImageUploadModal}
@@ -2920,6 +3197,72 @@ Suggested solutions:
           onClose={() => setShowBackgroundImageUploadModal(false)}
           onSave={handleBackgroundImageSave}
         />
+
+        {/* 保存项目弹窗 */}
+        <Dialog
+          open={showSaveProjectDialog}
+          onOpenChange={(open) => {
+            setShowSaveProjectDialog(open);
+            if (!open) {
+              setSaveProjectTitle("");
+              setIsSavingProject(false);
+            }
+          }}
+        >
+          <DialogContent className={themeClasses.bg.primary}>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              if (!isSavingProject) {
+                handleCreateProject();
+              }
+            }}>
+              <DialogHeader>
+                <DialogTitle className={themeClasses.text.primary}>Save as New Project</DialogTitle>
+                <DialogDescription className={themeClasses.text.secondary}>
+                  Enter a name for your height comparison project. It will be saved to your dashboard.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-2 py-4">
+                <Label htmlFor="save-project-title" className={themeClasses.text.primary}>
+                  Project name
+                </Label>
+                <Input
+                  id="save-project-title"
+                  placeholder="My height comparison"
+                  value={saveProjectTitle}
+                  onChange={(e) => setSaveProjectTitle(e.target.value)}
+                  autoFocus
+                  disabled={isSavingProject}
+                  className={`${themeClasses.bg.primary} ${themeClasses.text.primary} ${themeClasses.border.primary}`}
+                />
+              </div>
+              <DialogFooter>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setShowSaveProjectDialog(false)}
+                  disabled={isSavingProject}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  disabled={isSavingProject || !saveProjectTitle.trim()}
+                  className="min-w-[100px]"
+                >
+                  {isSavingProject ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current mr-2"></div>
+                      Saving...
+                    </>
+                  ) : (
+                    'Save Project'
+                  )}
+                </Button>
+              </DialogFooter>
+            </form>
+          </DialogContent>
+        </Dialog>
       </div >
     );
   });

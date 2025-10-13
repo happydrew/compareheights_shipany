@@ -8,28 +8,27 @@ export interface SharedCharacterData {
   color?: string;    // 用户自定义颜色，可选覆盖
 }
 
+type Unit = 'cm' | 'ft-in';
+
 // 样式设置接口
 export interface SharedSettings {
-  unit: 'cm' | 'ft-in';
+  unit: Unit;
   chartTitle: string;
-  backgroundColor?: string;
-  backgroundImage?: string;
-  gridLines?: boolean;
-  labels?: boolean;
-  shadows?: boolean;
-  theme?: 'light' | 'dark';
-  chartHeight?: number;
-  spacing?: number;
+  backgroundColor: string;
+  backgroundImage?: string;  // 可选：用户可能没有上传背景图
+  gridLines: boolean;
+  labels: boolean;
+  shadows: boolean;
+  theme: 'light' | 'dark';
+  chartHeight: number;
+  spacing: number;
 }
 
-// 分享数据接口（支持两种格式）
+// 分享数据接口
+// 用于 URL 分享和项目数据存储
 export interface SharedData {
   characters: SharedCharacterData[];
-  // 扁平格式（用于URL分享，向后兼容）
-  chartTitle?: string;
-  unit?: string;
-  // 嵌套格式（用于项目数据）
-  settings?: SharedSettings;
+  settings: SharedSettings;  // 必填，包含完整的图表设置
 }
 
 // 比较项目接口（从HeightCompareTool.tsx复制）
@@ -87,9 +86,18 @@ export class ShareUrlManager {
 
     if (!urlToParse) {
       return {
-        chartTitle: '',
-        unit: 'cm',
-        characters: []
+        characters: [],
+        settings: {
+          unit: 'cm',
+          chartTitle: '',
+          backgroundColor: '#ffffff',
+          gridLines: true,
+          labels: true,
+          shadows: true,
+          theme: 'light',
+          chartHeight: 600,
+          spacing: 50,
+        }
       };
     }
 
@@ -97,7 +105,7 @@ export class ShareUrlManager {
 
     // 获取图表标题和单位制
     const chartTitle = params.get('ct') || '';
-    const unit = params.get('u') || 'cm';
+    const unit: Unit = (params.get('u') || 'cm') as Unit;
 
     // 获取所有角色参数值
     const cids = params.getAll('cid');
@@ -109,9 +117,18 @@ export class ShareUrlManager {
     if (cids.length !== cns.length || cids.length !== chs.length || cids.length !== ccs.length) {
       console.warn('分享链接参数数量不一致，可能已损坏');
       return {
-        chartTitle,
-        unit,
-        characters: []
+        characters: [],
+        settings: {
+          unit: 'cm',
+          chartTitle: '',
+          backgroundColor: '#ffffff',
+          gridLines: true,
+          labels: true,
+          shadows: true,
+          theme: 'light',
+          chartHeight: 600,
+          spacing: 50,
+        }
       };
     }
 
@@ -151,9 +168,19 @@ export class ShareUrlManager {
     }
 
     return {
-      chartTitle,
-      unit,
-      characters
+      characters,
+      settings: {
+        unit,
+        chartTitle,
+        // URL 分享使用默认样式设置
+        backgroundColor: '#ffffff',
+        gridLines: true,
+        labels: true,
+        shadows: true,
+        theme: 'light',
+        chartHeight: 600,
+        spacing: 50,
+      }
     };
   }
 

@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
 
     // 解析请求体
     const body = await req.json();
-    const { title, project_data } = body;
+    const { title, project_data, thumbnail_url } = body;
 
     if (!title || !project_data) {
       return NextResponse.json(
@@ -118,7 +118,7 @@ export async function POST(req: NextRequest) {
       user_uuid: userInfo.uuid,
       title,
       project_data,
-      thumbnail_url: null,
+      thumbnail_url,
       is_public: false,
       view_count: 0,
       status: "active",

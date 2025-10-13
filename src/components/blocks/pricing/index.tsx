@@ -152,7 +152,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
               </RadioGroup>
             </div>
           )}
-          <div className="w-full mt-0 grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+          <div className="w-full mt-0 flex flex-col md:flex-row justify-around items-center max-w-7xl mx-auto">
             {pricing.items?.map((item, index) => {
               if (item.group && item.group !== group) {
                 return null;
@@ -161,11 +161,10 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
               return (
                 <div
                   key={index}
-                  className={`rounded-lg p-6 max-w-md mx-auto w-full ${
-                    item.is_featured
-                      ? "border-primary border-2 bg-card text-card-foreground"
-                      : "border-muted border"
-                  }`}
+                  className={`rounded-lg p-6 md:max-w-sm mx-auto w-full ${item.is_featured
+                    ? "border-primary border-2 bg-card text-card-foreground"
+                    : "border-muted border"
+                    }`}
                 >
                   <div className="flex h-full flex-col justify-between gap-5">
                     <div>
@@ -259,8 +258,8 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
                         >
                           {(!isLoading ||
                             (isLoading && productId !== item.product_id)) && (
-                            <p>{item.button.title}</p>
-                          )}
+                              <p>{item.button.title}</p>
+                            )}
 
                           {isLoading && productId === item.product_id && (
                             <p>{item.button.title}</p>

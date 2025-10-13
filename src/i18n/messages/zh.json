@@ -619,6 +619,12 @@
       "caption": "来自 {count}+ 位满意用户"
     }
   },
+  "heightCompareTool": {
+    "toolbar": {
+      "saveProject": "保存项目",
+      "moreOptions": "更多选项"
+    }
+  },
   "subscription": {
     "title": "订阅管理",
     "description": "管理您的订阅套餐",

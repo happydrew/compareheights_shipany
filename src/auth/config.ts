@@ -4,6 +4,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { NextAuthConfig } from "next-auth";
 import { Provider } from "next-auth/providers/index";
 import { handleSignInUser } from "./handler";
+import { ProxyAgent } from "undici";
 
 
 // Add proxy support for fetch requests
@@ -13,10 +14,23 @@ let proxyAgent: any = null;
 if (process.env.HTTP_PROXY || process.env.HTTPS_PROXY) {
   console.log("Setting up proxy for OAuth requests");
   try {
-    // For Google OAuth requests, we need to use proxy
-    const { HttpsProxyAgent } = require('https-proxy-agent');
-    proxyAgent = new HttpsProxyAgent(process.env.HTTPS_PROXY || process.env.HTTP_PROXY);
-    console.log("Proxy agent configured:", process.env.HTTPS_PROXY || process.env.HTTP_PROXY);
+    // Use undici's ProxyAgent for Next.js fetch
+    const proxyUrl = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
+    proxyAgent = new ProxyAgent(proxyUrl as string);
+    console.log("Proxy agent configured:", proxyUrl);
+
+    // Override global fetch to use proxy for all requests
+    global.fetch = async (url: any, options: any = {}) => {
+      // Only use proxy for external HTTPS requests (Google OAuth, etc.)
+      if (typeof url === 'string' && (url.startsWith('https://') || url.startsWith('http://'))) {
+        // Don't proxy localhost or internal requests
+        if (!url.includes('localhost') && !url.includes('127.0.0.1')) {
+          console.log("Using proxy for request to:", url);
+          options.dispatcher = proxyAgent;
+        }
+      }
+      return originalFetch(url, options);
+    };
   } catch (error: any) {
     console.warn("Failed to setup proxy agent:", error.message);
   }
@@ -59,7 +73,7 @@ if (
 
         // Add proxy agent if available
         if (proxyAgent) {
-          (fetchOptions as any).agent = proxyAgent;
+          (fetchOptions as any).dispatcher = proxyAgent;
         }
 
         const response = await fetch(
