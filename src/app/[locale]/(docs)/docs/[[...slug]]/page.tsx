@@ -2,12 +2,11 @@ import { source } from "@/lib/source";
 import {
   DocsPage,
   DocsBody,
-  DocsDescription,
-  DocsTitle,
 } from "fumadocs-ui/page";
 import { notFound } from "next/navigation";
 import { createRelativeLink } from "fumadocs-ui/mdx";
 import { getMDXComponents } from "@/mdx-components";
+import { DocHeader } from "@/components/docs/DocHeader";
 
 export default async function DocsContentPage(props: {
   params: Promise<{ slug?: string[]; locale?: string }>;
@@ -19,16 +18,26 @@ export default async function DocsContentPage(props: {
 
   const MDXContent = page.data.body;
 
+  // Extract frontmatter data
+  const frontmatter = page.data as any;
+  const author = frontmatter.author;
+  const date = frontmatter.date;
+
   return (
     <DocsPage
       toc={page.data.toc}
       full={page.data.full}
       tableOfContent={{
         style: "clerk",
+        enabled: true,
       }}
     >
-      <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
+      <DocHeader
+        title={page.data.title}
+        description={page.data.description}
+        author={author}
+        date={date}
+      />
       <DocsBody>
         <MDXContent
           components={getMDXComponents({

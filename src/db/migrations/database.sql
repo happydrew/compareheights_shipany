@@ -19,6 +19,10 @@ CREATE TABLE public.characters (
 
   -- 排序字段
   order_num INTEGER NOT NULL DEFAULT 0   -- 显示排序，数字越小越靠前
+  
+  character_type TEXT NOT NULL DEFAULT 'public' CHECK (character_type IN ('public', 'custom'));
+
+  user_uuid TEXT;
 );
 
 COMMENT ON TABLE public.characters IS '角色数据表，存储身高比较工具中的角色信息，支持从夸克尺度到宇宙尺度';
@@ -35,6 +39,8 @@ COMMENT ON COLUMN public.characters.color IS '默认颜色，HEX格式(如#3B82F
 COMMENT ON COLUMN public.characters.color_customizable IS '是否支持自定义颜色，主要用于SVG角色';
 COMMENT ON COLUMN public.characters.color_property IS 'SVG中需要修改颜色的属性名，多个属性用逗号分隔(如fill,stroke)';
 COMMENT ON COLUMN public.characters.order_num IS '显示排序，数字越小越靠前，用于控制角色在列表中的显示顺序';
+COMMENT ON COLUMN public.characters.character_type IS '角色类型：public(公共角色)或custom(自定义角色)';
+COMMENT ON COLUMN public.characters.user_uuid IS '角色创建者的UUID';
 
 -- 创建索引
 CREATE INDEX idx_characters_cat_ids ON public.characters USING GIN (cat_ids); -- GIN索引支持数组包含查询

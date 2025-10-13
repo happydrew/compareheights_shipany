@@ -27,7 +27,7 @@ function splitImageDataUrl(dataUrl: string): { metadata: string; base64: string 
 }
 
 interface RouteContext {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 function extractR2KeyFromUrl(url: string): string | null {
@@ -51,7 +51,8 @@ export async function GET(_request: NextRequest, context: RouteContext) {
       return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
     }
 
-    const character = await findCustomCharacterById(userInfo.uuid, context.params.id);
+    const { id } = await context.params;
+    const character = await findCustomCharacterById(userInfo.uuid, id);
     if (!character) {
       return NextResponse.json({ success: false, message: 'Character not found' }, { status: 404 });
     }
@@ -157,7 +158,8 @@ export async function PATCH(request: NextRequest, context: RouteContext) {
       return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
     }
 
-    const existing = await findCustomCharacterById(userInfo.uuid, context.params.id);
+    const { id } = await context.params;
+    const existing = await findCustomCharacterById(userInfo.uuid, id);
     if (!existing) {
       return NextResponse.json({ success: false, message: 'Character not found' }, { status: 404 });
     }
@@ -248,7 +250,7 @@ export async function PATCH(request: NextRequest, context: RouteContext) {
 
     updates.cat_ids = existing.cat_ids?.length ? existing.cat_ids : [0, CUSTOM_CHARACTER_CATEGORY_ID];
 
-    const updated = await updateCustomCharacterRecord(userInfo.uuid, context.params.id, updates);
+    const updated = await updateCustomCharacterRecord(userInfo.uuid, id, updates);
 
     return NextResponse.json({
       success: true,
@@ -274,12 +276,13 @@ export async function DELETE(_request: NextRequest, context: RouteContext) {
       return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
     }
 
-    const existing = await findCustomCharacterById(userInfo.uuid, context.params.id);
+    const { id } = await context.params;
+    const existing = await findCustomCharacterById(userInfo.uuid, id);
     if (!existing) {
       return NextResponse.json({ success: false, message: 'Character not found' }, { status: 404 });
     }
 
-    await deleteCustomCharacterRecord(userInfo.uuid, context.params.id);
+    await deleteCustomCharacterRecord(userInfo.uuid, id);
 
     const mediaKey = extractR2KeyFromUrl(existing.media_url);
     if (mediaKey) {

@@ -110,6 +110,7 @@ export function dataUrlToFile(dataUrl: string, fileName: string): File {
 
 /**
  * Upload custom character image using presigned URL
+ * Reuses the /api/upload endpoint for consistency
  */
 export async function uploadCustomCharacterImage(
   imageData: string,
@@ -120,25 +121,37 @@ export async function uploadCustomCharacterImage(
     // Convert data URL to File
     const file = dataUrlToFile(imageData, fileName);
 
-    // Get presigned URL from backend
-    const presignedResponse = await fetch('/api/custom-characters/presigned-url', {
+    // Get presigned URL from backend using the unified /api/upload endpoint
+    const presignedResponse = await fetch('/api/upload', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        method: 'presigned-url',
         fileName: file.name,
         contentType: file.type,
         fileSize: file.size,
+        folder: 'custom-characters', // Specify folder for custom character images
       }),
       signal: options?.signal,
     });
 
-    const presignedData = await presignedResponse.json();
-
-    if (!presignedResponse.ok || !presignedData.success) {
-      throw new Error(presignedData.message || 'Failed to get upload URL');
+    if (!presignedResponse.ok) {
+      const errorData = await presignedResponse.json();
+      throw new Error(errorData.error || errorData.message || 'Failed to get upload URL');
     }
 
-    const { uploadUrl, key, publicUrl } = presignedData.data;
+    const presignedData = await presignedResponse.json();
+
+    if (!presignedData.success) {
+      throw new Error(presignedData.error || presignedData.message || 'Failed to get upload URL');
+    }
+
+    // Extract data from response (data is at root level, not nested in .data)
+    const { uploadUrl, key, publicUrl } = presignedData;
+
+    if (!uploadUrl || !publicUrl) {
+      throw new Error('Invalid response: missing uploadUrl or publicUrl');
+    }
 
     // Upload file to R2 using presigned URL
     return new Promise((resolve, reject) => {

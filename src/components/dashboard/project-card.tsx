@@ -180,7 +180,7 @@ export function ProjectCard({
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 onClick={() => onDelete(project.uuid)}
-                className="cursor-pointer text-red-600 focus:text-red-600 focus:bg-red-50"
+                className="cursor-pointer text-red-600 focus:text-red-600 focus:bg-red-100"
               >
                 <RiDeleteBinLine className="mr-2 h-4 w-4" />
                 Delete

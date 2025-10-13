@@ -9,7 +9,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
 
   return (
     <section id={footer.name} className="py-16 mt-32 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="max-w-[90rem] mx-auto px-8">
         <footer>
           <div className="flex flex-col items-center justify-between gap-10 text-center lg:flex-row lg:text-left">
             <div className="flex w-full max-w-96 shrink flex-col items-center justify-between gap-6 lg:items-start">
@@ -50,14 +50,21 @@ export default function Footer({ footer }: { footer: FooterType }) {
                 </ul>
               )}
             </div>
-            <div className="grid grid-cols-3 gap-6 lg:gap-20">
+            <div className="flex flex-col lg:flex-row flex-wrap justify-between items-start gap-6 lg:gap-10">
               {footer.nav?.items?.map((item, i) => (
                 <div key={i}>
                   <p className="mb-6 font-bold">{item.title}</p>
                   <ul className="space-y-4 text-sm text-muted-foreground">
                     {item.children?.map((iitem, ii) => (
                       <li key={ii} className="font-medium hover:text-primary">
-                        <Link href={iitem.url || ""} target={iitem.target}>
+                        <Link href={iitem.url || ""} target={iitem.target} className="flex justify-start items-center gap-1">
+                          {iitem.image && (
+                            <img
+                              src={iitem.image.src}
+                              alt={iitem.image.alt}
+                              className={`${iitem.className} w-5 h-5`}
+                            />
+                          )}
                           {iitem.title}
                         </Link>
                       </li>
@@ -67,7 +74,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
               ))}
             </div>
           </div>
-          <div className="mt-8 flex flex-col justify-between gap-4 border-t pt-8 text-center text-sm font-medium text-muted-foreground lg:flex-row lg:items-center lg:text-left">
+          <div className="mt-8 flex flex-col justify-between gap-4 border-t border-gray-200 pt-8 text-center text-sm font-medium text-muted-foreground lg:flex-row lg:items-center lg:text-left">
             {footer.copyright && (
               <p>
                 {footer.copyright}

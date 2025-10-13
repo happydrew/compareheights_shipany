@@ -539,49 +539,74 @@
     "nav": {
       "items": [
         {
-          "title": "Product",
+          "title": "Document",
           "children": [
             {
-              "title": "Features",
-              "url": "/#feature"
-            },
-            {
-              "title": "Pricing",
-              "url": "/pricing"
-            },
-            {
-              "title": "Tool",
-              "url": "/#height-compare-tool"
+              "title": "User Guide",
+              "url": "https://docs.compareheights.com/user-guide"
             }
           ]
         },
-        // {
-        //   "title": "Resources",
-        //   "children": [
-        //     {
-        //       "title": "Tutorial",
-        //       "url": "/tutorial"
-        //     },
-        //     {
-        //       "title": "API Docs",
-        //       "url": "/docs"
-        //     },
-        //     {
-        //       "title": "Blog",
-        //       "url": "/blog"
-        //     }
-        //   ]
-        // },
         {
-          "title": "Company",
+          "title": "Useful Tools",
           "children": [
             {
-              "title": "About",
-              "url": "/about"
+              "title": "Random Pokemon Generator",
+              "url": "https://randompokegen.cc",
+              "image": {
+                "src": "https://randompokegen.cc/favicon.ico",
+                "alt": "Random Pokemon Generator"
+              }
             },
+            {
+              "title": "AutoCommentAI",
+              "url": "https://autocommentai.cc",
+              "image": {
+                "src": "https://autocommentai.cc/favicon.png",
+                "alt": "AutoCommentAI"
+              }
+            }
+          ]
+        },
+        {
+          "title": "About",
+          "children": [
             {
               "title": "Contact",
               "url": "/contact"
+            },
+            {
+              "title": "Privacy Policy",
+              "url": "/privacy-policy"
+            },
+            {
+              "title": "Terms of Service",
+              "url": "/terms-of-service"
+            },
+            {
+              "title": "Email: drewgrant616@gmail.com",
+              "url": "mailto:drewgrant616@gmail.com"
+            }
+          ]
+        },
+        {
+          "title": "Partner Links",
+          "children": [
+            {
+              "title": "Contact",
+              "url": "/contact"
+            },
+            {
+              "title": "Privacy Policy",
+              "url": "/privacy-policy"
+            },
+            {
+              "title": "Terms of Service",
+              "url": "/terms-of-service"
+            },
+            {
+              "title": "Email: drewgrant616@gmail.com",
+              "url": "mailto:drewgrant616@gmail.com"
             }
           ]
         }

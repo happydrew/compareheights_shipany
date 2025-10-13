@@ -7,7 +7,9 @@
       "Bash(pnpm run:*)",
       "Bash(pnpm exec tsc:*)",
       "WebFetch(domain:docs.shipany.ai)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "WebFetch(domain:compareheights.org)",
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []

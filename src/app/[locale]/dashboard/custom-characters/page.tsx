@@ -173,13 +173,14 @@ export default function CustomCharactersPage() {
       setCroppedImageData(imageData.imageUrl);
       setImagePreview(imageData.imageUrl);
 
-      if (Number.isFinite(imageData.heightInM) && imageData.heightInM > 0) {
+      // Only set height if the height input is empty (don't overwrite user's manual input)
+      if (!newHeight && Number.isFinite(imageData.heightInM) && imageData.heightInM > 0) {
         setNewHeight(formatHeightValue(imageData.heightInM));
       }
 
       setIsImageModalOpen(false);
     },
-    [maxImageSizeBytes]
+    [maxImageSizeBytes, newHeight]
   );
 
   const handleOpenCreateDialog = () => {

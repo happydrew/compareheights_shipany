@@ -25,6 +25,10 @@ interface Character {
 
   // 排序字段
   order_num?: number;
+
+  // 自定义角色相关字段
+  character_type?: 'preset' | 'custom'; // 角色类型：preset（预设）或 custom（用户自定义）
+  user_uuid?: string | null; // 用户UUID（仅用于自定义角色）
 }
 
 // API接口参数类型

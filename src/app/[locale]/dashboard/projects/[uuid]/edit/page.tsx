@@ -14,7 +14,7 @@ import {
 import type { Project, ProjectData } from "@/types/project";
 import { compareProjectData, compareCharactersArray } from "@/lib/projectDataCompare";
 import { SharedCharacterData } from "@/lib/shareUtils";
-import {uploadThumbnailToR2} from "@/lib/thumbnail-upload";
+import { uploadThumbnailToR2 } from "@/lib/thumbnail-upload";
 
 interface ProjectEditPageProps {
   params: Promise<{ uuid: string }>;
@@ -226,7 +226,12 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
       const confirmExit = confirm(
         "You have unsaved changes. Are you sure you want to leave? Your changes will be lost."
       );
-      if (!confirmExit) return;
+      if (!confirmExit) {
+        return
+      } else {
+        router.push("/dashboard/projects");
+        return;
+      };
     }
 
     // Check if characters changed (for thumbnail update)

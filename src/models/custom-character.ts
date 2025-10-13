@@ -44,7 +44,6 @@ export async function createCustomCharacterRecord(
     media_type: 'image' as const,
     media_url: payload.media_url,
     thumbnail_url: payload.thumbnail_url,
-    media_hash: payload.media_hash ?? null,
     color: payload.color ?? null,
     color_customizable: payload.color_customizable ?? false,
     color_property: payload.color_property ?? null,

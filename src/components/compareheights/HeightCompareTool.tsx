@@ -41,6 +41,7 @@ import { Button } from "@/components/ui/button";
 import { LeftPanel } from '@/components/compareheights/panels/LeftPanel';
 import HeightInput from './HeightInput';
 import { Menu } from 'lucide-react';
+import { uploadThumbnailToR2 } from '@/lib/thumbnail-upload';
 
 // 比较项目接口
 export interface ComparisonItem {
@@ -1355,25 +1356,24 @@ Suggested solutions:
 
         // 1. 生成封面图（Blob 格式）
         let thumbnailUrl: string | null = null;
-        if (ref && 'current' in ref && ref.current) {
-          console.log("Generating project thumbnail...");
-          const thumbnailBlob = await ref.current.generateThumbnail({ format: 'blob' });
 
-          if (thumbnailBlob && thumbnailBlob instanceof Blob) {
-            try {
-              // 2. 上传封面到 R2
-              const { uploadThumbnailToR2 } = await import('@/lib/thumbnail-upload');
-              const uploadResult = await uploadThumbnailToR2(thumbnailBlob);
-              thumbnailUrl = uploadResult.publicUrl;
-              console.log("Thumbnail uploaded successfully:", thumbnailUrl);
-            } catch (uploadError) {
-              console.error("Failed to upload thumbnail:", uploadError);
-              toast.error("Failed to upload thumbnail, but project will be created");
-              // 继续创建项目，封面URL为null
-            }
-          } else {
-            console.warn("Failed to generate thumbnail, continuing without it");
+        console.log("Generating project thumbnail...");
+        const thumbnailBlob = await generateThumbnail({ format: 'blob' });
+
+        if (thumbnailBlob && thumbnailBlob instanceof Blob) {
+          try {
+            // 2. 上传封面到 R2
+            const { uploadThumbnailToR2 } = await import('@/lib/thumbnail-upload');
+            const uploadResult = await uploadThumbnailToR2(thumbnailBlob);
+            thumbnailUrl = uploadResult.publicUrl;
+            console.log("Thumbnail uploaded successfully:", thumbnailUrl);
+          } catch (uploadError) {
+            console.error("Failed to upload thumbnail:", uploadError);
+            toast.error("Failed to upload thumbnail, but project will be created");
+            // 继续创建项目，封面URL为null
           }
+        } else {
+          console.warn("Failed to generate thumbnail, continuing without it");
         }
 
         // 3. 构建项目数据（只存储必要的覆盖信息）
@@ -1441,31 +1441,6 @@ Suggested solutions:
       router,
       ref
     ]);
-
-    // 导出格式配置
-    const exportFormats = [
-      {
-        type: 'png' as const,
-        label: 'PNG',
-        description: 'High quality, lossless'
-      },
-      {
-        type: 'jpg' as const,
-        label: 'JPG',
-        description: 'Smaller file size'
-      },
-      {
-        type: 'webp' as const,
-        label: 'WebP',
-        description: 'Modern format, best quality'
-      }
-    ];
-
-    // 处理格式选择
-    const handleFormatSelect = useCallback(async (format: 'png' | 'jpg' | 'webp') => {
-      setShowExportDropdown(false);
-      await exportChart(format);
-    }, [exportChart]);
 
     // 处理更多选项按钮点击
     const handleMoreOptionsClick = useCallback(() => {
