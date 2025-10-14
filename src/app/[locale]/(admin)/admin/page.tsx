@@ -1,6 +1,6 @@
 import DataCards from "@/components/blocks/data-cards";
 import DataCharts from "@/components/blocks/data-charts";
-import Header from "@/components/dashboard/header";
+import Header from "@/components/admin/header";
 import { getOrderCountByDate, getPaidOrdersTotal } from "@/models/order";
 import { getUserCountByDate, getUsersTotal } from "@/models/user";
 import { getFeedbacksTotal } from "@/models/feedback";

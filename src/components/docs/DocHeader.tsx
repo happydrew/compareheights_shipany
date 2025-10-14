@@ -9,7 +9,7 @@ interface DocHeaderProps {
 
 export function DocHeader({ title, description, author, date }: DocHeaderProps) {
   return (
-    <div className="mb-8 border-b border-border pb-8">
+    <div className="pb-8">
       <h1 className="text-4xl font-bold tracking-tight mb-4">{title}</h1>
 
       {description && (

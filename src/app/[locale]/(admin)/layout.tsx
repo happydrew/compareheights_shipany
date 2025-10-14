@@ -1,4 +1,4 @@
-import DashboardLayout from "@/components/dashboard/layout";
+import DashboardLayout from "@/components/admin/layout";
 import Empty from "@/components/blocks/empty";
 import { ReactNode } from "react";
 import { Sidebar } from "@/types/blocks/sidebar";
@@ -22,10 +22,10 @@ export default async function AdminLayout({
 
   const sidebar: Sidebar = {
     brand: {
-      title: "ShipAny",
+      title: "CompareHeights",
       logo: {
         src: "/favicon.ico",
-        alt: "ShipAny",
+        alt: "CompareHeights",
       },
       url: "/admin",
     },

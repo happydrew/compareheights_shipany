@@ -1,5 +1,5 @@
 import { TableColumn } from "@/types/blocks/table";
-import TableSlot from "@/components/dashboard/slots/table";
+import TableSlot from "@/components/admin/slots/table";
 import { Table as TableSlotType } from "@/types/slots/table";
 import { getUsers } from "@/models/user";
 import moment from "moment";

@@ -9,7 +9,15 @@
       "WebFetch(domain:docs.shipany.ai)",
       "Bash(find:*)",
       "WebFetch(domain:compareheights.org)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(pnpm list:*)",
+      "WebFetch(domain:fumadocs.vercel.app)",
+      "Bash(curl:*)",
+      "Bash(node:*)",
+      "Bash(cat:*)",
+      "WebFetch(domain:fumadocs.dev)",
+      "WebFetch(domain:github.com)",
+      "WebSearch"
     ],
     "deny": [],
     "ask": []

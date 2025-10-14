@@ -18,10 +18,14 @@ export default async function DocsContentPage(props: {
 
   const MDXContent = page.data.body;
 
-  // Extract frontmatter data
-  const frontmatter = page.data as any;
-  const author = frontmatter.author;
-  const date = frontmatter.date;
+  // Access frontmatter data directly from page.data
+  // Fumadocs automatically merges frontmatter into page.data
+  const title = page.data.title || '';
+  const description = page.data.description || '';
+  const author = (page.data as any).author;
+  const date = (page.data as any).date;
+
+  console.log("page.data", page.data);
 
   return (
     <DocsPage
@@ -33,8 +37,8 @@ export default async function DocsContentPage(props: {
       }}
     >
       <DocHeader
-        title={page.data.title}
-        description={page.data.description}
+        title={title}
+        description={description}
         author={author}
         date={date}
       />
@@ -61,8 +65,9 @@ export async function generateMetadata(props: {
   const page = source.getPage(params.slug, params.locale);
   if (!page) notFound();
 
+  // Access frontmatter directly from page.data
   return {
-    title: page.data.title,
-    description: page.data.description,
+    title: page.data.title || '',
+    description: page.data.description || '',
   };
 }

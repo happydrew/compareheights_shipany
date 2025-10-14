@@ -1,7 +1,7 @@
 import Dropdown from "@/components/blocks/table/dropdown";
 import { NavItem } from "@/types/blocks/base";
 import { Post } from "@/types/post";
-import TableSlot from "@/components/dashboard/slots/table";
+import TableSlot from "@/components/admin/slots/table";
 import { Table as TableSlotType } from "@/types/slots/table";
 import { getAllPosts } from "@/models/post";
 import moment from "moment";

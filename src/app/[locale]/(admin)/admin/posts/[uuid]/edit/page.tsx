@@ -8,7 +8,7 @@ import {
 import { localeNames, locales } from "@/i18n/locale";
 
 import Empty from "@/components/blocks/empty";
-import FormSlot from "@/components/dashboard/slots/form";
+import FormSlot from "@/components/admin/slots/form";
 import { Form as FormSlotType } from "@/types/slots/form";
 import { Post } from "@/types/post";
 import { getIsoTimestr } from "@/lib/time";
