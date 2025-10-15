@@ -120,7 +120,7 @@ interface DragState {
 // 组件属性接口
 interface HeightCompareToolProps {
   presetData?: SharedData | any; // 预设数据，用于内页展示特定角色比较
-  readOnly?: boolean; // 只读模式，用于分享页面
+  shareMode?: boolean; // 分享模式，隐藏左侧面板并禁用保存/清空按钮
   onChange?: (data: any) => void; // 数据变化回调，用于项目编辑页自动保存
   onSave?: () => Promise<void>; // 父组件保存函数（项目编辑页）
   isProjectEdit?: boolean; // 是否在项目编辑页
@@ -133,7 +133,7 @@ interface HeightCompareToolRef {
 
 // 主组件
 const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareToolProps>(
-  ({ presetData, readOnly = false, onChange, onSave, isProjectEdit = false }, ref) => {
+  ({ presetData, shareMode = false, onChange, onSave, isProjectEdit = false }, ref) => {
     const t = useTranslations('heightCompareTool');
     const { data: session, status } = useSession();
     const router = useRouter();
@@ -381,8 +381,8 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
 
     // 监听数据变化,触发 onChange 回调 (用于项目编辑页自动保存)
     useEffect(() => {
-      // 如果是只读模式或没有 onChange 回调,或者还未初始化完成,则跳过
-      if (readOnly || !onChange || !isInitialized || isLoadingShareData) {
+      // 如果是分享模式或没有 onChange 回调,或者还未初始化完成,则跳过
+      if (shareMode || !onChange || !isInitialized || isLoadingShareData) {
         return;
       }
 
@@ -409,12 +409,12 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
       };
 
       onChange(projectData);
-    }, [comparisonItems, styleSettings, unit, chartTitle, onChange, readOnly, isInitialized, isLoadingShareData]);
+    }, [comparisonItems, styleSettings, unit, chartTitle, onChange, shareMode, isInitialized, isLoadingShareData]);
 
-    // 自动缓存数据（非项目编辑页且非只读模式）
+    // 自动缓存数据（非项目编辑页且非分享模式）
     useEffect(() => {
-      // 项目编辑页不需要缓存
-      if (isProjectEdit || readOnly || !isInitialized || isLoadingShareData) {
+      // 项目编辑页和分享模式不需要缓存
+      if (isProjectEdit || shareMode || !isInitialized || isLoadingShareData) {
         return;
       }
 
@@ -460,7 +460,7 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
           clearTimeout(cacheTimerRef.current);
         }
       };
-    }, [comparisonItems, styleSettings, unit, chartTitle, isProjectEdit, readOnly, isInitialized, isLoadingShareData]);
+    }, [comparisonItems, styleSettings, unit, chartTitle, isProjectEdit, shareMode, isInitialized, isLoadingShareData]);
 
     // 添加重置缩放函数
     const resetZoom = () => {
@@ -2370,8 +2370,8 @@ Suggested solutions:
 
     return (
       <div id="height-compare-tool" className="w-full relative flex flex-col lg:flex-row bg-neutral-50 overflow-hidden">
-        {/* 新的模块化左侧面板 - 只读模式下隐藏 */}
-        {!readOnly && (
+        {/* 新的模块化左侧面板 - 分享模式下隐藏 */}
+        {!shareMode && (
           <LeftPanel
             ref={characterListRef}
             unit={unit}
@@ -2389,12 +2389,12 @@ Suggested solutions:
 
 
         {/* 中间图表区域 */}
-        < div ref={midAreaRef} className={`order-1 lg:order-2 py-0 px-0 lg:px-2 flex flex-col transition-all duration-300 ${readOnly ? 'w-full' : 'w-full lg:w-4/5'} h-full bg-pattern text-sm lg:text-base`}>
+        < div ref={midAreaRef} className={`order-1 lg:order-2 py-0 px-0 lg:px-2 flex flex-col transition-all duration-300 ${shareMode ? 'w-full' : 'w-full lg:w-4/5'} h-full bg-pattern text-sm lg:text-base`}>
           <div id="top-ads" className="w-full h-[110px] m-0 py-[5px]"></div>
           <div ref={comparisonAreaRef} className='relative w-full flex'>
 
-            {/* 全屏模式下的左侧面板 - 只读模式下隐藏 */}
-            {!readOnly && isFullscreen && openFullScreenLeftPanel && (
+            {/* 全屏模式下的左侧面板 - 分享模式下隐藏 */}
+            {!shareMode && isFullscreen && openFullScreenLeftPanel && (
               <LeftPanel
                 ref={characterListRef}
                 unit={unit}
@@ -2424,20 +2424,18 @@ Suggested solutions:
                 </button>
                 <div className="flex items-center justify-end">
                   <div className="flex items-center gap-2">
-                    {/* 保存按钮 - 只读模式下隐藏 */}
-                    {!readOnly && (
-                      <button
-                        onClick={handleSaveClick}
-                        className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover cursor-pointer ${comparisonItems.length === 0
-                          ? `${themeClasses.bg.secondary} ${themeClasses.text.muted} cursor-not-allowed`
-                          : `${themeClasses.button.base} ${themeClasses.button.hover}`
-                          }`}
-                        title={t('toolbar.saveProject')}
-                        disabled={comparisonItems.length === 0}
-                      >
-                        <Save className="w-4 h-4" />
-                      </button>
-                    )}
+                    {/* 保存按钮 - 分享模式下禁用 */}
+                    <button
+                      onClick={handleSaveClick}
+                      className={`p-1 md:p-2 rounded transition-all duration-300 ${comparisonItems.length === 0 || shareMode
+                        ? `${themeClasses.bg.secondary} ${themeClasses.text.muted} cursor-not-allowed`
+                        : `pulse-on-hover cursor-pointer ${themeClasses.button.base} ${themeClasses.button.hover}`
+                        }`}
+                      title={shareMode ? t('toolbar.saveDisabledInShareMode') : t('toolbar.saveProject')}
+                      disabled={comparisonItems.length === 0 || shareMode}
+                    >
+                      <Save className="w-4 h-4" />
+                    </button>
 
                     {/* 单位切换按钮 */}
                     <div className="flex gap-1">
@@ -2462,23 +2460,21 @@ Suggested solutions:
                     >
                       <RotateCcw className="w-4 h-4" />
                     </button>
-                    {/* 清空按钮 - 只读模式下隐藏 */}
-                    {!readOnly && (
-                      <button
-                        onClick={() => {
-                          console.log('Clear button clicked, current character count:', comparisonItems.length);
-                          clearAllCharacters();
-                        }}
-                        className={`p-1 md:p-2 rounded transition-all duration-300 pulse-on-hover ${comparisonItems.length === 0
-                          ? `${themeClasses.bg.secondary} ${themeClasses.text.muted} cursor-not-allowed`
-                          : `${themeClasses.button.base} ${themeClasses.button.hover} cursor-pointer`
-                          }`}
-                        title={t('toolbar.clearAll')}
-                        disabled={comparisonItems.length === 0}
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    )}
+                    {/* 清空按钮 - 分享模式下禁用 */}
+                    <button
+                      onClick={() => {
+                        console.log('Clear button clicked, current character count:', comparisonItems.length);
+                        clearAllCharacters();
+                      }}
+                      className={`p-1 md:p-2 rounded transition-all duration-300 ${comparisonItems.length === 0 || shareMode
+                        ? `${themeClasses.bg.secondary} ${themeClasses.text.muted} cursor-not-allowed`
+                        : `pulse-on-hover cursor-pointer ${themeClasses.button.base} ${themeClasses.button.hover}`
+                        }`}
+                      title={shareMode ? t('toolbar.clearDisabledInShareMode') : t('toolbar.clearAll')}
+                      disabled={comparisonItems.length === 0 || shareMode}
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
 
                     {/* 主题切换按钮 */}
                     <button
@@ -2583,7 +2579,7 @@ Suggested solutions:
                         <div className={`absolute top-full right-0 mt-1 ${themeClasses.bg.primary} ${themeClasses.border.primary} border rounded-lg shadow-lg z-[99999] min-w-[200px]`}>
                           <div className="py-2">
                             {/* 新增: Share Project 选项 */}
-                            {!readOnly && (
+                            {!shareMode && (
                               <>
                                 <button
                                   onClick={() => {
@@ -2679,8 +2675,8 @@ Suggested solutions:
                               {styleSettings.gridLines && <span className="text-green-theme-600">✓</span>}
                             </button>
 
-                            {/* 背景设置 - 只读模式下隐藏 */}
-                            {!readOnly && (
+                            {/* 背景设置 - 分享模式下隐藏 */}
+                            {!shareMode && (
                               <button
                                 onClick={() => {
                                   setShowBackgroundDropdown(true);
@@ -2696,8 +2692,8 @@ Suggested solutions:
                         </div>
                       )}
 
-                      {/* 背景设置下拉菜单（保持原有功能） - 只读模式下隐藏 */}
-                      {!readOnly && showBackgroundDropdown && (
+                      {/* 背景设置下拉菜单（保持原有功能） - 分享模式下隐藏 */}
+                      {!shareMode && showBackgroundDropdown && (
                         <div ref={backgroundButtonRef}
                           className="absolute top-full right-0 z-[99999]">
                           {/* 背景设置下拉菜单 */}

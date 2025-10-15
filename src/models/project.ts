@@ -35,25 +35,6 @@ export async function findProjectByUuid(
   return project;
 }
 
-// 根据UUID查找公开项目 (用于分享页面)
-export async function findPublicProjectByUuid(
-  uuid: string
-): Promise<typeof projects.$inferSelect | undefined> {
-  const [project] = await db()
-    .select()
-    .from(projects)
-    .where(
-      and(
-        eq(projects.uuid, uuid),
-        eq(projects.is_public, true),
-        eq(projects.status, ProjectStatus.Active)
-      )
-    )
-    .limit(1);
-
-  return project;
-}
-
 // 获取用户的项目列表
 export async function getProjectsByUserUuid(
   user_uuid: string,

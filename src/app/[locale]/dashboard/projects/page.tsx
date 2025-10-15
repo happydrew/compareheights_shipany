@@ -166,13 +166,7 @@ export default function ProjectsPage() {
 
   // Share project
   const handleShare = async (uuid: string) => {
-    const project = projects.find((p) => p.uuid === uuid);
-    if (!project?.is_public) {
-      toast.error("Please make the project public first");
-      return;
-    }
-
-    const shareUrl = `${window.location.origin}/share/${uuid}`;
+    const shareUrl = `${window.location.origin}/share/project/${uuid}`;
 
     try {
       await navigator.clipboard.writeText(shareUrl);

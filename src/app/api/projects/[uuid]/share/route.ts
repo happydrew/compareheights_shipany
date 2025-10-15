@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  findPublicProjectByUuid,
-  incrementViewCount,
-} from "@/models/project";
+import { findProjectByUuid, incrementViewCount } from "@/models/project";
 
-// GET /api/share/[uuid] - 获取公开分享的项目 (无需登录)
+// GET /api/projects/[uuid]/share - 获取项目用于分享页面 (无需登录，所有项目都可分享)
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ uuid: string }> }
@@ -12,12 +9,12 @@ export async function GET(
   try {
     const { uuid } = await params;
 
-    // 查找公开项目
-    const project = await findPublicProjectByUuid(uuid);
+    // 查找项目（所有项目都可以分享）
+    const project = await findProjectByUuid(uuid);
 
     if (!project) {
       return NextResponse.json(
-        { success: false, message: "Project not found or not public" },
+        { success: false, message: "Project not found" },
         { status: 404 }
       );
     }
