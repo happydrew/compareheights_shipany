@@ -37,4 +37,4 @@ const configWithMDX = {
   },
 };
 
-export default withBundleAnalyzer(withNextIntl(withMDX(configWithMDX)));
+export default withBundleAnalyzer(withNextIntl(withMDX(nextConfig)));

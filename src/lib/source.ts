@@ -1,24 +1,27 @@
-// .source folder will be generated when you run `next dev`
-import { docs } from "@/.source";
-import { loader } from "fumadocs-core/source";
-import { icons } from "lucide-react";
-import type { I18nConfig } from "fumadocs-core/i18n";
-import { createElement } from "react";
+import { docs } from '@/.source';
+import { type InferPageType, loader } from 'fumadocs-core/source';
+import { lucideIconsPlugin } from 'fumadocs-core/source/lucide-icons';
 
-export const i18n: I18nConfig = {
-  defaultLanguage: "en",
-  languages: ["en", "zh"],
-};
-
+// See https://fumadocs.dev/docs/headless/source-api for more info
 export const source = loader({
-  baseUrl: "/docs",
+  baseUrl: '/docs',
   source: docs.toFumadocsSource(),
-  i18n,
-  icon(icon) {
-    if (!icon) {
-      // You may set a default icon
-      return;
-    }
-    if (icon in icons) return createElement(icons[icon as keyof typeof icons]);
-  },
+  plugins: [lucideIconsPlugin()],
 });
+
+export function getPageImage(page: InferPageType<typeof source>) {
+  const segments = [...page.slugs, 'image.png'];
+
+  return {
+    segments,
+    url: `/og/docs/${segments.join('/')}`,
+  };
+}
+
+export async function getLLMText(page: InferPageType<typeof source>) {
+  const processed = await page.data.getText('processed');
+
+  return `# ${page.data.title} (${page.url})
+
+${processed}`;
+}

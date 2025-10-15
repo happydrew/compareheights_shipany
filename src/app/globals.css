@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "./theme.css";
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
 
 @theme {
   --default-transition-duration: 150ms;
