@@ -52,8 +52,12 @@ export default function SignUser({ user, isAdmin = false }: { user: User; isAdmi
         url: "/dashboard",
       },
       {
-        title: t("user.user_center"),
-        url: "/my-orders",
+        title: t("user.profile"),
+        url: "/dashboard/profile",
+      },
+      {
+        title: t("user.subscription"),
+        url: "/dashboard/subscription",
       },
     ];
 

@@ -39,7 +39,7 @@
     ],
     "show_sign": true,
     "show_theme": false,
-    "show_locale": true
+    "show_locale": false
   },
   "hero": {
     "title": "Height Comparison Tool: Compare Heights Visually Online",
