@@ -5,7 +5,7 @@ export interface ContextValue {
   showSignModal: boolean;
   setShowSignModal: (show: boolean) => void;
   user: User | null;
-  setUser: (user: User | null) => void;
+  setUser: Dispatch<SetStateAction<User | null>>;
   showFeedback: boolean;
   setShowFeedback: (show: boolean) => void;
   promptFromTemplate: string | null;

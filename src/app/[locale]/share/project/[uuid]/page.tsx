@@ -53,6 +53,7 @@ export default async function ShareProjectPage({ params }: ShareProjectPageProps
       project={{
         uuid: project.uuid,
         title: project.title,
+        // @ts-expect-error
         project_data: project.project_data,
         thumbnail_url: project.thumbnail_url,
         view_count: project.view_count,

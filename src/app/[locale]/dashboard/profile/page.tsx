@@ -64,7 +64,7 @@ export default function ProfilePage() {
 
       const updatedUser = nextData as Partial<User>;
 
-      setUser((prev) => {
+      setUser((prev:User) => {
         if (prev) {
           return {
             ...prev,

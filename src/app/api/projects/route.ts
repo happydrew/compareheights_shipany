@@ -4,6 +4,8 @@ import {
   getProjectsByUserUuid,
   getProjectsCountByUserUuid,
 } from "@/models/project";
+import { canCreateProject } from "@/lib/subscription";
+
 
 // GET /api/projects - 获取用户项目列表
 export async function GET(req: NextRequest) {
@@ -78,7 +80,6 @@ export async function POST(req: NextRequest) {
 
     // 检查用户项目配额
     const currentCount = await getProjectsCountByUserUuid(userInfo.uuid);
-    const { canCreateProject } = await import("@/lib/subscription");
     const quotaCheck = await canCreateProject(userInfo.uuid, currentCount);
 
     if (!quotaCheck.allowed) {

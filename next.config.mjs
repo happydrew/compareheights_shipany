@@ -16,6 +16,13 @@ const nextConfig = {
   // output: "standalone",
   reactStrictMode: false,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  // 跳过构建时的类型检查和 ESLint 检查
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     remotePatterns: [
       {

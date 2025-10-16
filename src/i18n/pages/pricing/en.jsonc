@@ -63,8 +63,8 @@
         "description": "For hobbyists and content creators who need more flexibility.",
         "features_title": "Everything in Free, plus",
         "features": [
-          "25 saved projects",
-          "50 custom characters",
+          "50 saved projects",
+          "100 custom characters",
           "10MB max upload size",
           "10 public gallery submissions/month",
           "Remove watermark",
@@ -91,8 +91,8 @@
         "valid_months": 1,
         "group": "monthly",
         "quota": {
-          "max_projects": 25,
-          "max_custom_characters": 50,
+          "max_projects": 50,
+          "max_custom_characters": 100,
           "max_upload_size_mb": 10,
           "max_public_submissions_per_month": 10
         }
@@ -142,8 +142,8 @@
         "description": "Same features as Starter Monthly — save 20% with annual billing.",
         "features_title": "Everything in Free, plus",
         "features": [
-          "25 saved projects",
-          "50 custom characters",
+          "50 saved projects",
+          "100 custom characters",
           "10MB max upload size",
           "10 public gallery submissions/month",
           "Remove watermark",
@@ -170,8 +170,8 @@
         "valid_months": 12,
         "group": "yearly",
         "quota": {
-          "max_projects": 25,
-          "max_custom_characters": 50,
+          "max_projects": 50,
+          "max_custom_characters": 100,
           "max_upload_size_mb": 10,
           "max_public_submissions_per_month": 10
         }
