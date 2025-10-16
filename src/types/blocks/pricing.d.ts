@@ -8,6 +8,13 @@ export interface PricingGroup {
   is_featured?: boolean;
 }
 
+export interface PlanQuota {
+  max_projects: number;
+  max_custom_characters: number;
+  max_upload_size_mb?: number;
+  max_public_submissions_per_month?: number;
+}
+
 export interface PricingItem {
   title?: string;
   description?: string;
@@ -26,10 +33,10 @@ export interface PricingItem {
   product_name?: string;
   amount: number;
   cn_amount?: number;
-  currency: string;
   credits?: number;
   valid_months?: number;
   group?: string;
+  quota?: PlanQuota;
 }
 
 export interface Pricing {

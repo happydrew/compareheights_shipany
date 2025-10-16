@@ -36,53 +36,9 @@ export default function SignUser({ user, isAdmin = false }: { user: User; isAdmi
     }
   };
 
-  const openMenu = () => {
-    cancelCloseTimeout();
-    setOpen(true);
-  };
-
-  const scheduleCloseMenu = () => {
-    cancelCloseTimeout();
-    closeTimeoutRef.current = setTimeout(() => {
-      setOpen(false);
-      closeTimeoutRef.current = null;
-    }, 120);
-  };
-
   const closeMenuImmediately = () => {
     cancelCloseTimeout();
     setOpen(false);
-  };
-
-  const handleTriggerMouseEnter = () => {
-    openMenu();
-  };
-
-  const handleTriggerMouseLeave = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const nextTarget = event.relatedTarget as HTMLElement | null;
-    const movingToMenu = nextTarget?.closest("[data-slot='dropdown-menu-content']");
-
-    if (movingToMenu) {
-      cancelCloseTimeout();
-      return;
-    }
-
-    scheduleCloseMenu();
-  };
-
-  const handleContentMouseEnter = () => {
-    openMenu();
-  };
-
-  const handleContentMouseLeave = (event: React.MouseEvent<HTMLDivElement>) => {
-    const nextTarget = event.relatedTarget as HTMLElement | null;
-
-    if (nextTarget && triggerRef.current?.contains(nextTarget)) {
-      cancelCloseTimeout();
-      return;
-    }
-
-    scheduleCloseMenu();
   };
 
   const dropdownItems: NavItem[] = React.useMemo(() => {
@@ -124,17 +80,6 @@ export default function SignUser({ user, isAdmin = false }: { user: User; isAdmi
       closeMenuImmediately();
     }
   };
-
-  const handleMenuOpenChange = React.useCallback(
-    (nextOpen: boolean) => {
-      if (nextOpen) {
-        openMenu();
-      } else {
-        closeMenuImmediately();
-      }
-    },
-    [openMenu, closeMenuImmediately]
-  );
 
   React.useEffect(() => {
     return () => {

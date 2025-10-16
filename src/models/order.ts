@@ -86,6 +86,31 @@ export async function updateOrderStatus(
   return order;
 }
 
+export async function updateOrderWithSubscriptionPeriod(
+  order_no: string,
+  status: string,
+  paid_at: string,
+  paid_email: string,
+  paid_detail: string,
+  sub_period_start: number,
+  sub_period_end: number
+) {
+  const [order] = await db()
+    .update(orders)
+    .set({
+      status,
+      paid_at: new Date(paid_at),
+      paid_detail,
+      paid_email,
+      sub_period_start,
+      sub_period_end
+    })
+    .where(eq(orders.order_no, order_no))
+    .returning();
+
+  return order;
+}
+
 export async function updateOrderSession(
   order_no: string,
   stripe_session_id: string,

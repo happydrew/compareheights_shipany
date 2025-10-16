@@ -1,5 +1,6 @@
 import { updateOrder } from "@/services/order";
 import { respOk } from "@/lib/resp";
+import { findOrderByOrderNo } from "@/models/order";
 
 export async function POST(req: Request) {
   try {
@@ -41,7 +42,24 @@ export async function POST(req: Request) {
         const paid_email = session.customer?.email || "";
         const paid_detail = JSON.stringify(session);
 
-        await updateOrder({ order_no, paid_email, paid_detail });
+        // Get order info to check if it's a subscription
+        const order = await findOrderByOrderNo(order_no);
+        if (!order) {
+          throw new Error("order not found");
+        }
+
+        // Check if it's a subscription order (month or year interval)
+        const isSubscription = order.interval === "month" || order.interval === "year";
+
+        // Update order with subscription period if applicable
+        await updateOrder({
+          order_no,
+          paid_email,
+          paid_detail,
+          interval: order.interval || undefined,
+          valid_months: order.valid_months || undefined,
+          is_subscription: isSubscription
+        });
         break;
       }
 

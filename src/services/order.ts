@@ -18,10 +18,16 @@ export async function updateOrder({
   order_no,
   paid_email,
   paid_detail,
+  interval,
+  valid_months,
+  is_subscription,
 }: {
   order_no: string;
   paid_email: string;
   paid_detail: string;
+  interval?: string;
+  valid_months?: number;
+  is_subscription?: boolean;
 }) {
   try {
     if (!order_no || !paid_email || !paid_email) {
@@ -45,13 +51,43 @@ export async function updateOrder({
     }
 
     const paid_at = getIsoTimestr();
-    await updateOrderStatus(
-      order_no,
-      OrderStatus.Paid,
-      paid_at,
-      paid_email,
-      paid_detail
-    );
+
+    // Calculate subscription period if this is a subscription order
+    if (is_subscription && interval && valid_months) {
+      const now = Math.floor(Date.now() / 1000); // Current timestamp in seconds
+      const sub_period_start = now;
+
+      // Calculate period end based on valid_months
+      const currentDate = new Date();
+      const endDate = new Date(currentDate);
+      endDate.setMonth(currentDate.getMonth() + valid_months);
+
+      // Add 24 hours buffer for subscription grace period
+      endDate.setHours(endDate.getHours() + 24);
+      const sub_period_end = Math.floor(endDate.getTime() / 1000); // Convert to seconds
+
+      // Import the new function
+      const { updateOrderWithSubscriptionPeriod } = await import("@/models/order");
+
+      await updateOrderWithSubscriptionPeriod(
+        order_no,
+        OrderStatus.Paid,
+        paid_at,
+        paid_email,
+        paid_detail,
+        sub_period_start,
+        sub_period_end
+      );
+    } else {
+      // Regular one-time payment order
+      await updateOrderStatus(
+        order_no,
+        OrderStatus.Paid,
+        paid_at,
+        paid_email,
+        paid_detail
+      );
+    }
 
     if (order.user_uuid) {
       if (order.credits > 0) {
