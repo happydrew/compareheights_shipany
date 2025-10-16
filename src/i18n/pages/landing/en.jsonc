@@ -593,20 +593,63 @@
           "title": "Partner Links",
           "children": [
             {
-              "title": "Contact",
-              "url": "/contact"
+              "title": "Directory Website Promote",
+              "url": "https://www.promotebusinessdirectory.com/"
             },
             {
-              "title": "Privacy Policy",
-              "url": "/privacy-policy"
+              "title": "Hosting",
+              "url": "https://www.ewebdiscussion.com/forums/web-hosting-offers.67/"
             },
             {
-              "title": "Terms of Service",
-              "url": "/terms-of-service"
+              "title": "Dentists Marketing",
+              "url": "https://www.siteswebdirectory.com/Health_Medical/Dentistry/"
             },
             {
-              "title": "Email: drewgrant616@gmail.com",
-              "url": "mailto:drewgrant616@gmail.com"
+              "title": "Toolpilot",
+              "url": "https://www.toolpilot.ai",
+              "image": {
+                "src": "https://www.toolpilot.ai/cdn/shop/files/tp-b-i_1280x1280_crop_center.svg?v=1695883732",
+                "alt": "Toolpilot"
+              }
+            },
+            {
+              "title": "Kontext AI",
+              "url": "https://kontext-ai.com/"
+            },
+            {
+              "title": "",
+              "url": "https://dang.ai/",
+              "image": {
+                "src": "https://cdn.prod.website-files.com/63d8afd87da01fb58ea3fbcb/6487e2868c6c8f93b4828827_dang-badge.png",
+                "alt": "Dang.ai",
+                "className": "w-[150px] h-[54px]"
+              }
+            },
+            {
+              "title": "",
+              "url": "https://fazier.com/launches/compareheights.org",
+              "image": {
+                "src": "https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light",
+                "alt": "Fazier badge",
+                "className": "w-[120px]"
+              }
+            },
+            {
+              "title": "AiToolGo",
+              "url": "https://www.aitoolgo.com"
+            },
+            {
+              "title": "Viesearch - The Human-curated Search Engine",
+              "url": "https://viesearch.com/"
+            },
+            {
+              "title": "",
+              "url": "https://goodaitools.com",
+              "image": {
+                "src": "https://goodaitools.com/assets/images/badge.png",
+                "alt": "Good AI Tools",
+                "className": "h-[54px]"
+              }
             }
           ]
         }

@@ -1,6 +1,8 @@
 import { Footer as FooterType } from "@/types/blocks/footer";
 import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
+import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 export default function Footer({ footer }: { footer: FooterType }) {
   if (footer.disabled) {
@@ -62,7 +64,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
                             <img
                               src={iitem.image.src}
                               alt={iitem.image.alt}
-                              className={`${iitem.className} w-5 h-5`}
+                              className={iitem.image.className ? cn(iitem.image.className) : "w-5 h-5"}
                             />
                           )}
                           {iitem.title}
