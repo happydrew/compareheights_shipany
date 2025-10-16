@@ -9,6 +9,11 @@ import { NextAuthSessionProvider } from "@/auth/session";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/providers/theme";
 import { FeedbackWidget } from "@/components/blocks/FeedbackWidget";
+import { locales } from "@/i18n/locale";
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({
   params,

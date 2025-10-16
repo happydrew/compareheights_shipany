@@ -2,14 +2,7 @@ import { db } from "@/db";
 import { orders } from "@/db/schema";
 import { eq, and, desc, gte } from "drizzle-orm";
 import { getPricingPage } from "@/services/page";
-
-// 套餐配额类型
-export interface PlanQuota {
-  max_projects: number;
-  max_custom_characters: number;
-  max_upload_size_mb?: number;
-  max_public_submissions_per_month?: number;
-}
+import { PricingItem, PlanQuota } from "@/types/blocks/pricing";
 
 // 订阅信息类型
 export interface SubscriptionInfo {
@@ -57,24 +50,23 @@ export async function getUserSubscription(
       const order = activeOrders[0];
 
       // 从pricing配置中获取套餐配额
-      let quota: PlanQuota | null = null;
+      let plan: PricingItem | undefined;
       try {
         const page = await getPricingPage("en");
         if (page?.pricing?.items) {
-          const plan = page.pricing.items.find((p: any) => p.product_id === order.product_id);
-          quota = plan?.quota || null;
+          plan = page.pricing.items.find((p: any) => p.product_id === order.product_id);
         }
       } catch (error) {
         console.error("Error loading pricing config:", error);
       }
 
       return {
-        plan_name: order.product_name || "Unknown",
+        plan_name: plan?.title || "Unknown",
         product_id: order.product_id || "",
         status: "active",
         period_start: order.sub_period_start || undefined,
         period_end: order.sub_period_end || undefined,
-        quota: quota || FREE_PLAN_QUOTA,
+        quota: plan?.quota || FREE_PLAN_QUOTA,
       };
     }
 

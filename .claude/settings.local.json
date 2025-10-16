@@ -17,7 +17,8 @@
       "Bash(cat:*)",
       "WebFetch(domain:fumadocs.dev)",
       "WebFetch(domain:github.com)",
-      "WebSearch"
+      "WebSearch",
+      "Read(//d/zhuge/code/compareheights_migrate/**)"
     ],
     "deny": [],
     "ask": []

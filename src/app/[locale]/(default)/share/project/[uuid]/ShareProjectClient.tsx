@@ -36,7 +36,7 @@ export default function ShareProjectClient({ project }: ShareProjectClientProps)
   };
 
   return (
-    <div className="flex flex-col w-screen h-screen overflow-hidden bg-gray-50">
+    <div className="flex flex-col w-screen overflow-hidden bg-gray-50">
       {/* 顶部标题区域 */}
       <div className="bg-white border-b px-6 py-4">
         <div className="max-w-7xl mx-auto">
