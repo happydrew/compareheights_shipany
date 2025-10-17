@@ -24,6 +24,7 @@ import { ProjectCard } from "@/components/dashboard/project-card";
 import { toast } from "sonner";
 import { RiAddLine, RiSearchLine, RiFilter3Line } from "react-icons/ri";
 import type { ProjectListItem } from "@/types/project";
+import { copyToClipboard } from "@/lib/utils";
 
 export default function ProjectsPage() {
   const router = useRouter();
@@ -168,10 +169,10 @@ export default function ProjectsPage() {
   const handleShare = async (uuid: string) => {
     const shareUrl = `${window.location.origin}/share/project/${uuid}`;
 
-    try {
-      await navigator.clipboard.writeText(shareUrl);
+    const success = await copyToClipboard(shareUrl);
+    if (success) {
       toast.success("Share link copied to clipboard!");
-    } catch (error) {
+    } else {
       toast.error("Failed to copy link");
     }
   };

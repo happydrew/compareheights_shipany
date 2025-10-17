@@ -17,7 +17,7 @@ import {
   Unit, Precision, convertHeightSmart, convertHeightSmartImperial, getBestUnit,
   getImperialGridUnitLabel, convertHeightPrecision, convertHeightForGridImperial, convertHeight, findUnit
 } from './HeightCalculates';
-import { getContentRect } from '@/lib/utils';
+import { getContentRect, copyToClipboard } from '@/lib/utils';
 import { generateRandomName, shouldGenerateRandomName } from '@/lib/nameGenerator';
 import { shareUrlManager, type SharedData } from '@/lib/shareUtils';
 import { heightCompareCache } from '@/lib/cache/heightCompareCache';
@@ -124,6 +124,7 @@ interface HeightCompareToolProps {
   onChange?: (data: any) => void; // 数据变化回调，用于项目编辑页自动保存
   onSave?: () => Promise<void>; // 父组件保存函数（项目编辑页）
   isProjectEdit?: boolean; // 是否在项目编辑页
+  projectUuid?: string; // 项目ID，用于判断是否处于项目中以及生成分享链接
 }
 
 // Ref 接口 - 暴露给父组件的方法
@@ -133,7 +134,7 @@ interface HeightCompareToolRef {
 
 // 主组件
 const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareToolProps>(
-  ({ presetData, shareMode = false, onChange, onSave, isProjectEdit = false }, ref) => {
+  ({ presetData, shareMode = false, onChange, onSave, isProjectEdit = false, projectUuid }, ref) => {
     const t = useTranslations('heightCompareTool');
     const { data: session, status } = useSession();
     const router = useRouter();
@@ -2588,8 +2589,20 @@ Suggested solutions:
                             {!shareMode && (
                               <>
                                 <button
-                                  onClick={() => {
-                                    toast.info("Share Project feature coming soon!");
+                                  onClick={async () => {
+                                    if (projectUuid) {
+                                      // 在项目中，生成分享链接并复制
+                                      const shareUrl = `${window.location.origin}/share/project/${projectUuid}`;
+                                      const success = await copyToClipboard(shareUrl);
+                                      if (success) {
+                                        toast.success("Share link copied to clipboard!");
+                                      } else {
+                                        toast.error("Failed to copy link");
+                                      }
+                                    } else {
+                                      // 不在项目中，提示先保存
+                                      toast.info("Please save the chart as a project first");
+                                    }
                                     setShowShareDropdown(false);
                                   }}
                                   className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-blue-50 hover:text-blue-600 flex items-center transition-colors`}

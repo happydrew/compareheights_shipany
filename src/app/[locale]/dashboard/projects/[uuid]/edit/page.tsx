@@ -339,6 +339,7 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
           onChange={handleProjectDataChange}
           onSave={handleSave}
           isProjectEdit={true}
+          projectUuid={uuid}
         />
       </div>
     </div>

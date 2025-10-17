@@ -68,6 +68,7 @@ export default function ShareProjectClient({ project }: ShareProjectClientProps)
         <HeightCompareTool
           presetData={project.project_data}
           shareMode={true}
+          projectUuid={project.uuid}
         />
       </div>
     </div>
