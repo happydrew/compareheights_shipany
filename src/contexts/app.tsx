@@ -32,6 +32,7 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
 
   const [showSignModal, setShowSignModal] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
+  const [isPaidSubscriber, setIsPaidSubscriber] = useState<boolean>(false);
 
   const [showFeedback, setShowFeedback] = useState<boolean>(false);
   const [promptFromTemplate, setPromptFromTemplate] = useState<string | null>(null);
@@ -107,6 +108,25 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
       setUser(data);
 
       updateInvite(data);
+
+      // 获取用户订阅状态
+      try {
+        const subResp = await fetch("/api/subscription");
+        if (subResp.ok) {
+          const subResult = await subResp.json();
+          if (subResult.success && subResult.data?.subscription) {
+            // 只有付费订阅用户才能无水印导出
+            setIsPaidSubscriber(subResult.data.subscription.status === "active");
+          } else {
+            setIsPaidSubscriber(false);
+          }
+        } else {
+          setIsPaidSubscriber(false);
+        }
+      } catch (subError) {
+        console.log("fetch subscription failed:", subError);
+        setIsPaidSubscriber(false);
+      }
     } catch (e) {
       console.log("fetch user info failed");
     }
@@ -118,6 +138,7 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
     if (!currentUuid) {
       fetchedUserUuidRef.current = null;
       setUser(null);
+      setIsPaidSubscriber(false);
       return;
     }
 
@@ -140,6 +161,7 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
         setShowFeedback,
         promptFromTemplate,
         setPromptFromTemplate,
+        isPaidSubscriber,
       }}
     >
       {children}

@@ -144,7 +144,6 @@ export default function CustomCharactersPage() {
 
   useEffect(() => {
     return () => {
-      listAbortControllerRef.current?.abort();
       revokePreview(imagePreview);
     };
   }, [imagePreview, revokePreview]);

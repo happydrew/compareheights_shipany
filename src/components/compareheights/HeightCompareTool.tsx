@@ -137,7 +137,7 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
     const t = useTranslations('heightCompareTool');
     const { data: session, status } = useSession();
     const router = useRouter();
-    const { setShowSignModal } = useAppContext();
+    const { setShowSignModal, isPaidSubscriber } = useAppContext();
     const [unit, setUnit] = useState<Unit>(Unit.CM);
     /**
      * 当前在比较列表中的角色
@@ -807,6 +807,12 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
 
     // 添加水印到canvas
     const addWatermark = (originalCanvas: HTMLCanvasElement): HTMLCanvasElement => {
+      // 付费订阅用户跳过水印
+      if (isPaidSubscriber) {
+        console.log('Skipping watermark for paid subscriber');
+        return originalCanvas;
+      }
+
       console.log('Adding watermark to canvas:', originalCanvas.width, 'x', originalCanvas.height);
 
       // 创建新的canvas来合成图像和水印
@@ -2986,7 +2992,11 @@ Suggested solutions:
 
                     {/* 自定义横向滚动条 */}
                     {comparisonItems.length > 0 && scrollbarState.scrollWidth > scrollbarState.clientWidth && (
-                      <div id='characters-container-scrollbar' className="absolute bottom-[-11px] left-0 h-[10px] bg-gray-100 rounded-full mx-2 mt-2" style={{ touchAction: 'none' }}>
+                      <div id='characters-container-scrollbar' className="absolute bottom-[-16px] md:bottom-[-11px] left-0 h-[15px] md:h-[10px] bg-gray-100 rounded-full mx-2 mt-2" 
+                        style={{ 
+                          touchAction: 'none' 
+                          }}
+                      >
                         {/* 滚动条轨道 */}
                         <div className="absolute inset-0 bg-gray-200 rounded-full"></div>
                         {/* 滚动条滑块 */}
