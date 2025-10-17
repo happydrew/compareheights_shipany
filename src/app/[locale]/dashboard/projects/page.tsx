@@ -200,6 +200,13 @@ export default function ProjectsPage() {
 
   // Toggle public/private
   const handleTogglePublic = async (uuid: string, isPublic: boolean) => {
+    // If trying to make project public, show coming soon message
+    if (isPublic) {
+      toast.info("Submit project to public gallery is coming soon!");
+      return;
+    }
+
+    // Allow making project private
     try {
       const response = await fetch(`/api/projects/${uuid}`, {
         method: "PATCH",
@@ -210,9 +217,7 @@ export default function ProjectsPage() {
       const data = await response.json();
 
       if (data.success) {
-        toast.success(
-          isPublic ? "Project is now public" : "Project is now private"
-        );
+        toast.success("Project is now private");
         loadProjects();
       } else {
         toast.error(data.message || "Failed to update project");
