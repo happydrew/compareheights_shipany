@@ -20,7 +20,17 @@
         {
           "title": "Pricing",
           "url": "/pricing",
-          "icon": "RiMoneyDollarCircleLine"
+          //"icon": "RiMoneyDollarCircleLine"
+        },
+        {
+          "title": "Documents",
+          "url": "/docs",
+          //"icon": "RiFileLine"
+        },
+        {
+          "title": "Blog",
+          "url": "/blog",
+          //"icon": "RiArticleLine"
         }
       ]
     },
@@ -653,24 +663,24 @@
     },
     "social": {
       "items": [
-        // {
-        //   "title": "X",
-        //   "icon": "RiTwitterXFill",
-        //   "url": "https://x.com/nanoedit",
-        //   "target": "_blank"
-        // },
-        // {
-        //   "title": "Instagram",
-        //   "icon": "RiInstagramFill",
-        //   "url": "https://instagram.com/nanoedit",
-        //   "target": "_blank"
-        // },
-        // {
-        //   "title": "Discord",
-        //   "icon": "RiDiscordFill",
-        //   "url": "https://discord.gg/nanoedit",
-        //   "target": "_blank"
-        // },
+        {
+          "title": "X",
+          "icon": "RiTwitterXFill",
+          "url": "https://x.com/compareheights",
+          "target": "_blank"
+        },
+        {
+          "title": "Github",
+          "icon": "RiGithubFill",
+          "url": "https://github.com/height-comparison/height-comparison",
+          "target": "_blank"
+        },
+        {
+          "title": "Youtube",
+          "icon": "RiYoutubeFill",
+          "url": "https://www.youtube.com/@compareheights",
+          "target": "_blank"
+        },
         {
           "title": "Email",
           "icon": "RiMailLine",

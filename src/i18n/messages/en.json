@@ -193,96 +193,96 @@
     }
   },
   "about": {
-    "title": "About NanoEdit",
+    "title": "About CompareHeights",
     "whatIs": {
-      "title": "What is NanoEdit?",
-      "description": "NanoEdit is a cutting-edge AI-powered image editing platform that transforms the way you create and edit images. Built with the latest artificial intelligence technology, NanoEdit makes professional-quality image editing accessible to everyone, regardless of their technical expertise."
+      "title": "What is CompareHeights?",
+      "description": "CompareHeights is the ultimate online height comparison tool that allows you to visually compare the heights of celebrities, anime characters, historical figures, and custom individuals. Our platform makes understanding height differences intuitive, accurate, and fun for everyone."
     },
     "mission": {
       "title": "Our Mission",
-      "description": "We believe that powerful image editing tools should be simple, fast, and accessible to creators worldwide. Our mission is to democratize AI-powered image editing by providing:",
+      "description": "We believe that visualizing height differences should be simple, accurate, and accessible to everyone. Our mission is to provide the best height comparison experience by offering:",
       "features": {
         "fast": {
-          "title": "Lightning-fast processing",
-          "description": "Get professional results in seconds, not hours"
+          "title": "Instant comparisons",
+          "description": "Create height comparison charts in seconds with real-time updates"
         },
         "intuitive": {
-          "title": "Intuitive interface",
-          "description": "No complex learning curves or technical barriers"
+          "title": "Easy-to-use interface",
+          "description": "No learning curve - start comparing heights immediately"
         },
         "advanced": {
-          "title": "Advanced AI models",
-          "description": "Powered by state-of-the-art Nano Banana and Gemini AI technology"
+          "title": "Extensive database",
+          "description": "Thousands of celebrities, characters, and figures with verified heights"
         },
         "flexible": {
-          "title": "Flexible workflows",
-          "description": "Support for both text-to-image and image-to-image editing"
+          "title": "Customizable charts",
+          "description": "Full control over colors, backgrounds, and visual presentation"
         }
       }
     },
     "keyFeatures": {
       "title": "Key Features",
       "aiGeneration": {
-        "title": "AI Image Generation & Editing",
-        "feature1": "Transform images with natural language prompts",
-        "feature2": "Support for multiple aspect ratios and output formats",
-        "feature3": "High-quality results powered by advanced AI models"
+        "title": "Multi-Character Comparisons",
+        "feature1": "Compare unlimited characters side-by-side in one chart",
+        "feature2": "Support for metric and imperial units with instant conversion",
+        "feature3": "Visual scale from nanometers to kilometers"
       },
       "userFriendly": {
         "title": "User-Friendly Experience",
-        "feature1": "Clean, modern interface designed for creators",
-        "feature2": "Real-time progress tracking with helpful status messages",
-        "feature3": "Seamless upload and download workflow"
+        "feature1": "Clean, intuitive interface optimized for all devices",
+        "feature2": "Drag-and-drop character reordering and customization",
+        "feature3": "Seamless image upload and export workflow"
       },
       "pricing": {
-        "title": "Flexible Pricing",
-        "feature1": "Credit-based system for cost-effective usage",
-        "feature2": "No subscription lock-in - pay only for what you use",
-        "feature3": "Transparent pricing with no hidden fees"
+        "title": "Free to Use",
+        "feature1": "Completely free basic features with no registration required",
+        "feature2": "Save and share your height comparison projects",
+        "feature3": "High-quality exports in multiple formats"
       }
     },
     "technology": {
       "title": "Technology Stack",
-      "description": "NanoEdit is built on modern, reliable technology:",
+      "description": "CompareHeights is built with modern web technology:",
       "aiModels": {
-        "title": "AI Models",
-        "description": "Nano Banana Edit and Google Gemini for superior image processing"
+        "title": "Database",
+        "description": "Extensive verified height database with regular updates"
       },
       "frontend": {
         "title": "Frontend",
-        "description": "Next.js 15 with React and TypeScript for a responsive user experience"
+        "description": "Next.js 15 with React and TypeScript for smooth performance"
       },
       "auth": {
         "title": "Authentication",
-        "description": "Secure sign-in with Google and GitHub integration"
+        "description": "Secure sign-in with Google and GitHub for saving projects"
       },
       "infrastructure": {
         "title": "Infrastructure",
-        "description": "Scalable cloud architecture for reliable performance"
+        "description": "Fast, reliable cloud hosting for global accessibility"
       }
     },
     "values": {
       "title": "Our Values",
       "innovation": {
         "title": "Innovation",
-        "description": "We continuously integrate the latest AI breakthroughs to provide cutting-edge editing capabilities."
+        "description": "We continuously improve our platform with new features and an expanding database of characters and celebrities."
       },
       "simplicity": {
         "title": "Simplicity",
-        "description": "Complex technology should feel simple. We focus on intuitive design and seamless user experiences."
+        "description": "Height comparison should be straightforward. We focus on intuitive design that anyone can use immediately."
       },
       "quality": {
         "title": "Quality",
-        "description": "Every feature is crafted with attention to detail to ensure professional-grade results."
+        "description": "Every feature is crafted with attention to detail to ensure accurate, beautiful height comparison charts."
       },
       "accessibility": {
         "title": "Accessibility",
-        "description": "We believe powerful tools should be available to creators of all skill levels and backgrounds."
+        "description": "We believe powerful visualization tools should be free and available to everyone, regardless of technical skill."
       }
     },
     "team": {
       "title": "Team",
-      "description": "NanoEdit is developed by a passionate team of engineers and designers who believe in the transformative power of AI technology. We're committed to building tools that empower creativity and make advanced image editing accessible to everyone."
+      "description": "CompareHeights is developed by a passionate team dedicated to making height visualization simple and accessible. We're committed to building the best height comparison tool for educators, content creators, and curious minds worldwide."
     },
     "contact": {
       "title": "Contact Us",
@@ -292,7 +292,7 @@
       }
     },
     "footer": {
-      "message": "Join thousands of creators who are already using NanoEdit to bring their creative visions to life. Start editing today and experience the future of AI-powered image creation."
+      "message": "Join thousands of users who are already using CompareHeights to visualize and understand height differences. Start comparing today and explore the fascinating world of scale and proportion."
     }
   },
   "contact": {

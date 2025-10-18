@@ -23,6 +23,9 @@ const DEFAULT_LOCAL_CORS_ORIGINS = [
   'https://localhost:3000',
   'http://127.0.0.1:3000',
   'https://127.0.0.1:3000',
+  "https://wananimation.art",
+  "https://test.compareheights.org",
+  "https://compareheights.org"
 ];
 
 function sanitizeOrigin(origin?: string | null): string | null {

@@ -13,8 +13,8 @@ export default function Footer({ footer }: { footer: FooterType }) {
     <section id={footer.name} className="py-16 mt-32 border-t border-gray-200">
       <div className="max-w-[90rem] mx-auto px-8">
         <footer>
-          <div className="flex flex-col items-center justify-between gap-10 text-center lg:flex-row lg:text-left">
-            <div className="flex w-full max-w-96 shrink flex-col items-center justify-between gap-6 lg:items-start">
+          <div className="flex flex-col items-start justify-between gap-10 text-center lg:flex-row lg:text-left">
+            <div className="flex w-full max-w-96 shrink flex-col items-center justify-start gap-6 lg:items-start">
               {footer.brand && (
                 <div>
                   <div className="flex items-center justify-center gap-2 lg:justify-start">
@@ -52,10 +52,10 @@ export default function Footer({ footer }: { footer: FooterType }) {
                 </ul>
               )}
             </div>
-            <div className="flex flex-col lg:flex-row flex-wrap justify-between items-start gap-6 lg:gap-10">
+            <div className="flex flex-col lg:flex-row flex-wrap justify-between items-start gap-8 lg:gap-10">
               {footer.nav?.items?.map((item, i) => (
-                <div key={i}>
-                  <p className="mb-6 font-bold">{item.title}</p>
+                <div key={i} className="flex flex-col items-start">
+                  <p className="mb-4 font-bold">{item.title}</p>
                   <ul className="space-y-4 text-sm text-muted-foreground">
                     {item.children?.map((iitem, ii) => (
                       <li key={ii} className="font-medium hover:text-primary">

@@ -6,7 +6,7 @@
   "homepage": "https://compareheights.org",
   "scripts": {
     "dev": "cross-env NODE_NO_WARNINGS=1 next dev --turbopack",
-    "build": "next build && next-sitemap",
+    "build": "next build",
     "start": "NODE_NO_WARNINGS=1 next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true pnpm build",

@@ -208,6 +208,7 @@ const CharacterImageRenderer: React.FC<{
                 setHasError(false);
 
                 const img = new Image();
+                img.crossOrigin = 'credentials';
                 img.onload = () => {
                     setIsLoading(false);
                     onLoad?.();
@@ -263,6 +264,7 @@ const CharacterImageRenderer: React.FC<{
                                 alt={character.name}
                                 className="w-full h-full"
                                 style={{ objectFit: 'fill' }}
+                                crossOrigin="anonymous"
                                 onLoad={() => onLoad?.()}
                                 onError={() => {
                                     setHasError(true);
@@ -276,8 +278,13 @@ const CharacterImageRenderer: React.FC<{
                             alt={character.name}
                             className="w-full h-full"
                             style={{ objectFit: 'fill' }}
-                            onLoad={() => onLoad?.()}
-                            onError={() => {
+                            crossOrigin="anonymous"
+                            onLoad={() => {
+                                console.log('Image loaded successfully:', character.media_url);
+                                onLoad?.();
+                            }}
+                            onError={(e) => {
+                                console.error('Image load error:', character.media_url, e);
                                 setHasError(true);
                                 onError?.();
                             }}
