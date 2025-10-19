@@ -6,6 +6,22 @@ import {
   deleteProject,
   duplicateProject,
 } from "@/models/project";
+import { deleteFromR2 } from "@/lib/r2-storage";
+
+// 从URL中提取R2 key
+function extractR2KeyFromUrl(url: string): string | null {
+  try {
+    const parsed = new URL(url);
+    const segments = parsed.pathname.split('/').filter(Boolean);
+    if (segments.length < 2) {
+      return null;
+    }
+    return segments.slice(1).join('/');
+  } catch (error) {
+    console.warn('Failed to parse R2 key from URL:', error);
+    return null;
+  }
+}
 
 // GET /api/projects/[uuid] - 获取单个项目
 export async function GET(
@@ -96,6 +112,18 @@ export async function PATCH(
     // 解析请求体
     const body = await req.json();
     const { title, project_data, thumbnail_url, is_public } = body;
+
+    // 如果有新的 thumbnail_url，删除旧的封面图片
+    if (thumbnail_url !== undefined && thumbnail_url !== project.thumbnail_url && project.thumbnail_url) {
+      const oldThumbnailKey = extractR2KeyFromUrl(project.thumbnail_url);
+      if (oldThumbnailKey) {
+        try {
+          await deleteFromR2(oldThumbnailKey);
+        } catch (error) {
+          console.warn('Failed to delete old project thumbnail:', error);
+        }
+      }
+    }
 
     // 更新项目
     const updateData: any = {};

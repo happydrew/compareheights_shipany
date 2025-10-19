@@ -280,7 +280,7 @@ const CharacterImageRenderer: React.FC<{
                             alt={character.name}
                             className="w-full h-full"
                             style={{ objectFit: 'fill' }}
-                            // crossOrigin="anonymous"
+                            crossOrigin="anonymous"
                             onLoad={() => {
                                 console.log('Image loaded successfully:', character.media_url);
                                 onLoad?.();
