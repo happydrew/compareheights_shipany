@@ -143,7 +143,7 @@ const applyDuotone = (imageData: ImageData, settings: DuotoneSettings): ImageDat
 }
 
 export default function BravePinkGreenTool({ className = '' }: { className?: string }) {
-  const t = useTranslations('brave_pink_green_tool');
+  const t = useTranslations('brave_pink_green_hero');
   const [originalImage, setOriginalImage] = useState<HTMLImageElement | null>(null)
   const [settings, setSettings] = useState<DuotoneSettings>(PRESETS['brave-pink-hero-green'])
   const [isProcessing, setIsProcessing] = useState(false)

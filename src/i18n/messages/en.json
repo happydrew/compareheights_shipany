@@ -751,20 +751,6 @@
       "delete_failed": "Failed to delete project"
     }
   },
-  "tools": {
-    "brave_pink_green": {
-      "metadata": {
-        "title": "Brave Pink Hero Green Generator - Free Photo Editor",
-        "description": "Create brave pink hero green duotone effects instantly. Free foto brave pink hero green generator with pink hijau filters. 100% privacy-protected."
-      }
-    },
-    "compare_height_country": {
-      "metadata": {
-        "title": "Compare my height to average in country | Compareheights",
-        "description": "Compare your height to average height of different country in the world."
-      }
-    }
-  },
   "project_edit": {
     "loading": "Loading project...",
     "breadcrumb": {
@@ -830,7 +816,7 @@
       "cropFailed": "Image cropping failed, please try again"
     }
   },
-  "brave_pink_green_tool": {
+  "brave_pink_green_hero": {
     "title": "Brave Pink Hero Green Generator",
     "subtitle": "Create stunning pink hijau duotone effects instantly • Professional foto brave pink hero green editor with advanced customization",
     "badges": {

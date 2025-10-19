@@ -192,96 +192,96 @@
     }
   },
   "about": {
-    "title": "关于 NanoEdit",
+    "title": "关于 CompareHeights",
     "whatIs": {
-      "title": "什么是 NanoEdit？",
-      "description": "NanoEdit 是一个前沿的AI驱动图像编辑平台，彻底改变了您创建和编辑图像的方式。我们采用最新的人工智能技术构建，让专业级的图像编辑变得人人可及，无论您的技术水平如何。"
+      "title": "什么是 CompareHeights？",
+      "description": "CompareHeights 是一款终极在线身高对比工具，让您可以直观地比较名人、动漫角色、历史人物和自定义人物的身高。我们的平台让理解身高差异变得直观、准确且有趣。"
     },
     "mission": {
       "title": "我们的使命",
-      "description": "我们相信强大的图像编辑工具应该是简单、快速且全球创作者都能使用的。我们的使命是通过提供以下功能来普及AI驱动的图像编辑：",
+      "description": "我们相信可视化身高差异应该是简单、准确且人人可及的。我们的使命是通过提供以下功能来提供最佳的身高对比体验：",
       "features": {
         "fast": {
-          "title": "闪电般的处理速度",
-          "description": "几秒钟而非几小时就能获得专业效果"
+          "title": "即时对比",
+          "description": "几秒钟内创建身高对比图表，实时更新"
         },
         "intuitive": {
-          "title": "直观的界面",
-          "description": "没有复杂的学习曲线或技术障碍"
+          "title": "易于使用的界面",
+          "description": "无需学习曲线 - 立即开始比较身高"
         },
         "advanced": {
-          "title": "先进的AI模型",
-          "description": "由最先进的Nano Banana和Gemini AI技术驱动"
+          "title": "广泛的数据库",
+          "description": "数千个经过验证身高的名人、角色和人物"
         },
         "flexible": {
-          "title": "灵活的工作流程",
-          "description": "支持文本到图像和图像到图像编辑"
+          "title": "可自定义图表",
+          "description": "完全控制颜色、背景和视觉呈现"
         }
       }
     },
     "keyFeatures": {
       "title": "核心功能",
       "aiGeneration": {
-        "title": "AI图像生成与编辑",
-        "feature1": "使用自然语言提示词转换图像",
-        "feature2": "支持多种宽高比和输出格式",
-        "feature3": "由先进AI模型提供的高质量结果"
+        "title": "多角色对比",
+        "feature1": "在一个图表中并排比较无限数量的角色",
+        "feature2": "支持公制和英制单位，可即时转换",
+        "feature3": "从纳米到公里的视觉比例尺"
       },
       "userFriendly": {
         "title": "用户友好的体验",
-        "feature1": "为创作者设计的简洁、现代界面",
-        "feature2": "实时进度跟踪，配有有用的状态消息",
-        "feature3": "无缝的上传和下载工作流程"
+        "feature1": "简洁、直观的界面，针对所有设备优化",
+        "feature2": "拖放式角色重新排序和自定义",
+        "feature3": "无缝的图片上传和导出工作流程"
       },
       "pricing": {
-        "title": "灵活定价",
-        "feature1": "基于积分的系统，经济高效的使用方式",
-        "feature2": "没有订阅锁定 - 仅为您使用的部分付费",
-        "feature3": "透明定价，无隐藏费用"
+        "title": "免费使用",
+        "feature1": "基础功能完全免费，无需注册",
+        "feature2": "保存并分享您的身高对比项目",
+        "feature3": "多种格式的高质量导出"
       }
     },
     "technology": {
       "title": "技术架构",
-      "description": "NanoEdit 构建在现代、可靠的技术之上：",
+      "description": "CompareHeights 使用现代 Web 技术构建：",
       "aiModels": {
-        "title": "AI模型",
-        "description": "Nano Banana Edit 和 Google Gemini，提供卓越的图像处理能力"
+        "title": "数据库",
+        "description": "广泛的已验证身高数据库，定期更新"
       },
       "frontend": {
         "title": "前端",
-        "description": "Next.js 15 配合 React 和 TypeScript，提供响应式用户体验"
+        "description": "Next.js 15 配合 React 和 TypeScript，提供流畅性能"
       },
       "auth": {
         "title": "身份验证",
-        "description": "安全的 Google 和 GitHub 集成登录"
+        "description": "通过 Google 和 GitHub 安全登录以保存项目"
       },
       "infrastructure": {
         "title": "基础设施",
-        "description": "可扩展的云架构，确保可靠的性能"
+        "description": "快速、可靠的云托管，全球可访问"
       }
     },
     "values": {
       "title": "我们的价值观",
       "innovation": {
         "title": "创新",
-        "description": "我们持续整合最新的AI突破，提供前沿的编辑能力。"
+        "description": "我们不断改进平台，添加新功能并扩展角色和名人数据库。"
       },
       "simplicity": {
         "title": "简洁",
-        "description": "复杂的技术应该感觉简单。我们专注于直观的设计和无缝的用户体验。"
+        "description": "身高对比应该简单直接。我们专注于任何人都能立即使用的直观设计。"
       },
       "quality": {
         "title": "质量",
-        "description": "每个功能都经过精心打磨，确保专业级的结果。"
+        "description": "每个功能都经过精心打磨，以确保准确、精美的身高对比图表。"
       },
       "accessibility": {
         "title": "无障碍",
-        "description": "我们相信强大的工具应该让所有技能水平和背景的创作者都能使用。"
+        "description": "我们相信强大的可视化工具应该免费且对所有人开放，无论技术水平如何。"
       }
     },
     "team": {
       "title": "团队",
-      "description": "NanoEdit 由一支充满激情的工程师和设计师团队开发，他们相信AI技术的变革力量。我们致力于构建能够激发创造力并让高级图像编辑变得人人可及的工具。"
+      "description": "CompareHeights 由一支充满热情的团队开发，致力于让身高可视化变得简单且易于访问。我们致力于为全球的教育工作者、内容创作者和好奇的人们打造最好的身高对比工具。"
     },
     "contact": {
       "title": "联系我们",
@@ -291,14 +291,14 @@
       }
     },
     "footer": {
-      "message": "加入数千名已经在使用 NanoEdit 实现创意愿景的创作者。今天就开始编辑，体验AI驱动图像创作的未来。"
+      "message": "加入数千名已经在使用 CompareHeights 可视化和理解身高差异的用户。今天就开始比较，探索迷人的比例和尺度世界。"
     }
   },
   "contact": {
-    "title": "联系 NanoEdit",
+    "title": "联系 CompareHeights",
     "getInTouch": {
       "title": "联系我们",
-      "description": "我们很乐意听取您的意见！无论您对我们的AI图像编辑平台有疑问、需要技术支持，还是想分享反馈，我们都随时为您提供帮助。"
+      "description": "我们很乐意听取您的意见！无论您对我们的身高对比工具有疑问、需要技术支持，还是想分享关于身高对比图表体验的反馈，我们都随时为您提供帮助。"
     },
     "primaryContact": {
       "title": "主要联系方式",
@@ -311,56 +311,56 @@
       "title": "我们能为您提供什么帮助",
       "technical": {
         "title": "技术支持",
-        "issue1": "图像上传或处理问题",
-        "issue2": "账户访问和身份验证问题",
-        "issue3": "积分系统和计费问题",
-        "issue4": "功能使用和故障排除"
+        "issue1": "身高对比工具或图表生成的问题",
+        "issue2": "自定义图片上传用于身高对比的问题",
+        "issue3": "账户访问和身份验证问题",
+        "issue4": "身高对比图表导出和分享问题"
       },
       "business": {
         "title": "商务咨询",
-        "inquiry1": "合作机会",
-        "inquiry2": "定制集成请求",
-        "inquiry3": "企业解决方案",
-        "inquiry4": "API访问和文档"
+        "inquiry1": "教育机构合作",
+        "inquiry2": "内容创作者协作",
+        "inquiry3": "新角色数据库扩展请求",
+        "inquiry4": "项目定制身高对比解决方案"
       },
       "feedback": {
         "title": "反馈和建议",
-        "type1": "功能请求和改进建议",
-        "type2": "用户体验反馈",
-        "type3": "错误报告和问题",
-        "type4": "平台的一般建议"
+        "type1": "新角色或名人身高数据库请求",
+        "type2": "身高对比工具功能改进",
+        "type3": "错误报告和身高差异计算问题",
+        "type4": "比较身高的用户体验反馈"
       }
     },
     "faq": {
       "title": "常见问题",
       "description": "在联系我们之前，您可能会在常见问题中找到答案：",
       "account": {
-        "title": "账户和身份验证",
+        "title": "使用身高对比工具",
         "q1": {
-          "question": "问：我无法登录我的账户",
-          "answer": "答：尝试清除浏览器缓存和Cookie，或使用无痕/隐私窗口。如果问题仍然存在，请联系我们并提供您的浏览器信息和错误消息详情。"
+          "question": "问：如何创建我的第一个身高对比图表？",
+          "answer": "答：只需浏览我们的角色数据库，点击任何角色即可将其添加到您的对比中。您可以添加多个角色、自定义颜色、调整背景，并以各种格式导出您的身高对比图表。"
         }
       },
       "credits": {
-        "title": "积分和计费",
+        "title": "功能和自定义",
         "q1": {
-          "question": "问：积分是如何工作的？",
-          "answer": "答：积分根据所需的AI处理消耗。文本到图像生成消耗10积分，自定义宽高比等附加功能会消耗额外积分。"
+          "question": "问：我可以上传自己的图片进行身高对比吗？",
+          "answer": "答：当然可以！您可以上传自定义图片并设置其身高来创建个性化的身高对比。这非常适合将您自己、朋友或原创角色与我们数据库中的现有人物进行比较。"
         },
         "q2": {
-          "question": "问：我可以申请未使用积分的退款吗？",
-          "answer": "答：请通过 drewgrant616@gmail.com 联系我们，我们将根据具体情况讨论退款请求。"
+          "question": "问：支持哪些测量单位？",
+          "answer": "答：我们的身高对比工具支持公制（厘米、米）和英制单位（英尺、英寸）。系统会自动在不同测量单位之间转换，便于跨系统比较。"
         }
       },
       "processing": {
-        "title": "图像处理",
+        "title": "导出和分享",
         "q1": {
-          "question": "问：为什么我的图像处理时间这么长？",
-          "answer": "答：AI图像生成通常需要30-60秒。服务器高负载时偶尔可能会导致更长的处理时间。"
+          "question": "问：我可以以哪些格式导出身高对比图表？",
+          "answer": "答：您可以以PNG、JPG和WebP格式导出身高对比。所有导出都是高分辨率的，非常适合社交媒体分享、演示或打印。"
         },
         "q2": {
-          "question": "问：支持哪些图像格式？",
-          "answer": "答：我们支持常见格式，包括JPG、PNG和WebP上传。生成的图像以PNG格式提供。"
+          "question": "问：我可以与他人分享我的身高对比图表吗？",
+          "answer": "答：当然可以！您可以通过直接分享链接、社交媒体平台，或下载并发送导出的图片来分享身高对比。所有分享选项都保持对比图表的完整质量。"
         }
       }
     },
@@ -393,22 +393,22 @@
     },
     "socialMedia": {
       "title": "社交媒体",
-      "description": "关注我们获取最新功能和公告：",
-      "follow": "关注我们获取产品更新和提示",
-      "share": "使用 #NanoEdit 分享您的作品"
+      "description": "关注我们获取最新的身高对比功能和数据库更新：",
+      "follow": "关注我们获取新角色添加和功能更新",
+      "share": "使用 #CompareHeights 分享您的身高对比图表"
     },
     "feedbackForm": {
       "title": "反馈表单",
       "comingSoon": "即将推出",
-      "description": "我们正在开发一个集成的反馈表单，让您更容易分享想法和建议。"
+      "description": "我们正在开发一个集成的反馈表单，让您更容易分享想法、为我们的数据库推荐新角色，并帮助我们改进身高对比体验。"
     },
     "office": {
-      "title": "办公信息",
-      "description": "NanoEdit 采用远程优先的运营模式，让我们能够专注于为全球用户构建最佳的AI图像编辑体验。"
+      "title": "我们的使命",
+      "description": "CompareHeights 致力于让身高可视化变得简单、准确且人人可及。我们根据全球教育工作者、内容创作者和好奇用户的反馈，不断扩展我们的数据库并改进身高对比工具。"
     },
     "footer": {
-      "thanks": "感谢您选择 NanoEdit！",
-      "message": "您的反馈和问题帮助我们改进平台，更好地服务创意社区。"
+      "thanks": "感谢您选择 CompareHeights！",
+      "message": "您的反馈帮助我们扩展角色数据库并改进身高对比工具，为数千名依赖我们平台进行准确、有趣的身高对比的用户服务。"
     }
   },
   "hero": {
@@ -751,20 +751,6 @@
       "delete_failed": "删除项目失败"
     }
   },
-  "tools": {
-    "brave_pink_green": {
-      "metadata": {
-        "title": "勇敢粉色绿色英雄生成器 - 免费照片编辑器",
-        "description": "即时创建勇敢粉色英雄绿色双色调效果。免费照片勇敢粉色英雄绿色生成器，带有粉色绿色滤镜。100%隐私保护。"
-      }
-    },
-    "compare_height_country": {
-      "metadata": {
-        "title": "将我的身高与各国平均身高对比 | Compareheights",
-        "description": "将您的身高与世界各国的平均身高进行对比。"
-      }
-    }
-  },
   "project_edit": {
     "loading": "加载项目中...",
     "breadcrumb": {
@@ -922,6 +908,174 @@
       "uploadImageFile": "请上传图片文件",
       "cropFailed": "图片裁剪失败，请重试"
     }
+  },
+  "brave_pink_green_hero": {
+    "title": "勇敢粉色英雄绿色生成器",
+    "subtitle": "即时创建令人惊艳的粉色绿色双色调效果 • 专业的勇敢粉色英雄绿色照片编辑器，支持高级自定义",
+    "badges": {
+      "free": "100% 免费",
+      "fast": "闪电般快速",
+      "customizable": "完全可定制",
+      "quality": "优质品质"
+    },
+    "upload": {
+      "title": "上传您的照片",
+      "description": "拖放或点击选择",
+      "formats": "PNG, JPG, WebP, GIF • 最大 10MB",
+      "upload_new": "上传新图片",
+      "image_loaded": "图片已加载 • 准备处理"
+    },
+    "controls": {
+      "title": "控制",
+      "quick_presets": "快速预设",
+      "dark_color": "深色",
+      "light_color": "浅色",
+      "intensity": "强度",
+      "contrast": "对比度",
+      "brightness": "亮度",
+      "mapping_curve": "映射曲线",
+      "curve_linear": "线性",
+      "curve_smooth": "平滑",
+      "curve_dramatic": "戏剧性",
+      "curve_desc_linear": "均匀的颜色分布",
+      "curve_desc_smooth": "柔和的S曲线过渡",
+      "curve_desc_dramatic": "增强的对比度映射"
+    },
+    "presets": {
+      "brave_pink_hero_green": "勇敢粉色英雄绿色",
+      "vintage": "复古",
+      "dramatic": "戏剧性"
+    },
+    "preview": {
+      "title": "双色调结果",
+      "no_image": "预览将在这里显示",
+      "upload_prompt": "上传图片开始",
+      "processing": "处理图片中..."
+    },
+    "export": {
+      "title": "导出",
+      "download_png": "下载 PNG（最佳质量）",
+      "jpg": "JPG",
+      "webp": "WebP",
+      "privacy_title": "隐私保护",
+      "privacy_description": "所有处理都在您的浏览器中进行。您的图片永远不会离开您的设备。"
+    },
+    "errors": {
+      "file_too_large": "请选择小于 10MB 的图片文件",
+      "canvas_not_ready": "画布未准备好，请重试",
+      "load_failed": "加载图片失败"
+    },
+    "content": {
+      "movement_title": "勇敢粉色英雄绿色运动",
+      "movement_description": "2025年8月下旬，一场强大的视觉运动席卷了印度尼西亚社交媒体。勇敢粉色英雄绿色不仅仅是颜色——它们成为了抵抗、团结和希望的象征，通过简单的更换头像行为吸引了全球的关注。",
+      "event_analysis": "重大事件分析",
+      "what_sparked_title": "勇敢粉色英雄绿色现象的起源",
+      "what_sparked_desc1": "勇敢粉色英雄绿色运动源于印度尼西亚2025年8月示威期间的两起悲惨而鼓舞人心的事件。2025年8月28日，一位名叫Ana的勇敢女性，戴着标志性的粉色头巾，仅凭一根竹竿上的印度尼西亚国旗，无畏地对抗警察路障，成为了一个标志。",
+      "what_sparked_desc2": "与此同时，在线摩托车出租车司机Affan Kurniawan被警察战术车辆撞死，引发了对英雄绿色的采用——代表着对印度尼西亚工人阶级的团结。经常伴随这些颜色的1312代码，为这一数字运动增添了另一层抵抗象征意义。",
+      "brave_pink": "勇敢粉色 (#EC4899)",
+      "brave_pink_desc": "勇气与反抗的象征",
+      "brave_pink_source": "灵感来自Ana在对抗中的粉色头巾",
+      "hero_green": "英雄绿色 (#10B981)",
+      "hero_green_desc": "工人阶级团结的象征",
+      "hero_green_source": "纪念Affan Kurniawan和摩托车司机",
+      "timeline_title": "事件时间线",
+      "timeline_subtitle": "勇敢粉色英雄绿色如何走红",
+      "timeline_description": "从街头抗议到数字团结：3天内产生超过330万次互动的运动的时间顺序分解。",
+      "timeline_aug28": "2025年8月28日",
+      "timeline_aug28_desc": "Ana在大规模示威期间的勇敢对抗。她的粉色头巾立即成为抵抗的象征，视频在社交媒体上传播。",
+      "timeline_aug29": "2025年8月29日",
+      "timeline_aug29_desc": "Affan Kurniawan事件发生。摩托车司机制服的绿色与工人阶级团结联系在一起，勇敢粉色英雄绿色的组合开始形成。",
+      "timeline_sep1": "2025年9月1日",
+      "timeline_sep1_desc": "首批勇敢粉色英雄绿色生成器上线。1312代码与粉色绿色配色方案一起被广泛采用。",
+      "timeline_sep1_3": "2025年9月1-3日",
+      "timeline_sep1_3_desc": "病毒式爆发：勇敢粉色英雄绿色照片生成器访问量超过330万次。印度尼西亚各地的社交媒体资料变换，以示团结。",
+      "social_impact": "社会影响",
+      "cultural_power_title": "勇敢粉色英雄绿色1312的文化力量",
+      "cultural_power_desc1": "根据社会学讲师Hubertus Ubur的说法，勇敢粉色英雄绿色运动展示了印度尼西亚网民对其国家政治形势的敏感程度。该运动为那些无法直接参与实体示威的人提供了另一种声音。",
+      "cultural_power_desc2": "粉色绿色组合超越了简单的颜色选择——它代表了一种复杂的数字抵抗形式。1312数字代码的整合增添了与全球抵抗运动产生共鸣的意义层次，使勇敢粉色英雄绿色照片成为强有力的团结声明。",
+      "cultural_power_desc3": "在首批生成器上线后的72小时内，该运动在Instagram、TikTok、X（Twitter）和WhatsApp上产生了前所未有的参与度，展示了颜色象征主义如何在数字时代团结不同的声音。",
+      "stats_visits": "330万+",
+      "stats_visits_desc": "生成器访问量（72小时）",
+      "stats_code": "1312",
+      "stats_code_desc": "抵抗代码整合",
+      "stats_impact": "∞",
+      "stats_impact_desc": "持续的文化影响",
+      "tools_analysis": "数字工具分析",
+      "tools_comparison_title": "比较勇敢粉色英雄绿色应用可爱应用解决方案",
+      "tools_comparison_desc": "随着运动的爆发，出现了许多工具来帮助用户创建勇敢粉色英雄绿色照片。以下是不同生成器的比较，包括流行的可爱勇敢粉色英雄绿色平台。",
+      "other_generators": "其他流行生成器",
+      "other_gen_lovable": "勇敢粉色英雄绿色应用可爱应用：基本的粉色绿色滤镜，自定义选项有限",
+      "other_gen_standard": "标准勇敢粉色英雄绿色照片处理器：可能需要应用下载或账户注册",
+      "other_gen_generic": "通用粉色绿色生成器：颜色精度有限，标准导出质量",
+      "other_gen_single": "单功能工具：没有1312整合或高级双色调控制",
+      "our_advantages": "我们生成器的优势",
+      "recommended": "推荐",
+      "adv_authentic": "真实颜色代码：精确的勇敢粉色（#EC4899）和英雄绿色（#10B981）规格",
+      "adv_advanced": "高级参数：强度、对比度、亮度和曲线映射控制",
+      "adv_free": "100% 免费且快速：基于浏览器的处理，无需下载或注册",
+      "adv_quality": "优质质量：高分辨率输出，支持多种导出格式（PNG、JPG、WebP）",
+      "global_recognition": "全球认可",
+      "global_attention_title": "勇敢粉色英雄绿色如何获得国际关注",
+      "global_attention_desc1": "勇敢粉色英雄绿色运动迅速超越了印度尼西亚边界，获得了国际新闻媒体和社交媒体平台的报道。简单而强大的视觉象征与对数字抵抗运动感兴趣的全球观众产生了共鸣。",
+      "global_attention_desc2": "这一现象展示了现代抗议运动如何利用色彩心理学、社交媒体病毒传播和用户生成内容工具来创造持久影响。勇敢粉色英雄绿色照片趋势成为多个大陆数字行动主义的案例研究。",
+      "global_attention_desc3": "国际观察家注意到，粉色绿色组合有效地绕过了传统媒体审查，同时创造了一种超越语言障碍的统一视觉语言——这证明了数字时代象征性交流的力量。",
+      "media_coverage": "国际媒体报道",
+      "media_antara": "安塔拉通讯社",
+      "media_antara_quote": "勇敢粉色，英雄绿色成为团结与希望的象征",
+      "media_tempo": "Tempo.co 英文版",
+      "media_tempo_quote": "印度尼西亚社交媒体上的热门活动",
+      "media_expat": "Social Expat",
+      "media_expat_quote": "两种颜色如何成为抗议的象征",
+      "join_movement_title": "加入勇敢粉色英雄绿色运动",
+      "join_movement_desc": "通过三个简单步骤，以历史准确性和专业品质创建您自己真实的勇敢粉色英雄绿色照片",
+      "step1_title": "上传您的照片",
+      "step1_desc": "拖放或选择您的图片（支持PNG、JPG、WebP，最大10MB）",
+      "step2_title": "自定义设置",
+      "step2_desc": "调整强度、对比度、亮度，并选择曲线映射以获得完美的粉色绿色效果",
+      "step3_title": "导出和分享",
+      "step3_desc": "下载高质量结果并在社交媒体平台上分享您的团结",
+      "privacy_first_title": "隐私优先的运动支持",
+      "privacy_first_desc": "与许多可能需要数据上传的勇敢粉色英雄绿色应用可爱应用解决方案不同，我们的生成器尊重抵抗运动核心的隐私原则。所有勇敢粉色英雄绿色照片处理都在您的浏览器本地进行，确保您的数字行动主义完全私密。",
+      "privacy_guarantee": "100% 本地处理 • 零数据上传 • 最大隐私",
+      "honor_legacy_title": "尊重勇敢粉色英雄绿色的遗产",
+      "honor_legacy_desc": "无论是为历史记录、社交媒体团结还是艺术表达创建勇敢粉色英雄绿色照片，您都在参与一场代表勇气、希望和数字团结的运动。每一张粉色绿色图片都传承了Ana的勇敢和Affan的牺牲。",
+      "start_creating": "立即开始创作"
+    }
+  },
+  "compare_height_country": {
+    "metadata": {
+      "title": "将我的身高与各国平均身高对比 | Compareheights",
+      "description": "将您的身高与世界各国的平均身高进行对比。"
+    },
+    "page_title": "将我的身高与各国平均身高对比",
+    "intro_p1": "想知道你在全球身高排行中的位置吗？使用我们的身高对比工具，你可以将自己的身高与世界各国男性平均身高进行对比，一键生成直观的可视化图表。",
+    "intro_p2": "只需从我们的角色库中选择国家，数据库涵盖几乎所有主要国家的男性平均身高。如果你的国家不在列表中，可以上传自定义角色或图片并自行设置身高。我们的工具支持无限数量的角色对比，让你可以同时对比多个国家，全部呈现在一张精美的图表中。",
+    "intro_p3": "调整角色顺序、身高和名称，设置背景，切换深色模式，并将对比图表导出为高分辨率图片。将你的身高与各国平均身高对比从未如此简单有趣！",
+    "try_now": "立即体验：将我的身高与各国平均身高对比",
+    "homepage_link": "想探索更多有趣功能？访问主页使用完整功能的身高对比工具，包括名人、动漫和自定义对象对比、高级导出选项等！",
+    "table_title": "全球各国男性平均身高数据表",
+    "table_description": "下表显示了世界主要国家的男性平均身高。使用这些数据将你的身高与各国平均身高对比，看看你在全球的位置。",
+    "table_country": "国家",
+    "table_height": "男性平均身高",
+    "table_source": "数据来源",
+    "insights_title": "有趣的发现：将我的身高与各国平均身高对比",
+    "insights_intro": "当你将自己的身高与各国平均身高对比时，你会很快发现全球男性平均身高差异巨大。荷兰拥有世界上最高的男性，平均身高为183.8厘米，而印度尼西亚和菲律宾等国家的平均身高接近165厘米。这意味着如果你身高175厘米，在东南亚可能高于平均水平，但在北欧则低于平均水平。",
+    "tallest_countries_title": "最高的国家",
+    "tallest_countries_desc1": "荷兰、黑山、爱沙尼亚和冰岛的男性平均身高都超过182厘米。",
+    "tallest_countries_desc2": "将你的身高与这些国家对比，你会看到世界上最高人群的身高水平。",
+    "shortest_countries_title": "最矮的国家",
+    "shortest_countries_desc1": "老挝、东帝汶、菲律宾和印度尼西亚的男性平均身高在160到166厘米之间。",
+    "shortest_countries_desc2": "在这里对比你的身高，你可能会发现自己远高于当地平均水平！",
+    "middle_ground_title": "全球中等水平",
+    "middle_ground_desc1": "美国（176.9厘米）、中国（175.7厘米）和日本（172.1厘米）等国家代表了全球平均水平。",
+    "middle_ground_desc2": "将你的身高与这些国家对比，你会了解自己在世界范围内的位置。",
+    "regional_trends_title": "区域趋势",
+    "regional_trends_desc1": "北欧和东欧在高个子排行榜中占主导地位，而东南亚和部分南美地区则处于较矮的一侧。",
+    "regional_trends_desc2": "通过身高对比，你可以直观看到这些模式。",
+    "innovative_insight_title": "创新见解：",
+    "innovative_insight_desc": "由于营养和医疗保健的改善，许多国家的全球男性平均身高一直在上升。例如，韩国和中国在过去几十年中平均身高显著增加。当你今天将身高与各国平均水平对比时，你看到的是人类发展和进步的快照。",
+    "tool_benefits": "我们的工具旨在让身高对比变得简单有趣。添加任意数量的国家，重新排列它们，甚至上传你自己的自定义角色。将图表导出为高分辨率图片，非常适合分享或用于演示。无论你是学生、老师、旅行者还是只是好奇，都没有比这更好的方式来对比你的身高与各国平均身高了。",
+    "closing_cta": "准备好看看你的位置了吗？不要只是猜测——立即将你的身高与各国平均身高对比，发现你在世界身高排名中的位置。现在就试试，与朋友分享你的结果。身高对比的世界触手可及！"
   },
   "compareheights_article": {
     "hero_badge": "终极身高对比工具",
