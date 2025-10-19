@@ -6,6 +6,7 @@ import { SearchInput } from '../ui/SearchInput';
 import { convertHeightSmart, convertHeightSmartImperial } from '../HeightCalculates';
 import { type Category, DEFAULT_CATEGORIES } from './categories';
 import { Character, PRESET_CAT1_CHARACTERS } from '@/lib/types/characters';
+import { useTranslations } from 'next-intl';
 
 interface CacheEntry {
   data: Character[];
@@ -239,6 +240,8 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
 }) => {
 
   const { user } = useAppContext();
+  const t = useTranslations('compareheights.library');
+  const tCategories = useTranslations('compareheights.categories');
   const categories = useMemo<Category[]>(() => {
     if (user) {
       return DEFAULT_CATEGORIES;
@@ -448,6 +451,9 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
     const isExpanded = expandedCategories.has(category.id);
     const hasChildren = category.children && category.children.length > 0;
 
+    // Use translation if nameKey exists, otherwise fall back to name
+    const displayName = category.nameKey ? tCategories(category.nameKey.replace('compareheights.categories.', '')) : category.name;
+
     return (
       <div key={category.id}>
         <div
@@ -483,7 +489,7 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
             }
           </span>
 
-          <span className="flex-1 text-sm truncate">{category.name}</span>
+          <span className="flex-1 text-sm truncate">{displayName}</span>
         </div>
 
         {hasChildren && isExpanded && (
@@ -497,7 +503,7 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
 
   return (
     <div ref={libraryPanelRef} className={`flex flex-col h-full simple-library-panel ${className}`}>
-      {/* ?*/}
+      {/* 工具栏 */}
       <div ref={toolbarRef} className="p-2 border-b border-gray-200 flex-shrink-0 bg-green-theme-50/50">
         <div className="flex justify-between items-center gap-2 w-full">
           {onImageUpload && (
@@ -506,7 +512,7 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
               className="flex items-center gap-1.5 px-2.5 py-1 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-400 hover:bg-blue-50 transition-all duration-200 text-sm whitespace-nowrap flex-shrink-0 cursor-pointer"
             >
               <Upload className="w-4 h-4 text-gray-400" />
-              <span className="text-gray-600">Upload</span>
+              <span className="text-gray-600">{t('upload')}</span>
             </button>
           )}
 
@@ -514,7 +520,7 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
             <SearchInput
               value={searchTerm}
               onChange={setSearchTerm}
-              placeholder="Search characters..."
+              placeholder={t('search_placeholder')}
               className="w-full"
               size="sm"
             />
@@ -530,7 +536,7 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
           style={{ height: `${splitRatio * 100}%` }}
         >
           <div className="h-full flex flex-col overflow-y-auto p-3 thin-scrollbar">
-            {/* All Characters ?- ?*/}
+            {/* All Characters 根节点 - 可展开折叠 */}
             <div className="mb-2">
               <div
                 className={`
@@ -557,10 +563,10 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
                     <Folder className="w-4 h-4 text-gray-500" />
                   }
                 </span>
-                <span className="text-sm font-medium text-gray-800">All Characters</span>
+                <span className="text-sm font-medium text-gray-800">{t('all_characters')}</span>
               </div>
 
-              {/* ?- ?*/}
+              {/* 子分类 - 只在展开状态下显示 */}
               {isRootExpanded && (
                 <div className="ml-4">
                   {categories.map(category => renderCategoryNode(category, 1))}
@@ -610,18 +616,18 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
           </div>
         </div>
 
-        {/*  */}
+        {/* 角色列表区域 */}
         <div className="flex-1 overflow-y-auto p-4 thin-scrollbar relative">
           <div className="absolute inset-4">
-            {/* ?*/}
+            {/* 加载状态 */}
             {isLoadingCharacters && (
               <div className="flex flex-col items-center justify-center h-full">
                 <div className="loading-modern mb-4"></div>
-                <p className="text-body-md text-gray-600">Loading characters...</p>
+                <p className="text-body-md text-gray-600">{t('loading')}</p>
               </div>
             )}
 
-            {/* ?*/}
+            {/* 错误状态 */}
             {error && !isLoadingCharacters && (
               <div className="flex flex-col items-center justify-center h-full">
                 <div className="text-red-500 text-4xl mb-4"></div>
@@ -630,19 +636,19 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
                   onClick={() => selectedCategoryId !== null && loadCharacters(selectedCategoryId, searchTerm)}
                   className="px-4 py-2 bg-green-theme-500 text-white rounded-xl hover:bg-green-theme-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-sm ripple-effect"
                 >
-                  Retry
+                  {t('retry')}
                 </button>
               </div>
             )}
 
-            {/*  */}
+            {/* 角色网格 */}
             {!isLoadingCharacters && !error && (
               <div className="flex justify-around items-center flex-wrap gap-2">
                 {characters.length === 0 ? (
                   <div className="col-span-3 flex flex-col items-center justify-center py-8">
                     <div className="text-gray-400 text-4xl mb-4"></div>
                     <p className="text-gray-500 text-sm text-center">
-                      {searchTerm ? `No characters found for "${searchTerm}"` : 'No characters available'}
+                      {searchTerm ? t('no_characters_search', { searchTerm }) : t('no_characters')}
                     </p>
                   </div>
                 ) : (

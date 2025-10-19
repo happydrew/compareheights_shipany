@@ -16,15 +16,23 @@ import type { Project, ProjectData } from "@/types/project";
 import { compareProjectData, compareCharactersArray } from "@/lib/projectDataCompare";
 import { SharedCharacterData } from "@/lib/shareUtils";
 import { uploadThumbnailToR2 } from "@/lib/thumbnail-upload";
+import { Link as I18nLink } from '@/i18n/navigation';
+
+// interface ProjectEditPageProps {
+//   params: Promise<{ uuid: string, locale: string }>;
+// }
 
 interface ProjectEditPageProps {
-  params: Promise<{ uuid: string }>;
+  params: { uuid: string, locale: string };
 }
 
-export default function ProjectEditPage({ params }: ProjectEditPageProps) {
+export default function ProjectEditPage({ params }: {
+  params: Promise<{ uuid: string, locale: string }>;
+}) {
   const t = useTranslations("project_edit");
   const router = useRouter();
   const [uuid, setUuid] = useState<string>("");
+  const [locale, setLocale] = useState<string>("en");
   const [project, setProject] = useState<Project | null>(null);
   const [title, setTitle] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -45,7 +53,10 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
 
   // Resolve params
   useEffect(() => {
-    params.then((p) => setUuid(p.uuid));
+    params.then((p) => {
+      setUuid(p.uuid)
+      setLocale(p.locale)
+    });
   }, [params]);
 
   // Load project
@@ -70,12 +81,12 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
           setHasUnsavedChanges(false);
         } else {
           toast.error(data.message || t("toast.load_failed"));
-          router.push("/dashboard/projects");
+          router.push(`${locale != 'en' ? `/${locale}` : ''}/dashboard/projects`);
         }
       } catch (error) {
         console.error("Load project error:", error);
         toast.error(t("toast.load_failed"));
-        router.push("/dashboard/projects");
+        router.push(`${locale != 'en' ? `/${locale}` : ''}/dashboard/projects`);
       } finally {
         setIsLoading(false);
       }
@@ -229,7 +240,7 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
       if (!confirmExit) {
         return
       } else {
-        router.push("/dashboard/projects");
+        router.push(`${locale != 'en' ? `/${locale}` : ''}/dashboard/projects`);
         return;
       };
     }
@@ -258,7 +269,7 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
     }
 
     // Exit to projects list
-    router.push("/dashboard/projects");
+    router.push(`${locale != 'en' ? `/${locale}` : ''}/dashboard/projects`);
   }, [hasUnsavedChanges, project, router, t]);
 
   // Warn before closing page with unsaved changes
@@ -303,12 +314,12 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
           </Button>
 
           <div className="flex min-w-0 items-center gap-2 text-sm text-gray-500">
-            <Link
+            <I18nLink
               href="/dashboard/projects"
               className="hover:text-gray-900 transition-colors whitespace-nowrap"
             >
               {t("breadcrumb.my_projects")}
-            </Link>
+            </I18nLink>
             <span>/</span>
             <Input
               value={title}

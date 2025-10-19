@@ -9,6 +9,8 @@ import { NextAuthSessionProvider } from "@/auth/session";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/providers/theme";
 import { FeedbackWidget } from "@/components/blocks/FeedbackWidget";
+import { AnnouncementBanner } from "@/components/announcement/AnnouncementBanner";
+import { AnnouncementModal } from "@/components/announcement/AnnouncementModal";
 import { locales } from "@/i18n/locale";
 
 export function generateStaticParams() {
@@ -30,8 +32,7 @@ export async function generateMetadata({
       template: `%s`,
       default: t("metadata.title") || "",
     },
-    description: t("metadata.description") || "",
-    keywords: t("metadata.keywords") || "",
+    description: t("metadata.description") || ""
   };
 }
 
@@ -52,6 +53,9 @@ export default async function LocaleLayout({
       <NextAuthSessionProvider>
         <AppContextProvider>
           <ThemeProvider>
+            {/* 全局公告组件 */}
+            <AnnouncementBanner />
+            <AnnouncementModal />
             {/* 全局反馈组件 */}
             <FeedbackWidget />
             {children}

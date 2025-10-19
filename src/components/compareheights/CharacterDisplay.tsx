@@ -6,6 +6,7 @@ import {
     Trash2, Edit3
 } from 'lucide-react';
 import { Unit, convertHeightSmart, convertHeightSmartImperial } from './HeightCalculates';
+import { useTranslations } from 'next-intl';
 
 // SVG 缓存管理器 - 用于缓存已获取的 SVG 内容
 class SVGCacheManager {
@@ -369,6 +370,7 @@ const CharacterDisplay: React.FC<{
 }> = ({ character, pixelsPerM, isSelected, unit, isDragging = false, theme = 'light', onEdit, onMove, onDelete }) => {
     // 获取当前主题的样式类
     const themeClasses = useMemo(() => getThemeClasses(theme), [theme]);
+    const t = useTranslations('compareheights.character');
 
     // 实际媒体宽高比状态
     const [actualAspectRatio, setActualAspectRatio] = useState<number | null>(null);
@@ -466,7 +468,7 @@ const CharacterDisplay: React.FC<{
                 width: `${displayWidth}px`,
                 touchAction: 'none', // 阻止触摸时的默认滚动行为
             }}
-            title="Drag to move character position"
+            title={t('drag_to_move')}
             onMouseDown={(e) => {
                 e.stopPropagation();
                 onMove?.(e);
@@ -516,7 +518,7 @@ const CharacterDisplay: React.FC<{
                                 e.stopPropagation();
                             }}
                             className={`rounded-full ${themeClasses.bg.primary} ${themeClasses.text.secondary} hover:text-green-theme-600 hover:bg-green-theme-50 transition-all duration-300 shadow-sm hover:shadow-md`}
-                            title="Edit character"
+                            title={t('edit')}
                             disabled={isDragging}
                             style={{
                                 padding: `${4 / hoverScale}px`,
@@ -540,7 +542,7 @@ const CharacterDisplay: React.FC<{
                                 e.stopPropagation();
                             }}
                             className={`p-1 rounded-full ${themeClasses.bg.primary} ${themeClasses.text.secondary} hover:text-accent-rose hover:bg-red-50 transition-all duration-300 shadow-sm hover:shadow-md`}
-                            title="Remove character"
+                            title={t('remove')}
                             disabled={isDragging}
                         >
                             <Trash2 width={buttonNormalSize} height={buttonNormalSize} />

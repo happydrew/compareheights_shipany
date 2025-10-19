@@ -13,10 +13,10 @@ export async function generateMetadata({
 
   const post = await findPostBySlug(slug, locale);
 
-  let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/posts/${slug}`;
+  let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/blog/${slug}`;
 
   if (locale !== "en") {
-    canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/posts/${slug}`;
+    canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/blog/${slug}`;
   }
 
   return {

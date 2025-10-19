@@ -11,11 +11,13 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useTranslations } from "next-intl";
 
 import { DashboardSidebarContent } from "./sidebar";
 
 export function DashboardMobileNav() {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations('dashboard.navigation');
 
   return (
     <div className="sticky top-4 left-0 z-30 bg-background lg:hidden">
@@ -36,7 +38,7 @@ export function DashboardMobileNav() {
         <SheetContent side="left" className="w-full max-w-xs overflow-hidden p-0">
           <SheetHeader className="border-b border-gray-100 p-4">
             <SheetTitle className="text-base font-semibold text-gray-900">
-              Dashboard Navigation
+              {t('dashboard_navigation')}
             </SheetTitle>
           </SheetHeader>
           <DashboardSidebarContent

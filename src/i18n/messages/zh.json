@@ -1,8 +1,7 @@
 {
   "metadata": {
-    "title": "NanoEdit | 基于 nano banana ai 的 AI 图片编辑器",
-    "description": "NanoEdit 是一款基于 nano banana ai 和 Gemini Flash 2.5 的 AI 图片编辑器，帮助你即时完成专业级效果。",
-    "keywords": "NanoEdit, AI 图片编辑器, nano banana ai"
+    "title": "身高比较 - 轻松对比无限对象的身高",
+    "description": "轻松创建令人惊艳的身高对比图，支持无限对象，包括人物、名人、动漫角色、动物、建筑等，并可导出与分享精美的可视化图表。"
   },
   "user": {
     "sign_in": "登录",
@@ -11,6 +10,7 @@
     "api_keys": "API 密钥",
     "my_orders": "我的订单",
     "user_center": "用户中心",
+    "profile": "个人资料",
     "admin_system": "管理后台",
     "dashboard": "项目管理",
     "subscription": "订阅管理"
@@ -674,7 +674,7 @@
     "title": "个人设置",
     "description": "管理您的个人信息",
     "avatar_label": "头像",
-    "upload_photo": "上传照片（即将推出）",
+    "upload_photo": "头像",
     "display_name_label": "显示名称",
     "display_name_placeholder": "您的显示名称",
     "email_label": "邮箱",
@@ -1020,5 +1020,118 @@
     "cta_primary": "马上体验身高对比工具",
     "cta_secondary": "深入了解功能亮点",
     "cta_footer": "成千上万用户信赖本平台，直观数据展示让身高差生动可见。"
+  },
+  "compareheights": {
+    "tabs": {
+      "characters": "角色",
+      "library": "角色库"
+    },
+    "library": {
+      "upload": "上传",
+      "search_placeholder": "搜索角色...",
+      "all_characters": "所有角色",
+      "loading": "加载角色中...",
+      "retry": "重试",
+      "no_characters_search": "未找到\"{searchTerm}\"的相关角色",
+      "no_characters": "暂无角色"
+    },
+    "character": {
+      "drag_to_move": "拖动移动角色位置",
+      "edit": "编辑角色",
+      "remove": "移除角色"
+    },
+    "search": {
+      "clear": "清空搜索"
+    },
+    "categories": {
+      "custom_characters": "自定义角色",
+      "generic_human": "普通人类",
+      "generic_people": "通用人物",
+      "people": "人物",
+      "old_people": "老年人",
+      "baby": "婴儿",
+      "children": "儿童",
+      "country_average_height": "各国平均身高",
+      "celebrity": "名人",
+      "entertainment_celebs": "娱乐明星",
+      "sports_stars": "体育明星",
+      "politician": "政治家",
+      "height_record_holders": "身高记录保持者",
+      "religious_mythological": "宗教神话人物",
+      "anime": "动漫",
+      "one_piece": "海贼王",
+      "attack_on_titan": "进击的巨人",
+      "naruto": "火影忍者",
+      "dragon_ball": "龙珠",
+      "demon_slayer": "鬼灭之刃",
+      "one_punch_man": "一拳超人",
+      "other_anime": "其他动漫",
+      "films": "影视",
+      "star_wars": "星球大战",
+      "walking_dead": "行尸走肉",
+      "fictional_characters": "虚构角色",
+      "game": "游戏",
+      "dungeons_dragons": "龙与地下城",
+      "animals": "动物",
+      "dogs": "狗",
+      "cats": "猫",
+      "plants": "植物",
+      "microorganisms": "微生物",
+      "objects": "物体",
+      "astronomy": "天文",
+      "buildings": "建筑"
+    }
+  },
+  "dashboard": {
+    "navigation": {
+      "projects_section": "项目",
+      "account_section": "账户",
+      "my_projects": "我的项目",
+      "my_characters": "我的角色",
+      "profile": "个人资料",
+      "subscription": "订阅管理",
+      "billing_history": "账单历史",
+      "dashboard_navigation": "控制面板导航"
+    }
+  },
+  "feedback_widget": {
+    "button_title": "反馈",
+    "close_title": "关闭",
+    "header_title": "反馈",
+    "description": "想添加某个角色，或对网站有任何反馈？我们很乐意听取您的意见——您的建议帮助我们不断改进！",
+    "email_section_title": "欢迎通过邮件联系我们：",
+    "success_title": "反馈已提交！",
+    "success_message": "感谢您的反馈。我们会仔细审阅您的建议。",
+    "validation": {
+      "message_required": "请输入您的反馈内容",
+      "invalid_email": "请输入有效的邮箱地址",
+      "submit_failed": "提交失败",
+      "submit_failed_retry": "提交失败，请稍后重试！"
+    },
+    "form": {
+      "name_label": "姓名",
+      "name_placeholder": "您的姓名",
+      "email_label": "邮箱",
+      "email_placeholder": "your@email.com",
+      "feedback_label": "反馈内容",
+      "feedback_placeholder": "请分享您的建议、问题或想法...",
+      "submit_button": "提交反馈",
+      "submitting_button": "提交中..."
+    }
+  },
+  "announcement": {
+    "banner": {
+      "message": "🎉新功能上线：保存身高对比图表为项目 & 创建自定义角色！",
+      "learn_more": "了解更多"
+    },
+    "modal": {
+      "title": "精彩的新功能！",
+      "feature1_title": "保存为项目",
+      "feature1_desc": "现在您可以将身高对比图表保存为项目到仪表板中。随时访问、编辑并与他人分享！",
+      "feature2_title": "自定义角色",
+      "feature2_desc": "上传您自己的图片并创建具有特定身高的自定义角色。非常适合将您自己、朋友或原创作品添加到对比中！",
+      "got_it": "我知道了！",
+      "dont_show_again": "不再显示"
+    }
   }
 }

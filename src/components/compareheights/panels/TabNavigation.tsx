@@ -3,6 +3,7 @@
 import React from 'react';
 import { Users, Library } from 'lucide-react';
 import { TabPanel, TabItem } from '../ui/TabPanel';
+import { useTranslations } from 'next-intl';
 
 interface TabNavigationProps {
   activeTab: 'characters' | 'library';
@@ -15,15 +16,17 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
   onTabChange,
   className = ''
 }) => {
+  const t = useTranslations('compareheights.tabs');
+
   const tabs: TabItem[] = [
     {
       key: 'characters',
-      label: 'Characters',
+      label: t('characters'),
       icon: <Users className="w-4 h-4" />
     },
     {
       key: 'library',
-      label: 'Library',
+      label: t('library'),
       icon: <Library className="w-4 h-4" />
     }
   ];

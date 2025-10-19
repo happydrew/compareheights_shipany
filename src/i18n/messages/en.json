@@ -1,8 +1,7 @@
 {
   "metadata": {
-    "title": "AI Photo Editor Powered by nano banana & Gemini | NanoEdit",
-    "description": "Edit photos in seconds with NanoEdit. AI-powered by nano banana ai and Gemini Flash 2.5. Achieve professional, polished results instantly—no design skills needed.",
-    "keywords": "NanoEdit, AI photo editor, nano banana ai"
+    "title": "Height Comparison - Comparing Heights of Unlimited Objects Easily",
+    "description": "Create stunning height comparison chart of Unlimited Objects effortlessly, comparing heights of people, celebrities, anime characters, animals, buildings & anything, export & share beautiful visualizations."
   },
   "user": {
     "sign_in": "Sign In",
@@ -675,7 +674,7 @@
     "title": "Profile Settings",
     "description": "Manage your personal information",
     "avatar_label": "Avatar",
-    "upload_photo": "Upload Photo (Coming Soon)",
+    "upload_photo": "Avatar",
     "display_name_label": "Display Name",
     "display_name_placeholder": "Your display name",
     "email_label": "Email",
@@ -1096,5 +1095,118 @@
     "cta_primary": "Try the Height Comparison Tool Now",
     "cta_secondary": "Learn More About Features",
     "cta_footer": "Join thousands of users who rely on our platform for accurate, engaging height comparisons that bring numerical data to life."
+  },
+  "compareheights": {
+    "tabs": {
+      "characters": "Characters",
+      "library": "Library"
+    },
+    "library": {
+      "upload": "Upload",
+      "search_placeholder": "Search characters...",
+      "all_characters": "All Characters",
+      "loading": "Loading characters...",
+      "retry": "Retry",
+      "no_characters_search": "No characters found for \"{searchTerm}\"",
+      "no_characters": "No characters available"
+    },
+    "character": {
+      "drag_to_move": "Drag to move character position",
+      "edit": "Edit character",
+      "remove": "Remove character"
+    },
+    "search": {
+      "clear": "Clear search"
+    },
+    "categories": {
+      "custom_characters": "Custom Characters",
+      "generic_human": "Generic Human",
+      "generic_people": "Generic People",
+      "people": "People",
+      "old_people": "Old People",
+      "baby": "Baby",
+      "children": "Children",
+      "country_average_height": "Country Average Height",
+      "celebrity": "Celebrity",
+      "entertainment_celebs": "Entertainment Celebs",
+      "sports_stars": "Sports Stars",
+      "politician": "Politician",
+      "height_record_holders": "Height Record Holders",
+      "religious_mythological": "Religious & Mythological",
+      "anime": "Anime",
+      "one_piece": "One Piece",
+      "attack_on_titan": "Attack on Titan",
+      "naruto": "Naruto",
+      "dragon_ball": "Dragon Ball",
+      "demon_slayer": "Demon Slayer",
+      "one_punch_man": "One Punch Man",
+      "other_anime": "Other Anime",
+      "films": "Films",
+      "star_wars": "Star Wars",
+      "walking_dead": "Walking Dead",
+      "fictional_characters": "Fictional Characters",
+      "game": "Game",
+      "dungeons_dragons": "Dungeons & Dragons",
+      "animals": "Animals",
+      "dogs": "Dogs",
+      "cats": "Cats",
+      "plants": "Plants",
+      "microorganisms": "Microorganisms",
+      "objects": "Objects",
+      "astronomy": "Astronomy",
+      "buildings": "Buildings"
+    }
+  },
+  "dashboard": {
+    "navigation": {
+      "projects_section": "Projects",
+      "account_section": "Account",
+      "my_projects": "My Projects",
+      "my_characters": "My Characters",
+      "profile": "Profile",
+      "subscription": "Subscription",
+      "billing_history": "Billing History",
+      "dashboard_navigation": "Dashboard Navigation"
+    }
+  },
+  "feedback_widget": {
+    "button_title": "Feedback",
+    "close_title": "close",
+    "header_title": "Feedback",
+    "description": "Have a character you'd like to see added, or any feedback about the site? We'd love to hear from you — your input helps us improve!",
+    "email_section_title": "Feel free to email us at:",
+    "success_title": "Feedback Submitted!",
+    "success_message": "Thank you for your feedback. We will carefully review your suggestions.",
+    "validation": {
+      "message_required": "Please enter your feedback",
+      "invalid_email": "Please enter a valid email address",
+      "submit_failed": "Commit failed",
+      "submit_failed_retry": "Commit failed, please try again later!"
+    },
+    "form": {
+      "name_label": "Name",
+      "name_placeholder": "Your name",
+      "email_label": "Email",
+      "email_placeholder": "your@email.com",
+      "feedback_label": "Feedback",
+      "feedback_placeholder": "Please share your suggestions, questions, or ideas...",
+      "submit_button": "Submit Feedback",
+      "submitting_button": "Submitting..."
+    }
+  },
+  "announcement": {
+    "banner": {
+      "message": "🎉New features available: Save height comparison charts as projects & Create custom characters!",
+      "learn_more": "Learn More"
+    },
+    "modal": {
+      "title": "Exciting New Features!",
+      "feature1_title": "Save as Projects",
+      "feature1_desc": "Now you can save your height comparison charts as projects in your dashboard. Access them anytime, make edits, and share with others!",
+      "feature2_title": "Custom Characters",
+      "feature2_desc": "Upload your own images and create custom characters with specific heights. Perfect for adding yourself, friends, or original creations to comparisons!",
+      "got_it": "Got it!",
+      "dont_show_again": "Don't show again"
+    }
   }
 }

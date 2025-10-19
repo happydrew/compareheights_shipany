@@ -9,39 +9,16 @@ import {
     RiUserLine,
     RiVipCrownLine,
 } from "react-icons/ri";
+import { Link as I18nLink } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 import { cn } from "@/lib/utils";
 
-const projectNavigation = [
-    {
-        label: "My Projects",
-        url: "/dashboard/projects",
-        icon: RiFolderLine,
-    },
-    {
-        label: "My Characters",
-        url: "/dashboard/custom-characters",
-        icon: RiTeamLine,
-    },
-];
-
-const accountNavigation = [
-    {
-        label: "Profile",
-        url: "/dashboard/profile",
-        icon: RiUserLine,
-    },
-    {
-        label: "Subscription",
-        url: "/dashboard/subscription",
-        icon: RiVipCrownLine,
-    },
-    {
-        label: "Billing History",
-        url: "/dashboard/orders",
-        icon: RiFileList3Line,
-    },
-];
+interface NavItem {
+    label: string;
+    url: string;
+    icon: React.ComponentType<{ className?: string }>;
+}
 
 interface DashboardSidebarContentProps {
     onNavigate?: () => void;
@@ -53,13 +30,45 @@ export function DashboardSidebarContent({
     className,
 }: DashboardSidebarContentProps) {
     const pathname = usePathname();
+    const t = useTranslations('dashboard.navigation');
+
+    const projectNavigation: NavItem[] = [
+        {
+            label: t('my_projects'),
+            url: "/dashboard/projects",
+            icon: RiFolderLine,
+        },
+        {
+            label: t('my_characters'),
+            url: "/dashboard/custom-characters",
+            icon: RiTeamLine,
+        },
+    ];
+
+    const accountNavigation: NavItem[] = [
+        {
+            label: t('profile'),
+            url: "/dashboard/profile",
+            icon: RiUserLine,
+        },
+        {
+            label: t('subscription'),
+            url: "/dashboard/subscription",
+            icon: RiVipCrownLine,
+        },
+        {
+            label: t('billing_history'),
+            url: "/dashboard/orders",
+            icon: RiFileList3Line,
+        },
+    ];
 
     return (
         <div className={cn("flex h-full flex-col", className)}>
             <nav className="flex-1 overflow-y-auto p-4">
                 <div className="mb-6">
                     <h3 className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
-                        Projects
+                        {t('projects_section')}
                     </h3>
                     <div className="space-y-1">
                         {projectNavigation.map((item) => {
@@ -67,7 +76,7 @@ export function DashboardSidebarContent({
                             const Icon = item.icon;
 
                             return (
-                                <Link
+                                <I18nLink
                                     key={item.url}
                                     href={item.url}
                                     className={cn(
@@ -85,7 +94,7 @@ export function DashboardSidebarContent({
                                         )}
                                     />
                                     <span>{item.label}</span>
-                                </Link>
+                                </I18nLink>
                             );
                         })}
                     </div>
@@ -94,7 +103,7 @@ export function DashboardSidebarContent({
 
             <div className="flex-shrink-0 border-t border-gray-200 p-4">
                 <h3 className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
-                    Account
+                    {t('account_section')}
                 </h3>
                 <div className="space-y-1">
                     {accountNavigation.map((item) => {
@@ -102,7 +111,7 @@ export function DashboardSidebarContent({
                         const Icon = item.icon;
 
                         return (
-                            <Link
+                            <I18nLink
                                 key={item.url}
                                 href={item.url}
                                 className={cn(
@@ -120,7 +129,7 @@ export function DashboardSidebarContent({
                                     )}
                                 />
                                 <span>{item.label}</span>
-                            </Link>
+                            </I18nLink>
                         );
                     })}
                 </div>

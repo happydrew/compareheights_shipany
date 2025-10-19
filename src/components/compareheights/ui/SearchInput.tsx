@@ -4,6 +4,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Search, X, Loader2 } from 'lucide-react';
 import { clsx } from 'clsx';
+import { useTranslations } from 'next-intl';
 
 interface SearchInputProps {
   value: string;
@@ -23,7 +24,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   value,
   onChange,
   onSearch,
-  placeholder = '搜索角色...',
+  placeholder,
   disabled = false,
   loading = false,
   debounceMs = 300,
@@ -33,8 +34,9 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   variant = 'outlined'
 }) => {
   const [internalValue, setInternalValue] = useState(value);
-  const debounceRef = useRef<NodeJS.Timeout>();
+  const debounceRef = useRef<NodeJS.Timeout>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const t = useTranslations('compareheights.search');
 
   // 尺寸样式映射
   const sizeStyles = {
@@ -180,7 +182,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
             'hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-1',
             disabled && 'cursor-not-allowed'
           )}
-          aria-label="清空搜索"
+          aria-label={t('clear')}
         >
           <X className='w-4 h-4' />
         </button>

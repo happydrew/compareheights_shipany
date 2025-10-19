@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { Link as I18nLink } from "@/i18n/navigation";
 
 interface SubscriptionData {
   subscription: {
@@ -124,9 +125,9 @@ export default function SubscriptionPage() {
               <p className="mt-1 text-sm text-gray-500 sm:text-base">$0 / month</p>
             )}
           </div>
-          <Link href="/pricing" className="w-full sm:w-auto">
+          <I18nLink href="/pricing" className="w-full sm:w-auto">
             <Button className="w-full sm:w-auto">{t("upgrade_plan")}</Button>
-          </Link>
+          </I18nLink>
         </div>
 
         <div className="space-y-4 border-t pt-4">
@@ -197,11 +198,11 @@ export default function SubscriptionPage() {
             {t("available_plans_description")}
           </p>
         </div>
-        <Link href="/pricing" className="w-full sm:w-auto">
+        <I18nLink href="/pricing" className="w-full sm:w-auto">
           <Button variant="outline" className="w-full sm:w-auto">
             {t("view_all_plans")}
           </Button>
-        </Link>
+        </I18nLink>
       </div>
     </div>
   );

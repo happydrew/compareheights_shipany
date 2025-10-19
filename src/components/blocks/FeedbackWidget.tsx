@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { MessageSquare, X, Send, Mail, User, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 interface FeedbackData {
   name: string;
@@ -19,6 +20,7 @@ export const FeedbackWidget: React.FC<FeedbackWidgetProps> = ({ className = '' }
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string>('');
+  const t = useTranslations('feedback_widget');
 
   const [formData, setFormData] = useState<FeedbackData>({
     name: '',
@@ -39,11 +41,11 @@ export const FeedbackWidget: React.FC<FeedbackWidgetProps> = ({ className = '' }
 
   const validateForm = (): boolean => {
     if (!formData.message.trim()) {
-      setSubmitError('Please enter your feedback');
+      setSubmitError(t('validation.message_required'));
       return false;
     }
     if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      setSubmitError('Please enter a valid email address');
+      setSubmitError(t('validation.invalid_email'));
       return false;
     }
 
@@ -70,7 +72,7 @@ export const FeedbackWidget: React.FC<FeedbackWidgetProps> = ({ className = '' }
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.message || 'Commit failed');
+        throw new Error(result.message || t('validation.submit_failed'));
       }
 
       setSubmitSuccess(true);
@@ -84,7 +86,7 @@ export const FeedbackWidget: React.FC<FeedbackWidgetProps> = ({ className = '' }
 
     } catch (error) {
       console.error('Feedback submission error:', error);
-      setSubmitError(error instanceof Error ? error.message : 'Commit failed, please try again later!');
+      setSubmitError(error instanceof Error ? error.message : t('validation.submit_failed_retry'));
     } finally {
       setIsSubmitting(false);
     }
@@ -136,7 +138,7 @@ export const FeedbackWidget: React.FC<FeedbackWidgetProps> = ({ className = '' }
         className="bg-green-theme-600 hover:bg-green-theme-700 text-white cursor-pointer rounded-full p-2.5 shadow-lg hover:shadow-xl transition-all duration-150 group"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        title="Feedback"
+        title={t('button_title')}
       >
         <MessageSquare size={22} className="group-hover:rotate-12 transition-transform duration-300" />
       </motion.button>
@@ -175,8 +177,8 @@ export const FeedbackWidget: React.FC<FeedbackWidgetProps> = ({ className = '' }
                       <Send size={32} className="text-green-600" />
                     </motion.div>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Feedback Submitted!</h3>
-                  <p className="text-gray-600 text-sm">Thank you for your feedback. We will carefully review your suggestions.</p>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">{t('success_title')}</h3>
+                  <p className="text-gray-600 text-sm">{t('success_message')}</p>
                 </div>
               ) : (
                 <>
@@ -184,10 +186,10 @@ export const FeedbackWidget: React.FC<FeedbackWidgetProps> = ({ className = '' }
                   <div className="flex items-center justify-between p-4 border-b border-gray-200">
                     <div className="flex items-center gap-2">
                       <MessageCircle size={20} className="text-green-theme-600" />
-                      <h3 className="font-semibold text-gray-800">Feedback</h3>
+                      <h3 className="font-semibold text-gray-800">{t('header_title')}</h3>
                     </div>
                     <button
-                      title='close'
+                      title={t('close_title')}
                       onClick={handleClose}
                       className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
                     >
@@ -201,7 +203,7 @@ export const FeedbackWidget: React.FC<FeedbackWidgetProps> = ({ className = '' }
                     <div className="flex items-start gap-2 bg-green-50 rounded-lg p-3">
                       {/* <MessageCircle size={20} className="text-green-theme-600 mt-0.5" /> */}
                       <span className="text-green-theme-800 text-[15px] leading-relaxed">
-                        Have a character you'd like to see added, or any feedback about the site? We'd love to hear from you — your input helps us improve!
+                        {t('description')}
                       </span>
                     </div>
 
@@ -209,7 +211,7 @@ export const FeedbackWidget: React.FC<FeedbackWidgetProps> = ({ className = '' }
                     <div className="flex items-center gap-1 bg-gray-50 rounded-lg p-3">
 
                       <span className="flex flex-col items-start gap-2 text-gray-700 text-sm">
-                        <span className="font-medium">Feel free to email us at:</span>
+                        <span className="font-medium">{t('email_section_title')}</span>
 
                         <a
                           href="mailto:drewgrant616@gmail.com"

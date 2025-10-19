@@ -26,8 +26,10 @@ import { toast } from "sonner";
 import { RiAddLine, RiSearchLine, RiFilter3Line } from "react-icons/ri";
 import type { ProjectListItem } from "@/types/project";
 import { copyToClipboard } from "@/lib/utils";
+import { Link as I18nLink } from '@/i18n/navigation';
 
-export default function ProjectsPage() {
+export default function ProjectsPage({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   const t = useTranslations('projects');
   const router = useRouter();
   const [projects, setProjects] = useState<ProjectListItem[]>([]);
@@ -150,7 +152,7 @@ export default function ProjectsPage() {
       if (data.success) {
         setIsCreateDialogOpen(false);
         setNewProjectTitle("");
-        router.push(`/dashboard/projects/${data.data.uuid}/edit`);
+        router.push(`${locale != 'en' ? '/' + locale : ''}/dashboard/projects/${data.data.uuid}/edit`);
       } else {
         toast.error(data.message || t('toast.create_failed'));
       }
@@ -164,12 +166,12 @@ export default function ProjectsPage() {
 
   // Edit project
   const handleEdit = (uuid: string) => {
-    router.push(`/dashboard/projects/${uuid}/edit`);
+    router.push(`${locale != 'en' ? '/' + locale : ''}/dashboard/projects/${uuid}/edit`);
   };
 
   // Share project
   const handleShare = async (uuid: string) => {
-    const shareUrl = `${window.location.origin}/share/project/${uuid}`;
+    const shareUrl = `${window.location.origin}${locale != 'en' ? '/' + locale : ''}/share/project/${uuid}`;
 
     const success = await copyToClipboard(shareUrl);
     if (success) {

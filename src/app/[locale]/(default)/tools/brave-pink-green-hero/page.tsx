@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { HeightCompareTool } from "@/components/compareheights";
-import { HeightComparisonArticle } from "@/components/compareheights/HeightComparisonArticle";
 import { getTranslations } from "next-intl/server";
-
+import BravePinkGreenTool from "@/components/brave-pink-green-hero/BravePinkGreenTool";
 
 export async function generateMetadata({
   params,
@@ -10,33 +8,29 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'brave_pink_green_tool' });
+
   const baseUrl =
     process.env.NEXT_PUBLIC_WEB_URL?.replace(/\/$/, "") ?? "https://compareheights.org";
-  const canonical =
+  let canonical =
     locale && locale !== "en" ? `${baseUrl}/${locale}` : baseUrl;
-
-  const t = await getTranslations();
+  canonical = `${canonical}/tools/brave-pink-green-hero`;
 
   return {
-    title: t("metadata.title"),
-    description: t("metadata.description"),
+    title: t('title') + " - Free Photo Editor",
+    description: t('subtitle'),
     alternates: {
-      canonical,
+      // canonical,
     },
   };
 }
 
-export default async function LandingPage({
+export default async function BravePinkGreenHeroPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   await params;
 
-  return (
-    <>
-      <HeightCompareTool />
-      <HeightComparisonArticle />
-    </>
-  );
+  return <BravePinkGreenTool />;
 }
