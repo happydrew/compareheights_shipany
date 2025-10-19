@@ -661,9 +661,7 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
                         onCharacterAdd(character);
                       }}
                     >
-                      {/* ?*/}
                       <div className="aspect-square w-[8rem] flex items-center justify-center bg-gray-50 rounded overflow-hidden">
-                        {/* ?-  */}
                         {character.thumbnail_url ? (
                           <img
                             src={character.thumbnail_url}
@@ -671,7 +669,6 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
                             className="w-full h-full object-contain hover:scale-105 transition-transform duration-200"
                           />
                         ) : (
-
                           <div
                             className={`w-12 h-16 rounded flex items-center justify-center text-white text-sm font-bold hover:ring-2 hover:ring-gray-300 hover:ring-offset-1`}
                             style={{

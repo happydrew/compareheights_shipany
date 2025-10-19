@@ -263,7 +263,7 @@ export async function generatePresignedUploadUrl(
   expiresIn: number = 3600
 ): Promise<{ uploadUrl: string; key: string; publicUrl: string }> {
   try {
-    await ensureR2CorsConfigured();
+    // await ensureR2CorsConfigured();
 
     // Generate unique file key
     const fileExtension = fileName.split('.').pop()?.toLowerCase() || '';

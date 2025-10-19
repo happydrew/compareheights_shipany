@@ -204,25 +204,26 @@ const CharacterImageRenderer: React.FC<{
                         setHasError(true);
                         onError?.();
                     });
-            } else if (character.media_type === 'image') {
-                setIsLoading(true);
-                setHasError(false);
-
-                const img = new Image();
-                img.crossOrigin = 'credentials';
-                img.onload = () => {
-                    setIsLoading(false);
-                    onLoad?.();
-                };
-                img.onerror = () => {
-                    setIsLoading(false);
-                    setHasError(true);
-                    onError?.();
-                };
-                img.src = character.media_url;
-            } else {
-                onLoad?.();
             }
+            // else if (character.media_type === 'image') {
+            //     setIsLoading(true);
+            //     setHasError(false);
+
+            //     const img = new Image();
+            //     img.crossOrigin = 'credentials';
+            //     img.onload = () => {
+            //         setIsLoading(false);
+            //         onLoad?.();
+            //     };
+            //     img.onerror = () => {
+            //         setIsLoading(false);
+            //         setHasError(true);
+            //         onError?.();
+            //     };
+            //     img.src = character.media_url;
+            // } else {
+            //     onLoad?.();
+            // }
         }, [character.media_url, character.media_type, character.svg_content, onLoad, onError]);
 
         // 获取要使用的 SVG 内容
@@ -279,7 +280,7 @@ const CharacterImageRenderer: React.FC<{
                             alt={character.name}
                             className="w-full h-full"
                             style={{ objectFit: 'fill' }}
-                            crossOrigin="anonymous"
+                            // crossOrigin="anonymous"
                             onLoad={() => {
                                 console.log('Image loaded successfully:', character.media_url);
                                 onLoad?.();
