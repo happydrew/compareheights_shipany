@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useCallback } from 'react'
 import { Upload, Download, Sliders, Eye, EyeOff, RotateCcw, Palette } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 // 类型定义
 interface RGB {
@@ -142,6 +143,7 @@ const applyDuotone = (imageData: ImageData, settings: DuotoneSettings): ImageDat
 }
 
 export default function BravePinkGreenTool({ className = '' }: { className?: string }) {
+  const t = useTranslations('brave_pink_green_tool');
   const [originalImage, setOriginalImage] = useState<HTMLImageElement | null>(null)
   const [settings, setSettings] = useState<DuotoneSettings>(PRESETS['brave-pink-hero-green'])
   const [isProcessing, setIsProcessing] = useState(false)
@@ -154,7 +156,7 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
   // 加载图片
   const loadImage = useCallback(async (file: File) => {
     if (!file.type.startsWith('image/') || file.size > 10 * 1024 * 1024) {
-      setError('Please select an image file under 10MB')
+      setError(t('errors.file_too_large'))
       return
     }
 
@@ -169,7 +171,7 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
         // 使用setTimeout确保DOM已更新
         setTimeout(() => {
           if (!canvasRef.current) {
-            setError('Canvas not ready, please try again')
+            setError(t('errors.canvas_not_ready'))
             setIsProcessing(false)
             URL.revokeObjectURL(img.src)
             return
@@ -182,16 +184,16 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
         }, 100)
       }
       img.onerror = () => {
-        setError('Failed to load image')
+        setError(t('errors.load_failed'))
         setIsProcessing(false)
         URL.revokeObjectURL(img.src)
       }
       img.src = URL.createObjectURL(file)
     } catch (err) {
-      setError('Failed to load image')
+      setError(t('errors.load_failed'))
       setIsProcessing(false)
     }
-  }, [])
+  }, [t])
 
   // 优化的Canvas绘制函数
   const drawToCanvas = (img: HTMLImageElement, canvas: HTMLCanvasElement) => {
@@ -329,10 +331,10 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
       {/* 标题 */}
       <div className="text-center my-8">
         <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-green-600 bg-clip-text text-transparent mb-2">
-          Brave Pink Hero Green Generator
+          {t('title')}
         </h1>
         <p className="text-gray-600 text-lg mb-4">
-          Create stunning pink hijau duotone effects instantly • Professional foto brave pink hero green editor with advanced customization
+          {t('subtitle')}
         </p>
 
         {/* 特色标签 */}
@@ -341,25 +343,25 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
-            100% Free
+            {t('badges.free')}
           </span>
           <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-pink-100 text-pink-800 border border-pink-200">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            Lightning Fast
+            {t('badges.fast')}
           </span>
           <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800 border border-blue-200">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
             </svg>
-            Fully Customizable
+            {t('badges.customizable')}
           </span>
           <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-purple-100 text-purple-800 border border-purple-200">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
-            Premium Quality
+            {t('badges.quality')}
           </span>
         </div>
       </div>
@@ -387,9 +389,9 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
                   className="flex-1 border-2 border-dashed border-gray-300 rounded-xl p-8 text-center cursor-pointer hover:border-gray-400 hover:bg-gray-50/50 transition-all duration-200 flex flex-col justify-center min-h-[300px]"
                 >
                   <Upload className="w-16 h-16 text-gray-400 mx-auto mb-6" />
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Upload your photo</h3>
-                  <p className="text-gray-500 mb-4">Drag & drop or click to select</p>
-                  <p className="text-sm text-gray-400">PNG, JPG, WebP, GIF • Max 10MB</p>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{t('upload.title')}</h3>
+                  <p className="text-gray-500 mb-4">{t('upload.description')}</p>
+                  <p className="text-sm text-gray-400">{t('upload.formats')}</p>
                 </div>
               ) : (
                 <div className="flex-1 bg-gray-50 rounded-xl overflow-hidden border border-gray-200 flex flex-col justify-center">
@@ -408,13 +410,11 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
                       <button
                         onClick={reset}
                         className="flex justify-center items-center gap-2 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-600 hover:text-gray-800 p-2 rounded-lg border shadow-sm transition-all"
-                        title="Upload different image"
+                        title={t('upload.upload_new')}
                       >
                         <Upload className="w-5 h-5" />
-                        Upload new image
+                        {t('upload.upload_new')}
                       </button>
-                      {/* <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>Image loaded • Ready for processing</span> */}
                     </div>
 
                   </div>
@@ -436,14 +436,14 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
               <div className="bg-gray-50/80 backdrop-blur-sm border border-gray-200/80 rounded-xl p-6">
                 <div className="flex items-center gap-2 mb-6">
                   <Sliders className="w-5 h-5 text-gray-700" />
-                  <h3 className="text-lg font-semibold text-gray-900">Controls</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">{t('controls.title')}</h3>
                   <div className={`ml-auto w-2 h-2 rounded-full ${isProcessing ? 'bg-orange-400 animate-pulse' : 'bg-green-400'}`}></div>
                 </div>
 
                 {/* 预设 */}
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Quick Presets
+                    {t('controls.quick_presets')}
                   </label>
                   <div className="grid grid-cols-1 gap-2">
                     {Object.entries(PRESETS).map(([key, preset]) => (
@@ -471,7 +471,7 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
                 {/* 颜色选择 */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Dark Color</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">{t('controls.dark_color')}</label>
                     <div className="flex gap-2">
                       <input
                         type="color"
@@ -495,7 +495,7 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Light Color</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">{t('controls.light_color')}</label>
                     <div className="flex gap-2">
                       <input
                         type="color"
@@ -523,7 +523,7 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
                 <div className="space-y-4 mb-6">
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <label className="text-sm font-medium text-gray-700">Intensity</label>
+                      <label className="text-sm font-medium text-gray-700">{t('controls.intensity')}</label>
                       <span className="text-sm font-mono text-gray-500 bg-gray-100 px-2 py-1 rounded">{settings.intensity}%</span>
                     </div>
                     <input
@@ -538,7 +538,7 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
 
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <label className="text-sm font-medium text-gray-700">Contrast</label>
+                      <label className="text-sm font-medium text-gray-700">{t('controls.contrast')}</label>
                       <span className="text-sm font-mono text-gray-500 bg-gray-100 px-2 py-1 rounded">{settings.contrast}%</span>
                     </div>
                     <input
@@ -553,7 +553,7 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
 
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <label className="text-sm font-medium text-gray-700">Brightness</label>
+                      <label className="text-sm font-medium text-gray-700">{t('controls.brightness')}</label>
                       <span className="text-sm font-mono text-gray-500 bg-gray-100 px-2 py-1 rounded">{settings.brightness > 0 ? '+' : ''}{settings.brightness}</span>
                     </div>
                     <input
@@ -569,7 +569,7 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
 
                 {/* 曲线选择 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Mapping Curve</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t('controls.mapping_curve')}</label>
                   <div className="grid grid-cols-3 gap-2">
                     {(['linear', 'smooth', 'dramatic'] as const).map((curve) => (
                       <button
@@ -580,14 +580,14 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
                           : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-gray-300'
                           }`}
                       >
-                        {curve}
+                        {t(`controls.curve_${curve}`)}
                       </button>
                     ))}
                   </div>
                   <p className="text-xs text-gray-500 mt-2">
-                    {settings.curve === 'linear' && 'Even color distribution'}
-                    {settings.curve === 'smooth' && 'Gentle S-curve transition'}
-                    {settings.curve === 'dramatic' && 'Enhanced contrast mapping'}
+                    {settings.curve === 'linear' && t('controls.curve_desc_linear')}
+                    {settings.curve === 'smooth' && t('controls.curve_desc_smooth')}
+                    {settings.curve === 'dramatic' && t('controls.curve_desc_dramatic')}
                   </p>
                 </div>
               </div>
@@ -602,7 +602,7 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
 
             {/* 预览区域标题 */}
             <div className="flex items-center justify-start mb-6">
-              <h3 className="text-lg font-semibold text-gray-900">Duotone Result</h3>
+              <h3 className="text-lg font-semibold text-gray-900">{t('preview.title')}</h3>
             </div>
 
             {/* 预览区域 - 占据剩余空间并居中显示 */}
@@ -613,8 +613,8 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center text-gray-400">
                         <Eye className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                        <p className="text-lg font-medium">Preview will appear here</p>
-                        <p className="text-sm">Upload an image to get started</p>
+                        <p className="text-lg font-medium">{t('preview.no_image')}</p>
+                        <p className="text-sm">{t('preview.upload_prompt')}</p>
                       </div>
                     </div>
                   ) : (
@@ -631,7 +631,7 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
                         <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center rounded-lg">
                           <div className="text-center">
                             <div className="w-12 h-12 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
-                            <p className="text-sm font-medium text-gray-700">Processing image...</p>
+                            <p className="text-sm font-medium text-gray-700">{t('preview.processing')}</p>
                           </div>
                         </div>
                       )}
@@ -644,7 +644,7 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
             {/* 导出按钮区域 - 固定在底部 */}
             {originalImage && !isProcessing && (
               <div className="mt-6 pt-6 border-t border-gray-200 flex-shrink-0">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Export</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('export.title')}</h3>
 
                 <div className="space-y-3">
                   <button
@@ -652,7 +652,7 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
                     className="w-full bg-gradient-to-r from-pink-500 to-green-500 hover:from-pink-600 hover:to-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-[1.02] hover:shadow-lg flex items-center justify-center gap-3 shadow-md"
                   >
                     <Download className="w-5 h-5" />
-                    Download PNG (Best Quality)
+                    {t('export.download_png')}
                   </button>
 
                   <div className="grid grid-cols-2 gap-3">
@@ -660,13 +660,13 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
                       onClick={() => exportImage('jpg')}
                       className="bg-white hover:bg-gray-50 border-2 border-gray-200 hover:border-gray-300 text-gray-700 font-medium py-3 px-4 rounded-lg transition-all duration-150 hover:shadow-sm"
                     >
-                      JPG
+                      {t('export.jpg')}
                     </button>
                     <button
                       onClick={() => exportImage('webp')}
                       className="bg-white hover:bg-gray-50 border-2 border-gray-200 hover:border-gray-300 text-gray-700 font-medium py-3 px-4 rounded-lg transition-all duration-150 hover:shadow-sm"
                     >
-                      WebP
+                      {t('export.webp')}
                     </button>
                   </div>
                 </div>
@@ -677,8 +677,8 @@ export default function BravePinkGreenTool({ className = '' }: { className?: str
                       <span className="text-white text-xs">🔒</span>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-blue-900">Privacy Protected</p>
-                      <p className="text-xs text-blue-700">All processing happens in your browser. Your images never leave your device.</p>
+                      <p className="text-sm font-medium text-blue-900">{t('export.privacy_title')}</p>
+                      <p className="text-xs text-blue-700">{t('export.privacy_description')}</p>
                     </div>
                   </div>
                 </div>

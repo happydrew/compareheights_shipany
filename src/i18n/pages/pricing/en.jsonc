@@ -61,7 +61,8 @@
       {
         "title": "Starter",
         "description": "For hobbyists and content creators who need more flexibility.",
-        "features_title": "Everything in Free, plus",
+        // "features_title": "Everything in Free, plus",
+        "features_title": "Includes",
         "features": [
           "50 saved projects",
           "100 custom characters",
@@ -101,7 +102,8 @@
         "title": "Premium",
         "description": "For professionals, educators, and power users who demand the best.",
         "label": "Popular",
-        "features_title": "Everything in Starter, plus",
+        // "features_title": "Everything in Free, plus",
+        "features_title": "Includes",
         "features": [
           "100 saved projects",
           "200 custom characters",
@@ -140,7 +142,8 @@
       {
         "title": "Starter",
         "description": "Same features as Starter Monthly — save 20% with annual billing.",
-        "features_title": "Everything in Free, plus",
+        // "features_title": "Everything in Free, plus",
+        "features_title": "Includes",
         "features": [
           "50 saved projects",
           "100 custom characters",
@@ -180,7 +183,8 @@
         "title": "Premium",
         "description": "Same features as Premium Monthly — save 20% with annual billing.",
         "label": "Popular",
-        "features_title": "Everything in Starter, plus",
+        // "features_title": "Everything in Free, plus",
+        "features_title": "Includes",
         "features": [
           "100 saved projects",
           "200 custom characters",

@@ -18,7 +18,11 @@
       "WebFetch(domain:fumadocs.dev)",
       "WebFetch(domain:github.com)",
       "WebSearch",
-      "Read(//d/zhuge/code/compareheights_migrate/**)"
+      "Read(//d/zhuge/code/compareheights_migrate/**)",
+      "Bash(pnpm exec next build --debug)",
+      "Bash(for file in src/components/compareheights/*.tsx)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []

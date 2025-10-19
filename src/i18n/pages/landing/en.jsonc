@@ -23,6 +23,23 @@
           //"icon": "RiMoneyDollarCircleLine"
         },
         {
+          "title": "Fun Tools",
+          "children": [
+            {
+              "title": "Compare Heights to country average",
+              "url": "/tools/compare-my-height-to-average-in-country",
+              // "description": "Funny height comparison tools for funny people"
+              //"icon": "RiMoneyDollarCircleLine"
+            },
+            {
+              "title": "Brave Pink Green Hero",
+              "url": "/tools/brave-pink-green-hero",
+              // "description": "A funny height comparison tool for brave people"
+              //"icon": "RiMoneyDollarCircleLine"
+            }
+          ]
+        },
+        {
           "title": "Documents",
           "url": "/docs",
           //"icon": "RiFileLine"
@@ -45,7 +62,7 @@
     ],
     "show_sign": true,
     "show_theme": false,
-    "show_locale": false
+    "show_locale": true
   },
   "hero": {
     "title": "Height Comparison Tool: Compare Heights Visually Online",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Input } from "@/components/ui/input";
@@ -36,6 +37,7 @@ const formatHeightValue = (value: number): string => {
 };
 
 export default function CustomCharactersPage() {
+  const t = useTranslations('custom_characters');
   const [characters, setCharacters] = useState<Character[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -109,14 +111,14 @@ export default function CustomCharactersPage() {
       if (response.ok && data.success && Array.isArray(data.data)) {
         setCharacters(data.data);
       } else {
-        toast.error(data.message || "Failed to load custom characters");
+        toast.error(data.message || t('toast.load_failed'));
       }
     } catch (error) {
       if (controller.signal.aborted || requestId !== latestRequestRef.current) {
         return;
       }
       console.error("Load custom characters error:", error);
-      toast.error("Failed to load custom characters");
+      toast.error(t('toast.load_failed'));
     } finally {
       if (requestId === latestRequestRef.current && !controller.signal.aborted) {
         setIsLoading(false);
@@ -204,17 +206,17 @@ export default function CustomCharactersPage() {
     const hasAnyImage = hasNewImage || Boolean(imagePreview || editingCharacter?.thumbnail_url || editingCharacter?.media_url);
 
     if (!trimmedName) {
-      toast.error("Name cannot be empty");
+      toast.error(t('toast.name_required'));
       return;
     }
 
     if (!Number.isFinite(parsedHeight) || parsedHeight <= 0) {
-      toast.error("Please enter a valid height in meters");
+      toast.error(t('toast.invalid_height'));
       return;
     }
 
     if (!hasAnyImage || (!isEditing && !hasNewImage)) {
-      toast.error("Please upload and crop a character image");
+      toast.error(t('toast.image_required'));
       return;
     }
 
@@ -259,16 +261,16 @@ export default function CustomCharactersPage() {
 
       const data = await response.json();
       if (!response.ok || !data?.success) {
-        throw new Error(data?.message || (isEditing ? "Failed to update custom character" : "Failed to create custom character"));
+        throw new Error(data?.message || (isEditing ? t('toast.update_failed') : t('toast.create_failed')));
       }
 
-      toast.success(isEditing ? "Custom character updated" : "Custom character created");
+      toast.success(isEditing ? t('toast.updated') : t('toast.created'));
       setIsCreateDialogOpen(false);
       resetFormState();
       await loadCharacters();
     } catch (error) {
       console.error(isEditing ? "Update custom character error:" : "Create custom character error:", error);
-      toast.error(error instanceof Error ? error.message : isEditing ? "Failed to update custom character" : "Failed to create custom character");
+      toast.error(error instanceof Error ? error.message : isEditing ? t('toast.update_failed') : t('toast.create_failed'));
     } finally {
       setIsSaving(false);
     }
@@ -293,15 +295,15 @@ export default function CustomCharactersPage() {
       });
       const data = await response.json();
       if (!response.ok || !data?.success) {
-        throw new Error(data?.message || "Failed to delete character");
+        throw new Error(data?.message || t('toast.delete_failed'));
       }
-      toast.success("Character deleted");
+      toast.success(t('toast.deleted'));
       setCharacters((prev) => prev.filter((item) => item.id !== target.id));
       setIsDeleteDialogOpen(false);
       setCharacterToDelete(null);
     } catch (error) {
       console.error("Delete custom character error:", error);
-      toast.error(error instanceof Error ? error.message : "Failed to delete character");
+      toast.error(error instanceof Error ? error.message : t('toast.delete_failed'));
     } finally {
       setDeletingId(null);
     }
@@ -313,9 +315,9 @@ export default function CustomCharactersPage() {
     <div className="mx-auto w-full space-y-6">
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-3">
-          <h1 className="text-2xl font-semibold text-gray-900 sm:text-3xl">My Characters</h1>
+          <h1 className="text-2xl font-semibold text-gray-900 sm:text-3xl">{t('title')}</h1>
           <p className="text-sm text-gray-500 max-w-2xl sm:text-base">
-            Manage the custom characters you have created. Upload images, define their heights, and keep everything organised for quick access inside the comparison tool.
+            {t('description')}
           </p>
         </div>
 
@@ -323,12 +325,12 @@ export default function CustomCharactersPage() {
           <div className="relative w-full sm:max-w-sm sm:flex-1">
             <Input
               value={search}
-              placeholder="Search characters..."
+              placeholder={t('search_placeholder')}
               onChange={(event) => setSearch(event.target.value)}
             />
           </div>
           <Button className="w-full sm:w-auto sm:ml-auto" onClick={handleOpenCreateDialog}>
-            Create Character
+            {t('create_character')}
           </Button>
         </div>
 
@@ -341,12 +343,12 @@ export default function CustomCharactersPage() {
         ) : characters.length === 0 ? (
           <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-gray-300 bg-gray-50 py-12 text-center sm:py-16">
             <div className="mb-4 text-4xl">:)</div>
-            <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">No custom characters yet</h2>
+            <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">{t('no_characters_yet')}</h2>
             <p className="mt-2 max-w-md text-sm text-gray-500 sm:text-base">
-              Create your first custom character to quickly reuse it in any height comparison project.
+              {t('no_characters_description')}
             </p>
             <Button className="mt-6 w-full sm:w-auto" onClick={handleOpenCreateDialog}>
-              Create Character
+              {t('create_character')}
             </Button>
           </div>
         ) : (
@@ -382,25 +384,25 @@ export default function CustomCharactersPage() {
           }}
         >
           <DialogHeader>
-            <DialogTitle>{isEditing ? "Edit Custom Character" : "Create Custom Character"}</DialogTitle>
+            <DialogTitle>{isEditing ? t('dialog.edit_title') : t('dialog.create_title')}</DialogTitle>
             <DialogDescription>
               {isEditing
-                ? "Update the character details or upload a new image."
-                : "Provide the character details and upload an image. All fields are required."}
+                ? t('dialog.edit_description')
+                : t('dialog.create_description')}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-2">
             <div className="space-y-2">
-              <Label htmlFor="character-name">Name</Label>
+              <Label htmlFor="character-name">{t('dialog.name_label')}</Label>
               <Input
                 id="character-name"
                 value={newName}
                 onChange={(event) => setNewName(event.target.value)}
-                placeholder="Give your character a name"
+                placeholder={t('dialog.name_placeholder')}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="character-height">Height (meters)</Label>
+              <Label htmlFor="character-height">{t('dialog.height_label')}</Label>
               <Input
                 id="character-height"
                 type="number"
@@ -408,11 +410,11 @@ export default function CustomCharactersPage() {
                 step="0.01"
                 value={newHeight}
                 onChange={(event) => setNewHeight(event.target.value)}
-                placeholder="e.g. 1.75"
+                placeholder={t('dialog.height_placeholder')}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="character-image">Character image</Label>
+              <Label htmlFor="character-image">{t('dialog.image_label')}</Label>
               <div
                 id="character-image"
                 role="button"
@@ -431,23 +433,23 @@ export default function CustomCharactersPage() {
                   <img src={imagePreview} alt="Character preview" className="h-full w-full object-contain" />
                 ) : (
                   <div className="flex flex-col items-center justify-center gap-1 text-sm text-gray-500">
-                    <span>Click to upload</span>
-                    <span className="text-xs text-gray-400">Crop and adjust before saving</span>
+                    <span>{t('dialog.click_to_upload')}</span>
+                    <span className="text-xs text-gray-400">{t('dialog.crop_and_adjust')}</span>
                   </div>
                 )}
               </div>
               <p className="text-xs text-gray-500">
-                We recommend transparent PNGs or JPGs. You can crop and resize the image before saving. Maximum size: {maxImageSizeMB}MB.
+                {t('dialog.image_recommendation', { maxSize: maxImageSizeMB })}
               </p>
               {imageError && <p className="text-sm text-red-500">{imageError}</p>}
             </div>
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setIsCreateDialogOpen(false)} disabled={isSaving}>
-              Cancel
+              {t('dialog.cancel')}
             </Button>
             <Button onClick={handleSubmitCharacter} disabled={isSaving}>
-              {isSaving ? (isEditing ? "Saving..." : "Creating...") : isEditing ? "Save changes" : "Create"}
+              {isSaving ? (isEditing ? t('dialog.saving') : t('dialog.creating')) : isEditing ? t('dialog.save_changes') : t('dialog.create')}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -473,11 +475,11 @@ export default function CustomCharactersPage() {
           }}
         >
           <DialogHeader>
-            <DialogTitle>Delete custom character</DialogTitle>
+            <DialogTitle>{t('delete_dialog.title')}</DialogTitle>
             <DialogDescription>
               {characterToDelete
-                ? `Are you sure you want to delete "${characterToDelete.name}"? This action cannot be undone.`
-                : "Are you sure you want to delete this character?"}
+                ? t('delete_dialog.description', { name: characterToDelete.name })
+                : t('delete_dialog.description_fallback')}
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
@@ -486,14 +488,14 @@ export default function CustomCharactersPage() {
               onClick={() => setIsDeleteDialogOpen(false)}
               disabled={Boolean(deletingId)}
             >
-              Cancel
+              {t('delete_dialog.cancel')}
             </Button>
             <Button
               variant="destructive"
               onClick={handleConfirmDelete}
               disabled={Boolean(deletingId)}
             >
-              {deletingId ? "Deleting..." : "Delete"}
+              {deletingId ? t('delete_dialog.deleting') : t('delete_dialog.delete')}
             </Button>
           </DialogFooter>
         </DialogContent>

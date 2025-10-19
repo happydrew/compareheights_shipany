@@ -35,7 +35,6 @@ export default function SignModal() {
 
   const loginBonusTip = t("sign_modal.login_bonus_tip");
 
-  const [open, setOpen] = React.useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   if (isDesktop) {
@@ -47,11 +46,11 @@ export default function SignModal() {
             <DialogDescription className="text-gray-600">
               {t("sign_modal.sign_in_description")}
             </DialogDescription>
-            {loginBonusTip && (
+            {/* {loginBonusTip && (
               <p className="text-sm text-gray-600 mt-2">
                 {loginBonusTip}
               </p>
-            )}
+            )} */}
           </DialogHeader>
           <ProfileForm />
         </DialogContent>
@@ -67,11 +66,11 @@ export default function SignModal() {
           <DrawerDescription className="text-gray-600">
             {t("sign_modal.sign_in_description")}
           </DrawerDescription>
-          {loginBonusTip && (
+          {/* {loginBonusTip && (
             <p className="text-sm text-gray-600 mt-2">
               {loginBonusTip}
             </p>
-          )}
+          )} */}
         </DrawerHeader>
         <ProfileForm className="px-4" />
         <DrawerFooter className="pt-4">

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { Upload, Crop, Check, ZoomIn, ZoomOut } from 'lucide-react';
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
@@ -40,6 +41,7 @@ const getCroppedImg = (cropper: any): string => {
 };
 
 const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, onSave, isFreePlan = true }) => {
+  const t = useTranslations('image_upload_modal');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string>('');
   const [zoom, setZoom] = useState(1);
@@ -93,12 +95,12 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
     // 验证文件
     const validation = validateFile(file, { isFreePlan });
     if (!validation.valid) {
-      setValidationError(validation.error || 'Invalid file');
+      setValidationError(validation.error || t('errors.invalidFile'));
       return;
     }
 
     if (!file.type.startsWith('image/')) {
-      setValidationError('Please upload an image file');
+      setValidationError(t('errors.uploadImageFile'));
       return;
     }
 
@@ -158,9 +160,9 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
       resetModalState();
     } catch (error) {
       console.error('Error cropping image:', error);
-      alert('Image cropping failed, please try again');
+      alert(t('errors.cropFailed'));
     }
-  }, [selectedFile, imageUrl, height, width, heightUnit, widthUnit, onSave, resetModalState]);
+  }, [selectedFile, imageUrl, height, width, heightUnit, widthUnit, onSave, resetModalState, t]);
 
   const handleDragOver = useCallback((event: React.DragEvent) => {
     event.preventDefault();
@@ -213,7 +215,7 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
             className="flex items-center border-b border-gray-200 px-4"
             style={{ height: HEADER_HEIGHT }}
           >
-            <h2 className="text-xl font-semibold text-gray-900">Upload Image</h2>
+            <h2 className="text-xl font-semibold text-gray-900">{t('title')}</h2>
           </div>
 
           <div className="flex flex-1 min-h-0 flex-col gap-6 overflow-auto p-4 lg:flex-row">
@@ -232,9 +234,9 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
                   onClick={() => fileInputRef.current?.click()}
                 >
                   <Upload size={48} className="mb-4 text-gray-400" />
-                  <p className="mb-2 text-lg text-gray-600">Click or drag to upload image</p>
+                  <p className="mb-2 text-lg text-gray-600">{t('uploadArea.dragDrop')}</p>
                   <p className="text-sm text-gray-400">
-                    Max size: {isFreePlan ? '5MB (free)' : '10MB (paid)'}
+                    {isFreePlan ? t('uploadArea.maxSizeFree') : t('uploadArea.maxSizePaid')}
                   </p>
                   {validationError && (
                     <p className="mt-2 text-sm text-red-600">{validationError}</p>
@@ -301,7 +303,7 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
                   >
                     <div className="flex h-full items-center gap-3">
                       <ZoomOut size={16} className="text-gray-600" />
-                      <span className="whitespace-nowrap text-sm text-gray-600">Zoom:</span>
+                      <span className="whitespace-nowrap text-sm text-gray-600">{t('cropSection.zoomLabel')}:</span>
                       <input
                         type="range"
                         min="0.1"
@@ -321,10 +323,10 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
 
             <div className="flex min-h-0 flex-1 flex-col border-t border-gray-200 pt-6 lg:max-w-85 lg:border-t-0 lg:border-l lg:pl-6 lg:pt-0">
               <div className="flex-1">
-                <h3 className="mb-4 font-semibold">Size Settings</h3>
+                <h3 className="mb-4 font-semibold">{t('heightSection.title')}</h3>
 
                 <div className="mb-4">
-                  <label className="mb-2 block text-sm font-medium">Height *</label>
+                  <label className="mb-2 block text-sm font-medium">{t('heightSection.heightLabel')} *</label>
                   <div className="flex gap-2">
                     <input
                       type="number"
@@ -333,6 +335,7 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
                       className="flex-1 rounded-xl border border-gray-300 px-3 py-2 transition-all duration-300 focus:outline-none"
                       step="0.01"
                       min="0.001"
+                      placeholder={t('heightSection.heightPlaceholder')}
                     />
                     <select
                       value={heightUnit}
@@ -353,7 +356,7 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
                 </div>
 
                 <div className="mb-4">
-                  <label className="mb-2 block text-sm font-medium">Width (optional)</label>
+                  <label className="mb-2 block text-sm font-medium">{t('heightSection.widthLabel')}</label>
                   <div className="flex gap-2">
                     <input
                       type="number"
@@ -362,7 +365,7 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
                       className="flex-1 rounded-xl border border-gray-300 px-3 py-2 transition-all duration-300 focus:outline-none"
                       step="0.01"
                       min="0"
-                      placeholder="Auto calculate"
+                      placeholder={t('heightSection.widthPlaceholder')}
                     />
                     <select
                       value={widthUnit}
@@ -381,7 +384,7 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
                     </select>
                   </div>
                   <p className="mt-1 text-xs text-gray-500">
-                    If width is not set, it will be calculated from the cropped image aspect ratio.
+                    {t('heightSection.autoCalculateTip')}
                   </p>
                 </div>
 
@@ -389,13 +392,13 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
                   <div className="mb-4 rounded-xl bg-blue-50 p-4">
                     <h4 className="mb-2 flex items-center font-medium text-blue-900">
                       <Crop size={16} className="mr-2" />
-                      Tips
+                      {t('cropSection.tipsTitle')}
                     </h4>
                     <ul className="space-y-1 text-sm text-blue-700">
-                      <li>Drag the crop box to reposition it and drag corners to resize.</li>
-                      <li>Use the zoom slider or mouse wheel to scale the image.</li>
-                      <li>Drag the image to fine-tune its position inside the crop area.</li>
-                      <li>The saved result matches exactly what is shown in the crop box.</li>
+                      <li>{t('cropSection.tips.dragCropBox')}</li>
+                      <li>{t('cropSection.tips.useZoom')}</li>
+                      <li>{t('cropSection.tips.dragImage')}</li>
+                      <li>{t('cropSection.tips.savedResult')}</li>
                     </ul>
                   </div>
                 )}
@@ -406,7 +409,7 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
                       onClick={clearImagePreview}
                       className="w-full rounded-xl border border-gray-300 px-4 py-2 text-sm transition-all duration-300 hover:border-gray-400 hover:bg-gray-50"
                     >
-                      Reselect Image
+                      {t('buttons.reselectImage')}
                     </button>
                   </div>
                 )}
@@ -417,7 +420,7 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
                   onClick={handleClose}
                   className="flex-1 rounded-xl border border-gray-300 px-4 py-2 transition-all duration-300 hover:border-gray-400 hover:bg-gray-50"
                 >
-                  Cancel
+                  {t('buttons.cancel')}
                 </button>
                 <button
                   onClick={handleSave}
@@ -425,7 +428,7 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
                   className="flex flex-1 items-center justify-center rounded-xl bg-green-theme-500 px-4 py-2 text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-green-theme-600 hover:shadow-xl disabled:cursor-not-allowed disabled:bg-gray-300 disabled:shadow-none"
                 >
                   <Check size={16} className="mr-2" />
-                  Save
+                  {t('buttons.save')}
                 </button>
               </div>
             </div>

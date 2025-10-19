@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -11,6 +12,7 @@ import { useAppContext } from "@/contexts/app";
 import type { User } from "@/types/user";
 
 export default function ProfilePage() {
+  const t = useTranslations('profile');
   const { user, setUser } = useAppContext();
   const [displayName, setDisplayName] = useState("");
   const [isSaving, setIsSaving] = useState(false);
@@ -23,19 +25,19 @@ export default function ProfilePage() {
 
   const handleSave = async () => {
     if (!user) {
-      toast.error("You need to be signed in to update your profile");
+      toast.error(t('toast.sign_in_required'));
       return;
     }
 
     const trimmedDisplayName = displayName.trim();
 
     if (!trimmedDisplayName) {
-      toast.error("Display name is required");
+      toast.error(t('toast.name_required'));
       return;
     }
 
     if (trimmedDisplayName === (user.nickname || "")) {
-      toast.info("No changes to save");
+      toast.info(t('toast.no_changes'));
       return;
     }
 
@@ -53,13 +55,13 @@ export default function ProfilePage() {
       const result = await response.json();
 
       if (!response.ok || result.code !== 0) {
-        throw new Error(result.message || "Failed to update profile");
+        throw new Error(result.message || t('toast.update_failed'));
       }
 
       const nextData = result.data as unknown;
 
       if (!nextData || Array.isArray(nextData) || typeof nextData !== "object") {
-        throw new Error("Invalid user data returned");
+        throw new Error(t('toast.update_failed'));
       }
 
       const updatedUser = nextData as Partial<User>;
@@ -79,10 +81,10 @@ export default function ProfilePage() {
         };
       });
 
-      toast.success("Profile updated successfully");
+      toast.success(t('toast.update_success'));
     } catch (error) {
       console.error("Update profile error:", error);
-      toast.error(error instanceof Error ? error.message : "Failed to update profile");
+      toast.error(error instanceof Error ? error.message : t('toast.update_failed'));
     } finally {
       setIsSaving(false);
     }
@@ -95,14 +97,14 @@ export default function ProfilePage() {
   return (
     <div className="mx-auto w-full max-w-4xl space-y-6 px-3 sm:px-0">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Profile Settings</h1>
-        <p className="mt-1 text-sm text-gray-500 sm:text-base">Manage your personal information</p>
+        <h1 className="text-3xl font-bold text-gray-900">{t('title')}</h1>
+        <p className="mt-1 text-sm text-gray-500 sm:text-base">{t('description')}</p>
       </div>
 
       <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-6">
         {/* Avatar */}
         <div>
-          <Label>Avatar</Label>
+          <Label>{t('avatar_label')}</Label>
           <div className="mt-2 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <Avatar className="h-20 w-20">
               <AvatarImage
@@ -114,39 +116,39 @@ export default function ProfilePage() {
               </AvatarFallback>
             </Avatar>
             <Button variant="outline" size="sm" disabled className="w-full sm:w-auto">
-              Upload Photo (Coming Soon)
+              {t('upload_photo')}
             </Button>
           </div>
         </div>
 
         {/* Display Name */}
         <div>
-          <Label htmlFor="displayName">Display Name</Label>
+          <Label htmlFor="displayName">{t('display_name_label')}</Label>
           <Input
             id="displayName"
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
-            placeholder="Your display name"
+            placeholder={t('display_name_placeholder')}
             className="mt-2"
           />
         </div>
 
         {/* Email (Read-only) */}
         <div>
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">{t('email_label')}</Label>
           <Input
             id="email"
             value={user?.email || ""}
             disabled
             className="mt-2"
           />
-          <p className="text-sm text-gray-500 mt-1">Email cannot be changed</p>
+          <p className="text-sm text-gray-500 mt-1">{t('email_cannot_change')}</p>
         </div>
 
         {/* Actions */}
         <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:justify-end">
           <Button onClick={handleSave} disabled={isSaving} className="w-full sm:w-auto">
-            {isSaving ? "Saving..." : "Save Changes"}
+            {isSaving ? t('saving') : t('save_changes')}
           </Button>
         </div>
       </div>

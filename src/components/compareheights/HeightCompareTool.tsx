@@ -337,7 +337,7 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
             setIsInitialized(true);
             // 清除缓存（已经恢复了）
             heightCompareCache.clear();
-            toast.success('Restored your previous work');
+            toast.success(t('console.restoredPreviousWork'));
             return;
           }
 
@@ -1291,13 +1291,13 @@ Suggested solutions:
     const handleSaveClick = useCallback(async () => {
       // 检查是否有角色
       if (comparisonItems.length === 0) {
-        toast.error("Please add at least one character before saving");
+        toast.error(t('toast.addCharacterFirst'));
         return;
       }
 
       // 1. 未登录 - 弹出登录弹窗
       if (status === "unauthenticated") {
-        toast.info("Please sign in to save your project");
+        toast.info(t('toast.signInRequired'));
 
         // 确保数据已缓存
         const dataToCache: SharedData = {
@@ -1334,7 +1334,7 @@ Suggested solutions:
       }
 
       // 3. 已登录 + 非编辑页 - 显示创建项目弹窗
-      setSaveProjectTitle(chartTitle || "My Height Comparison");
+      setSaveProjectTitle(chartTitle || t('saveProject.projectNamePlaceholder'));
       setShowSaveProjectDialog(true);
     }, [
       status,
@@ -1352,7 +1352,7 @@ Suggested solutions:
       const trimmedTitle = saveProjectTitle.trim();
 
       if (!trimmedTitle) {
-        toast.error("Please enter a project name");
+        toast.error(t('toast.enterProjectName'));
         return;
       }
 
@@ -1376,7 +1376,7 @@ Suggested solutions:
             console.log("Thumbnail uploaded successfully:", thumbnailUrl);
           } catch (uploadError) {
             console.error("Failed to upload thumbnail:", uploadError);
-            toast.error("Failed to upload thumbnail, but project will be created");
+            toast.error(t('toast.thumbnailUploadFailed'));
             // 继续创建项目，封面URL为null
           }
         } else {
@@ -1419,7 +1419,7 @@ Suggested solutions:
         const result = await response.json();
 
         if (result.success) {
-          toast.success("Project created successfully!");
+          toast.success(t('toast.projectCreated'));
 
           // 清除缓存
           heightCompareCache.clear();
@@ -1431,11 +1431,11 @@ Suggested solutions:
           // 跳转到项目管理页面
           router.push("/dashboard/projects");
         } else {
-          toast.error(result.message || "Failed to create project");
+          toast.error(result.message || t('toast.createProjectFailed'));
         }
       } catch (error) {
         console.error("Create project error:", error);
-        toast.error("Failed to create project");
+        toast.error(t('toast.createProjectFailed'));
       } finally {
         setIsSavingProject(false);
       }
@@ -2519,7 +2519,7 @@ Suggested solutions:
                             ? themeClasses.button.active
                             : `${themeClasses.button.base} ${themeClasses.button.hover}`
                           }`}
-                        title={comparisonItems.length === 0 ? 'Please add characters first' : 'Export image'}
+                        title={comparisonItems.length === 0 ? t('chartArea.addCharactersFirst') : t('toolbar.exportImage')}
                         disabled={comparisonItems.length === 0 || isExporting}
                       >
                         {isExporting ? (
@@ -2571,7 +2571,7 @@ Suggested solutions:
                         onClick={handleShareClick}
                         disabled={comparisonItems.length === 0 || isSharing}
                         className={`p-1 md:p-2 rounded ${themeClasses.button.base} ${themeClasses.button.hover} cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300`}
-                        title="Share comparison"
+                        title={t('toolbar.shareComparison')}
                       //onMouseEnter={() => setShowShareDropdown(true)}
                       >
                         {isSharing ? (
@@ -2595,23 +2595,23 @@ Suggested solutions:
                                       const shareUrl = `${window.location.origin}/share/project/${projectUuid}`;
                                       const success = await copyToClipboard(shareUrl);
                                       if (success) {
-                                        toast.success("Share link copied to clipboard!");
+                                        toast.success(t('share.shareL inkCopied'));
                                       } else {
-                                        toast.error("Failed to copy link");
+                                        toast.error(t('share.copyFailed'));
                                       }
                                     } else {
                                       // 不在项目中，提示先保存
-                                      toast.info("Please save the chart as a project first");
+                                      toast.info(t('toast.saveFirst'));
                                     }
                                     setShowShareDropdown(false);
                                   }}
                                   className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-blue-50 hover:text-blue-600 flex items-center transition-colors`}
-                                  title="Save and share this project"
+                                  title={t('share.saveAndShare')}
                                 >
                                   <span className="mr-3">💾</span>
                                   <div>
-                                    <div className="font-medium">Share Project</div>
-                                    <div className={`text-xs ${themeClasses.text.muted}`}>Save and get shareable link</div>
+                                    <div className="font-medium">{t('share.shareProject')}</div>
+                                    <div className={`text-xs ${themeClasses.text.muted}`}>{t('share.saveAndGetLink')}</div>
                                   </div>
                                 </button>
                                 <div className={`border-t ${themeClasses.border.primary} my-2`}></div>
@@ -2619,7 +2619,7 @@ Suggested solutions:
                             )}
 
                             {/* 社交媒体平台 */}
-                            <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>Share Snapshot</div>
+                            <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>{t('share.shareSnapshot')}</div>
                             {socialPlatforms.map((platform) => (
                               <button
                                 key={platform.name}
@@ -2635,26 +2635,26 @@ Suggested solutions:
                             <div className={`border-t ${themeClasses.border.primary} my-2`}></div>
 
                             {/* 其他分享选项 */}
-                            <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>Other Options</div>
+                            <div className={`px-3 py-1 text-xs font-medium ${themeClasses.text.muted} uppercase tracking-wide`}>{t('share.otherOptions')}</div>
 
                             {/* 原生分享 API (如果支持) */}
                             <button
                               onClick={() => handleSocialShare({ name: 'Native', icon: '📱', color: '#666', shareUrl: () => '' })}
                               className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-blue-50 hover:text-blue-600 flex items-center`}
-                              title="Use native sharing"
+                              title={t('share.nativeShare')}
                             >
                               <span className="mr-3">📱</span>
-                              <div className="font-medium">Share...</div>
+                              <div className="font-medium">{t('share.nativeShare')}</div>
                             </button>
 
                             <button
                               onClick={handleCopyLink}
                               className={`w-full px-4 py-2 text-left text-sm ${themeClasses.text.primary} hover:bg-blue-50 hover:text-blue-600 flex items-center`}
-                              title="Copy share link to clipboard"
+                              title={t('share.copyShareLink')}
                             >
                               <span className="mr-3">📎</span>
                               <div className="font-medium">
-                                {showShareSuccess ? '✅ Link Copied!' : 'Copy Share Link'}
+                                {showShareSuccess ? t('share.linkCopied') : t('share.copyShareLink')}
                               </div>
                             </button>
                           </div>
@@ -3036,7 +3036,7 @@ Suggested solutions:
               <div ref={rightPanelRef} className={`absolute right-0 top-0 h-full w-[300px] bg-white shadow-xl z-[1003] overflow-y-auto border-l border-gray-200 thin-scrollbar transition-transform duration-300`}>
                 <div className="px-4 py-2 border-b border-gray-200 bg-gray-50">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Character Details</h3>
+                    <h3 className="text-lg font-semibold">{t('characterPanel.characterDetails')}</h3>
                     <button
                       onClick={() => {
                         setShowRightPanel(false)
@@ -3053,14 +3053,14 @@ Suggested solutions:
 
                 <div className="p-4 space-y-4">
                   <div>
-                    <label htmlFor="character-name" className="block text-label-md text-gray-700 mb-1">Name</label>
+                    <label htmlFor="character-name" className="block text-label-md text-gray-700 mb-1">{t('characterPanel.name')}</label>
                     <input
                       id="character-name"
                       type="text"
                       value={selectedCharacter.name}
                       onChange={(e) => updateCharacter('name', e.target.value)}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="Enter character name"
+                      placeholder={t('characterPanel.namePlaceholder')}
                     />
                   </div>
 
@@ -3074,12 +3074,12 @@ Suggested solutions:
                       {unit === Unit.CM ? convertHeightSmart(selectedCharacter.height, true) : convertHeightSmartImperial(selectedCharacter.height)}
                     </div>
                     <div className="text-xs text-gray-400 mt-1">
-                      Press Enter or click outside to apply changes
+                      {t('characterPanel.applyChanges')}
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-label-md text-gray-700 mb-1">Color</label>
+                    <label className="block text-label-md text-gray-700 mb-1">{t('characterPanel.color')}</label>
                     <div className="flex gap-2 flex-wrap">
                       {['#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899', '#000000'].map(color => (
                         <button
@@ -3087,7 +3087,7 @@ Suggested solutions:
                           onClick={() => updateCharacter('color', color)}
                           className={`w-8 h-8 rounded-full border-2 ${selectedCharacter.color === color ? 'border-gray-800' : 'border-gray-300'}`}
                           style={{ backgroundColor: color }}
-                          title={`Select color: ${color}`}
+                          title={t('characterPanel.selectColor', { color })}
                         />
                       ))}
                     </div>
@@ -3211,18 +3211,18 @@ Suggested solutions:
               }
             }}>
               <DialogHeader>
-                <DialogTitle className={themeClasses.text.primary}>Save as New Project</DialogTitle>
+                <DialogTitle className={themeClasses.text.primary}>{t('saveProject.dialogTitle')}</DialogTitle>
                 <DialogDescription className={themeClasses.text.secondary}>
-                  Enter a name for your height comparison project. It will be saved to your dashboard.
+                  {t('saveProject.dialogDescription')}
                 </DialogDescription>
               </DialogHeader>
               <div className="space-y-2 py-4">
                 <Label htmlFor="save-project-title" className={themeClasses.text.primary}>
-                  Project name
+                  {t('saveProject.projectNameLabel')}
                 </Label>
                 <Input
                   id="save-project-title"
-                  placeholder="My height comparison"
+                  placeholder={t('saveProject.projectNamePlaceholder')}
                   value={saveProjectTitle}
                   onChange={(e) => setSaveProjectTitle(e.target.value)}
                   autoFocus
@@ -3237,7 +3237,7 @@ Suggested solutions:
                   onClick={() => setShowSaveProjectDialog(false)}
                   disabled={isSavingProject}
                 >
-                  Cancel
+                  {t('saveProject.cancel')}
                 </Button>
                 <Button
                   type="submit"
@@ -3247,10 +3247,10 @@ Suggested solutions:
                   {isSavingProject ? (
                     <>
                       <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current mr-2"></div>
-                      Saving...
+                      {t('saveProject.saving')}
                     </>
                   ) : (
-                    'Save Project'
+                    t('saveProject.save')
                   )}
                 </Button>
               </DialogFooter>

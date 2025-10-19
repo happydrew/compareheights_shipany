@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -27,6 +28,7 @@ import type { ProjectListItem } from "@/types/project";
 import { copyToClipboard } from "@/lib/utils";
 
 export default function ProjectsPage() {
+  const t = useTranslations('projects');
   const router = useRouter();
   const [projects, setProjects] = useState<ProjectListItem[]>([]);
   const [total, setTotal] = useState(0);
@@ -72,7 +74,7 @@ export default function ProjectsPage() {
         setProjects(data.data.projects);
         setTotal(data.data.total);
       } else {
-        toast.error(data.message || "Failed to load projects");
+        toast.error(data.message || t('toast.load_failed'));
       }
     } catch (error) {
       if (controller.signal.aborted || requestId !== latestRequestRef.current) {
@@ -80,7 +82,7 @@ export default function ProjectsPage() {
       }
 
       console.error("Load projects error:", error);
-      toast.error("Failed to load projects");
+      toast.error(t('toast.load_failed'));
     } finally {
       if (
         requestId === latestRequestRef.current &&
@@ -111,7 +113,7 @@ export default function ProjectsPage() {
     const trimmedTitle = newProjectTitle.trim();
 
     if (!trimmedTitle) {
-      toast.error("Please enter a project name");
+      toast.error(t('toast.name_required'));
       return;
     }
 
@@ -150,11 +152,11 @@ export default function ProjectsPage() {
         setNewProjectTitle("");
         router.push(`/dashboard/projects/${data.data.uuid}/edit`);
       } else {
-        toast.error(data.message || "Failed to create project");
+        toast.error(data.message || t('toast.create_failed'));
       }
     } catch (error) {
       console.error("Create project error:", error);
-      toast.error("Failed to create project");
+      toast.error(t('toast.create_failed'));
     } finally {
       setIsCreating(false);
     }
@@ -171,9 +173,9 @@ export default function ProjectsPage() {
 
     const success = await copyToClipboard(shareUrl);
     if (success) {
-      toast.success("Share link copied to clipboard!");
+      toast.success(t('toast.share_copied'));
     } else {
-      toast.error("Failed to copy link");
+      toast.error(t('toast.share_failed'));
     }
   };
 
@@ -187,14 +189,14 @@ export default function ProjectsPage() {
       const data = await response.json();
 
       if (data.success) {
-        toast.success("Project duplicated successfully!");
+        toast.success(t('toast.duplicate_success'));
         loadProjects();
       } else {
-        toast.error(data.message || "Failed to duplicate project");
+        toast.error(data.message || t('toast.duplicate_failed'));
       }
     } catch (error) {
       console.error("Duplicate project error:", error);
-      toast.error("Failed to duplicate project");
+      toast.error(t('toast.duplicate_failed'));
     }
   };
 
@@ -202,7 +204,7 @@ export default function ProjectsPage() {
   const handleTogglePublic = async (uuid: string, isPublic: boolean) => {
     // If trying to make project public, show coming soon message
     if (isPublic) {
-      toast.info("Submit project to public gallery is coming soon!");
+      toast.info(t('toast.coming_soon'));
       return;
     }
 
@@ -217,14 +219,14 @@ export default function ProjectsPage() {
       const data = await response.json();
 
       if (data.success) {
-        toast.success("Project is now private");
+        toast.success(t('toast.now_private'));
         loadProjects();
       } else {
-        toast.error(data.message || "Failed to update project");
+        toast.error(data.message || t('toast.update_failed'));
       }
     } catch (error) {
       console.error("Toggle public error:", error);
-      toast.error("Failed to update project");
+      toast.error(t('toast.update_failed'));
     }
   };
 
@@ -233,7 +235,7 @@ export default function ProjectsPage() {
     const project = projects.find((item) => item.uuid === uuid);
 
     if (!project) {
-      toast.error("Unable to find that project");
+      toast.error(t('toast.unable_to_find'));
       return;
     }
 
@@ -255,16 +257,16 @@ export default function ProjectsPage() {
       const data = await response.json();
 
       if (data.success) {
-        toast.success("Project deleted successfully");
+        toast.success(t('toast.delete_success'));
         setIsDeleteDialogOpen(false);
         setProjectToDelete(null);
         loadProjects();
       } else {
-        toast.error(data.message || "Failed to delete project");
+        toast.error(data.message || t('toast.delete_failed'));
       }
     } catch (error) {
       console.error("Delete project error:", error);
-      toast.error("Failed to delete project");
+      toast.error(t('toast.delete_failed'));
     } finally {
       setIsDeleting(false);
     }
@@ -276,10 +278,10 @@ export default function ProjectsPage() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
-            My Projects
+            {t('title')}
           </h1>
           <p className="mt-1 text-sm text-gray-500 sm:mt-2">
-            {total} {total === 1 ? "project" : "projects"} in total
+            {total === 1 ? t('projects_count_single', { count: total }) : t('projects_count_plural', { count: total })}
           </p>
         </div>
         <Button
@@ -288,7 +290,7 @@ export default function ProjectsPage() {
           className="w-full sm:w-auto bg-gradient-to-r from-green-theme-600 to-green-theme-700 hover:from-green-theme-700 hover:to-green-theme-800 shadow-md hover:shadow-lg transition-all"
         >
           <RiAddLine className="mr-2 h-5 w-5" />
-          New Project
+          {t('new_project')}
         </Button>
       </div>
 
@@ -297,7 +299,7 @@ export default function ProjectsPage() {
         <div className="relative w-full sm:max-w-sm">
           <RiSearchLine className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
           <Input
-            placeholder="Search projects..."
+            placeholder={t('search_placeholder')}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="pl-10 border-gray-200 focus:border-green-theme-500 focus:ring-green-theme-500"
@@ -307,16 +309,16 @@ export default function ProjectsPage() {
         <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:justify-end">
           <div className="flex items-center gap-2 text-sm font-medium text-gray-600 sm:justify-end">
             <RiFilter3Line className="h-5 w-5 text-gray-400" />
-            <span className="sm:hidden">Sort projects</span>
+            <span className="sm:hidden">{t('sort_projects')}</span>
           </div>
           <Select value={sort} onValueChange={(value: any) => setSort(value)}>
             <SelectTrigger className="w-full border-gray-200 sm:w-48">
-              <SelectValue placeholder="Sort by" />
+              <SelectValue placeholder={t('sort_by')} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="recent">Recently Updated</SelectItem>
-              <SelectItem value="name">Name</SelectItem>
-              <SelectItem value="views">Most Viewed</SelectItem>
+              <SelectItem value="recent">{t('sort_recent')}</SelectItem>
+              <SelectItem value="name">{t('sort_name')}</SelectItem>
+              <SelectItem value="views">{t('sort_views')}</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -356,11 +358,10 @@ export default function ProjectsPage() {
             </svg>
           </div>
           <h3 className="mb-2 text-lg font-semibold text-gray-900 sm:text-xl">
-            No projects yet
+            {t('no_projects_yet')}
           </h3>
           <p className="mx-auto mb-8 max-w-sm text-sm text-gray-500 sm:text-base">
-            Create your first height comparison project and start visualizing
-            character heights
+            {t('no_projects_description')}
           </p>
           <Button
             onClick={handleOpenCreateDialog}
@@ -368,7 +369,7 @@ export default function ProjectsPage() {
             className="w-full sm:w-auto bg-gradient-to-r from-green-theme-600 to-green-theme-700 hover:from-green-theme-700 hover:to-green-theme-800"
           >
             <RiAddLine className="mr-2 h-5 w-5" />
-            Create Your First Project
+            {t('create_first_project')}
           </Button>
         </div>
       ) : (
@@ -399,9 +400,9 @@ export default function ProjectsPage() {
       >
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Delete Project</DialogTitle>
+            <DialogTitle>{t('delete_dialog.title')}</DialogTitle>
             <DialogDescription>
-              This action cannot be undone. This will permanently delete{" "}
+              {t('delete_dialog.description')}{" "}
               <span className="font-semibold text-gray-900">
                 {projectToDelete?.title || "this project"}
               </span>
@@ -415,7 +416,7 @@ export default function ProjectsPage() {
               onClick={() => setIsDeleteDialogOpen(false)}
               disabled={isDeleting}
             >
-              Cancel
+              {t('delete_dialog.cancel')}
             </Button>
             <Button
               type="button"
@@ -424,7 +425,7 @@ export default function ProjectsPage() {
               className="min-w-[120px]"
               disabled={isDeleting}
             >
-              {isDeleting ? "Deleting..." : "Delete"}
+              {isDeleting ? t('delete_dialog.deleting') : t('delete_dialog.delete')}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -451,16 +452,16 @@ export default function ProjectsPage() {
             }}
           >
             <DialogHeader>
-              <DialogTitle>Create Project</DialogTitle>
+              <DialogTitle>{t('dialog.create_title')}</DialogTitle>
               <DialogDescription>
-                Name your project so you can find it later.
+                {t('dialog.create_description')}
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-2">
-              <Label htmlFor="project-name">Project name</Label>
+              <Label htmlFor="project-name">{t('dialog.project_name_label')}</Label>
               <Input
                 id="project-name"
-                placeholder="My next height comparison"
+                placeholder={t('dialog.project_name_placeholder')}
                 value={newProjectTitle}
                 onChange={(event) => setNewProjectTitle(event.target.value)}
                 autoFocus
@@ -473,14 +474,14 @@ export default function ProjectsPage() {
                 onClick={() => setIsCreateDialogOpen(false)}
                 disabled={isCreating}
               >
-                Cancel
+                {t('dialog.cancel')}
               </Button>
               <Button
                 type="submit"
                 className="min-w-[120px]"
                 disabled={isCreating || !newProjectTitle.trim()}
               >
-                {isCreating ? "Saving..." : "Save"}
+                {isCreating ? t('dialog.saving') : t('dialog.save')}
               </Button>
             </DialogFooter>
           </form>

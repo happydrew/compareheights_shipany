@@ -97,7 +97,7 @@
   },
   "blog": {
     "title": "Blog",
-    "description": "News, resources, and updates about ShipAny",
+    "description": "News, resources, and updates about CompareHeights.",
     "read_more_text": "Read More"
   },
   "my_invites": {
@@ -296,10 +296,10 @@
     }
   },
   "contact": {
-    "title": "Contact NanoEdit",
+    "title": "Contact CompareHeights",
     "getInTouch": {
       "title": "Get in Touch",
-      "description": "We'd love to hear from you! Whether you have questions about our AI image editing platform, need technical support, or want to share feedback, we're here to help."
+      "description": "We'd love to hear from you! Whether you have questions about our height comparison tool, need technical support, or want to share feedback about your height comparison chart experiences, we're here to help."
     },
     "primaryContact": {
       "title": "Primary Contact",
@@ -312,56 +312,56 @@
       "title": "What We Can Help With",
       "technical": {
         "title": "Technical Support",
-        "issue1": "Issues with image uploads or processing",
-        "issue2": "Account access and authentication problems",
-        "issue3": "Credit system and billing questions",
-        "issue4": "Feature usage and troubleshooting"
+        "issue1": "Issues with height comparison tool or chart generation",
+        "issue2": "Problems with custom image uploads for height compare",
+        "issue3": "Account access and authentication problems",
+        "issue4": "Height comparison chart export and sharing issues"
       },
       "business": {
         "title": "Business Inquiries",
-        "inquiry1": "Partnership opportunities",
-        "inquiry2": "Custom integration requests",
-        "inquiry3": "Enterprise solutions",
-        "inquiry4": "API access and documentation"
+        "inquiry1": "Educational institution partnerships",
+        "inquiry2": "Content creator collaborations",
+        "inquiry3": "Database expansion requests for new characters",
+        "inquiry4": "Custom height comparison solutions for projects"
       },
       "feedback": {
         "title": "Feedback & Suggestions",
-        "type1": "Feature requests and improvements",
-        "type2": "User experience feedback",
-        "type3": "Bug reports and issues",
-        "type4": "General platform suggestions"
+        "type1": "New character or celebrity height database requests",
+        "type2": "Height comparison tool feature improvements",
+        "type3": "Bug reports and height difference calculation issues",
+        "type4": "User experience feedback for comparing heights"
       }
     },
     "faq": {
       "title": "Frequently Asked Questions",
       "description": "Before reaching out, you might find answers to common questions:",
       "account": {
-        "title": "Account & Authentication",
+        "title": "Using the Height Comparison Tool",
         "q1": {
-          "question": "Q: I can't sign in to my account",
-          "answer": "A: Try clearing your browser cache and cookies, or use an incognito/private window. If the issue persists, contact us with details about your browser and the error message."
+          "question": "Q: How do I create my first height comparison chart?",
+          "answer": "A: Simply browse our character database and click on any character to add them to your comparison. You can add multiple characters, customize colors, adjust backgrounds, and export your height chart comparison in various formats."
         }
       },
       "credits": {
-        "title": "Credits & Billing",
+        "title": "Features & Customization",
         "q1": {
-          "question": "Q: How do credits work?",
-          "answer": "A: Credits are consumed based on the AI processing required. Text-to-image generation costs 10 credits, and additional features like custom aspect ratios cost extra credits."
+          "question": "Q: Can I upload my own images for height comparison?",
+          "answer": "A: Yes! You can upload custom images and set their heights to create personalized height comparisons. This is perfect for comparing yourself, friends, or original characters with existing figures in our database."
         },
         "q2": {
-          "question": "Q: Can I get a refund for unused credits?",
-          "answer": "A: Please contact us at drewgrant616@gmail.com to discuss refund requests on a case-by-case basis."
+          "question": "Q: What units of measurement are supported?",
+          "answer": "A: Our height comparison tool supports both metric (centimeters, meters) and imperial units (feet, inches). The system automatically converts between units for easy comparison across different measurement systems."
         }
       },
       "processing": {
-        "title": "Image Processing",
+        "title": "Export & Sharing",
         "q1": {
-          "question": "Q: Why is my image taking so long to process?",
-          "answer": "A: AI image generation typically takes 30-60 seconds. High server demand may occasionally cause longer processing times."
+          "question": "Q: What formats can I export my height comparison charts in?",
+          "answer": "A: You can export your height comparisons in PNG, JPG, and WebP formats. All exports are high-resolution and perfect for social media sharing, presentations, or printing."
         },
         "q2": {
-          "question": "Q: What image formats are supported?",
-          "answer": "A: We support common formats including JPG, PNG, and WebP for uploads. Generated images are provided in PNG format."
+          "question": "Q: Can I share my height comparison charts with others?",
+          "answer": "A: Absolutely! You can share your height comparisons through direct share links, social media platforms, or by downloading and sending the exported images. All sharing options maintain the full quality of your comparison chart."
         }
       }
     },
@@ -394,22 +394,22 @@
     },
     "socialMedia": {
       "title": "Social Media",
-      "description": "Stay updated with the latest features and announcements:",
-      "follow": "Follow us for product updates and tips",
-      "share": "Share your creations using #NanoEdit"
+      "description": "Stay updated with the latest height comparison features and database additions:",
+      "follow": "Follow us for new character additions and feature updates",
+      "share": "Share your height comparison charts using #CompareHeights"
     },
     "feedbackForm": {
       "title": "Feedback Form",
       "comingSoon": "Coming Soon",
-      "description": "We're working on an integrated feedback form to make it even easier to share your thoughts and suggestions."
+      "description": "We're working on an integrated feedback form to make it even easier to share your thoughts, suggest new characters for our database, and help us improve the height comparison experience."
     },
     "office": {
-      "title": "Office Information",
-      "description": "NanoEdit operates as a remote-first company, allowing us to focus on building the best AI image editing experience for our users worldwide."
+      "title": "Our Mission",
+      "description": "CompareHeights is dedicated to making height visualization simple, accurate, and accessible to everyone. We continuously expand our database and improve our height comparison tool based on user feedback from educators, content creators, and curious minds worldwide."
     },
     "footer": {
-      "thanks": "Thank you for choosing NanoEdit!",
-      "message": "Your feedback and questions help us improve our platform and better serve the creative community."
+      "thanks": "Thank you for choosing CompareHeights!",
+      "message": "Your feedback helps us expand our character database and improve the height comparison tool for thousands of users who rely on our platform for accurate, engaging height comparisons."
     }
   },
   "hero": {
@@ -425,6 +425,8 @@
     "toolbar": {
       "openFullScreenLeftPanel": "Open full screen left panel",
       "saveProject": "Save project",
+      "saveDisabledInShareMode": "Saving disabled in share mode",
+      "clearDisabledInShareMode": "Clearing disabled in share mode",
       "switchToCm": "Switch to centimeters",
       "switchToFt": "Switch to feet",
       "resetZoom": "Reset zoom",
@@ -443,6 +445,7 @@
       "ctrlKeyPressed": "Ctrl key pressed, starting zoom"
     },
     "console": {
+      "restoredPreviousWork": "Restored your previous work",
       "loadingSharedData": "Loading shared data:",
       "loadingSharedDataSuccess": "Loading shared data success:",
       "loadingSharedDataFailed": "Loading shared data failed:",
@@ -524,9 +527,42 @@
       "characterDetails": "Character Details",
       "name": "Name",
       "nameplaceholder": "Enter character name",
+      "namePlaceholder": "Enter character name",
       "color": "Color",
       "selectColor": "Select color: {color}",
       "applyChanges": "Press Enter or click outside to apply changes"
+    },
+    "saveProject": {
+      "dialogTitle": "Save as New Project",
+      "dialogDescription": "Enter a name for your height comparison project. It will be saved to your dashboard.",
+      "projectNameLabel": "Project name",
+      "projectNamePlaceholder": "My height comparison",
+      "cancel": "Cancel",
+      "save": "Save Project",
+      "saving": "Saving..."
+    },
+    "share": {
+      "title": "Share comparison",
+      "saveAndShare": "Save and share this project",
+      "shareProject": "Share Project",
+      "saveAndGetLink": "Save and get shareable link",
+      "shareSnapshot": "Share Snapshot",
+      "otherOptions": "Other Options",
+      "nativeShare": "Share...",
+      "copyShareLink": "Copy Share Link",
+      "linkCopied": "✅ Link Copied!",
+      "shareOn": "Share on {platform}",
+      "shareLinkCopied": "Share link copied to clipboard!",
+      "copyFailed": "Failed to copy link"
+    },
+    "toast": {
+      "addCharacterFirst": "Please add at least one character before saving",
+      "signInRequired": "Please sign in to save your project",
+      "enterProjectName": "Please enter a project name",
+      "thumbnailUploadFailed": "Failed to upload thumbnail, but project will be created",
+      "projectCreated": "Project created successfully!",
+      "createProjectFailed": "Failed to create project",
+      "saveFirst": "Please save the chart as a project first"
     },
     "sharing": {
       "generateShareLinkFailed": "Generate share link failed",
@@ -570,10 +606,495 @@
     "custom_characters": "Custom Characters",
     "storage": "Storage",
     "credits": "Credits",
+    "retry": "Retry",
+    "failed_to_load_data": "Failed to load data",
+    "valid_until": "Valid until",
+    "per_month": "$0 / month",
     "quota_exceeded": {
       "projects": "You have reached the maximum number of projects ({limit}) for your {plan} plan. Please upgrade to create more projects.",
       "custom_characters": "You have reached the maximum number of custom characters ({limit}) for your {plan} plan. Please upgrade to create more characters.",
       "storage": "You have reached the storage limit ({limit}MB) for your {plan} plan. Please upgrade for more storage."
     }
+  },
+  "custom_characters": {
+    "title": "My Characters",
+    "description": "Manage the custom characters you have created. Upload images, define their heights, and keep everything organised for quick access inside the comparison tool.",
+    "search_placeholder": "Search characters...",
+    "create_character": "Create Character",
+    "no_characters_yet": "No custom characters yet",
+    "no_characters_description": "Create your first custom character to quickly reuse it in any height comparison project.",
+    "dialog": {
+      "create_title": "Create Custom Character",
+      "edit_title": "Edit Custom Character",
+      "create_description": "Provide the character details and upload an image. All fields are required.",
+      "edit_description": "Update the character details or upload a new image.",
+      "name_label": "Name",
+      "name_placeholder": "Give your character a name",
+      "height_label": "Height (meters)",
+      "height_placeholder": "e.g. 1.75",
+      "image_label": "Character image",
+      "click_to_upload": "Click to upload",
+      "crop_and_adjust": "Crop and adjust before saving",
+      "image_recommendation": "We recommend transparent PNGs or JPGs. You can crop and resize the image before saving. Maximum size: {maxSize}MB.",
+      "cancel": "Cancel",
+      "save_changes": "Save changes",
+      "create": "Create",
+      "saving": "Saving...",
+      "creating": "Creating..."
+    },
+    "delete_dialog": {
+      "title": "Delete custom character",
+      "description": "Are you sure you want to delete \"{name}\"? This action cannot be undone.",
+      "description_fallback": "Are you sure you want to delete this character?",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "deleting": "Deleting..."
+    },
+    "toast": {
+      "name_required": "Name cannot be empty",
+      "invalid_height": "Please enter a valid height in meters",
+      "image_required": "Please upload and crop a character image",
+      "load_failed": "Failed to load custom characters",
+      "created": "Custom character created",
+      "updated": "Custom character updated",
+      "deleted": "Character deleted",
+      "create_failed": "Failed to create custom character",
+      "update_failed": "Failed to update custom character",
+      "delete_failed": "Failed to delete character"
+    },
+    "card": {
+      "no_preview": "No preview",
+      "height": "Height",
+      "edit_character": "Edit character",
+      "delete": "Delete",
+      "deleting": "Deleting...",
+      "more_actions": "More actions"
+    }
+  },
+  "profile": {
+    "title": "Profile Settings",
+    "description": "Manage your personal information",
+    "avatar_label": "Avatar",
+    "upload_photo": "Upload Photo (Coming Soon)",
+    "display_name_label": "Display Name",
+    "display_name_placeholder": "Your display name",
+    "email_label": "Email",
+    "email_cannot_change": "Email cannot be changed",
+    "save_changes": "Save Changes",
+    "saving": "Saving...",
+    "toast": {
+      "sign_in_required": "You need to be signed in to update your profile",
+      "name_required": "Display name is required",
+      "no_changes": "No changes to save",
+      "update_success": "Profile updated successfully",
+      "update_failed": "Failed to update profile"
+    }
+  },
+  "projects": {
+    "title": "My Projects",
+    "projects_count_single": "{count} project in total",
+    "projects_count_plural": "{count} projects in total",
+    "new_project": "New Project",
+    "search_placeholder": "Search projects...",
+    "sort_by": "Sort by",
+    "sort_recent": "Recently Updated",
+    "sort_name": "Name",
+    "sort_views": "Most Viewed",
+    "sort_projects": "Sort projects",
+    "no_projects_yet": "No projects yet",
+    "no_projects_description": "Create your first height comparison project and start visualizing character heights",
+    "create_first_project": "Create Your First Project",
+    "character_count_single": "{count} character",
+    "character_count_plural": "{count} characters",
+    "view_count_single": "{count} view",
+    "view_count_plural": "{count} views",
+    "updated_ago": "Updated {time}",
+    "dialog": {
+      "create_title": "Create Project",
+      "create_description": "Name your project so you can find it later.",
+      "project_name_label": "Project name",
+      "project_name_placeholder": "My next height comparison",
+      "cancel": "Cancel",
+      "save": "Save",
+      "saving": "Saving..."
+    },
+    "delete_dialog": {
+      "title": "Delete Project",
+      "description": "This action cannot be undone. This will permanently delete",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "deleting": "Deleting..."
+    },
+    "card": {
+      "public": "Public",
+      "private": "Private",
+      "edit": "Edit",
+      "edit_project": "Edit Project",
+      "share_link": "Share Link",
+      "duplicate": "Duplicate",
+      "make_private": "Make Private",
+      "make_public": "Make Public",
+      "delete": "Delete"
+    },
+    "toast": {
+      "name_required": "Please enter a project name",
+      "load_failed": "Failed to load projects",
+      "create_failed": "Failed to create project",
+      "share_copied": "Share link copied to clipboard!",
+      "share_failed": "Failed to copy link",
+      "duplicate_success": "Project duplicated successfully!",
+      "duplicate_failed": "Failed to duplicate project",
+      "coming_soon": "Submit project to public gallery is coming soon!",
+      "now_private": "Project is now private",
+      "update_failed": "Failed to update project",
+      "unable_to_find": "Unable to find that project",
+      "delete_success": "Project deleted successfully",
+      "delete_failed": "Failed to delete project"
+    }
+  },
+  "tools": {
+    "brave_pink_green": {
+      "metadata": {
+        "title": "Brave Pink Hero Green Generator - Free Photo Editor",
+        "description": "Create brave pink hero green duotone effects instantly. Free foto brave pink hero green generator with pink hijau filters. 100% privacy-protected."
+      }
+    },
+    "compare_height_country": {
+      "metadata": {
+        "title": "Compare my height to average in country | Compareheights",
+        "description": "Compare your height to average height of different country in the world."
+      }
+    }
+  },
+  "project_edit": {
+    "loading": "Loading project...",
+    "breadcrumb": {
+      "my_projects": "My Projects",
+      "project_title_placeholder": "Project title"
+    },
+    "auto_save": {
+      "updating_thumbnail": "Updating project thumbnail..."
+    },
+    "dialogs": {
+      "unsaved_changes": "You have unsaved changes. Are you sure you want to leave? Your changes will be lost.",
+      "thumbnail_update_failed": "Failed to update project thumbnail. Do you still want to exit?"
+    },
+    "toast": {
+      "load_failed": "Failed to load project",
+      "save_success": "Project saved successfully",
+      "save_failed": "Failed to save project",
+      "network_error": "Network error",
+      "thumbnail_update_failed": "Failed to update project thumbnail"
+    }
+  },
+  "image_upload_modal": {
+    "title": "Upload Image",
+    "uploadArea": {
+      "dragDrop": "Drag and drop your image here, or click to upload",
+      "or": "or",
+      "clickUpload": "Click to upload",
+      "supportedFormats": "Supported formats: PNG, JPG, WebP, GIF",
+      "maxSizeFree": "Max size: 5MB (Free)",
+      "maxSizePaid": "Max size: 20MB (Paid)"
+    },
+    "cropSection": {
+      "title": "Crop & Adjust",
+      "zoomLabel": "Zoom",
+      "tipsTitle": "Tips",
+      "tips": {
+        "dragCropBox": "Drag the crop box to reposition it and drag corners to resize.",
+        "useZoom": "Use the zoom slider or mouse wheel to scale the image.",
+        "dragImage": "Drag the image to fine-tune its position inside the crop area.",
+        "savedResult": "The saved result matches exactly what is shown in the crop box."
+      }
+    },
+    "heightSection": {
+      "title": "Set Height",
+      "heightLabel": "Height",
+      "heightPlaceholder": "1.8",
+      "widthLabel": "Width (Optional)",
+      "widthPlaceholder": "Auto calculate",
+      "autoCalculateTip": "If width is not set, it will be calculated from the cropped image aspect ratio.",
+      "unitM": "Meters",
+      "unitCm": "Centimeters",
+      "unitFt": "Feet",
+      "unitIn": "Inches"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save & Use",
+      "reselectImage": "Reselect Image"
+    },
+    "errors": {
+      "invalidFile": "Invalid file",
+      "uploadImageFile": "Please upload an image file",
+      "cropFailed": "Image cropping failed, please try again"
+    }
+  },
+  "brave_pink_green_tool": {
+    "title": "Brave Pink Hero Green Generator",
+    "subtitle": "Create stunning pink hijau duotone effects instantly • Professional foto brave pink hero green editor with advanced customization",
+    "badges": {
+      "free": "100% Free",
+      "fast": "Lightning Fast",
+      "customizable": "Fully Customizable",
+      "quality": "Premium Quality"
+    },
+    "upload": {
+      "title": "Upload your photo",
+      "description": "Drag & drop or click to select",
+      "formats": "PNG, JPG, WebP, GIF • Max 10MB",
+      "upload_new": "Upload new image",
+      "image_loaded": "Image loaded • Ready for processing"
+    },
+    "controls": {
+      "title": "Controls",
+      "quick_presets": "Quick Presets",
+      "dark_color": "Dark Color",
+      "light_color": "Light Color",
+      "intensity": "Intensity",
+      "contrast": "Contrast",
+      "brightness": "Brightness",
+      "mapping_curve": "Mapping Curve",
+      "curve_linear": "linear",
+      "curve_smooth": "smooth",
+      "curve_dramatic": "dramatic",
+      "curve_desc_linear": "Even color distribution",
+      "curve_desc_smooth": "Gentle S-curve transition",
+      "curve_desc_dramatic": "Enhanced contrast mapping"
+    },
+    "presets": {
+      "brave_pink_hero_green": "Brave Pink Hero Green",
+      "vintage": "Vintage",
+      "dramatic": "Dramatic"
+    },
+    "preview": {
+      "title": "Duotone Result",
+      "no_image": "Preview will appear here",
+      "upload_prompt": "Upload an image to get started",
+      "processing": "Processing image..."
+    },
+    "export": {
+      "title": "Export",
+      "download_png": "Download PNG (Best Quality)",
+      "jpg": "JPG",
+      "webp": "WebP",
+      "privacy_title": "Privacy Protected",
+      "privacy_description": "All processing happens in your browser. Your images never leave your device."
+    },
+    "errors": {
+      "file_too_large": "Please select an image file under 10MB",
+      "canvas_not_ready": "Canvas not ready, please try again",
+      "load_failed": "Failed to load image"
+    },
+    "content": {
+      "movement_title": "The Brave Pink Hero Green Movement",
+      "movement_description": "In late August 2025, a powerful visual movement swept across Indonesian social media. Brave pink hero green emerged as more than just colors—they became symbols of resistance, solidarity, and hope that captured the world's attention through the simple act of changing profile pictures.",
+      "event_analysis": "Breaking Event Analysis",
+      "what_sparked_title": "What Sparked the Brave Pink Hero Green Phenomenon",
+      "what_sparked_desc1": "The brave pink hero green movement originated from two tragic yet inspiring events during Indonesia's August 2025 demonstrations. On August 28, 2025, a courageous woman named Ana, wearing a distinctive pink hijab, became an icon when she fearlessly confronted police barricades with nothing but a bamboo pole bearing the Indonesian flag.",
+      "what_sparked_desc2": "Simultaneously, the death of Affan Kurniawan, an online motorcycle taxi driver killed by a police tactical vehicle, sparked the adoption of Hero Green—representing the solidarity with Indonesia's working class. The 1312 code, often accompanying these colors, adds another layer of resistance symbolism to this digital movement.",
+      "brave_pink": "Brave Pink (#EC4899)",
+      "brave_pink_desc": "Symbol of courage & defiance",
+      "brave_pink_source": "Inspired by Ana's pink hijab during confrontation",
+      "hero_green": "Hero Green (#10B981)",
+      "hero_green_desc": "Symbol of working-class solidarity",
+      "hero_green_source": "Honoring Affan Kurniawan and ojol drivers",
+      "timeline_title": "Event Timeline",
+      "timeline_subtitle": "How Brave Pink Hero Green Went Viral",
+      "timeline_description": "From street protests to digital solidarity: a chronological breakdown of the movement that generated over 3.3 million interactions in 3 days.",
+      "timeline_aug28": "August 28, 2025",
+      "timeline_aug28_desc": "Ana's brave confrontation during mass demonstrations. Her pink hijau becomes an instant symbol of resistance as videos circulate across social media.",
+      "timeline_aug29": "August 29, 2025",
+      "timeline_aug29_desc": "Affan Kurniawan incident occurs. The green color of ojol uniforms becomes associated with working-class solidarity and the brave pink hero green combination begins forming.",
+      "timeline_sep1": "September 1, 2025",
+      "timeline_sep1_desc": "First brave pink hero green generators launched. The 1312 code becomes widely adopted alongside the pink hijau color scheme.",
+      "timeline_sep1_3": "September 1-3, 2025",
+      "timeline_sep1_3_desc": "Viral explosion: 3.3M+ visits to foto brave pink hero green generators. Social media profiles across Indonesia transform to show solidarity.",
+      "social_impact": "Social Impact",
+      "cultural_power_title": "The Cultural Power of Brave Pink Hero Green 1312",
+      "cultural_power_desc1": "According to sociology lecturer Hubertus Ubur, the brave pink hero green campaign demonstrates how sensitive Indonesian netizens are to their country's political situation. The movement serves as an alternative voice for those who cannot directly participate in physical demonstrations.",
+      "cultural_power_desc2": "The pink hijau combination transcends simple color choices—it represents a sophisticated form of digital resistance. The integration of 1312 numeric codes adds layers of meaning that resonate with resistance movements globally, making foto brave pink hero green images powerful statements of solidarity.",
+      "cultural_power_desc3": "Within 72 hours of the first generators going live, the movement had generated unprecedented engagement across Instagram, TikTok, X (Twitter), and WhatsApp, demonstrating how color symbolism can unite diverse voices in the digital age.",
+      "stats_visits": "3.3M+",
+      "stats_visits_desc": "Generator visits (72 hours)",
+      "stats_code": "1312",
+      "stats_code_desc": "Resistance code integration",
+      "stats_impact": "∞",
+      "stats_impact_desc": "Ongoing cultural impact",
+      "tools_analysis": "Digital Tools Analysis",
+      "tools_comparison_title": "Comparing Brave Pink Hero Green App Lovable App Solutions",
+      "tools_comparison_desc": "As the movement exploded, numerous tools emerged to help users create foto brave pink hero green images. Here's how different generators compare, including the popular lovable brave pink hero green platforms.",
+      "other_generators": "Other Popular Generators",
+      "other_gen_lovable": "Brave pink hero green app lovable app: Basic pink hijau filter with limited customization options",
+      "other_gen_standard": "Standard foto brave pink hero green processors: May require app downloads or account registration",
+      "other_gen_generic": "Generic pink hijau generators: Limited color accuracy, standard export quality",
+      "other_gen_single": "Single-function tools: No 1312 integration or advanced duotone controls",
+      "our_advantages": "Our Generator Advantages",
+      "recommended": "Recommended",
+      "adv_authentic": "Authentic color codes: Exact Brave Pink (#EC4899) and Hero Green (#10B981) specifications",
+      "adv_advanced": "Advanced parameters: Intensity, contrast, brightness, and curve mapping controls",
+      "adv_free": "100% free and fast: Browser-based processing, no downloads or registrations required",
+      "adv_quality": "Premium quality: High-resolution outputs with multiple export formats (PNG, JPG, WebP)",
+      "global_recognition": "Global Recognition",
+      "global_attention_title": "How Brave Pink Hero Green Gained International Attention",
+      "global_attention_desc1": "The brave pink hero green movement quickly transcended Indonesian borders, gaining coverage from international news outlets and social media platforms. The simple yet powerful visual symbolism resonated with global audiences interested in digital resistance movements.",
+      "global_attention_desc2": "The phenomenon demonstrated how modern protest movements can leverage color psychology, social media virality, and user-generated content tools to create lasting impact. The foto brave pink hero green trend became a case study in digital activism across multiple continents.",
+      "global_attention_desc3": "International observers noted how the pink hijau combination effectively bypassed traditional media censorship while creating a unified visual language that transcended linguistic barriers—a testament to the power of symbolic communication in the digital age.",
+      "media_coverage": "International Media Coverage",
+      "media_antara": "ANTARA News",
+      "media_antara_quote": "Brave pink, heroic green become symbols of solidarity, hope",
+      "media_tempo": "Tempo.co English",
+      "media_tempo_quote": "Trending Campaign on Indonesian Social Media",
+      "media_expat": "Social Expat",
+      "media_expat_quote": "How Two Colours Became Symbols of Protest",
+      "join_movement_title": "Join the Brave Pink Hero Green Movement",
+      "join_movement_desc": "Create your own authentic foto brave pink hero green with historical accuracy and professional quality in three simple steps",
+      "step1_title": "Upload Your Photo",
+      "step1_desc": "Drag & drop or select your image (PNG, JPG, WebP up to 10MB supported)",
+      "step2_title": "Customize Settings",
+      "step2_desc": "Adjust intensity, contrast, brightness, and choose curve mapping for perfect pink hijau effects",
+      "step3_title": "Export & Share",
+      "step3_desc": "Download high-quality results and share your solidarity across social media platforms",
+      "privacy_first_title": "Privacy-First Movement Support",
+      "privacy_first_desc": "Unlike many brave pink hero green app lovable app solutions that may require data uploads, our generator respects the privacy principles central to resistance movements. All foto brave pink hero green processing happens locally in your browser, ensuring your digital activism remains completely private.",
+      "privacy_guarantee": "100% Local Processing • Zero Data Upload • Maximum Privacy",
+      "honor_legacy_title": "Honor the Legacy of Brave Pink Hero Green",
+      "honor_legacy_desc": "Whether creating foto brave pink hero green for historical documentation, social media solidarity, or artistic expression, you're participating in a movement that represents courage, hope, and digital unity. Every pink hijau image carries forward the legacy of Ana's bravery and Affan's sacrifice.",
+      "start_creating": "Start Creating Now"
+    }
+  },
+  "compare_height_country": {
+    "metadata": {
+      "title": "Compare my height to average in country | Compareheights",
+      "description": "Compare your height to average height of different country in the world."
+    },
+    "page_title": "Compare My Height to Average in Country",
+    "intro_p1": "Ever wondered how you stack up against the rest of the world? With our advanced height comparison tool, you can compare my height to average in country and instantly visualize your height next to the average heights of men from countries all around the globe.",
+    "intro_p2": "Simply select countries from our comprehensive character library, which includes the average male heights for nearly every major nation. If your country isn't listed, upload a custom character or image and set the height yourself. Our tool supports unlimited characters, so you can compare my height to average in country for as many countries as you like, all in one beautiful, shareable chart.",
+    "intro_p3": "Adjust the order, height, and name of each character, set the background, switch to dark mode, and export your comparison chart as a high-resolution image. It's never been easier or more fun to compare my height to average in country!",
+    "try_now": "Try Now: Compare My Height to Average in Country",
+    "homepage_link": "Want to explore even more fun features? Visit the homepage to use the full-featured height comparison tool, including celebrity, anime, and custom object comparisons, advanced export options, and more!",
+    "table_title": "Global Average Male Heights by Country",
+    "table_description": "The table below shows the average male height for major countries around the world. Use this data to compare my height to average in country and see where you stand globally.",
+    "table_country": "Country",
+    "table_height": "Avg. Male Height",
+    "table_source": "Source",
+    "insights_title": "Fun Facts & Insights: Compare My Height to Average in Country",
+    "insights_intro": "When you compare my height to average in country, you'll quickly notice that average male heights vary dramatically across the globe. The Netherlands boasts the world's tallest men, with an average height of 183.8 cm, while countries like Indonesia and the Philippines have averages closer to 165 cm. This means that if you compare my height to average in country and you're 175 cm tall, you might be above average in Southeast Asia but below average in Northern Europe.",
+    "tallest_countries_title": "Tallest Countries",
+    "tallest_countries_desc1": "The Netherlands, Montenegro, Estonia, and Iceland all have average male heights above 182 cm.",
+    "tallest_countries_desc2": "If you compare my height to average in country with these nations, you'll see just how tall the world's tallest populations are.",
+    "shortest_countries_title": "Shortest Countries",
+    "shortest_countries_desc1": "Laos, Timor-Leste, the Philippines, and Indonesia have average male heights between 160 and 166 cm.",
+    "shortest_countries_desc2": "Compare my height to average in country here, and you might find yourself towering above the local average!",
+    "middle_ground_title": "Global Middle Ground",
+    "middle_ground_desc1": "Countries like the United States (176.9 cm), China (175.7 cm), and Japan (172.1 cm) represent the global average.",
+    "middle_ground_desc2": "When you compare my height to average in country with these, you'll get a sense of where you stand worldwide.",
+    "regional_trends_title": "Regional Trends",
+    "regional_trends_desc1": "Northern and Eastern Europe dominate the tall rankings, while Southeast Asia and parts of South America are on the shorter side.",
+    "regional_trends_desc2": "Compare my height to average in country to see these patterns in action.",
+    "innovative_insight_title": "Innovative insight:",
+    "innovative_insight_desc": "The global average male height has been rising in many countries due to improved nutrition and healthcare. For example, South Korea and China have seen significant increases in average height over the past few decades. When you compare my height to average in country today, you're seeing a snapshot of ongoing human development and progress.",
+    "tool_benefits": "Our tool is designed to make it easy and engaging to compare my height to average in country. Add as many countries as you like, rearrange them, and even upload your own custom characters. Export your chart as a high-resolution image, perfect for sharing or using in presentations. Whether you're a student, a teacher, a traveler, or just curious, there's never been a better way to compare my height to average in country.",
+    "closing_cta": "Ready to see where you stand? Don't just guess—compare my height to average in country and discover your place in the world's height rankings. Try it now and share your results with friends. The world of height comparison is at your fingertips!"
+  },
+  "compareheights_article": {
+    "hero_badge": "The Ultimate Height Comparison Tool",
+    "hero_title": "Height Comparison Tool: Compare Heights",
+    "hero_title_highlight": "Visually Online",
+    "hero_desc": "The ultimate height comparison chart and height comparison tool for comparing heights of celebrities, anime characters, and more. Our height comparison platform lets you easily compare heights and create a height chart comparison for any group or individual. Create stunning visual height comparisons and height chart comparisons with our advanced height comparison tool, designed for anyone who wants to compare heights quickly and accurately. Instantly see the height difference between any two or more people or objects with our intuitive height comparison tool.",
+    "hero_cta_primary": "Try Height Comparison Tool",
+    "hero_cta_secondary": "Learn More",
+    "intro_title": "What is Height Comparison?",
+    "intro_desc1_strong1": "Height Comparison",
+    "intro_desc1_seg1": " is the process of visually and numerically comparing heights and height differences between people, characters, or objects using a height comparison tool or height comparison chart. With our advanced online height comparison tool, height compare and understanding height difference is now easier than ever. Whether you're curious about how your height stacks up against your favorite celebrities, need to visualize character heights and height differences for creative projects, or want to create engaging ",
+    "intro_desc1_strong2": "height comparison charts",
+    "intro_desc1_seg2": " for educational purposes, our platform makes ",
+    "intro_desc1_strong3": "comparing heights",
+    "intro_desc1_seg3": " and exploring height difference simple and fun. The height comparison chart generator allows you to compare heights and see height differences in a visual and interactive way.",
+    "intro_desc1_strong4": "",
+    "intro_desc1_seg4": "",
+    "intro_desc1_strong5": "",
+    "intro_desc1_seg5": "",
+    "intro_desc1_seg6": "",
+    "intro_desc2_strong1": "height comparison tool",
+    "intro_desc2_seg1": " offers a comprehensive solution for anyone looking to create accurate, visual height comparisons. From comparing anime character heights to analyzing celebrity dimensions and height differences, this ",
+    "intro_desc2_strong2": "height chart comparison",
+    "intro_desc2_seg2": " tool provides instant, precise results that help you understand proportional relationships and height difference at a glance. The height comparison chart is perfect for comparing heights and height differences in both metric and imperial units, making it the go-to height comparison tool for users worldwide.",
+    "intro_desc2_seg3": "",
+    "howitworks_title": "How to Use Our Height Comparison Tool",
+    "howitworks_desc": "Using our height comparison tool is straightforward and user-friendly. Simply select the individuals or objects you want to compare heights for, and our height comparison chart will instantly visualize the differences. The height chart comparison feature allows you to see proportional differences and height difference at a glance, making comparing heights both fun and educational.",
+    "howitworks_step1_no": "01",
+    "howitworks_step1_title": "Select Your Characters",
+    "howitworks_step1_desc": "Browse our extensive database of celebrities, anime characters, historical figures, and objects. You can also upload custom images for personalized height comparisons and create your own height comparison chart. The height comparison tool supports a wide range of height compare scenarios, making it easy to compare heights and visualize height difference for any purpose.",
+    "howitworks_step2_no": "02",
+    "howitworks_step2_title": "Set Heights and Measurements",
+    "howitworks_step2_desc": "Input accurate height measurements using either metric or imperial units. Our height comparison tool automatically converts between centimeters, feet, and inches for seamless comparing heights. The height chart comparison system ensures your height compare results and height difference calculations are always precise.",
+    "howitworks_step3_no": "03",
+    "howitworks_step3_title": "Customize Your Chart",
+    "howitworks_step3_desc": "Adjust colors, backgrounds, and visual settings to create the perfect height chart comparison for your needs. The height comparison tool lets you personalize your height comparison chart for any project, making comparing heights and highlighting height difference visually appealing and informative.",
+    "howitworks_step4_no": "04",
+    "howitworks_step4_title": "Generate and Export",
+    "howitworks_step4_desc": "Create your height comparison chart instantly and export it in high-quality formats for sharing or printing. The height comparison tool makes it easy to share your height chart comparison and highlight height difference with friends, colleagues, or on social media.",
+    "features_title": "Key Features of Our Height Comparison Tool",
+    "features_desc": "Discover the powerful features that make our height comparison platform the best choice for anyone looking to compare heights or analyze height difference. Our height comparison tool and height comparison chart system are designed for accuracy, flexibility, and ease of use, making height chart comparison and height difference analysis accessible to everyone.",
+    "features1_title": "Multi-Character Comparisons",
+    "features1_desc": "Compare unlimited characters simultaneously in a single height comparison chart. Whether you're analyzing an entire anime cast or comparing multiple celebrities, our height comparison tool handles complex multi-person height comparisons and height difference calculations effortlessly. The height chart comparison feature is ideal for comparing heights and visualizing height difference in groups.",
+    "features2_title": "Universal Scale Support",
+    "features2_desc": "From microscopic objects to astronomical sizes, our height comparison tool supports an incredible range of measurements. The system intelligently switches between nanometers, centimeters, meters, and kilometers, making it the most versatile height comparison chart for comparing heights and height difference of any scale.",
+    "features3_title": "Custom Image Upload",
+    "features3_desc": "Upload your own images to create personalized height comparisons. This feature is particularly valuable for artists, writers, and content creators who need to visualize their original characters. The height comparison tool allows you to create a custom height comparison chart and highlight height difference for any scenario.",
+    "features4_title": "Interactive Design Tools",
+    "features4_desc": "Drag and drop characters to reorder your height comparison chart. Zoom, pan, and customize visual elements to create the perfect layout for your comparing heights project. The height comparison tool gives you full control over your height chart comparison and how height difference is displayed.",
+    "features5_title": "High-Quality Export Options",
+    "features5_desc": "Generate professional-quality height comparison charts in PNG, JPG, or WebP formats. Perfect for social media sharing, educational presentations, or professional creative projects. The height comparison tool ensures your height chart comparison and height difference visuals are always high-resolution.",
+    "features6_title": "Responsive Cross-Platform Design",
+    "features6_desc": "Access our height comparison tool from any device. Whether you're on desktop, tablet, or mobile, the interface adapts seamlessly for optimal comparing heights experiences. The height comparison chart is always accessible and easy to use, making height difference analysis possible anywhere.",
+    "usecases_title": "Popular Use Cases for Height Comparison",
+    "usecases_desc": "Discover how people use our height comparison tool and height comparison chart for various creative and educational purposes. The height chart comparison system is perfect for comparing heights and analyzing height difference in any context, from entertainment to education.",
+    "usecase1_title": "Celebrity Height Comparisons",
+    "usecase1_desc": "One of the most popular applications involves comparing celebrity heights. Users love creating height comparison charts featuring their favorite actors, musicians, and public figures. These height chart comparisons often reveal surprising height differences that aren't apparent in photos or movies. The height comparison tool makes it easy to compare heights and instantly see the height difference between celebrities.",
+    "usecase2_title": "Anime and Character Analysis",
+    "usecase2_desc": "Anime enthusiasts frequently use height comparison tools to visualize their favorite characters' heights. Creating height chart comparisons of anime characters helps fans better understand character designs and proportional relationships within series. The height comparison chart is a must-have for comparing heights and exploring height difference in anime.",
+    "usecase3_title": "Educational Applications",
+    "usecase3_desc": "Teachers and educators utilize height comparison charts for STEM education, helping students understand concepts of scale, proportion, measurement, and height difference. These visual tools make abstract mathematical concepts more concrete and engaging. The height comparison tool and height chart comparison are perfect for classroom use, especially for teaching about height difference.",
+    "usecase4_title": "Creative and Professional Projects",
+    "usecase4_desc": "Artists, writers, and game developers rely on height comparison tools to maintain consistency in their creative works. By visualizing character heights and height differences early in the design process, creators ensure proportional accuracy throughout their projects. The height comparison chart generator is essential for comparing heights and analyzing height difference in creative fields.",
+    "faq_title": "Frequently Asked Questions",
+    "faq_desc": "Get answers to common questions about our height comparison tool, height comparison chart, and how to compare heights and analyze height difference effectively. Learn more about height chart comparison and the best ways to use our height comparison platform for comparing heights and understanding height difference.",
+    "faq_q1": "How accurate are the height measurements in your height comparison tool?",
+    "faq_a1": "Our height comparison database maintains high accuracy standards, with measurements sourced from official records, verified databases, and reliable sources. Custom measurements can be input with precision down to decimal places. The height comparison tool ensures your height chart comparison and height difference results are always reliable.",
+    "faq_q2": "Can I compare more than two heights at once?",
+    "faq_a2": "Absolutely! Our height comparison chart supports unlimited character comparisons, making it perfect for group analyses and complex comparing heights projects. The height comparison tool is designed for multi-person height compare and height difference scenarios.",
+    "faq_q3": "Is the height comparison tool free to use?",
+    "faq_a3": "Yes, our basic height comparison features are completely free. Users can create, customize, and export height chart comparisons without any cost. The height comparison tool is accessible to everyone who wants to compare heights and analyze height difference online.",
+    "faq_q4": "What file formats can I export my height comparison charts in?",
+    "faq_a4": "You can export your height comparisons in PNG, JPG, and WebP formats. All exports are high-resolution and perfect for social media sharing, presentations, or printing. The height comparison tool makes exporting your height chart comparison and height difference visuals easy and convenient.",
+    "faq_q5": "Can I upload my own images for height comparison?",
+    "faq_a5": "Yes! You can upload custom images and set their heights to create personalized height comparisons. This feature is perfect for comparing yourself, friends, or original characters with existing figures. The height comparison tool and height chart comparison system support custom uploads for any height compare or height difference need.",
+    "faq_q6": "Does the tool work on mobile devices?",
+    "faq_a6": "Absolutely! Our height comparison tool is fully responsive and works seamlessly on smartphones, tablets, and desktop computers. The interface automatically adapts to your device screen size, making comparing heights and using the height comparison chart easy anywhere. Height difference analysis is always at your fingertips.",
+    "faq_q7": "What units of measurement are supported?",
+    "faq_a7": "Our tool supports both metric (nanometers, micrometers, millimeters, centimeters, meters, kilometers) and imperial units (inches, feet, miles). The system automatically converts between units for easy comparison. The height comparison chart and height comparison tool make comparing heights and analyzing height difference simple regardless of your preferred units.",
+    "faq_q8": "How many celebrities and characters are in your database?",
+    "faq_a8": "Our database includes hundreds of celebrities, anime characters, historical figures, animals, and objects. We regularly update and expand our collection based on user requests and popular culture trends. The height comparison tool and height chart comparison system are always growing for better comparing heights and height difference experiences.",
+    "faq_q9": "Can I share my height comparison charts with others?",
+    "faq_a9": "Yes! You can share your height comparisons through direct links, social media, or by downloading and sending the exported images. All sharing options maintain the full quality of your comparison chart. The height comparison tool makes sharing your height chart comparison and height difference visuals effortless.",
+    "faq_q10": "Is there a limit to how extreme the height differences can be?",
+    "faq_a10": "No limits! Our tool supports an incredible range from microscopic measurements (nanometers) to astronomical sizes (kilometers). Whether comparing atoms to buildings or people to planets, our system handles it all. The height comparison chart and height comparison tool are built for any height compare or height difference scenario.",
+    "faq_q11": "Can I customize the appearance of my height comparison chart?",
+    "faq_a11": "Definitely! You can customize colors, backgrounds, add labels, adjust spacing, and modify visual elements. Our design tools give you full control over how your comparison chart looks. The height comparison tool and height chart comparison system are made for creative comparing heights and highlighting height difference.",
+    "faq_q12": "How do I request new characters to be added to the database?",
+    "faq_a12": "We welcome user suggestions! You can contact us through our feedback form to request specific celebrities, anime characters, or other figures. Popular requests are prioritized for database updates. The height comparison tool and height chart comparison are always evolving for better height compare and height difference options.",
+    "faq_q13": "Can teachers use this tool for educational purposes?",
+    "faq_a13": "Absolutely! Our height comparison tool is widely used in STEM education to teach concepts of scale, proportion, measurement, and height difference. It's perfect for making abstract mathematical concepts visual and engaging for students. The height comparison chart and height chart comparison system are ideal for classroom comparing heights and height difference activities.",
+    "faq_q14": "Are the height measurements regularly updated?",
+    "faq_a14": "Yes, we continuously update our database to ensure accuracy. When new official measurements become available or corrections are needed, we promptly update our records to maintain the highest standards. The height comparison tool and height comparison chart are always up to date for the best compare heights and height difference experience.",
+    "cta_title": "Start Creating Height Comparison Charts Today",
+    "cta_desc": "Our height comparison tool represents the most comprehensive solution for all your comparing heights and height difference needs. Whether you're creating educational content, satisfying personal curiosity, or working on professional projects, this height comparison chart generator provides the accuracy, flexibility, and ease-of-use you need for any height compare or height difference scenario. Use our height comparison tool to create your next height chart comparison and compare heights or analyze height difference like never before.",
+    "cta_primary": "Try the Height Comparison Tool Now",
+    "cta_secondary": "Learn More About Features",
+    "cta_footer": "Join thousands of users who rely on our platform for accurate, engaging height comparisons that bring numerical data to life."
   }
 }

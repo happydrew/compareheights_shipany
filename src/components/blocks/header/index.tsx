@@ -250,10 +250,10 @@ export default function Header({ header }: { header: HeaderType }) {
                           value={item.title || ""}
                           className="border-b-0"
                         >
-                          <AccordionTrigger className="mb-4 py-0 font-semibold hover:no-underline text-left">
+                          <AccordionTrigger className="py-0 px-4 font-semibold hover:no-underline text-left">
                             {item.title}
                           </AccordionTrigger>
-                          <AccordionContent className="mt-2">
+                          <AccordionContent className="ml-2">
                             {item.children.map((iitem, ii) => (
                               <Link
                                 key={ii}

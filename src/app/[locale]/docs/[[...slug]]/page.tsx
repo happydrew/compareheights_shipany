@@ -1,4 +1,4 @@
-import { getPageImage, source } from '@/lib/source';
+import { getPageImage, getPage, i18n, source } from '@/lib/source';
 import {
   DocsBody,
   DocsDescription,
@@ -10,10 +10,20 @@ import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 
-// @ts-expect-error
-export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
+interface PageProps {
+  params: Promise<{
+    locale: string;
+    slug?: string[];
+  }>;
+}
+
+export default async function Page(props: PageProps) {
   const params = await props.params;
-  const page = source.getPage(params.slug);
+  const locale = params.locale || i18n.defaultLanguage;
+  const slug = params.slug;
+
+  // Get page for current language
+  const page = getPage(slug, locale);
   if (!page) notFound();
 
   const MDX = page.data.body;
@@ -35,22 +45,46 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
 }
 
 export async function generateStaticParams() {
-  return source.generateParams();
+  const params: { locale: string; slug?: string[] }[] = [];
+
+  // Generate static paths for each language
+  for (const lang of i18n.languages) {
+    const langPages = source.getPages(lang);
+    params.push(
+      ...langPages.map((page) => ({
+        locale: lang,
+        slug: page.slugs,
+      }))
+    );
+  }
+
+  return params;
 }
 
 export async function generateMetadata(
-  // @ts-expect-error
-  props: PageProps<'/docs/[[...slug]]'>,
+  props: PageProps,
 ): Promise<Metadata> {
   const params = await props.params;
-  const page = source.getPage(params.slug);
+  const locale = params.locale || i18n.defaultLanguage;
+  const slug = params.slug;
+
+  const page = getPage(slug, locale);
   if (!page) notFound();
+
+  const slugPath = slug?.join('/') || '';
 
   return {
     title: page.data.title,
     description: page.data.description,
     openGraph: {
       images: getPageImage(page).url,
+    },
+    // Add language information for SEO
+    alternates: {
+      languages: {
+        'en': `/en/docs/${slugPath}`,
+        'zh': `/zh/docs/${slugPath}`,
+      },
     },
   };
 }

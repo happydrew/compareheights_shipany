@@ -2,7 +2,7 @@ import "@/app/globals.css";
 
 import { getLocale, setRequestLocale } from "next-intl/server";
 import { locales } from "@/i18n/locale";
-import { RootProvider } from 'fumadocs-ui/provider/next';
+// import { RootProvider } from 'fumadocs-ui/provider/next';
 
 
 export default async function RootLayout({
@@ -37,10 +37,13 @@ export default async function RootLayout({
           ))}
         <link rel="alternate" hrefLang="x-default" href={webUrl} />
       </head>
-      <body className="flex flex-col min-h-[100vh]">
+      {/* <body className="flex flex-col min-h-[100vh]">
         <RootProvider>
           {children}
         </RootProvider>
+      </body> */}
+      <body>
+        {children}
       </body>
     </html>
   );

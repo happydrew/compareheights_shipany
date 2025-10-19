@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AutoSaveIndicator } from "@/components/dashboard/auto-save-indicator";
@@ -21,6 +22,7 @@ interface ProjectEditPageProps {
 }
 
 export default function ProjectEditPage({ params }: ProjectEditPageProps) {
+  const t = useTranslations("project_edit");
   const router = useRouter();
   const [uuid, setUuid] = useState<string>("");
   const [project, setProject] = useState<Project | null>(null);
@@ -67,12 +69,12 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
           // Note: originalCharactersRef will be set after HeightCompareTool processes the data
           setHasUnsavedChanges(false);
         } else {
-          toast.error(data.message || "Failed to load project");
+          toast.error(data.message || t("toast.load_failed"));
           router.push("/dashboard/projects");
         }
       } catch (error) {
         console.error("Load project error:", error);
-        toast.error("Failed to load project");
+        toast.error(t("toast.load_failed"));
         router.push("/dashboard/projects");
       } finally {
         setIsLoading(false);
@@ -149,17 +151,17 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
         setHasUnsavedChanges(false);
         setSaveStatus("saved");
         setSaveError(undefined);
-        toast.success("Project saved successfully");
+        toast.success(t("toast.save_success"));
       } else {
         setSaveStatus("error");
-        setSaveError(result.message || "Save failed");
-        toast.error(result.message || "Failed to save project");
+        setSaveError(result.message || t("toast.save_failed"));
+        toast.error(result.message || t("toast.save_failed"));
       }
     } catch (error) {
       console.error("Save error:", error);
       setSaveStatus("error");
-      setSaveError("Network error");
-      toast.error("Failed to save project");
+      setSaveError(t("toast.network_error"));
+      toast.error(t("toast.save_failed"));
     }
   };
 
@@ -211,7 +213,7 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
       return true;
     } catch (error) {
       console.error("Update thumbnail error:", error);
-      toast.error("Failed to update project thumbnail");
+      toast.error(t("toast.thumbnail_update_failed"));
       return false;
     } finally {
       setIsUpdatingThumbnail(false);
@@ -223,9 +225,7 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
   const handleExit = useCallback(async () => {
     // Check for unsaved changes
     if (hasUnsavedChanges) {
-      const confirmExit = confirm(
-        "You have unsaved changes. Are you sure you want to leave? Your changes will be lost."
-      );
+      const confirmExit = confirm(t("dialogs.unsaved_changes"));
       if (!confirmExit) {
         return
       } else {
@@ -252,16 +252,14 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
       const success = await updateProjectThumbnail();
       if (!success) {
         // Thumbnail update failed, ask if still want to exit
-        const stillExit = confirm(
-          "Failed to update project thumbnail. Do you still want to exit?"
-        );
+        const stillExit = confirm(t("dialogs.thumbnail_update_failed"));
         if (!stillExit) return;
       }
     }
 
     // Exit to projects list
     router.push("/dashboard/projects");
-  }, [hasUnsavedChanges, project, router]);
+  }, [hasUnsavedChanges, project, router, t]);
 
   // Warn before closing page with unsaved changes
   useEffect(() => {
@@ -284,7 +282,7 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
       <div className="flex items-center justify-center h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-theme-600 mx-auto mb-4" />
-          <p className="text-gray-600">Loading project...</p>
+          <p className="text-gray-600">{t("loading")}</p>
         </div>
       </div>
     );
@@ -309,14 +307,14 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
               href="/dashboard/projects"
               className="hover:text-gray-900 transition-colors whitespace-nowrap"
             >
-              My Projects
+              {t("breadcrumb.my_projects")}
             </Link>
             <span>/</span>
             <Input
               value={title}
               onChange={(e) => handleTitleChange(e.target.value)}
               className="h-9 w-full max-w-full border border-transparent px-3 font-medium text-gray-900 focus:border-green-theme-500 focus-visible:ring-0 focus-visible:ring-offset-0 sm:h-7 sm:max-w-xs sm:px-2"
-              placeholder="Project title"
+              placeholder={t("breadcrumb.project_title_placeholder")}
             />
           </div>
 
@@ -325,7 +323,7 @@ export default function ProjectEditPage({ params }: ProjectEditPageProps) {
             <AutoSaveIndicator
               status={isUpdatingThumbnail ? "saving" : saveStatus}
               error={saveError}
-              customMessage={isUpdatingThumbnail ? "Updating project thumbnail..." : undefined}
+              customMessage={isUpdatingThumbnail ? t("auto_save.updating_thumbnail") : undefined}
             />
           </div>
         </div>

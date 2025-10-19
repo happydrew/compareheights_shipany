@@ -3,7 +3,7 @@
     "name": "pricing",
     "label": "定价",
     "title": "定价",
-    "description": "选择最适合您的身高对比计划。免费开始,或升级享受高级功能和无限创意。",
+    "description": "选择最适合您的身高对比需求的完美计划。免费开始，或升级以享受高级功能和无限创意。",
     "groups": [
       {
         "name": "monthly",
@@ -19,51 +19,13 @@
     ],
     "items": [
       {
-        "title": "免费版",
-        "description": "非常适合尝试身高对比和个人项目。",
-        "features_title": "包含功能",
-        "features": [
-          "5个保存项目",
-          "10个自定义角色",
-          "5MB最大上传大小",
-          "每月5次公开画廊提交",
-          "所有核心对比功能",
-          "导出为PNG/JPG/WebP",
-          "明暗主题切换",
-          "社区支持",
-          "分享链接带水印"
-        ],
-        "interval": "month",
-        "amount": 0,
-        "currency": "USD",
-        "price": "$0",
-        "unit": "/ 永久免费",
-        "is_featured": false,
-        "tip": "免费试用,随时升级",
-        "button": {
-          "title": "免费开始",
-          "url": "/auth/signin",
-          "icon": "RiFlashlightFill"
-        },
-        "product_id": "free",
-        "product_name": "身高对比免费版",
-        "credits": 0,
-        "valid_months": 0,
-        "group": "monthly",
-        "quota": {
-          "max_projects": 5,
-          "max_custom_characters": 10,
-          "max_upload_size_mb": 5,
-          "max_public_submissions_per_month": 5
-        }
-      },
-      {
         "title": "入门版",
         "description": "为需要更多灵活性的爱好者和内容创作者设计。",
-        "features_title": "包含免费版所有功能,另加",
+        // "features_title": "包含免费版所有功能，另加",
+        "features_title": "包括：",
         "features": [
-          "25个保存项目",
-          "50个自定义角色",
+          "50个保存项目",
+          "100个自定义角色",
           "10MB最大上传大小",
           "每月10次公开画廊提交",
           "移除水印",
@@ -85,13 +47,13 @@
           "icon": "RiFlashlightFill"
         },
         "product_id": "starter-monthly",
-        "product_name": "身高对比入门版月付",
+        "product_name": "CompareHeights 入门版月付",
         "credits": 0,
         "valid_months": 1,
         "group": "monthly",
         "quota": {
-          "max_projects": 25,
-          "max_custom_characters": 50,
+          "max_projects": 50,
+          "max_custom_characters": 100,
           "max_upload_size_mb": 10,
           "max_public_submissions_per_month": 10
         }
@@ -100,7 +62,8 @@
         "title": "高级版",
         "description": "为专业人士、教育工作者和重度用户提供最佳体验。",
         "label": "热门",
-        "features_title": "包含入门版所有功能,另加",
+        // "features_title": "包含免费版所有功能，另加",
+        "features_title": "包括：",
         "features": [
           "100个保存项目",
           "200个自定义角色",
@@ -125,7 +88,7 @@
           "icon": "RiFlashlightFill"
         },
         "product_id": "premium-monthly",
-        "product_name": "身高对比高级版月付",
+        "product_name": "CompareHeights 高级版月付",
         "credits": 0,
         "valid_months": 1,
         "group": "monthly",
@@ -139,10 +102,11 @@
       {
         "title": "入门版",
         "description": "与入门版月付相同功能 — 年付节省20%。",
-        "features_title": "包含免费版所有功能,另加",
+        // "features_title": "包含免费版所有功能，另加",
+        "features_title": "包括：",
         "features": [
-          "25个保存项目",
-          "50个自定义角色",
+          "50个保存项目",
+          "100个自定义角色",
           "10MB最大上传大小",
           "每月10次公开画廊提交",
           "移除水印",
@@ -164,13 +128,13 @@
           "icon": "RiFlashlightFill"
         },
         "product_id": "starter-yearly",
-        "product_name": "身高对比入门版年付",
+        "product_name": "CompareHeights 入门版年付",
         "credits": 0,
         "valid_months": 12,
         "group": "yearly",
         "quota": {
-          "max_projects": 25,
-          "max_custom_characters": 50,
+          "max_projects": 50,
+          "max_custom_characters": 100,
           "max_upload_size_mb": 10,
           "max_public_submissions_per_month": 10
         }
@@ -179,7 +143,8 @@
         "title": "高级版",
         "description": "与高级版月付相同功能 — 年付节省20%。",
         "label": "热门",
-        "features_title": "包含入门版所有功能,另加",
+        // "features_title": "包含免费版所有功能，另加",
+        "features_title": "包括：",
         "features": [
           "100个保存项目",
           "200个自定义角色",
@@ -204,7 +169,7 @@
           "icon": "RiFlashlightFill"
         },
         "product_id": "premium-yearly",
-        "product_name": "身高对比高级版年付",
+        "product_name": "CompareHeights 高级版年付",
         "credits": 0,
         "valid_months": 12,
         "group": "yearly",

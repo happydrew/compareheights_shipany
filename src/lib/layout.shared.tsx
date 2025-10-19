@@ -1,4 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import { i18n } from './i18n.config';
 
 /**
  * Shared layout configurations
@@ -7,7 +8,7 @@ import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
  * Home Layout: app/(home)/layout.tsx
  * Docs Layout: app/docs/layout.tsx
  */
-export function baseOptions(): BaseLayoutProps {
+export function baseOptions(locale?: string): BaseLayoutProps {
   return {
     nav: {
       title: (
@@ -17,7 +18,11 @@ export function baseOptions(): BaseLayoutProps {
         </div>
       ),
     },
+
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [],
+
+    // i18n configuration for language switcher
+    i18n,
   };
 }
