@@ -33,11 +33,11 @@ export default async function LandingPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  await params;
+  const { locale } = await params;
 
   return (
     <>
-      <HeightCompareTool />
+      <HeightCompareTool locale={locale} />
       <HeightComparisonArticle />
     </>
   );

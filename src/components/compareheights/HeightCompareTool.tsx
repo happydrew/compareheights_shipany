@@ -124,7 +124,7 @@ interface HeightCompareToolProps {
   onSave?: () => Promise<void>; // 父组件保存函数（项目编辑页）
   isProjectEdit?: boolean; // 是否在项目编辑页
   projectUuid?: string; // 项目ID，用于判断是否处于项目中以及生成分享链接
-  params: Promise<{ locale: string }>;
+  locale?: string; // 可选：当前语言，用于多语言路由跳转，默认为 "en"
 }
 
 // Ref 接口 - 暴露给父组件的方法
@@ -134,13 +134,8 @@ interface HeightCompareToolRef {
 
 // 主组件
 const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareToolProps>(
-  ({ presetData, shareMode = false, onChange, onSave, isProjectEdit = false, projectUuid, params }, ref) => {
+  ({ presetData, shareMode = false, onChange, onSave, isProjectEdit = false, projectUuid, locale = "en" }, ref) => {
     const t = useTranslations('heightCompareTool');
-
-    const [locale, setLocale] = useState("en");
-    useEffect(() => {
-      params.then(res => { setLocale(res.locale); });
-    }, []);
     const { data: session, status } = useSession();
     const router = useRouter();
     const { setShowSignModal, isPaidSubscriber } = useAppContext();

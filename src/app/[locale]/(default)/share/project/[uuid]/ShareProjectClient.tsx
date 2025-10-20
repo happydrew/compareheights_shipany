@@ -81,6 +81,7 @@ export default function ShareProjectClient({ project, params }: ShareProjectClie
           presetData={project.project_data}
           shareMode={true}
           projectUuid={project.uuid}
+          locale={locale}
         />
       </div>
     </div>

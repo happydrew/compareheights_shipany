@@ -341,6 +341,7 @@ export default function ProjectEditPage({ params }: {
           onSave={handleSave}
           isProjectEdit={true}
           projectUuid={uuid}
+          locale={locale}
         />
       </div>
     </div>
