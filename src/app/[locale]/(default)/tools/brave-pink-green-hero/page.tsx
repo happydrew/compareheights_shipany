@@ -17,7 +17,7 @@ export async function generateMetadata({
   canonical = `${canonical}/tools/brave-pink-green-hero`;
 
   return {
-    title: t('title') + " - Free Photo Editor",
+    title: t('title'),
     description: t('subtitle'),
     alternates: {
       // canonical,

@@ -1,5 +1,6 @@
 {
   "metadata": {
+    "siteName": "CompareHeights",
     "title": "Height Comparison - Comparing Heights of Unlimited Objects Easily",
     "description": "Create stunning height comparison chart of Unlimited Objects effortlessly, comparing heights of people, celebrities, anime characters, animals, buildings & anything, export & share beautiful visualizations."
   },
@@ -951,7 +952,7 @@
   },
   "compare_height_country": {
     "metadata": {
-      "title": "Compare my height to average in country | Compareheights",
+      "title": "Compare my height to average in country",
       "description": "Compare your height to average height of different country in the world."
     },
     "page_title": "Compare My Height to Average in Country",

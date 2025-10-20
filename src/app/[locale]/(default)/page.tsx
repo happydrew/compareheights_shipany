@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { HeightCompareTool } from "@/components/compareheights";
 import { HeightComparisonArticle } from "@/components/compareheights/HeightComparisonArticle";
 import { getTranslations } from "next-intl/server";
+import { siteConfig } from "@/config/metadata";
 
 
 export async function generateMetadata({
@@ -10,18 +11,19 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const baseUrl =
-    process.env.NEXT_PUBLIC_WEB_URL?.replace(/\/$/, "") ?? "https://compareheights.org";
-  const canonical =
-    locale && locale !== "en" ? `${baseUrl}/${locale}` : baseUrl;
-
   const t = await getTranslations();
 
+  const baseUrl = siteConfig.url.replace(/\/$/, "");
+  const canonical = locale && locale !== "en" ? `${baseUrl}/${locale}` : baseUrl;
+
   return {
-    title: t("metadata.title"),
-    description: t("metadata.description"),
+    // title 和 description 使用父布局的默认值
+    // openGraph 和 twitter 会自动继承 title、description 和父布局的其他配置
     alternates: {
       canonical,
+    },
+    openGraph: {
+      url: canonical, // 只需覆盖 url
     },
   };
 }

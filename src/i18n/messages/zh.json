@@ -1,7 +1,8 @@
 {
   "metadata": {
+    "siteName": "CompareHeights",
     "title": "身高比较 - 轻松对比无限对象的身高",
-    "description": "轻松创建令人惊艳的身高对比图，支持无限对象，包括人物、名人、动漫角色、动物、建筑等，并可导出与分享精美的可视化图表。"
+    "description": "轻松创建令人惊艳的身高对比图,支持无限对象，包括人物、名人、动漫角色、动物、建筑等，并可导出与分享精美的可视化图表。"
   },
   "user": {
     "sign_in": "登录",
@@ -1044,7 +1045,7 @@
   },
   "compare_height_country": {
     "metadata": {
-      "title": "将我的身高与各国平均身高对比 | Compareheights",
+      "title": "将我的身高与各国平均身高对比",
       "description": "将您的身高与世界各国的平均身高进行对比。"
     },
     "page_title": "将我的身高与各国平均身高对比",
