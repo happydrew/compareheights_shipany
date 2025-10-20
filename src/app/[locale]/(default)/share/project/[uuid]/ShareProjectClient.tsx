@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from 'next-intl';
 import { Button } from "@/components/ui/button";
 import { HeightCompareTool } from "@/components/compareheights/HeightCompareTool";
 import { toast } from "sonner";
 import type { ProjectData } from "@/types/project";
 import { heightCompareCache } from "@/lib/cache/heightCompareCache";
+
 
 interface ShareProjectClientProps {
   project: {
@@ -18,10 +20,20 @@ interface ShareProjectClientProps {
     created_at: string;
     updated_at: string;
   };
+  params: Promise<{ uuid: string, locale: string }>;
 }
 
-export default function ShareProjectClient({ project }: ShareProjectClientProps) {
+export default function ShareProjectClient({ project, params }: ShareProjectClientProps) {
   const router = useRouter();
+  const t = useTranslations("share_project");
+  const [locale, setLocale] = useState<string>("en");
+
+  // Resolve params to get locale
+  useEffect(() => {
+    params.then((p) => {
+      setLocale(p.locale);
+    });
+  }, [params]);
 
   // 处理编辑按钮点击 - 缓存数据并跳转到首页
   const handleEdit = () => {
@@ -29,10 +41,10 @@ export default function ShareProjectClient({ project }: ShareProjectClientProps)
     heightCompareCache.save(project.project_data);
 
     // 显示提示
-    toast.success("Project data loaded! Redirecting to editor...");
+    toast.success(t("toast.project_loaded"));
 
-    // 跳转到首页
-    router.push("/");
+    // 跳转到首页（考虑多语言路径）
+    router.push(`${locale !== 'en' ? `/${locale}` : ''}/`);
   };
 
   return (
@@ -49,7 +61,7 @@ export default function ShareProjectClient({ project }: ShareProjectClientProps)
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             {/* 左侧说明文字 */}
             <p className="text-sm text-gray-600">
-              This is a shared height comparison. Click <strong>Edit</strong> to create your own version.
+              {t("description")}
             </p>
 
             {/* 右侧编辑按钮 */}
@@ -57,7 +69,7 @@ export default function ShareProjectClient({ project }: ShareProjectClientProps)
               onClick={handleEdit}
               className="flex-shrink-0 bg-green-theme-600 hover:bg-green-theme-700"
             >
-              Edit
+              {t("edit_button")}
             </Button>
           </div>
         </div>

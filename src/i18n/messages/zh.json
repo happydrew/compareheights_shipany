@@ -1288,5 +1288,12 @@
       "got_it": "我知道了！",
       "dont_show_again": "不再显示"
     }
+  },
+  "share_project": {
+    "description": "这是一个分享的身高对比项目。点击编辑按钮创建您自己的版本。",
+    "edit_button": "编辑",
+    "toast": {
+      "project_loaded": "项目数据已加载！正在跳转到编辑器..."
+    }
   }
 }

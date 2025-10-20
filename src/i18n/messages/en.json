@@ -1195,5 +1195,12 @@
       "got_it": "Got it!",
       "dont_show_again": "Don't show again"
     }
+  },
+  "share_project": {
+    "description": "This is a shared height comparison. Click Edit to create your own version.",
+    "edit_button": "Edit",
+    "toast": {
+      "project_loaded": "Project data loaded! Redirecting to editor..."
+    }
   }
 }

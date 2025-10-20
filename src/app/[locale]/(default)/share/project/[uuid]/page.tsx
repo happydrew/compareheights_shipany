@@ -60,6 +60,7 @@ export default async function ShareProjectPage({ params }: ShareProjectPageProps
         created_at: project.created_at?.toISOString() || "",
         updated_at: project.updated_at?.toISOString() || "",
       }}
+      params={params}
     />
   );
 }

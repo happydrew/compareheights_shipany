@@ -18,14 +18,6 @@ import { SharedCharacterData } from "@/lib/shareUtils";
 import { uploadThumbnailToR2 } from "@/lib/thumbnail-upload";
 import { Link as I18nLink } from '@/i18n/navigation';
 
-// interface ProjectEditPageProps {
-//   params: Promise<{ uuid: string, locale: string }>;
-// }
-
-interface ProjectEditPageProps {
-  params: { uuid: string, locale: string };
-}
-
 export default function ProjectEditPage({ params }: {
   params: Promise<{ uuid: string, locale: string }>;
 }) {

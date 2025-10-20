@@ -2595,7 +2595,7 @@ Suggested solutions:
                                       const shareUrl = `${window.location.origin}/share/project/${projectUuid}`;
                                       const success = await copyToClipboard(shareUrl);
                                       if (success) {
-                                        toast.success(t('share.shareL inkCopied'));
+                                        toast.success(t('share.shareLinkCopied'));
                                       } else {
                                         toast.error(t('share.copyFailed'));
                                       }
