@@ -41,7 +41,6 @@ import { Button } from "@/components/ui/button";
 import { LeftPanel } from '@/components/compareheights/panels/LeftPanel';
 import HeightInput from './HeightInput';
 import { Menu } from 'lucide-react';
-import { uploadThumbnailToR2 } from '@/lib/thumbnail-upload';
 
 // 比较项目接口
 export interface ComparisonItem {
@@ -125,6 +124,7 @@ interface HeightCompareToolProps {
   onSave?: () => Promise<void>; // 父组件保存函数（项目编辑页）
   isProjectEdit?: boolean; // 是否在项目编辑页
   projectUuid?: string; // 项目ID，用于判断是否处于项目中以及生成分享链接
+  params: Promise<{ locale: string }>;
 }
 
 // Ref 接口 - 暴露给父组件的方法
@@ -134,8 +134,13 @@ interface HeightCompareToolRef {
 
 // 主组件
 const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareToolProps>(
-  ({ presetData, shareMode = false, onChange, onSave, isProjectEdit = false, projectUuid }, ref) => {
+  ({ presetData, shareMode = false, onChange, onSave, isProjectEdit = false, projectUuid, params }, ref) => {
     const t = useTranslations('heightCompareTool');
+
+    const [locale, setLocale] = useState("en");
+    useEffect(() => {
+      params.then(res => { setLocale(res.locale); });
+    }, []);
     const { data: session, status } = useSession();
     const router = useRouter();
     const { setShowSignModal, isPaidSubscriber } = useAppContext();
@@ -1429,7 +1434,7 @@ Suggested solutions:
           setSaveProjectTitle("");
 
           // 跳转到项目管理页面
-          router.push("/dashboard/projects");
+          router.push(`${locale != 'en' ? `/${locale}` : ''}/dashboard/projects`);
         } else {
           toast.error(result.message || t('toast.createProjectFailed'));
         }
@@ -1446,7 +1451,8 @@ Suggested solutions:
       chartTitle,
       styleSettings,
       router,
-      ref
+      ref,
+      locale
     ]);
 
     // 处理更多选项按钮点击
@@ -3005,10 +3011,10 @@ Suggested solutions:
 
                     {/* 自定义横向滚动条 */}
                     {comparisonItems.length > 0 && scrollbarState.scrollWidth > scrollbarState.clientWidth && (
-                      <div id='characters-container-scrollbar' className="absolute bottom-[-16px] md:bottom-[-11px] left-0 h-[15px] md:h-[10px] bg-gray-100 rounded-full mx-2 mt-2" 
-                        style={{ 
-                          touchAction: 'none' 
-                          }}
+                      <div id='characters-container-scrollbar' className="absolute bottom-[-16px] md:bottom-[-11px] left-0 h-[15px] md:h-[10px] bg-gray-100 rounded-full mx-2 mt-2"
+                        style={{
+                          touchAction: 'none'
+                        }}
                       >
                         {/* 滚动条轨道 */}
                         <div className="absolute inset-0 bg-gray-200 rounded-full"></div>
