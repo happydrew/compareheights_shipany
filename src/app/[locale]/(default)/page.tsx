@@ -38,6 +38,7 @@ export default async function LandingPage({
   return (
     <>
       <HeightCompareTool locale={locale} />
+      {/* <HeightCompareTool /> */}
       <HeightComparisonArticle />
     </>
   );

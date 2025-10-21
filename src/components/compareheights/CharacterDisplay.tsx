@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { Unit, convertHeightSmart, convertHeightSmartImperial } from './HeightCalculates';
 import { useTranslations } from 'next-intl';
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // SVG 缓存管理器 - 用于缓存已获取的 SVG 内容
 class SVGCacheManager {
@@ -159,7 +160,7 @@ const InlineSVGRenderer: React.FC<{
     return (
         <div
             className={className}
-            style={style}
+            style={{ ...style, pointerEvents: 'none' }}
             dangerouslySetInnerHTML={{ __html: processedSVG }}
         />
     );
@@ -205,25 +206,6 @@ const CharacterImageRenderer: React.FC<{
                         onError?.();
                     });
             }
-            // else if (character.media_type === 'image') {
-            //     setIsLoading(true);
-            //     setHasError(false);
-
-            //     const img = new Image();
-            //     img.crossOrigin = 'credentials';
-            //     img.onload = () => {
-            //         setIsLoading(false);
-            //         onLoad?.();
-            //     };
-            //     img.onerror = () => {
-            //         setIsLoading(false);
-            //         setHasError(true);
-            //         onError?.();
-            //     };
-            //     img.src = character.media_url;
-            // } else {
-            //     onLoad?.();
-            // }
         }, [character.media_url, character.media_type, character.svg_content, onLoad, onError]);
 
         // 获取要使用的 SVG 内容
@@ -368,7 +350,8 @@ const CharacterDisplay: React.FC<{
     onEdit?: () => void;
     onMove?: (e: React.MouseEvent<Element> | React.TouchEvent<Element>) => void;
     onDelete?: () => void;
-}> = ({ character, pixelsPerM, isSelected, unit, isDragging = false, theme = 'light', onEdit, onMove, onDelete }) => {
+    isMobile?: boolean;
+}> = ({ character, pixelsPerM, isSelected, unit, isDragging = false, theme = 'light', onEdit, onMove, onDelete, isMobile }) => {
     // 获取当前主题的样式类
     const themeClasses = useMemo(() => getThemeClasses(theme), [theme]);
     const t = useTranslations('compareheights.character');
@@ -376,6 +359,12 @@ const CharacterDisplay: React.FC<{
     // 实际媒体宽高比状态
     const [actualAspectRatio, setActualAspectRatio] = useState<number | null>(null);
     const [isLoadingAspectRatio, setIsLoadingAspectRatio] = useState(false);
+
+    const [buttonsVisible, setButtonsVisible] = useState(false);
+
+    const toggleButtons = () => {
+        setButtonsVisible(prev => !prev);
+    };
 
     // 拉取角色图片，并根据图片计算宽高比
     useEffect(() => {
@@ -478,6 +467,7 @@ const CharacterDisplay: React.FC<{
                 // 立即阻止默认行为和事件冒泡
                 e.preventDefault();
                 e.stopPropagation();
+                toggleButtons();
                 onMove?.(e);
             }}
         >
@@ -485,7 +475,7 @@ const CharacterDisplay: React.FC<{
             <div className="absolute inset-0 overflow-visible pointer-events-none">
                 <div
                     className={`absolute group-hover:opacity-100 group-hover:!z-[15] bottom-full left-1/2 
-                        transform -translate-x-1/2 pb-2 px-0 text-center transition-transform duration-150 ease-out 
+                        transform -translate-x-1/2 pb-2 px-0 text-center transition-transform 
                         whitespace-nowrap group-hover:scale-[var(--hover-scale)] rounded-md group-hover:${themeClasses.bg.primary} 
                         pointer-events-auto ${isDragging ? `opacity-100 !z-[15] ${themeClasses.bg.primary}` : ''}`}
                     style={{
@@ -500,8 +490,8 @@ const CharacterDisplay: React.FC<{
                     <div
                         className={`flex items-center justify-around invisible group-hover:visible ${isDragging ? 'visible' : ''}`}
                         style={{
-                            // gap: `${4 / hoverScale}px`,
                             marginTop: `${4 / hoverScale}px`,
+                            ...(isMobile && { visibility: buttonsVisible ? 'visible' : 'hidden' })
                         }}
                     >
                         <button

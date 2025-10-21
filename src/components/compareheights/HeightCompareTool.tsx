@@ -41,6 +41,7 @@ import { Button } from "@/components/ui/button";
 import { LeftPanel } from '@/components/compareheights/panels/LeftPanel';
 import HeightInput from './HeightInput';
 import { Menu } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 // 比较项目接口
 export interface ComparisonItem {
@@ -140,6 +141,7 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
     const router = useRouter();
     const { setShowSignModal, isPaidSubscriber } = useAppContext();
     const [unit, setUnit] = useState<Unit>(Unit.CM);
+    const isMobile = useIsMobile();
     /**
      * 当前在比较列表中的角色
      */
@@ -1685,6 +1687,7 @@ Suggested solutions:
 
     // 处理拖拽开始
     const handleDragStart = useCallback((itemId: string, e: React.MouseEvent | React.TouchEvent) => {
+      console.log('handleDragStart: ', itemId);
       // 立即阻止默认行为和事件冒泡，防止触发容器的滚动
       e.preventDefault();
       e.stopPropagation();
@@ -1716,11 +1719,89 @@ Suggested solutions:
     }, []);
 
     // 处理拖拽移动
-    const handleDragMove = useCallback((e: MouseEvent | TouchEvent) => {
-      const currentDragState = dragStateRef.current;
-      const currentComparisonItems = comparisonItemsRef.current;
+    // const handleDragMove = useCallback((e: MouseEvent | TouchEvent) => {
+    //   console.log('handleDragMove');
+    //   const currentDragState = dragStateRef.current;
+    //   const currentComparisonItems = comparisonItemsRef.current;
 
-      if (!currentDragState.isDragging || !currentDragState.draggedItemId) return;
+    //   if (!currentDragState.isDragging || !currentDragState.draggedItemId) return;
+
+    //   e.preventDefault();
+    //   e.stopPropagation();
+
+    //   const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    //   const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    //   const container = charactersContainerRef.current;
+    //   if (!container) return;
+
+    //   // 使用 requestAnimationFrame 来优化性能
+    //   requestAnimationFrame(() => {
+    //     // 更新当前鼠标位置
+    //     setDragState(prev => ({
+    //       ...prev,
+    //       currentMouseX: clientX,
+    //       currentMouseY: clientY
+    //     }));
+    //   });
+
+    //   // 计算fixed拖拽元素应该与哪个占位元素交换
+    //   const items = Array.from(container.querySelectorAll('[data-item-id]')).filter(
+    //     item => (item as HTMLElement).getAttribute('data-item-id') !== currentDragState.draggedItemId
+    //   );
+
+    //   const draggedIndex = currentComparisonItems.findIndex(item => item.id === currentDragState.draggedItemId);
+    //   if (draggedIndex === -1) return;
+
+    //   // 获取fixed元素的边缘位置
+    //   const dragOffsetX = clientX - currentDragState.startMouseX;
+    //   const fixedElementWidth = currentDragState.draggedElement?.offsetWidth || 0;
+    //   const fixedLeftEdge = currentDragState.fixedElementX + dragOffsetX;
+    //   const fixedRightEdge = fixedLeftEdge + fixedElementWidth;
+
+    //   let targetIndex = draggedIndex;
+    //   let closestDistance = Infinity;
+
+    //   items.forEach((element, originalIndex) => {
+    //     // 需要根据原始数组找到正确的索引
+    //     const itemId = (element as HTMLElement).getAttribute('data-item-id');
+    //     const actualIndex = currentComparisonItems.findIndex(item => item.id === itemId);
+    //     if (actualIndex === -1) return;
+
+    //     const rect = (element as HTMLElement).getBoundingClientRect();
+    //     const elementCenterX = rect.left + rect.width / 2;
+
+    //     // 计算距离用于选择最近的目标
+    //     const distance = Math.abs((fixedLeftEdge + fixedRightEdge) / 2 - elementCenterX);
+
+    //     // 当fixed元素边缘越过其他元素中心时判断交换
+    //     if (actualIndex !== draggedIndex && distance < closestDistance) {
+    //       // 向右拖动：被拖角色右边缘越过右边角色中心线
+    //       // 向左拖动：被拖角色左边缘越过左边角色中心线
+    //       if ((actualIndex > draggedIndex && fixedRightEdge > elementCenterX) ||
+    //         (actualIndex < draggedIndex && fixedLeftEdge < elementCenterX)) {
+    //         targetIndex = actualIndex;
+    //         closestDistance = distance;
+    //       }
+    //     }
+    //   });
+
+    //   // 如果需要交换位置，只更新占位元素的顺序
+    //   if (targetIndex !== draggedIndex) {
+    //     const newItems = [...currentComparisonItems];
+    //     const [draggedItem] = newItems.splice(draggedIndex, 1);
+    //     newItems.splice(targetIndex, 0, draggedItem);
+
+    //     const updatedItems = newItems.map((item, index) => ({
+    //       ...item,
+    //       order: index
+    //     }));
+
+    //     setComparisonItems(updatedItems);
+    //   }
+    // }, []); // 移除所有依赖，使用 ref 代替
+
+    const handleDragMove = useCallback((e: MouseEvent | TouchEvent) => {
+      if (!dragState.isDragging || !dragState.draggedItemId) return;
 
       e.preventDefault();
       e.stopPropagation();
@@ -1730,28 +1811,25 @@ Suggested solutions:
       const container = charactersContainerRef.current;
       if (!container) return;
 
-      // 使用 requestAnimationFrame 来优化性能
-      requestAnimationFrame(() => {
-        // 更新当前鼠标位置
-        setDragState(prev => ({
-          ...prev,
-          currentMouseX: clientX,
-          currentMouseY: clientY
-        }));
-      });
+      // 更新当前鼠标位置
+      setDragState(prev => ({
+        ...prev,
+        currentMouseX: clientX,
+        currentMouseY: clientY
+      }));
 
       // 计算fixed拖拽元素应该与哪个占位元素交换
       const items = Array.from(container.querySelectorAll('[data-item-id]')).filter(
-        item => (item as HTMLElement).getAttribute('data-item-id') !== currentDragState.draggedItemId
+        item => (item as HTMLElement).getAttribute('data-item-id') !== dragState.draggedItemId
       );
 
-      const draggedIndex = currentComparisonItems.findIndex(item => item.id === currentDragState.draggedItemId);
+      const draggedIndex = comparisonItems.findIndex(item => item.id === dragState.draggedItemId);
       if (draggedIndex === -1) return;
 
       // 获取fixed元素的边缘位置
-      const dragOffsetX = clientX - currentDragState.startMouseX;
-      const fixedElementWidth = currentDragState.draggedElement?.offsetWidth || 0;
-      const fixedLeftEdge = currentDragState.fixedElementX + dragOffsetX;
+      const dragOffsetX = clientX - dragState.startMouseX;
+      const fixedElementWidth = dragState.draggedElement?.offsetWidth || 0;
+      const fixedLeftEdge = dragState.fixedElementX + dragOffsetX;
       const fixedRightEdge = fixedLeftEdge + fixedElementWidth;
 
       let targetIndex = draggedIndex;
@@ -1760,7 +1838,7 @@ Suggested solutions:
       items.forEach((element, originalIndex) => {
         // 需要根据原始数组找到正确的索引
         const itemId = (element as HTMLElement).getAttribute('data-item-id');
-        const actualIndex = currentComparisonItems.findIndex(item => item.id === itemId);
+        const actualIndex = comparisonItems.findIndex(item => item.id === itemId);
         if (actualIndex === -1) return;
 
         const rect = (element as HTMLElement).getBoundingClientRect();
@@ -1783,7 +1861,7 @@ Suggested solutions:
 
       // 如果需要交换位置，只更新占位元素的顺序
       if (targetIndex !== draggedIndex) {
-        const newItems = [...currentComparisonItems];
+        const newItems = [...comparisonItems];
         const [draggedItem] = newItems.splice(draggedIndex, 1);
         newItems.splice(targetIndex, 0, draggedItem);
 
@@ -1794,7 +1872,7 @@ Suggested solutions:
 
         setComparisonItems(updatedItems);
       }
-    }, []); // 移除所有依赖，使用 ref 代替
+    }, [dragState, comparisonItems]);
 
     // 处理拖拽结束
     const handleDragEnd = useCallback((e: any) => {
@@ -2131,6 +2209,7 @@ Suggested solutions:
 
     // 处理横向滚动拖拽开始 - 支持鼠标和触摸
     const handleHorizontalScrollStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+      console.log('handleHorizontalScrollStart');
       const target = e.target as HTMLElement;
 
       // 如果点击的是滚动条元素，不拦截
@@ -2279,7 +2358,25 @@ Suggested solutions:
     }, [comparisonItems.length]);
 
     // 处理自定义滚动条拖拽 - 支持鼠标和触摸
-    const handleScrollbarDragStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+    // const handleScrollbarDragStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+    //   console.log('handleScrollbarDragStart');
+    //   // 立即阻止默认行为和事件冒泡
+    //   e.preventDefault();
+    //   e.stopPropagation();
+
+    //   // 获取触摸或鼠标位置
+    //   const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+
+    //   setScrollbarState(prev => ({
+    //     ...prev,
+    //     isDragging: true,
+    //     startX: clientX,
+    //     startScrollLeft: prev.scrollLeft
+    //   }));
+    // }, []);
+
+    const handleScrollbarDragStart = (e: any) => {
+      console.log('handleScrollbarDragStart');
       // 立即阻止默认行为和事件冒泡
       e.preventDefault();
       e.stopPropagation();
@@ -2293,7 +2390,7 @@ Suggested solutions:
         startX: clientX,
         startScrollLeft: prev.scrollLeft
       }));
-    }, []);
+    };
 
     const handleScrollbarDragMove = useCallback((e: MouseEvent | TouchEvent) => {
       if (!scrollbarState.isDragging) return;
@@ -2317,9 +2414,9 @@ Suggested solutions:
       e.preventDefault();
     }, [scrollbarState]);
 
-    const handleScrollbarDragEnd = useCallback(() => {
+    const handleScrollbarDragEnd = () => {
       setScrollbarState(prev => ({ ...prev, isDragging: false }));
-    }, []);
+    };
 
     // 监听滚动条拖拽事件 - 支持鼠标和触摸
     useEffect(() => {
@@ -2328,6 +2425,10 @@ Suggested solutions:
         document.addEventListener('mousemove', handleScrollbarDragMove);
         document.addEventListener('mouseup', handleScrollbarDragEnd);
         // 触摸事件
+        // if (scrollBarRef.current) {
+        //   console.log('add touch event listener');
+        //   scrollBarRef.current.addEventListener('touchstart', handleScrollbarDragStart, { passive: false });
+        // }
         document.addEventListener('touchmove', handleScrollbarDragMove, { passive: false });
         document.addEventListener('touchend', handleScrollbarDragEnd);
         document.addEventListener('touchcancel', handleScrollbarDragEnd);
@@ -2997,6 +3098,7 @@ Suggested solutions:
                                   onEdit={() => !dragState.isDragging && selectComparisonItem(item)}
                                   onMove={(e) => handleDragStart(item.id, e)}
                                   onDelete={() => !dragState.isDragging && removeFromComparison(item.id)}
+                                  isMobile={isMobile}
                                 />
                               </div>
                             ))}
@@ -3007,9 +3109,13 @@ Suggested solutions:
                     {/* 自定义横向滚动条 */}
                     {comparisonItems.length > 0 && scrollbarState.scrollWidth > scrollbarState.clientWidth && (
                       <div id='characters-container-scrollbar' className="absolute bottom-[-16px] md:bottom-[-11px] left-0 h-[15px] md:h-[10px] bg-gray-100 rounded-full mx-2 mt-2"
-                        style={{
-                          touchAction: 'none'
-                        }}
+                        // onTouchStart={(e) => {
+                        //   console.log('==== 滚动条外层容器 touch start ====');
+                        //   console.log('target:', e.target);
+                        //   console.log('currentTarget:', e.currentTarget);
+                        // }}
+                        onClick={e => { }}
+                        style={{ touchAction: 'none' }}
                       >
                         {/* 滚动条轨道 */}
                         <div className="absolute inset-0 bg-gray-200 rounded-full"></div>
@@ -3017,10 +3123,7 @@ Suggested solutions:
                         <div
                           className={`absolute top-0 h-full bg-gray-400 rounded-full transition-colors cursor-pointer ${scrollbarState.isDragging ? 'bg-gray-600' : 'hover:bg-gray-500'
                             }`}
-                          style={{
-                            ...getScrollbarThumbStyle(),
-                            touchAction: 'none'
-                          }}
+                          style={getScrollbarThumbStyle()}
                           onMouseDown={handleScrollbarDragStart}
                           onTouchStart={handleScrollbarDragStart}
                         ></div>
@@ -3129,6 +3232,7 @@ Suggested solutions:
                         onEdit={() => { }}
                         onMove={() => { }}
                         onDelete={() => { }}
+                        isMobile={isMobile}
                       />
                     </div>
                   );
@@ -3140,44 +3244,46 @@ Suggested solutions:
 
 
         {/* 左侧角色列表Fixed拖拽元素 - 跟随鼠标移动用于直观交互 */}
-        {leftPanelDragState.isDragging && leftPanelDragState.draggedItemId && (() => {
-          const draggedItem = comparisonItems.find(item => item.id === leftPanelDragState.draggedItemId);
-          if (!draggedItem) return null;
+        {
+          leftPanelDragState.isDragging && leftPanelDragState.draggedItemId && (() => {
+            const draggedItem = comparisonItems.find(item => item.id === leftPanelDragState.draggedItemId);
+            if (!draggedItem) return null;
 
-          return (
-            <div
-              style={{
-                position: 'fixed',
-                left: leftPanelDragState.fixedElementX + (leftPanelDragState.currentMouseX - leftPanelDragState.startMouseX),
-                top: leftPanelDragState.fixedElementY + (leftPanelDragState.currentMouseY - leftPanelDragState.startMouseY),
-                zIndex: 1000,
-                pointerEvents: 'none',
-                opacity: 0.8,
-                filter: 'brightness(0.8)',
-                boxShadow: '0 8px 25px rgba(0,0,0,0.15)',
-                transform: 'scale(1.02)',
-                width: leftPanelDragState.draggedElement?.offsetWidth || 'auto',
-                minWidth: '200px',
-                backgroundColor: 'transparent' // 透明背景色
-              }}
-            >
-              <div className="flex items-center justify-between p-2 text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium text-gray-900">{draggedItem.character.name}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-gray-600">
-                    {unit === Unit.CM
-                      ? convertHeightSmart(draggedItem.character.height, true)
-                      : convertHeightSmartImperial(draggedItem.character.height)
-                    }
-                  </span>
-                  <GripVertical className="w-3 h-3 text-gray-400" />
+            return (
+              <div
+                style={{
+                  position: 'fixed',
+                  left: leftPanelDragState.fixedElementX + (leftPanelDragState.currentMouseX - leftPanelDragState.startMouseX),
+                  top: leftPanelDragState.fixedElementY + (leftPanelDragState.currentMouseY - leftPanelDragState.startMouseY),
+                  zIndex: 1000,
+                  pointerEvents: 'none',
+                  opacity: 0.8,
+                  filter: 'brightness(0.8)',
+                  boxShadow: '0 8px 25px rgba(0,0,0,0.15)',
+                  transform: 'scale(1.02)',
+                  width: leftPanelDragState.draggedElement?.offsetWidth || 'auto',
+                  minWidth: '200px',
+                  backgroundColor: 'transparent' // 透明背景色
+                }}
+              >
+                <div className="flex items-center justify-between p-2 text-sm">
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-gray-900">{draggedItem.character.name}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span className="text-gray-600">
+                      {unit === Unit.CM
+                        ? convertHeightSmart(draggedItem.character.height, true)
+                        : convertHeightSmartImperial(draggedItem.character.height)
+                      }
+                    </span>
+                    <GripVertical className="w-3 h-3 text-gray-400" />
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })()}
+            );
+          })()
+        }
 
         {/* 图片上传弹窗 */}
         <ImageUploadModal
