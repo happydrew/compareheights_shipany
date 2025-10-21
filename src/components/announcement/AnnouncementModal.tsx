@@ -33,6 +33,7 @@ export const AnnouncementModal: React.FC = () => {
   };
 
   const handleGotIt = () => {
+    localStorage.setItem(MODAL_STORAGE_KEY, 'true');
     setIsOpen(false);
   };
 
