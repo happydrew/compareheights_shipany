@@ -5,7 +5,7 @@ import { getCreditsByUserUuid } from "@/models/credit";
 import { getTranslations } from "next-intl/server";
 import { getUserCredits } from "@/services/credit";
 import { getUserUuid } from "@/services/user";
-import moment from "moment";
+import { format, formatDistanceToNow } from "date-fns";
 
 export default async function () {
   const t = await getTranslations();
@@ -58,7 +58,7 @@ export default async function () {
         title: t("my_credits.table.created_at"),
         name: "created_at",
         callback: (v: any) => {
-          return moment(v.created_at).format("YYYY-MM-DD HH:mm:ss");
+          return format(new Date(v.created_at), "yyyy-MM-dd HH:mm:ss");
         },
       },
       {
@@ -69,9 +69,9 @@ export default async function () {
             return "-";
           }
 
-          const t = moment(v.expired_at);
+          const date = new Date(v.expired_at);
 
-          return `${t.format("YYYY-MM-DD HH:mm:ss")} (${t.fromNow()})`;
+          return `${format(date, "yyyy-MM-dd HH:mm:ss")} (${formatDistanceToNow(date, { addSuffix: true })})`;
         },
       },
     ],

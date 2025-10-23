@@ -7,7 +7,6 @@ import {
   Grid, ArrowLeftRight, RotateCcw, ZoomIn, ZoomOut, GripVertical,
   Maximize, Minimize, Palette, Moon, Sun, Save, MoreHorizontal
 } from 'lucide-react';
-import html2canvas from 'html2canvas';
 import { CharacterDisplay } from './CharacterDisplay';
 import { ImageUploadModal } from './ImageUploadModal';
 import 'simplebar-react/dist/simplebar.min.css';
@@ -882,6 +881,9 @@ const HeightCompareTool = React.forwardRef<HeightCompareToolRef, HeightCompareTo
         }
 
         try {
+          // 动态导入html2canvas以减少初始bundle大小
+          const html2canvas = (await import('html2canvas')).default;
+
           // 使用html2canvas进行截图，手动扩展捕获区域
           const canvas = await html2canvas(element, {
             backgroundColor: styleSettings.backgroundColor,
@@ -973,6 +975,9 @@ Suggested solutions:
       try {
         setIsSharing(true);
 
+        // 动态导入html2canvas以减少初始bundle大小
+        const html2canvas = (await import('html2canvas')).default;
+
         // 使用与导出相同的配置生成图片
         const canvas = await html2canvas(element, {
           backgroundColor: styleSettings.backgroundColor,
@@ -1032,6 +1037,9 @@ Suggested solutions:
 
       try {
         console.log('Generating thumbnail, format:', format);
+
+        // 动态导入html2canvas以减少初始bundle大小
+        const html2canvas = (await import('html2canvas')).default;
 
         // 使用与导出相同的配置生成图片
         const canvas = await html2canvas(element, {

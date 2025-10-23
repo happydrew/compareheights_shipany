@@ -4,7 +4,7 @@ import { Table as TableSlotType } from "@/types/slots/table";
 import { getTranslations } from "next-intl/server";
 import { getUserApikeys, ApikeyStatus } from "@/models/apikey";
 import { getUserUuid } from "@/services/user";
-import moment from "moment";
+import { formatDistanceToNow } from "date-fns";
 import { Badge } from "@/components/ui/badge";
 
 export default async function () {
@@ -48,7 +48,7 @@ export default async function () {
         title: t("api_keys.table.created_at"),
         name: "created_at",
         callback: (item: any) => {
-          return moment(item.created_at).fromNow();
+          return formatDistanceToNow(new Date(item.created_at), { addSuffix: true });
         },
       },
     ],

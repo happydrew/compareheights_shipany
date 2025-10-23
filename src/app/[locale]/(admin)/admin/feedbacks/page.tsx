@@ -2,7 +2,7 @@ import { TableColumn } from "@/types/blocks/table";
 import TableSlot from "@/components/admin/slots/table";
 import { Table as TableSlotType } from "@/types/slots/table";
 import { getFeedbacks } from "@/models/feedback";
-import moment from "moment";
+import { format } from "date-fns";
 
 export default async function () {
   const feedbacks = await getFeedbacks(1, 50);
@@ -40,7 +40,7 @@ export default async function () {
     {
       name: "created_at",
       title: "Created At",
-      callback: (row) => moment(row.created_at).format("YYYY-MM-DD HH:mm:ss"),
+      callback: (row) => format(new Date(row.created_at), "yyyy-MM-dd HH:mm:ss"),
     },
     {
       name: "actions",

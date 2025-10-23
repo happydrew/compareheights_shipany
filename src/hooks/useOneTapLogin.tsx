@@ -36,15 +36,8 @@ export default function () {
     // console.log("one tap login status", status, session);
 
     if (status === "unauthenticated") {
+      // 只在初始时调用一次，避免每3秒轮询导致主线程阻塞
       oneTapLogin();
-
-      const intervalId = setInterval(() => {
-        oneTapLogin();
-      }, 3000);
-
-      return () => {
-        clearInterval(intervalId);
-      };
     }
   }, [status]);
 

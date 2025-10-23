@@ -4,7 +4,7 @@ import Empty from "@/components/blocks/empty";
 import TableSlot from "@/components/console/slots/table";
 import CreditsDisplay from "@/components/ui/credits-display";
 import { Table as TableSlotType } from "@/types/slots/table";
-import moment from "moment";
+import { format, formatDistanceToNow } from "date-fns";
 import { useTranslations } from "next-intl";
 
 interface CreditsPageClientProps {
@@ -56,7 +56,7 @@ export default function CreditsPageClient({ data, userCredits, user_uuid }: Cred
         title: t("my_credits.table.created_at"),
         name: "created_at",
         callback: (v: any) => {
-          return moment(v.created_at).format("YYYY-MM-DD HH:mm:ss");
+          return format(new Date(v.created_at), "yyyy-MM-dd HH:mm:ss");
         },
       },
       {
@@ -67,9 +67,9 @@ export default function CreditsPageClient({ data, userCredits, user_uuid }: Cred
             return "-";
           }
 
-          const t = moment(v.expired_at);
+          const date = new Date(v.expired_at);
 
-          return `${t.format("YYYY-MM-DD HH:mm:ss")} (${t.fromNow()})`;
+          return `${format(date, "yyyy-MM-dd HH:mm:ss")} (${formatDistanceToNow(date, { addSuffix: true })})`;
         },
       },
     ],

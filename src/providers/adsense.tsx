@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 export default function Adsense() {
   if (process.env.NODE_ENV !== "production") {
     return null;
@@ -10,10 +12,13 @@ export default function Adsense() {
   }
 
   return (
-    <script
-      async
-      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${googleAdsenseCode}`}
-      crossOrigin="anonymous"
-    ></script>
+    <Head>
+      <script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${googleAdsenseCode}`}
+        crossOrigin="anonymous"
+      ></script>
+      <meta name="google-adsense-account" content={`${googleAdsenseCode}`} />
+    </Head>
   );
 }

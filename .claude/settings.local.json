@@ -22,7 +22,11 @@
       "Bash(pnpm exec next build --debug)",
       "Bash(for file in src/components/compareheights/*.tsx)",
       "Bash(do echo \"=== $file ===\")",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(pnpm remove:*)",
+      "Bash(pnpm exec next build:*)",
+      "Bash(tee:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,4 +1,4 @@
-import moment from "moment";
+import { format, formatDistanceToNow } from "date-fns";
 
 export default function TableItemTime({
   value,
@@ -12,8 +12,8 @@ export default function TableItemTime({
   return (
     <div className={className}>
       {options?.format
-        ? moment(value).format(options?.format)
-        : moment(value).fromNow()}
+        ? format(new Date(value), options?.format)
+        : formatDistanceToNow(new Date(value), { addSuffix: true })}
     </div>
   );
 }

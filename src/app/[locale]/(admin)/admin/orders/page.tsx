@@ -2,7 +2,7 @@ import { TableColumn } from "@/types/blocks/table";
 import TableSlot from "@/components/admin/slots/table";
 import { Table as TableSlotType } from "@/types/slots/table";
 import { getAllOrders } from "@/models/order";
-import moment from "moment";
+import { format } from "date-fns";
 
 export default async function () {
   const orders = await getAllOrders(1, 50);
@@ -33,12 +33,12 @@ export default async function () {
     {
       name: "created_at",
       title: "Created At",
-      callback: (row) => moment(row.created_at).format("YYYY-MM-DD HH:mm:ss"),
+      callback: (row) => format(new Date(row.created_at), "yyyy-MM-dd HH:mm:ss"),
     },
     {
       name: "paid_at",
       title: "Paid At",
-      callback: (row) => row.paid_at ? moment(row.paid_at).format("YYYY-MM-DD HH:mm:ss") : "-",
+      callback: (row) => row.paid_at ? format(new Date(row.paid_at), "yyyy-MM-dd HH:mm:ss") : "-",
     },
   ];
 

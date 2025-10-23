@@ -5,7 +5,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import Crumb from "./crumb";
 import Markdown from "@/components/markdown";
 import { Post } from "@/types/post";
-import moment from "moment";
+import { formatDistanceToNow } from "date-fns";
 import { Card } from "@/components/ui/card";
 
 export default function BlogDetail({ post }: { post: Post }) {
@@ -31,7 +31,7 @@ export default function BlogDetail({ post }: { post: Post }) {
             )}
 
             <span className="ml-2 text-muted-foreground">
-              on {post.created_at && moment(post.created_at).fromNow()}
+              on {post.created_at && formatDistanceToNow(new Date(post.created_at), { addSuffix: true })}
             </span>
           </div>
         </div>
