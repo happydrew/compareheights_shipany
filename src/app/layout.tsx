@@ -14,15 +14,11 @@ export default async function RootLayout({
   setRequestLocale(locale);
 
   const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "";
-  const googleAdsenseCode = process.env.NEXT_PUBLIC_GOOGLE_ADCODE || "";
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        {googleAdsenseCode && (
-          <meta name="google-adsense-account" content={googleAdsenseCode} />
-        )}
 
         <link rel="icon" href="/favicon.ico" />
 
