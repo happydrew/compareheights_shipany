@@ -661,7 +661,7 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
                         onCharacterAdd(character);
                       }}
                     >
-                      <div className="aspect-square w-[8rem] flex items-center justify-center bg-gray-50 rounded overflow-hidden">
+                      <div className="aspect-square w-[6rem] flex items-center justify-center bg-gray-50 rounded overflow-hidden">
                         {character.thumbnail_url ? (
                           <img
                             src={character.thumbnail_url}
