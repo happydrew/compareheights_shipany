@@ -265,6 +265,16 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
   const [splitRatio, setSplitRatio] = useState(0.4);
   const [isDragging, setIsDragging] = useState(false);
 
+  // 长按相关状态
+  const [longPressedCharacterId, setLongPressedCharacterId] = useState<string | null>(null);
+  const longPressTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const touchStartPosRef = useRef<{ x: number; y: number } | null>(null);
+  const isLongPressRef = useRef(false);
+
+  // 长按配置常量
+  const LONG_PRESS_DURATION = 500; // 长按时间阈值（毫秒）
+  const MOVE_THRESHOLD = 10; // 移动距离阈值（像素）
+
   const loadCharactersRequestId = useRef<number>(0);
 
   const toolbarRef = useRef<HTMLDivElement>(null);
@@ -372,6 +382,102 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
     });
   };
 
+  // 角色卡片长按事件处理
+  const handleCharacterTouchStart = (e: React.TouchEvent, character: Character) => {
+    const touch = e.touches[0];
+
+    // 阻止浏览器的默认触摸行为（如长按菜单、图片保存等）
+    e.preventDefault();
+
+    // 记录起始触摸位置
+    touchStartPosRef.current = {
+      x: touch.clientX,
+      y: touch.clientY
+    };
+
+    // 重置长按标记
+    isLongPressRef.current = false;
+
+    // 启动定时器：500ms 后判定为长按
+    longPressTimerRef.current = setTimeout(() => {
+      // 定时器触发 = 长按成立
+      isLongPressRef.current = true;
+      setLongPressedCharacterId(character.id);
+
+      // 震动反馈
+      if (typeof navigator !== 'undefined' && navigator.vibrate) {
+        navigator.vibrate(50);
+      }
+    }, LONG_PRESS_DURATION);
+  };
+
+  const handleCharacterTouchMove = (e: React.TouchEvent, character: Character) => {
+    // 如果没有起始位置，不处理
+    if (!touchStartPosRef.current) return;
+
+    const touch = e.touches[0];
+
+    // 计算移动距离
+    const deltaX = touch.clientX - touchStartPosRef.current.x;
+    const deltaY = touch.clientY - touchStartPosRef.current.y;
+    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+    // 如果移动距离超过阈值，取消长按
+    if (distance > MOVE_THRESHOLD) {
+      // 清除定时器 = 不再判定为长按
+      if (longPressTimerRef.current) {
+        clearTimeout(longPressTimerRef.current);
+        longPressTimerRef.current = null;
+      }
+
+      // 如果已经在显示长按信息，也隐藏掉
+      if (isLongPressRef.current) {
+        setLongPressedCharacterId(null);
+        isLongPressRef.current = false;
+      }
+      // 移动距离大于阈值时，不阻止默认行为，允许滚动
+    } else {
+      // 移动距离小于阈值时，阻止默认行为，保护长按检测
+      e.preventDefault();
+    }
+  };
+
+  const handleCharacterTouchEnd = (e: React.TouchEvent, character: Character) => {
+    // 清除角色卡片显示的相关状态
+    if (longPressTimerRef.current) {
+      clearTimeout(longPressTimerRef.current);
+      longPressTimerRef.current = null;
+    }
+    setLongPressedCharacterId(null);
+
+    // 判断是是否移动
+    let isMoved = false;
+    if (touchStartPosRef.current && e.changedTouches[0]) {
+      const touch = e.changedTouches[0];
+
+      // 计算移动距离
+      const deltaX = touch.clientX - touchStartPosRef.current.x;
+      const deltaY = touch.clientY - touchStartPosRef.current.y;
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      // 如果移动距离超过阈值，判定为移动
+      if (distance > MOVE_THRESHOLD) {
+        isMoved = true;
+      }
+    }
+
+    // 如果是短按并且没有移动角色，添加角色
+    if (!isLongPressRef.current && !isMoved) {
+      onCharacterAdd(character);
+    }
+
+    // 重置所有状态
+    isLongPressRef.current = false;
+    touchStartPosRef.current = null;
+
+    // 阻止后续的 click 事件，防止重复添加
+    e.preventDefault();
+  };
+
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
     e.preventDefault();
@@ -445,6 +551,16 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
       };
     }
   }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove, handleTouchEnd]);
+
+  // 清理长按定时器
+  useEffect(() => {
+    return () => {
+      if (longPressTimerRef.current) {
+        clearTimeout(longPressTimerRef.current);
+        longPressTimerRef.current = null;
+      }
+    };
+  }, []);
 
   const renderCategoryNode = (category: Category, depth = 0) => {
     const isSelected = selectedCategoryId === category.id;
@@ -657,11 +773,22 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
                       key={character.id}
                       data-character-item="true"
                       className="relative group cursor-pointer"
-                      onClick={() => {
-                        onCharacterAdd(character);
+                      onClick={(e) => {
+                        // 只在非触摸设备上通过点击添加角色
+                        // 触摸设备通过 touchend 处理
+                        if (!('ontouchstart' in window)) {
+                          onCharacterAdd(character);
+                        }
+                      }}
+                      onTouchStart={(e) => handleCharacterTouchStart(e, character)}
+                      onTouchMove={(e) => handleCharacterTouchMove(e, character)}
+                      onTouchEnd={(e) => handleCharacterTouchEnd(e, character)}
+                      onContextMenu={(e) => {
+                        // 阻止右键菜单/长按菜单
+                        e.preventDefault();
                       }}
                     >
-                      <div className="aspect-square w-[6rem] flex items-center justify-center bg-gray-50 rounded overflow-hidden">
+                      <div className="aspect-square w-[7rem] flex items-center justify-center bg-gray-50 rounded overflow-hidden">
                         {character.thumbnail_url ? (
                           <img
                             src={character.thumbnail_url}
@@ -680,14 +807,15 @@ export const LibraryPanel: React.FC<LibraryPanelProps> = ({
                         )}
                       </div>
 
-                      {/*  */}
-                      <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                        w-full max-h-full break-words overflow-hidden whitespace-normal flex flex-col justify-center items-center bg-white/80 text-gray-800 
-                        opacity-0 text-xs rounded-lg group-hover:opacity-100 z-10 backdrop-blur-sm border 
-                        border-gray-200/50 shadow-lg transition-all duration-200 ease-out group-hover:scale-105 
+                      {/* 信息提示层 - 支持 hover 和长按显示 */}
+                      <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 select-none
+                        w-full max-h-full break-words overflow-hidden whitespace-normal flex flex-col justify-center items-center bg-white/80 text-gray-800
+                        text-[11px] rounded-lg backdrop-blur-sm border pointer-events-none
+                        border-gray-200/50 shadow-lg transition-all duration-200 ease-out
+                        ${longPressedCharacterId === character.id ? 'opacity-100 scale-105 z-10' : 'opacity-0 group-hover:opacity-100 group-hover:scale-105 group-hover:z-10'}
                         `}>
                         <div className="font-medium text-gray-900 text-center">{character.name}</div>
-                        <div className="text-gray-600 text-[11px] text-center">
+                        <div className="text-gray-600 text-[10px] text-center">
                           {convertHeightSmart(character.height, true)} / {convertHeightSmartImperial(character.height)}
                         </div>
                       </div>
