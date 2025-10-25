@@ -14,13 +14,25 @@ export default async function RootLayout({
   setRequestLocale(locale);
 
   const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "";
+  const googleAdsenseCode = process.env.NEXT_PUBLIC_GOOGLE_ADCODE;
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <link rel="icon" href="/favicon.ico" />
+
+        {/* Google Adsense */}
+        {process.env.NODE_ENV == "production" && googleAdsenseCode && (
+          <>
+            <script
+              async
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${googleAdsenseCode}`}
+              crossOrigin="anonymous"
+            ></script>
+            <meta name="google-adsense-account" content={`${googleAdsenseCode}`} />
+          </>
+        )}
 
         {locales &&
           locales.map((loc) => (
