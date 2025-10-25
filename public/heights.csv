@@ -1,0 +1,585 @@
+id,name,height
+animals-african_elephant,African Elephant,4
+animals-ant,Ant,0.002
+animals-asian_elephant,Asian Elephant,3.5
+animals-bear,Bear,1.2
+animals-bee,Bee,0.007
+animals-beetle,Beetle,0.03
+animals-big_ant_length,Big Ant Length,0.03
+animals-blue_whale_length,Blue Whale Length,24
+animals-brachiosaurus,Brachiosaurus,12
+animals-camel,Camel,2.55
+animals-cats-abyssinian,Abyssinian,0.32
+animals-cats-bengal,Bengal,0.32
+animals-cats-cat,Cat,0.3
+animals-cats-maine_coon,Maine Coon,0.45
+animals-cats-munchkin,Munchkin,0.22
+animals-cats-persian,Persian,0.32
+animals-cats-ragdoll,Ragdoll,0.35
+animals-cats-scottish_fold,Scottish Fold,0.32
+animals-cats-siamese,Siamese,0.32
+animals-cats-sphynx,Sphynx,0.32
+animals-centipedes,Centipedes,0.04
+animals-common_frog,Common Frog,0.08
+animals-cow,Cow,1.55
+animals-crane,Crane,1.5
+animals-crocodile,Crocodile,0.6
+animals-dogs-american_pit_bull_terrier,American Pit Bull Terrier,0.528
+animals-dogs-bichon_frise,Bichon Frise,0.297
+animals-dogs-border_collie,Border Collie,0.561
+animals-dogs-chihuahua,Chihuahua,0.242
+animals-dogs-dachshund,Dachshund,0.294
+animals-dogs-doberman_pinscher,Doberman Pinscher,0.726
+animals-dogs-english_springer_spaniel,English Springer Spaniel,0.572
+animals-dogs-german_shepherd,German Shepherd,0.66
+animals-dogs-golden_retriever,Golden Retriever,0.616
+animals-dogs-great_dane,Great Dane,0.814
+animals-dogs-irish_wolfhound,Irish Wolfhound,0.836
+animals-dogs-jack_russell_terrier,Jack Russell Terrier,0.308
+animals-dogs-labrador,Labrador,0.633
+animals-dogs-miniature_poodle,Miniature Poodle,0.352
+animals-dogs-miniature_schnauzer,Miniature Schnauzer,0.363
+animals-dogs-pembroke_welsh_corgi,Pembroke Welsh Corgi,0.308
+animals-dogs-pomeranian,Pomeranian,0.22
+animals-dogs-pug,Pug,0.308
+animals-dogs-rottweiler,Rottweiler,0.688
+animals-dogs-samoyed,Samoyed,0.627
+animals-dogs-shiba_inu,Shiba Inu,0.418
+animals-dogs-standard_poodle,Standard Poodle,0.418
+animals-dogs-toy_poodle,Toy Poodle,0.275
+animals-dogs-west_highland_white_terrier,West Highland White Terrier,0.308
+animals-dunkleosteus,Dunkleosteus,6
+animals-dust_mite_length,Dust Mite Length,0.00025
+animals-eagle,Eagle,0.6
+animals-flea_length,Flea Length,0.003
+animals-giant_beaver_castoroides,Giant Beaver Castoroides,1
+animals-giant_tortoise,Giant Tortoise,0.8
+animals-giraffe,Giraffe,5.5
+animals-gorilla,Gorilla,1.6
+animals-hippopotamus,Hippopotamus,1.5
+animals-horse,Horse,2
+animals-house_fly_length,House Fly Length,0.006
+animals-humming_bird,Humming Bird,0.09
+animals-japanese_spider_crab_width,Japanese Spider Crab Width,1.2
+animals-killer_whale,Killer Whale,7
+animals-komodo_dragon_length,Komodo Dragon Length,2.6
+animals-leedsichthys,Leedsichthys,16
+animals-leopard,Leopard,0.7
+animals-lion,Lion,1.35
+animals-megalodon,Megalodon,18
+animals-moose,Moose,2.4
+animals-mosasaurus,Mosasaurus,15
+animals-mouse,Mouse,0.05
+animals-northern_elephant_seal,Northern Elephant Seal,4.5
+animals-ostrich,Ostrich,2.7
+animals-paraceratherium,Paraceratherium,5.3
+animals-peacock,Peacock,1.2
+animals-penguin,Penguin,1.2
+animals-plesiosaurus,Plesiosaurus,14
+animals-pliosaurus,Pliosaurus,15
+animals-pterodactyl,Pterodactyl,3
+animals-rabbit,Rabbit,0.35
+animals-reticulated_python,Reticulated Python,6.25
+animals-rhinoceros,Rhinoceros,1.8
+animals-shastasaurus,Shastasaurus,25
+animals-small_ant_length,Small Ant Length,0.003
+animals-smilodon_saber-toothed_tiger,Smilodon Saber Toothed Tiger,1.2
+animals-sperm_whale,Sperm Whale,18
+animals-spider,Spider,0.02
+animals-squirrel,Squirrel,0.2
+animals-stegosaurus,Stegosaurus,4
+animals-tardigrade_length,Tardigrade Length,0.0005
+animals-terror_bird_phorusrhacos,Terror Bird Phorusrhacos,3.5
+animals-tiger,Tiger,1.15
+animals-titanoboa,Titanoboa,4.8
+animals-triceratops,Triceratops,4.4
+animals-tyrannosaurus_rex_t-rex,Tyrannosaurus Rex T Rex,5.6
+animals-velociraptor,Velociraptor,1.7
+animals-whale_shark,Whale Shark,10.5
+animals-wolf,Wolf,0.85
+animals-woolly_mammoth,Woolly Mammoth,3.8
+anime-attack_on_titan-armin_arlert,Armin Arlert,1.63
+anime-attack_on_titan-eren_yeager,Eren Yeager,1.7
+anime-attack_on_titan-levi_ackerman,Levi Ackerman,1.6
+anime-attack_on_titan-mikasa_ackerman,Mikasa Ackerman,1.7
+anime-colossal_titan,Colossal Titan,60
+anime-demon_slayer-giyu_tomioka,Giyu Tomioka,1.76
+anime-demon_slayer-inosuke_hashibira,Inosuke Hashibira,1.64
+anime-demon_slayer-nezuko_kamado,Nezuko Kamado,1.53
+anime-demon_slayer-tanjiro_kamado,Tanjiro Kamado,1.65
+anime-demon_slayer-zenitsu_agatsuma,Zenitsu Agatsuma,1.645
+anime-dragon_ball-gohan,Gohan,1.76
+anime-dragon_ball-piccolo,Piccolo,2.26
+anime-dragon_ball-son_goku,Son Goku,1.75
+anime-dragon_ball-trunks,Trunks,1.7
+anime-dragon_ball-vegeta,Vegeta,1.64
+anime-naruto-jiraiya,Jiraiya,1.91
+anime-naruto-kakashi_hatake,Kakashi Hatake,1.81
+anime-naruto-naruto_uzumaki,Naruto Uzumaki,1.66
+anime-naruto-orochimaru,Orochimaru,1.79
+anime-naruto-sakura_haruno,Sakura Haruno,1.61
+anime-naruto-sasuke_uchiha,Sasuke Uchiha,1.68
+anime-naruto-tsunade,Tsunade,1.63
+anime-one_piece-brook,Brook,2.77
+anime-one_piece-charlotte_linlin_big_mom,Charlotte Linlin Big Mom,8.8
+anime-one_piece-chopper,Chopper,0.9
+anime-one_piece-edward_newgate_whitebeard,Edward Newgate Whitebeard,6.66
+anime-one_piece-franky,Franky,2.4
+anime-one_piece-jinbe,Jinbe,3.01
+anime-one_piece-kaido,Kaido,7.1
+anime-one_piece-monkey_d._luffy,Monkey D. Luffy,1.74
+anime-one_piece-nami,Nami,1.7
+anime-one_piece-nico_robin,Nico Robin,1.88
+anime-one_piece-roronoa_zoro,Roronoa Zoro,1.81
+anime-one_piece-sanji,Sanji,1.8
+anime-one_piece-usopp,Usopp,1.76
+anime-one_punch_man-genos,Genos,1.78
+anime-one_punch_man-saitama,Saitama,1.75
+celebrity-ashby_gentry,Ashby Gentry,1.7
+celebrity-connor_stanhope,Connor Stanhope,1.83
+celebrity-corey_fogelmanis,Corey Fogelmanis,1.77
+celebrity-entertainment_celebs-aaron_kwok,Aaron Kwok,1.65
+celebrity-entertainment_celebs-ariana_grande,Ariana Grande,1.53
+celebrity-entertainment_celebs-benedict_cumberbatch,Benedict Cumberbatch,1.83
+celebrity-entertainment_celebs-blake_lively,Blake Lively,1.78
+celebrity-entertainment_celebs-brad_pitt,Brad Pitt,1.8
+celebrity-entertainment_celebs-bruno_mars,Bruno Mars,1.65
+celebrity-entertainment_celebs-charlize_theron,Charlize Theron,1.78
+celebrity-entertainment_celebs-dwayne_johnson,Dwayne Johnson,1.93
+celebrity-entertainment_celebs-famke_janssen,Famke Janssen,1.8
+celebrity-entertainment_celebs-gal_gadot,Gal Gadot,1.78
+celebrity-entertainment_celebs-guo_jingming,Guo Jingming,1.47
+celebrity-entertainment_celebs-he_jiong,He Jiong,1.65
+celebrity-entertainment_celebs-huang_xiaoming,Huang Xiaoming,1.72
+celebrity-entertainment_celebs-jennifer_lawrence,Jennifer Lawrence,1.75
+celebrity-entertainment_celebs-johnny_depp,Johnny Depp,1.78
+celebrity-entertainment_celebs-joseph_gordon-levitt,Joseph Gordon Levitt,1.75
+celebrity-entertainment_celebs-kate_upton,Kate Upton,1.78
+celebrity-entertainment_celebs-kevin-hart,Kevin Hart,1.65
+celebrity-entertainment_celebs-khloé_kardashian,Khloé Kardashian,1.79
+celebrity-entertainment_celebs-lady_gaga,Lady Gaga,1.55
+celebrity-entertainment_celebs-laura_dern,Laura Dern,1.79
+celebrity-entertainment_celebs-leonardo_dicaprio,Leonardo Dicaprio,1.75
+celebrity-entertainment_celebs-mandy_moore,Mandy Moore,1.78
+celebrity-entertainment_celebs-neil_fingleton,Neil Fingleton,2.31
+celebrity-entertainment_celebs-nicole_kidman,Nicole Kidman,1.8
+celebrity-entertainment_celebs-rocky_emerson,Rocky Emerson,1.9
+celebrity-entertainment_celebs-scarlett_johansson,Scarlett Johansson,1.6
+celebrity-entertainment_celebs-show_lo,Show Lo,1.75
+celebrity-entertainment_celebs-sophie_turner,Sophie Turner,1.75
+celebrity-entertainment_celebs-taylor_swift,Taylor Swift,1.78
+celebrity-entertainment_celebs-tom-cruise,Tom Cruise,1.73
+celebrity-entertainment_celebs-zendaya,Zendaya,1.78
+celebrity-height_record_holders-john_rogan,John Rogan,2.67
+celebrity-height_record_holders-robert_wadlow,Robert Wadlow,2.72
+celebrity-height_record_holders-sultan_kösen,Sultan Kösen,2.51
+celebrity-height_record_holders-zeng_jinlian,Zeng Jinlian,2.48
+celebrity-height_record_holders-zhang_juncai,Zhang Juncai,2.42
+celebrity-johnny_link,Johnny Link,1.8
+celebrity-marc_blucas,Marc Blucas,1.88
+celebrity-nikki_rodriguez,Nikki Rodriguez,1.63
+celebrity-noah_lalonde,Noah Lalonde,1.78
+celebrity-politician-abraham_lincoln,Abraham Lincoln,1.93
+celebrity-politician-adolf_hitler,Adolf Hitler,1.65
+celebrity-politician-barack_obama,Barack Obama,1.85
+celebrity-politician-deng_xiaoping,Deng Xiaoping,1.57
+celebrity-politician-donald_trump,Donald Trump,1.9
+celebrity-politician-george_washington,George Washington,1.88
+celebrity-politician-jack_ma,Jack Ma,1.66
+celebrity-politician-joseph_stalin,Joseph Stalin,1.62
+celebrity-politician-masayoshi_son,Masayoshi Son,1.5
+celebrity-politician-napoleon_bonaparte,Napoleon Bonaparte,1.65
+celebrity-politician-vladimir_lenin,Vladimir Lenin,1.64
+celebrity-politician-vladimir_putin,Vladimir Putin,1.7
+celebrity-religious_mythological-apollo,Apollo,1.85
+celebrity-religious_mythological-ares,Ares,1.9
+celebrity-religious_mythological-athena,Athena,1.75
+celebrity-religious_mythological-erlang_shen,Erlang Shen,1.85
+celebrity-religious_mythological-guanyin_bodhisattva,Guanyin Bodhisattva,2
+celebrity-religious_mythological-jade_emperor,Jade Emperor,1.8
+celebrity-religious_mythological-jesus_christ,Jesus Christ,1.75
+celebrity-religious_mythological-li_jing_pagoda-bearing_heavenly_king,Li Jing Pagoda Bearing Heavenly King,1.78
+celebrity-religious_mythological-loki,Loki,1.88
+celebrity-religious_mythological-moses,Moses,1.78
+celebrity-religious_mythological-muhammad,Muhammad,1.7
+celebrity-religious_mythological-nezha,Nezha,1.4
+celebrity-religious_mythological-odin,Odin,1.95
+celebrity-religious_mythological-poseidon,Poseidon,2
+celebrity-religious_mythological-sha_wujing,Sha Wujing,4
+celebrity-religious_mythological-shakyamuni,Shakyamuni,1.8
+celebrity-religious_mythological-sun_wukong,Sun Wukong,1.3
+celebrity-religious_mythological-tai_shang_lao_jun_grand_supreme_elderly_lord,Tai Shang Lao Jun Grand Supreme Elderly Lord,1.7
+celebrity-religious_mythological-tang_sanzang,Tang Sanzang,1.75
+celebrity-religious_mythological-tathāgata_buddha,Tathāgata Buddha,5.12
+celebrity-religious_mythological-zeus,Zeus,3
+celebrity-religious_mythological-zhu_bajie,Zhu Bajie,3.5
+celebrity-sarah_rafferty,Sarah Rafferty,1.76
+celebrity-sports_stars-cristiano_ronaldo,Cristiano Ronaldo,1.87
+celebrity-sports_stars-david-beckham,David Beckham,1.83
+celebrity-sports_stars-kobe_bryant,Kobe Bryant,1.98
+celebrity-sports_stars-lebron_james,Lebron James,2.04
+celebrity-sports_stars-lionel_messi,Lionel Messi,1.7
+celebrity-sports_stars-simone_biles,Simone Biles,1.42
+celebrity-sports_stars-yao_ming,Yao Ming,2.29
+fictional_characters-behemoth_the_mist,Behemoth The Mist,73
+fictional_characters-bruce_jaws_length,Bruce Jaws Length,7.62
+fictional_characters-clover_cloverfield,Clover Cloverfield,82
+fictional_characters-durins_bane_balrog,Durins Bane Balrog,4.9
+fictional_characters-exogorth,Exogorth,900
+fictional_characters-frankenstein,Frankenstein,2.4
+fictional_characters-gamera,Gamera,30
+fictional_characters-godzilla_1998,Godzilla 1998,60
+fictional_characters-godzilla_2014,Godzilla 2014,108
+fictional_characters-godzilla_2021,Godzilla 2021,119.8
+fictional_characters-graboid_tremors_length,Graboid Tremors Length,9.1
+fictional_characters-gremlin,Gremlin,0.61
+fictional_characters-harry_potter,Harry Potter,1.83
+fictional_characters-hellboy,Hellboy,2.06
+fictional_characters-hobbits,Hobbits,1
+fictional_characters-iron_man,Iron Man,1.98
+fictional_characters-jotnar_troll_hunter,Jotnar Troll Hunter,61
+fictional_characters-king_ghidorah_heisei,King Ghidorah Heisei,150
+fictional_characters-king_kong_1933,King Kong 1933,15
+fictional_characters-king_kong_1962,King Kong 1962,45
+fictional_characters-king_kong_1976,King Kong 1976,15
+fictional_characters-king_kong_1986,King Kong 1986,18
+fictional_characters-king_kong_2005,King Kong 2005,7.6
+fictional_characters-king_kong_2017,King Kong 2017,32
+fictional_characters-king_kong_2021,King Kong 2021,103
+fictional_characters-mike_wazowski,Mike Wazowski,1.12
+fictional_characters-mothra,Mothra,80
+fictional_characters-mumakil_oliphaunts,Mumakil Oliphaunts,15
+fictional_characters-predator,Predator,2.2
+fictional_characters-rancor,Rancor,4.6
+fictional_characters-sando_start_wars_length,Sando Start Wars Length,200
+fictional_characters-sandworm_dune,Sandworm Dune,400
+fictional_characters-slattern_pacific_rim,Slattern Pacific Rim,182
+fictional_characters-smaug,Smaug,18.3
+fictional_characters-stay_puft_marshmallow_man,Stay Puft Marshmallow Man,34.3
+fictional_characters-sulley_james_p_sullivan,Sulley James P Sullivan,2.29
+fictional_characters-thor,Thor,1.98
+fictional_characters-warrior_bug,Warrior Bug,3
+fictional_characters-xenomorph_queen,Xenomorph Queen,4.5
+fictional_characters-xenomorph_xx121,Xenomorph Xx121,2.3
+films-star_wars-aat,Aat,9.1948
+films-star_wars-acklay,Acklay,3.048
+films-star_wars-admiral_ackbar,Admiral Ackbar,1.8034
+films-star_wars-anakin_skywalker,Anakin Skywalker,1.8288
+films-star_wars-at_at,At At,22.5266
+films-star_wars-at_m6,At M6,36.0934
+films-star_wars-at_st,At St,8.6106
+films-star_wars-at_te,At Te,9.6012
+films-star_wars-b1_battle_droid,B1 Battle Droid,1.9304
+films-star_wars-b2_battle_droid,B2 Battle Droid,1.905
+films-star_wars-baby_yoda,Baby Yoda,0.3302
+films-star_wars-bantha,Bantha,2.5146
+films-star_wars-bb_8,Bb 8,0.6604
+films-star_wars-bb_9e,Bb 9e,0.6096
+films-star_wars-boba_fett,Boba Fett,1.8288
+films-star_wars-c_3po,C 3po,1.7272
+films-star_wars-captain_phasma,Captain Phasma,2.0066
+films-star_wars-chewbacca,Chewbacca,2.286
+films-star_wars-count_dooku,Count Dooku,1.9558
+films-star_wars-darth_maul,Darth Maul,1.7526
+films-star_wars-darth_vader,Darth Vader,2.032
+films-star_wars-death_trooper,Death Trooper,1.905
+films-star_wars-droideka,Droideka,1.8288
+films-star_wars-dwarf_spider_droid,Dwarf Spider Droid,1.9812
+films-star_wars-emperor_palpatine,Emperor Palpatine,1.778
+films-star_wars-ewok,Ewok,0.9906
+films-star_wars-finn,Finn,1.778
+films-star_wars-gnk_droid,Gnk Droid,1.0922
+films-star_wars-greivous,Greivous,2.1844
+films-star_wars-hailfire_droid,Hailfire Droid,8.4836
+films-star_wars-han_solo,Han Solo,1.8034
+films-star_wars-jabba_the_hutt,Jabba The Hutt,1.7526
+films-star_wars-jango_fett,Jango Fett,1.8288
+films-star_wars-jar_jar_binks,Jar Jar Binks,1.9558
+films-star_wars-jawa,Jawa,0.9906
+films-star_wars-jyn_erso,Jyn Erso,1.6002
+films-star_wars-k_2so,K 2so,2.1844
+films-star_wars-ki_adi_mundi,Ki Adi Mundi,1.905
+films-star_wars-kit_fisto,Kit Fisto,1.9558
+films-star_wars-kylo_ren,Kylo Ren,1.8796
+films-star_wars-lando_calrissian,Lando Calrissian,1.778
+films-star_wars-leia_organa,Leia Organa,1.4986
+films-star_wars-luke_skywalker,Luke Skywalker,1.7526
+films-star_wars-mace_windu,Mace Windu,1.8796
+films-star_wars-maz_kanata,Maz Kanata,1.2446
+films-star_wars-mouse_droid,Mouse Droid,0.254
+films-star_wars-nexu,Nexu,1.8288
+films-star_wars-nien_nunb,Nien Nunb,1.6002
+films-star_wars-obi_wan_kenobi,Obi Wan Kenobi,1.8288
+films-star_wars-orson_krennic,Orson Krennic,1.8542
+films-star_wars-padme_amidala,Padme Amidala,1.6002
+films-star_wars-pao,Pao,1.7526
+films-star_wars-poe_dameron,Poe Dameron,1.7272
+films-star_wars-qui_gon_jinn,Qui Gon Jinn,1.9304
+films-star_wars-r2_d2,R2 D2,1.0922
+films-star_wars-rancor,Rancor,4.9784
+films-star_wars-reek,Reek,3.048
+films-star_wars-rey,Rey,1.7018
+films-star_wars-rose_tico,Rose Tico,1.5748
+films-star_wars-stromtrooper,Stromtrooper,1.8288
+films-star_wars-tauntaun,Tauntaun,2.0066
+films-star_wars-wampa,Wampa,2.4384
+films-star_wars-watto,Watto,1.3716
+films-star_wars-yoda,Yoda,0.6604
+films-star_wars-zillo,Zillo,39.9796
+generic-baby-baby1,Baby1,0.75
+generic-baby-baby2,Baby2,0.75
+generic-baby-baby3,Baby3,0.75
+generic-baby-baby4,Baby4,0.75
+generic-baby-baby5,Baby5,0.75
+generic-baby01,Baby01,0.75
+generic-baby02,Baby02,0.75
+generic-baby03,Baby03,0.75
+generic-child_kid_boy1,Child Kid Boy1,1.1
+generic-child_kid_boy2,Child Kid Boy2,1.1
+generic-child_kid_boy3,Child Kid Boy3,1.1
+generic-child_kid_boy4,Child Kid Boy4,1.1
+generic-child_kid_boy5,Child Kid Boy5,1.1
+generic-child_kid_boy6,Child Kid Boy6,1.2
+generic-child_kid_girl1,Child Kid Girl1,1.1
+generic-child_kid_girl2,Child Kid Girl2,1.1
+generic-child_kid_girl3,Child Kid Girl3,1.1
+generic-child_kid_girl4,Child Kid Girl4,1.1
+generic-child_kid_girl5,Child Kid Girl5,1.2
+generic-child_kid_girl6,Child Kid Girl6,1.2
+generic-children-child_kid_12years_boy1,Child Kid 12years Boy1,1.52
+generic-children-child_kid_12years_boy2,Child Kid 12years Boy2,1.52
+generic-children-child_kid_12years_boy3,Child Kid 12years Boy3,1.52
+generic-children-child_kid_12years_boy4,Child Kid 12years Boy4,1.52
+generic-children-child_kid_12years_girl1,Child Kid 12years Girl1,1.45
+generic-children-child_kid_12years_girl2,Child Kid 12years Girl2,1.45
+generic-children-child_kid_12years_girl3,Child Kid 12years Girl3,1.45
+generic-children-child_kid_12years_girl4,Child Kid 12years Girl4,1.45
+generic-children-child_kid_5years_boy1,Child Kid 5years Boy1,1.1
+generic-children-child_kid_5years_boy2,Child Kid 5years Boy2,1.1
+generic-children-child_kid_5years_boy3,Child Kid 5years Boy3,1.1
+generic-children-child_kid_5years_boy4,Child Kid 5years Boy4,1.1
+generic-children-child_kid_5years_boy5,Child Kid 5years Boy5,1.1
+generic-children-child_kid_5years_boy6,Child Kid 5years Boy6,1.1
+generic-children-child_kid_5years_girl1,Child Kid 5years Girl1,1.1
+generic-children-child_kid_5years_girl2,Child Kid 5years Girl2,1.1
+generic-children-child_kid_5years_girl3,Child Kid 5years Girl3,1.1
+generic-children-child_kid_5years_girl4,Child Kid 5years Girl4,1.1
+generic-children-child_kid_5years_girl5,Child Kid 5years Girl5,1.1
+generic-children-child_kid_5years_girl6,Child Kid 5years Girl6,1.1
+generic-children-teenager_16years_boy1,Teenager 16years Boy1,1.65
+generic-children-teenager_16years_boy2,Teenager 16years Boy2,1.65
+generic-children-teenager_16years_boy3,Teenager 16years Boy3,1.65
+generic-children-teenager_16years_boy4,Teenager 16years Boy4,1.65
+generic-children-teenager_16years_boy5,Teenager 16years Boy5,1.65
+generic-children-teenager_16years_boy6,Teenager 16years Boy6,1.65
+generic-children-teenager_16years_boy7,Teenager 16years Boy7,1.65
+generic-children-teenager_16years_boy8,Teenager 16years Boy8,1.65
+generic-children-teenager_16years_girl1,Teenager 16years Girl1,1.55
+generic-children-teenager_16years_girl2,Teenager 16years Girl2,1.55
+generic-children-teenager_16years_girl3,Teenager 16years Girl3,1.55
+generic-children-teenager_16years_girl4,Teenager 16years Girl4,1.55
+generic-children-teenager_16years_girl5,Teenager 16years Girl5,1.55
+generic-children-teenager_16years_girl6,Teenager 16years Girl6,1.55
+generic-children-teenager_16years_girl7,Teenager 16years Girl7,1.55
+generic-children-teenager_16years_girl8,Teenager 16years Girl8,1.55
+generic-country_average_height-australia_man_average_height,Australia Man Average Height,1.788
+generic-country_average_height-brazilian_man_average_height,Brazilian Man Average Height,1.757
+generic-country_average_height-canada_man_average_height,Canada Man Average Height,1.788
+generic-country_average_height-china_man_average_height,China Man Average Height,1.757
+generic-country_average_height-denmark_man_average_height,Denmark Man Average Height,1.8189
+generic-country_average_height-france_man_average_height,France Man Average Height,1.797
+generic-country_average_height-germany_man_average_height,Germany Man Average Height,1.808
+generic-country_average_height-iceland_male_average_height,Iceland Male Average Height,1.821
+generic-country_average_height-indian_man_average_height,Indian Man Average Height,1.665
+generic-country_average_height-indonesian_man_average_height,Indonesian Man Average Height,1.663
+generic-country_average_height-japanese_man_average_height,Japanese Man Average Height,1.721
+generic-country_average_height-mexican_man_average_height,Mexican Man Average Height,1.703
+generic-country_average_height-netherlands_man_average_height,Netherlands Man Average Height,1.8378
+generic-country_average_height-philippines_man_average_height,Philippines Man Average Height,1.633
+generic-country_average_height-south_korea_man_average_height,South Korea Man Average Height,1.755
+generic-country_average_height-ukraine_man_average_height,Ukraine Man Average Height,1.8098
+generic-country_average_height-united_kingdom_average_height,United Kingdom Average Height,1.782
+generic-country_average_height-united_states_man_average_height,United States Man Average Height,1.769
+generic-country_average_height-vietnam_man_average_height,Vietnam Man Average Height,1.684
+generic-generic_human01,Generic Human01,1.7
+generic-generic_man01,Generic Man01,1.75
+generic-generic_man02,Generic Man02,1.75
+generic-generic_man03,Generic Man03,1.75
+generic-generic_man04,Generic Man04,1.75
+generic-generic_man05,Generic Man05,1.75
+generic-generic_man06,Generic Man06,1.75
+generic-generic_man07,Generic Man07,1.75
+generic-generic_man08,Generic Man08,1.75
+generic-generic_man09,Generic Man09,1.75
+generic-generic_man10,Generic Man10,1.75
+generic-generic_man11,Generic Man11,1.75
+generic-generic_man12,Generic Man12,1.75
+generic-generic_man13,Generic Man13,1.75
+generic-generic_people-generic_man1,Generic Man1,1.75
+generic-generic_people-generic_man2,Generic Man2,1.75
+generic-generic_people-generic_man3,Generic Man3,1.75
+generic-generic_people-generic_man4,Generic Man4,1.75
+generic-generic_people-generic_man5,Generic Man5,1.75
+generic-generic_people-generic_man6,Generic Man6,1.75
+generic-generic_people-generic_man7,Generic Man7,1.75
+generic-generic_people-generic_man8,Generic Man8,1.75
+generic-generic_people-generic_woman1,Generic Woman1,1.62
+generic-generic_people-generic_woman2,Generic Woman2,1.62
+generic-generic_people-generic_woman3,Generic Woman3,1.62
+generic-generic_people-generic_woman4,Generic Woman4,1.62
+generic-generic_people-generic_woman5,Generic Woman5,1.62
+generic-generic_people-generic_woman6,Generic Woman6,1.62
+generic-generic_people-generic_woman7,Generic Woman7,1.62
+generic-generic_people-generic_woman8,Generic Woman8,1.62
+generic-generic_woman01,Generic Woman01,1.62
+generic-generic_woman02,Generic Woman02,1.62
+generic-generic_woman03,Generic Woman03,1.62
+generic-generic_woman04,Generic Woman04,1.62
+generic-generic_woman05,Generic Woman05,1.62
+generic-generic_woman06,Generic Woman06,1.62
+generic-generic_woman07,Generic Woman07,1.62
+generic-generic_woman08,Generic Woman08,1.62
+generic-generic_woman09,Generic Woman09,1.62
+generic-generic_woman10,Generic Woman10,1.62
+generic-generic_woman11,Generic Woman11,1.62
+generic-old_people-oldman1,Oldman1,1.68
+generic-old_people-oldman2,Oldman2,1.68
+generic-old_people-oldman3,Oldman3,1.68
+generic-old_people-oldman4,Oldman4,1.68
+generic-old_people-oldman5,Oldman5,1.68
+generic-old_people-oldwoman1,Oldwoman1,1.58
+generic-old_people-oldwoman2,Oldwoman2,1.58
+generic-old_people-oldwoman3,Oldwoman3,1.58
+generic-old_people-oldwoman4,Oldwoman4,1.58
+generic-old_people-oldwoman5,Oldwoman5,1.58
+generic-old_people-oldwoman6,Oldwoman6,1.58
+generic-people-agender1,Agender1,1.75
+generic-people-agender2,Agender2,1.75
+generic-people-agender3,Agender3,1.75
+generic-people-agender4,Agender4,1.75
+generic-people-agender5,Agender5,1.75
+generic-people-agender6,Agender6,1.75
+generic-people-man1,Man1,1.75
+generic-people-man2,Man2,1.75
+generic-people-man3,Man3,1.75
+generic-people-man4,Man4,1.75
+generic-people-man5,Man5,1.75
+generic-people-man6,Man6,1.75
+generic-people-man7,Man7,1.75
+generic-people-man8,Man8,1.75
+generic-people-woman1,Woman1,1.62
+generic-people-woman2,Woman2,1.62
+generic-people-woman3,Woman3,1.62
+generic-people-woman4,Woman4,1.62
+generic-people-woman5,Woman5,1.62
+generic-people-woman6,Woman6,1.62
+generic-people-woman7,Woman7,1.62
+microorganisms-bacteria_prokaryotic_cell,Bacteria Prokaryotic Cell,0.000001
+microorganisms-eukaryotic_cell_human_cell,Eukaryotic Cell Human Cell,0.000015
+microorganisms-mold_mould,Mold Mould,0.000025
+microorganisms-virus,Virus,1.00E-07
+microorganisms-yeast,Yeast,0.000006
+objects-abraj_ai_bait,Abraj Ai Bait,601
+objects-astronomy-2004_fh,2004 Fh,30
+objects-astronomy-2008_tc3,2008 Tc3,4.1
+objects-astronomy-2014_rc,2014 Rc,22
+objects-astronomy-243_ida,243 Ida,31400
+objects-astronomy-29075_1950_da,29075 1950 Da,1100
+objects-astronomy-3200_phaethon,3200 Phaethon,5800
+objects-astronomy-323_brucia,323 Brucia,33000
+objects-astronomy-433_eros,433 Eros,16840
+objects-astronomy-4769_castalia,4769 Castalia,1400
+objects-astronomy-5_astraea,5 Astraea,119000
+objects-astronomy-52_europa,52 Europa,315000
+objects-astronomy-69230_hermes,69230 Hermes,810
+objects-astronomy-719_albert,719 Albert,2360
+objects-astronomy-99942_apophis,99942 Apophis,370
+objects-astronomy-ceres,Ceres,939000
+objects-astronomy-earth,Earth,12742000
+objects-astronomy-eugenia,Eugenia,214000
+objects-astronomy-jupiter,Jupiter,139822000
+objects-astronomy-mars,Mars,6779000
+objects-astronomy-mercury,Mercury,4880000
+objects-astronomy-moon,Moon,3474000
+objects-astronomy-neptune,Neptune,49244000
+objects-astronomy-saturn,Saturn,116464000
+objects-astronomy-sun,Sun,1392000000
+objects-astronomy-uranus,Uranus,50724000
+objects-astronomy-venus,Venus,12104000
+objects-astronomy-vesta,Vesta,525000
+objects-atom,Atom,1.00E-10
+objects-bank_of_china_tower,Bank Of China Tower,367.4
+objects-basketball_hoop,Basketball Hoop,3.95
+objects-benchmarking_innovation_center_headquarters,Benchmarking Innovation Center Headquarters,394
+objects-buildings-arc_de_triomphe,Arc De Triomphe,50
+objects-buildings-big_ben,Big Ben,96
+objects-buildings-burj_khalifa_dubai,Burj Khalifa Dubai,828
+objects-buildings-eiffel_tower,Eiffel Tower,330
+objects-buildings-hall_of_supreme_harmony,Hall Of Supreme Harmony,35
+objects-buildings-leaning_tower_of_pisa,Leaning Tower Of Pisa,56
+objects-buildings-one_world_trade_center,One World Trade Center,541
+objects-buildings-statue_of_liberty,Statue Of Liberty,93
+objects-buildings-taipei_101,Taipei 101,508
+objects-buildings-tiananmen,Tiananmen,33.76
+objects-buildings-typical_residential_building_10_floors,Typical Residential Building 10 Floors,30
+objects-buildings-typical_residential_building_30_floors,Typical Residential Building 30 Floors,90
+objects-burj_khalifa,Burj Khalifa,829.8
+objects-central_park_tower,Central Park Tower,472
+objects-chengdu_greenland_center,Chengdu Greenland Center,462
+objects-china_zun,China Zun,528
+objects-chongqin_tall_tower,Chongqin Tall Tower,431
+objects-chrysler_building,Chrysler Building,319
+objects-dna_molecule_deoxyribonucleic_acid,Dna Molecule Deoxyribonucleic Acid,2.00E-09
+objects-electron,Electron,1.00E-13
+objects-empire_state_building,Empire State Building,443.2
+objects-guangjian_financial_center,Guangjian Financial Center,333
+objects-guangzhou_ctf_finance_centre,Guangzhou Ctf Finance Centre,530
+objects-hangzhou_west_railway_station_hub,Hangzhou West Railway Station Hub,400
+objects-hudson_spire,Hudson Spire,550
+objects-jeddah_tower,Jeddah Tower,1000
+objects-k2_mount_godwin_austen,K2 Mount Godwin Austen,8611
+objects-kangchenjunga,Kangchenjunga,8586
+objects-lakhta_center,Lakhta Center,462
+objects-lhotse,Lhotse,8516
+objects-lokhandwala_minerva,Lokhandwala Minerva,301
+objects-lotte_world_tower,Lotte World Tower,555.7
+objects-makalu,Makalu,8467
+objects-marina_101,Marina 101,425
+objects-merdeka_118,Merdeka 118,678.9
+objects-millennium_tower,Millennium Tower,840
+objects-mount_everest,Mount Everest,8848
+objects-mount_fuji,Mount Fuji,3776
+objects-mount_huangshan,Mount Huangshan,1864
+objects-mount_tai,Mount Tai,1536
+objects-nansha_tower,Nansha Tower,900
+objects-oblisco_capitale,Oblisco Capitale,1000
+objects-one_world_trade_center,One World Trade Center,546
+objects-petronas_towers,Petronas Towers,451.9
+objects-ping_an_ifc,Ping An Ifc,599.1
+objects-protein_molecule,Protein Molecule,5.00E-09
+objects-proton,Proton,1.00E-12
+objects-q1_tower,Q1 Tower,322.5
+objects-quark,Quark,1.00E-14
+objects-ryugyong_hotel,Ryugyong Hotel,330
+objects-shanghai_tower,Shanghai Tower,632
+objects-shanghai_world_financial_center,Shanghai World Financial Center,494.3
+objects-soccer_goal,Soccer Goal,2.44
+objects-srg_tower,Srg Tower,473
+objects-street_light,Street Light,8
+objects-suzhou_center_north_tower,Suzhou Center North Tower,470
+objects-suzhou_zhongnan_center,Suzhou Zhongnan Center,499.2
+objects-taipei_101,Taipei 101,508.2
+objects-the_downtown_circle,The Downtown Circle,550
+objects-tianjin_ctf_finance_centre,Tianjin Ctf Finance Centre,530
+objects-torres_obispado,Torres Obispado,305.3
+objects-tour_f_abidjan_ivory_coast,Tour F Abidjan Ivory Coast,421
+objects-us_bank_tower,Us Bank Tower,310.3
+objects-utility_pole,Utility Pole,12
+objects-willis_tower,Willis Tower,527
+plants-bamboo,Bamboo,30
+plants-grass,Grass,0.1
+plants-pine_tree,Pine Tree,20
+plants-poplar_tree,Poplar Tree,25
+plants-rose,Rose,1
+plants-sunflower,Sunflower,3
+plants-willow_tree,Willow Tree,15
