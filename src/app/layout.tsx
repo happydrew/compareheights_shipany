@@ -40,7 +40,7 @@ export default async function RootLayout({
               key={loc}
               rel="alternate"
               hrefLang={loc}
-              href={`${webUrl}${loc === "en" ? "" : `/${loc}`}/`}
+              href={`${webUrl}${loc === "en" ? "/" : `/${loc}/`}`}
             />
           ))}
         <link rel="alternate" hrefLang="x-default" href={webUrl} />

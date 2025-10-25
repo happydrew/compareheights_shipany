@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HeightCompareTool } from "@/components/compareheights";
 import { HeightComparisonArticle } from "@/components/compareheights/HeightComparisonArticle";
 import { getTranslations } from "next-intl/server";
-import { siteConfig } from "@/config/metadata";
+import { siteConfig, getAbsoluteUrl } from "@/config/metadata";
 
 
 export async function generateMetadata({
@@ -23,8 +23,14 @@ export async function generateMetadata({
       canonical,
     },
     openGraph: {
+      siteName: siteConfig.name,
+      locale: locale,
+      type: 'website',
+      images: [{
+        url: getAbsoluteUrl(siteConfig.defaultOgImage),
+      }],
       url: canonical, // 只需覆盖 url
-    },
+    }
   };
 }
 
